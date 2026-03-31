@@ -7,5 +7,6 @@ Proyecto de Rpg desarrollado con Lua, basado en prototipo en Pico-8
 
 1) Descargar el proyecto
 2) Instalar [Love2d](https://love2d.org/)
-3) Ejecutar el proyecto con el comando: love RpgLua
+3) Ejecutar el proyecto con el comando: love RpgLua\
+![comando_love](https://github.com/stillhetx/TowerOfMist/blob/6d570b3cace28679ee939e42d1339cda98a1800a/Code_U98lfHKL47.png)
 4) listo
