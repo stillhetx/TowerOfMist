@@ -261,6 +261,15 @@ function FiltrarEnemigoVivos()
     end
 end
 
+
+function FiltrarSpellList()
+
+end
+
+function FiltrarPowerStone()
+
+end
+
 function LlenarListaExtraer(objetivo)
     for _,o in ipairs(objetivo.magicForce) do
         table.insert(Actual.blue, mix)

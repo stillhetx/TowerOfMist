@@ -191,6 +191,10 @@ function Comando_invocar()
     end
 end
 
+function Comando_Power_Stone()
+    all_logic_magic()
+end
+
 
 objetivo_global_B={}
 mg_sel_global_B=""

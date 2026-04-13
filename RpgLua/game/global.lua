@@ -90,6 +90,7 @@ Buton_bonus=0
 
 
 Acc=""
+Replace_Acc=false
 obj=""
 Last_sel_e=""
 Sel_e=""

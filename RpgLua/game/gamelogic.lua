@@ -1958,6 +1958,8 @@ end
 Dice=0
 
 function acertar(v,b)
+    local at=0
+    local ob=0
     if v.ventaja["back"] ~= nil then
         Dice=flr(rnd(20))
         at=b.dex+mod(b,"dex")+Dice-3

@@ -23,6 +23,25 @@ Efectos["extraer_all"] = function (v,w,str)
     
 end
 
+
+Efectos["rezar"] = function (v,w,str)
+
+    --Extrae todos los elementos
+    
+end
+
+Efectos["centrarse"] = function (v,w,str)
+
+    --Extrae todos los elementos
+    
+end
+
+Efectos["premonicion"] = function (v,w,str)
+
+    --Extrae todos los elementos
+    
+end
+
 Efectos["asesinar"]= function (v,w,f,bol,bono)
 
         w.anim_acc="magia"

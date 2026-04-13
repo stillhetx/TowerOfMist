@@ -764,10 +764,26 @@ function show_menus_cont(v,x,y)
         local row = (i - 1) % itemsPerColumn
         local xi = x + column * columnSpacing
         local yi = y + row * rowSpacing
-        print("  "..v[i].name.." "..v[i].cont.."/"..v[i].max, xi+6, yi+40,7)
+        --print("  "..v[i].name.." "..v[i].cont.."/"..v[i].max, xi+6, yi+40,7)
     end
 end
 
+
+function show_menus_name_cantidad(v,x,y)
+    for i=1,#v-(ini_view-1)  do
+        local column = math.floor((i - 1) / itemsPerColumn)
+        local row = (i - 1) % itemsPerColumn
+        local xi = x + column * columnSpacing
+        local yi = y + row * rowSpacing
+       -- if i<#v then
+            if Actual.mp_>= v[i].cost then
+                print("  "..v[(ini_view-1)+i].name.." "..v[(ini_view-1)+i].cant, xi+6, yi+40,7)
+            else
+                print("  "..v[(ini_view-1)+i].name.." "..v[(ini_view-1)+i].cant, xi+6, yi+40,6)
+            end    
+        --end
+    end
+end
 
 function show_menus_name_cost(v,x,y)
     for i=1,#v-(ini_view-1)  do

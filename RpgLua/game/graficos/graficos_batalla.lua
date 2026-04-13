@@ -2,8 +2,8 @@
 function graph_mode()
     cls()
 
-    love.graphics.draw(fondo,0,0)
-    --love.graphics.draw(fondo_pasto, 0, 0,0,4,4)
+    --love.graphics.draw(fondo,0,0)
+    love.graphics.draw(img_intro, 0, 0,0,1,1)
 
     --love.graphics.rectangle("fill", 16,16, 608,60)
     --608,60
@@ -42,7 +42,7 @@ function graph_mode()
 
 
 
-    love.graphics.print( "Debug: #Sprites "..  #fondo_sprites.quads.." ",30,114+(24*-4))
+    --love.graphics.print( "Debug: #Sprites "..  #fondo_sprites.quads.." ",30,114+(24*-4))
 
      if Cancel_ejecutar then
        -- love.graphics.print( "Cancel: true",30,120+(24*-2))
@@ -50,13 +50,13 @@ function graph_mode()
         --love.graphics.print( "Cancel: false",30,120+(24*-2))
      end
 
-    if B_wait then
+    if Execute then
         --love.graphics.print( "timer: ".." true "..timer_wait.." ",30,120+(24*-3))
     else
         --love.graphics.print( "timer: ".." false "..timer_wait.." ",30,120+(24*-3))
     end
 
-    
+    --love.graphics.print( "debug: "..Acc.." "..State,30,120+(24*-4))
 
         --love.graphics.print( "debug: "..Debug_temp.." ",30,120+(24*-3))
         --love.graphics.print( "debug: "..Modo.." "..Show_view,30,120+(24*-2))
@@ -127,12 +127,12 @@ function graph_mode()
 
 
         if B_wait==false then
-            cuadroTexto(16,306,36,600/4)
-            print(" menu "..Actual.name.." X"..(Actual.ext+1),menu_x+8,menu_y+16,7)
+            --cuadroTexto(16,306,36,600/4)
+            print(Actual.name.." X"..(Actual.ext+1),menu_x+38,menu_y+22,7)
             
             print("  ",menu_x+100,menu_y+24,7)
 
-            spr_sheet(Actual.ico,menu_x+20,menu_y,1,1,1,1,spritesIcon) 
+            spr_sheet(Actual.ico,menu_x+12,menu_y + 24,1,1,1,1,spritesIcon) 
 
             if Actual.tipo=="player" then
 
@@ -163,6 +163,9 @@ function graph_mode()
                 end
                 if State=="select o" and Acc=="spell.list" then   
                     show_menus_cont(Actual.mg,menu_select_x,menu_y)
+                end
+                if State=="select o" and Acc=="Power.Stone" then   
+                    show_menus_name_cantidad(Actual.powerStone,menu_select_x,menu_y)
                 end
                 if State=="select o" and Acc=="transformacion" then   
                     show_menus_name_cost(Actual.morph,menu_select_x,menu_y)

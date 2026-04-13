@@ -1273,6 +1273,7 @@ all_spell={
 	super={name="super",id="super" ,dir="c",cost=8,}, 
 	rapido={name="rapido", id="rapido",dir="c",cost=1,},
 	escudo={name="escudo",id="escudo" ,dir="c",cost=8,},
+	coraza={name="coraza",id="coraza" ,dir="c",cost=8,},
 
 	--Sanacion
         curar={name="curar", id="curar",dir="c",cost=1,},  
@@ -1624,7 +1625,7 @@ Lista_Weapon_Arts={
         slash = {name="slash",id="slash",need={},isCharge=false,isCommand=false,tCost="rc",dir="x",requerimiento={"katana"}},
         desenbocado = {name="desenbocado",id="desenbocado",isCharge=true,isCommand=false, tCost="charge",dir="x",requerimiento={"desarmado"}},
         incontrolable = {name="incontrolable",id="incontrolable",isCharge=true,isCommand=true,tCost="charge", dir="x",requerimiento={"desarmado"}},
-        disparo_preciso = {name="disparo preciso",id="disparo_preciso",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
+        disparo_preciso = {name="disparo preciso",id="disparo_preciso",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco","cannon"}},
         disparo_rapido = {name="disparo rapido",id="disparo_rapido",isCharge=true,isCommand=true,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
         lluvia_de_flechas = {name="lluvia de flechas",id="lluvia_de_flechas",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"arco"}},
         saltar = {name="saltar",id="saltar",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"lanza","alabarda"}},

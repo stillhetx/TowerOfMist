@@ -63,6 +63,7 @@ function love.load()
     caja_texto= loadSpritesheet("MsgSprite.png", 8)
     fondo_pasto=love.graphics.newImage("Fondo_pasto.png")
     fondo_sprites= loadbackGround("Fondos_sheet.png", 152, 15)
+    img_intro=love.graphics.newImage("intro.png")
     --newSprites = loadSpritesheet("pico-rpg.png", 16)
     backgroundTile = loadSpritesheet("backgroundTile.png", 16)
     spritesEstados = loadSpritesheet("estados_alterados.png", 10)
@@ -144,9 +145,9 @@ function _init()
             -- "Magia no funciona"
             --25 oscuridad //done agregar maximo de invocaciones
             --30 cristales, extraer // nunca lo termine
-            local a =1
-            local b =2
-            local c =3
+            local a =6
+            local b =6
+            local c =7
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))

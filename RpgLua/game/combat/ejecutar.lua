@@ -123,7 +123,7 @@ function ejecutar_ataque_desarmado(v)
             local crit=""
             local mult=1
             mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-            DamageProccess(v,w,-flr((Actual.fue+Actual.con)*mult*1.5),crit)
+            DamageProccess(v,Actual,-flr((Actual.fue+Actual.con)*mult*1.5),crit)
             jump_start(v)
             v.anim_acc="golpe"
             v.anim_col={1,1,1,1}
@@ -141,7 +141,7 @@ function ejecutar_ataque_desarmado_ejecutor(v,e)
             local crit=""
             local mult=1
             mult, crit =  adv_weak_Logic(v,e,{"volar"},true )
-            DamageProccess(v,w,-flr((e.fue+e.con)*mult*1.5),crit)
+            DamageProccess(v,e,-flr((e.fue+e.con)*mult*1.5),crit)
             jump_start(v)
             v.anim_acc="golpe"
             v.anim_col={1,1,1,1}
@@ -163,7 +163,7 @@ function ejecutar_ataque_a_ejecutor(v,e)
                     local attt=0
                     attt=attt+flr((e.fue + flr(rnd(e.weapon.left.w)) + e.weapon.left.bw)*mult) 
                     mult, crit =  adv_weak_Logic(v,e,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,e,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -181,7 +181,7 @@ function ejecutar_ataque_a_ejecutor(v,e)
                     local attt=0
                     attt=attt+flr((e.dex + flr(rnd(e.weapon.left.w)) + e.weapon.left.bw)*mult)
                     mult, crit =  adv_weak_Logic(v,e,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,e,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -200,7 +200,7 @@ function ejecutar_ataque_a_ejecutor(v,e)
                     local crit=""
                     local mult=1 
                     mult, crit =  adv_weak_Logic(v,e,{"volar"},true )
-                    DamageProccess(v,w,-flr(((e.fue*2) + flr(rnd(e.weapon.left.w)) + e.weapon.left.bw)*mult),crit)
+                    DamageProccess(v,e,-flr(((e.fue*2) + flr(rnd(e.weapon.left.w)) + e.weapon.left.bw)*mult),crit)
                     jump_start(v)
                     v.anim_acc="puñetazos"
                     v.anim_col={1,1,1,1}
@@ -227,7 +227,7 @@ function ejecutar_ataque_b_ejecutor(v,e)
                     local attt=0
                     attt=attt+flr((e.fue + flr(rnd(e.weapon.right.w)) + e.weapon.right.bw)*mult)
                     mult, crit =  adv_weak_Logic(v,e,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,e,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -245,7 +245,7 @@ function ejecutar_ataque_b_ejecutor(v,e)
                     local attt=0
                     attt=attt+flr((e.dex + flr(rnd(e.weapon.right.w)) + e.weapon.right.bw)*mult)  
                     mult, crit =  adv_weak_Logic(v,e,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,e,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -264,7 +264,7 @@ function ejecutar_ataque_b_ejecutor(v,e)
                     local crit=""
                     local mult=1 
                     mult, crit =  adv_weak_Logic(v,e,{"volar"},true )
-                    DamageProccess(v,w,-flr(((e.fue*2) + flr(rnd(e.weapon.right.w)) + e.weapon.right.bw)*mult),crit)
+                    DamageProccess(v,e,-flr(((e.fue*2) + flr(rnd(e.weapon.right.w)) + e.weapon.right.bw)*mult),crit)
                     jump_start(v)
                     v.anim_acc="puñetazos"
                     v.anim_col={1,1,1,1}
@@ -296,7 +296,7 @@ function ejecutar_ataque_a(v)
                     local attt=0
                     attt=attt+flr((Actual.fue + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult)
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,Actual,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -315,7 +315,7 @@ function ejecutar_ataque_a(v)
                     local attt=0
                     attt=attt+flr((Actual.dex + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult)
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,Actual,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -333,7 +333,7 @@ function ejecutar_ataque_a(v)
                     local mult=1 
                     local calidad=bono_calidad(Actual.weapon.left,Actual)
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult),crit)
+                    DamageProccess(v,Actual,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult),crit)
                     jump_start(v)
                     v.anim_acc="puñetazos"
                     v.anim_col={1,1,1,1}
@@ -351,7 +351,7 @@ function ejecutar_ataque_a(v)
                         local mult=1 
                         local calidad=bono_calidad(Actual.weapon.left,Actual)
                         mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                        DamageProccess(v,w,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult),crit)
+                        DamageProccess(v,Actual,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult),crit)
                         jump_start(v)
                         v.anim_acc="puñetazos"
                         v.anim_col={1,1,1,1}
@@ -380,7 +380,7 @@ function ejecutar_ataque_c(v)
             local attt=0
             attt=attt+flr((Actual.fue + flr(rnd(Actual.weapon_3.w)) + Actual.weapon_3.bw+calidad)*mult)
             mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-            DamageProccess(v,w,-attt,crit)
+            DamageProccess(v,Actual,-attt,crit)
             jump_start(v)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
@@ -399,7 +399,7 @@ function ejecutar_ataque_c(v)
             local attt=0
             attt=attt+flr((Actual.dex + flr(rnd(Actual.weapon_3.w)) + Actual.weapon_3.bw+calidad)*mult)  
             mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-            DamageProccess(v,w,-attt,crit)
+            DamageProccess(v,Actual,-attt,crit)
             jump_start(v)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
@@ -419,7 +419,7 @@ function ejecutar_ataque_c(v)
             local mult=1 
             local calidad=bono_calidad(Actual.weapon_3,Actual)
             mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-            DamageProccess(v,w,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon_3.w)) + Actual.weapon_3.bw+calidad)*mult),crit)
+            DamageProccess(v,Actual,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon_3.w)) + Actual.weapon_3.bw+calidad)*mult),crit)
             jump_start(v)
             v.anim_acc="puñetazos"
             v.anim_col={1,1,1,1}
@@ -448,7 +448,7 @@ function ejecutar_ataque_b(v)
                     local attt=0
                     attt=attt+flr((Actual.fue + flr(rnd(Actual.weapon.right.w)) + Actual.weapon.right.bw+calidad)*mult)
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,Actual,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -467,7 +467,7 @@ function ejecutar_ataque_b(v)
                     local attt=0
                     attt=attt+flr((Actual.dex + flr(rnd(Actual.weapon.right.w)) + Actual.weapon.right.bw+calidad)*mult)  
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,Actual,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -484,7 +484,7 @@ function ejecutar_ataque_b(v)
                     local mult=1 
                     local calidad=bono_calidad(Actual.weapon.right,Actual)
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.right.w)) + Actual.weapon.right.bw+calidad)*mult),crit)
+                    DamageProccess(v,Actual,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.right.w)) + Actual.weapon.right.bw+calidad)*mult),crit)
                     jump_start(v)
                     v.anim_acc="puñetazos"
                     v.anim_col={1,1,1,1}
@@ -502,7 +502,7 @@ function ejecutar_ataque_b(v)
                         local mult=1 
                         local calidad=bono_calidad(Actual.weapon.left,Actual)
                         mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                        DamageProccess(v,w,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult),crit)
+                        DamageProccess(v,Actual,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw+calidad)*mult),crit)
                         jump_start(v)
                         v.anim_acc="puñetazos"
                         v.anim_col={1,1,1,1}
@@ -529,7 +529,7 @@ function ejecutarArma(v)
             local crit=""
             local mult=1
             mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-            DamageProccess(v,w,-flr((Actual.fue+Actual.con)*mult*1.5),crit)
+            DamageProccess(v,Actual,-flr((Actual.fue+Actual.con)*mult*1.5),crit)
             jump_start(v)
             v.anim_acc="golpe"
             v.anim_col={1,1,1,1}
@@ -545,7 +545,7 @@ function ejecutarArma(v)
                     local crit=""
                     local mult=1
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-flr((Actual.con + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*2*mult),crit)
+                    DamageProccess(v,Actual,-flr((Actual.con + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*2*mult),crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -559,7 +559,7 @@ function ejecutarArma(v)
                     local crit=""
                     local mult=1
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-flr((Actual.fue + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*1.8*mult),crit)
+                    DamageProccess(v,Actual,-flr((Actual.fue + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*1.8*mult),crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -581,7 +581,7 @@ function ejecutarArma(v)
                         attt=attt+flr((flr(rnd(Actual.weapon.right.w)) + Actual.weapon.right.bw)*mult)
                     end    
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,Actual,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -601,7 +601,7 @@ function ejecutarArma(v)
                         attt=attt+flr((flr(rnd(Actual.weapon.right.w)) + Actual.weapon.right.bw)*mult)
                     end    
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-attt,crit)
+                    DamageProccess(v,Actual,-attt,crit)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
@@ -619,7 +619,7 @@ function ejecutarArma(v)
                     local crit=""
                     local mult=1 
                     mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-                    DamageProccess(v,w,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*mult),crit)
+                    DamageProccess(v,Actual,-flr(((Actual.fue*2) + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*mult),crit)
                     jump_start(v)
                     v.anim_acc="puñetazos"
                     v.anim_col={1,1,1,1}
@@ -845,7 +845,7 @@ function ejecutar_tecnica()
             end
         end 
         if Dirr=="c" then
-            if v.id == sel_c then
+            if v.id == Sel_c then
                 ejecutarMagia(Mg_sel,v, Order)
                 checks(v)   
             end
