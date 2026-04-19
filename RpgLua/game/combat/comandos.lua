@@ -115,45 +115,67 @@ objetivo_global={}
 mg_sel_global=""
 --stop_frame=false
 function Comando_magic()
-    if Actual.mp_>Ccost then 
-        if Mg_sel ~= Actual.lastSpellId then
-            if Actual.magicCharge < 4 then
-                Actual.magicCharge=Actual.magicCharge+1
-            end
-        else
-            if Actual.magicCharge > 0 then
-                Actual.magicCharge=Actual.magicCharge-1
-            end
-        end
-        Actual.lastSpellId =Mg_sel
-        if Ttipo=="soporte" then
-            if Actual.flee_support==1 then
-                still_turn=false
-                Actual.flee_support=0
-            end
-        end
-        if Ttipo=="sanacion" then
-            if Actual.flee_heal==1 then
-                still_turn=false
-                --Actual.ext=Actual.ext+1
-                Actual.flee_heal = 0
-            end
-        end
-
-        if Acc == "magic" then
-            Actual.mp_=Actual.mp_-Ccost
-            if Actual.flee_magic==1 then
-                still_turn=false
-                --Actual.ext=Actual.ext+1
-                Actual.flee_magic = 0
-            end
-        end
-        --Msg_debug="hechizo: "..Mg_sel.." objetivo:"..Sel_c..Sel_e
-        all_logic_magic()  
+    local pay=false
+    if Actual.slots_[Llv]>0 then
+        Actual.slots_[Llv]=Actual.slots_[Llv]-1
+        pay=true
     else
-        Debug_temp="NO MANAD"
-        Cancel_ejecutar=false
-    end    
+        if Actual.mp_>Ccost then 
+            Actual.mp_=Actual.mp_-Ccost
+            pay=true
+        end    
+    end
+
+        if pay==true then 
+            if Actual.SpellPosition<4 then
+                Actual.SpellPosition= Actual.SpellPosition + 1
+            else
+                Actual.SpellPosition=1
+            end
+            
+            Actual.ArraySpell[Actual.SpellPosition]=Ccolor; 
+
+
+            
+            
+            if Mg_sel ~= Actual.lastSpellId then
+                if Actual.magicCharge < 4 then
+                    Actual.magicCharge=Actual.magicCharge+1
+                end
+            else
+                if Actual.magicCharge > 0 then
+                    Actual.magicCharge=Actual.magicCharge-1
+                end
+            end
+            Actual.lastSpellId =Mg_sel
+            if Ttipo=="soporte" then
+                if Actual.flee_support==1 then
+                    still_turn=false
+                    Actual.flee_support=0
+                end
+            end
+            if Ttipo=="sanacion" then
+                if Actual.flee_heal==1 then
+                    still_turn=false
+                    --Actual.ext=Actual.ext+1
+                    Actual.flee_heal = 0
+                end
+            end
+
+            if Acc == "magic" then
+                if Actual.flee_magic==1 then
+                    still_turn=false
+                    --Actual.ext=Actual.ext+1
+                    Actual.flee_magic = 0
+                end
+            end
+            --Msg_debug="hechizo: "..Mg_sel.." objetivo:"..Sel_c..Sel_e
+            all_logic_magic()  
+        else
+            Debug_temp="NO MANAD"
+            Cancel_ejecutar=false
+        end
+    
 end
 
 function Ejecutar_Comando()
@@ -205,26 +227,54 @@ function Comando_dual()
     local objetivo_global
     local objetivo_global_B
 
-    if Dirr2== "e" then
-        objetivo_global=getChars(Sel_ee,Order)
-    end
-    if Dirr2== "c" then
-        objetivo_global=getChars(Sel_cc,Order)
-    end    
-    if Dirr== "e" then
-        objetivo_global_B=getChars(Sel_e, Order)
-    end
-    if Dirr== "c" then
-        objetivo_global_B=getChars(Sel_c,Order)
+    local pay1=false
+    local pay2=false
+
+    if Actual.slots_[Llv2]>0 then
+        Actual.slots_[Llv2]=Actual.slots_[Llv2]-1
+        pay1=true
+    else
+        if Actual.mp_>Ccost2 then 
+            Actual.mp_=Actual.mp_-Ccost2
+            pay1=true
+        end    
     end
 
-    config_comando()
 
-    --next_comando="ejecutar_Magic.Dual"
-    agregarAccion({"ejecutar_Magic.Dual",Mg_2sel,objetivo_global,Dirr2,Actual})
-    agregarAccion({"ejecutar_Magic_Dual_segundo",Mg_sel,objetivo_global_B,Dirr,Actual})
-    
+    if Actual.slots_[Llv]>1 then
+        Actual.slots_[Llv]=Actual.slots_[Llv]-2
+        pay2=true
+    else
+        if Actual.mp_>Ccost*1.5 then 
+            Actual.mp_=Actual.mp_-Ccost*1.5
+            pay2=true
+        end    
+    end
 
+    if pay1==true and pay2==true then    
+
+        if Dirr2== "e" then
+            objetivo_global=getChars(Sel_ee,Order)
+        end
+        if Dirr2== "c" then
+            objetivo_global=getChars(Sel_cc,Order)
+        end    
+        if Dirr== "e" then
+            objetivo_global_B=getChars(Sel_e, Order)
+        end
+        if Dirr== "c" then
+            objetivo_global_B=getChars(Sel_c,Order)
+        end
+
+        config_comando()
+
+        --next_comando="ejecutar_Magic.Dual"
+        agregarAccion({"ejecutar_Magic.Dual",Mg_2sel,objetivo_global,Dirr2,Actual})
+        agregarAccion({"ejecutar_Magic_Dual_segundo",Mg_sel,objetivo_global_B,Dirr,Actual})
+    else
+        IsInterruccion=true
+        INTERRUCCION_MSG="Recursos insuficientes"
+    end
 end
 
 

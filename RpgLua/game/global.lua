@@ -33,6 +33,8 @@ Init_b=false
 
 Msg_debug=""
 
+ERROR_MSG=""
+
 State="wait"
 
 SubState=""
@@ -101,6 +103,8 @@ Sel_i=""
 
 
 Ttipo=""
+Ccolor=""
+Llv=0
 Ccost=0
 Mg_sel=""
 Last_mg_sel=""
@@ -112,10 +116,18 @@ Last_sel_cc=""
 Sel_cc=""
 Dirr="e"
 Dirr2=""
+
+Ttipo2=""
+Ccolor2=""
+Llv2=0
+Ccost2=0
+
 Last_dirr=""
 Last_acc=""
 Number_sel=0
 
+IsInterruccion=false
+INTERRUCCION_MSG=""
 
 continuar_turno=false
 

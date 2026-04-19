@@ -2,6 +2,7 @@
 function acciones()
     local eleg=(ini_view-1)+Op
     Replace_Acc=false
+
     if State=="select" then
         sel1=Op 
         if Actual.acc[eleg]=="atacar" and Actual.state["paralisis"] == nil then
@@ -67,6 +68,7 @@ function acciones()
         end
         if Actual.acc[eleg]=="tools" then
             filtrarTools()
+            --Msg_debug="1Tools "
             if #Actual.tools > 0 then
                 State="select o"
                 Acc="tools"
@@ -213,7 +215,10 @@ function acciones()
         end 
         ini_view=1
         fin_view=6
-    elseif State=="select ii" then --no utilizado
+    elseif State=="select ii" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
+        --no utilizado
         if Acc == "mix" then
             Sel_ii=items[Op].id
             Dirr2=items[Op].dir
@@ -232,6 +237,8 @@ function acciones()
             end    
         end    
     elseif State=="select i" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if Acc == "objeto" or Acc == "usar" then
             Sel_i=items[Op].id
             Dirr=items[Op].dir
@@ -250,10 +257,18 @@ function acciones()
             end    
         end
     elseif State=="select oo" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="dual M." then
             Mg_2sel=Actual.mg[Op].id
             Dirr2=Actual.mg[Op].dir
             Name_action="Dual Cast"
+            Ttipo2=Actual.mg[Op].tipo
+            Ccolor2=Actual.mg[Op].color
+            Llv2=Actual.mg[Op].lv
+            Ccost2=Actual.mg[Op].cost
+
+
             if "a"== Dirr2  then
                 State="select aa"
             end
@@ -265,8 +280,19 @@ function acciones()
                 State="select cc"
                 FiltrarAliadosVivos()
             end    
+            --
+
+            if not Actual.slots_[Llv2]>0 and not Actual.mp_>Ccost2 then
+                State ="select"
+                Acc=""
+            end
+
+
+            --
         end     
     elseif State=="select o" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         --Sacar Replace_Acc y reemplazar por else and else if
             if Acc == "magic" and not Replace_Acc then            
                 if Actual.mp_< Actual.mg[(ini_view-1)+Op].cost then
@@ -278,6 +304,10 @@ function acciones()
                     Dirr=Actual.mg[(ini_view-1)+Op].dir
                     Ccost=Actual.mg[(ini_view-1)+Op].cost
                     Ttipo=Actual.mg[(ini_view-1)+Op].tipo
+                    Ccolor=Actual.mg[(ini_view-1)+Op].color
+                    Llv=Actual.mg[(ini_view-1)+Op].lv
+
+                    --CostoSkill()
                     --Msg_debug=" #"..(ini_view-1)+Op
                     -- Msg_debug=" "..Mg_sel.." "..Name_action.." "..Dirr.." "..Ccost.." "..Ttipo
                 end
@@ -297,27 +327,29 @@ function acciones()
             if Acc=="especiales" and not Replace_Acc then
                -- Mg_sel=Actual.sp[Op].id
                 -- Dirr=Actual.sp[Op].dir
-
+                Msg_debug=Msg_debug.." #especiales"
                 if Actual.mp_< Actual.spe[(ini_view-1)+Op].cost then
                     State ="select"
                     Acc=""
                 else
+                    Mg_sel=Actual.spe[(ini_view-1)+Op].id
+                    Name_action=Actual.spe[(ini_view-1)+Op].name
+                    Dirr=Actual.spe[(ini_view-1)+Op].dir
+                    Ccost=Actual.spe[(ini_view-1)+Op].cost
+                    SubState=Actual.spe[(ini_view-1)+Op].mtipo
+
+                    if  Actual.spe[(ini_view-1)+Op].isCommand == true then
+                        Sel_command=Actual.spe[Op].isCommand                        
+                        Msg_debug=Msg_debug.." #C"
+                    end
                     if Actual.spe[(ini_view-1)+Op].isReplace == true then
-                        Mg_sel=Actual.spe[(ini_view-1)+Op].id
-                        Name_action=Actual.spe[(ini_view-1)+Op].name
-                        Dirr=Actual.spe[(ini_view-1)+Op].dir
                         Acc=Actual.spe[(ini_view-1)+Op].sub
                         State=Actual.spe[(ini_view-1)+Op].sel
                         Replace_Acc=true
-                    else 
-                        Mg_sel=Actual.spe[(ini_view-1)+Op].id
-                        Name_action=Actual.spe[(ini_view-1)+Op].name
-                        Dirr=Actual.spe[(ini_view-1)+Op].dir
-                        Ccost=Actual.spe[(ini_view-1)+Op].cost
-                        SubState=Actual.spe[(ini_view-1)+Op].mtipo
+                        Msg_debug=Msg_debug.." #U"
                     end
                     --Msg_debug=" #"..(ini_view-1)+Op
-                    Msg_debug=" "..Mg_sel.." "..Name_action.." "..Dirr.." "..Acc.." "..State
+                    --Msg_debug="S "..Mg_sel.." "..Name_action.." "..Dirr.." "..Acc.." "..State
                 end
             end
             if Acc =="spell.list" and not Replace_Acc then
@@ -334,15 +366,18 @@ function acciones()
                 Ttipo=Actual.powerStone[Op].tipo
             end
             if Acc == "dual M." and not Replace_Acc then            
-                if Actual.mp_< Actual.mg[Op].cost then
-                    State ="select"
-                    Acc=""
-                else
+
                     Mg_sel=Actual.mg[Op].id
                     Name_action=Actual.mg[Op].name
                     Dirr=Actual.mg[Op].dir
                     Ccost=Actual.mg[Op].cost
                     Ttipo=Actual.mg[Op].tipo
+                    Ccolor=Actual.mg[Op].color
+                    Llv=Actual.mg[Op].lv
+                  
+                if not Actual.slots_[Llv]>1 and not Actual.mp_>Ccost*1.5 then
+                    State ="select"
+                    Acc=""
                 end
             end
             if Acc == "tecnica" and not Replace_Acc then
@@ -377,6 +412,11 @@ function acciones()
                         IsCharge=Actual.sk[Op].isCharge
                         Sel_t_cost=Actual.sk[Op].tCost
                         Sel_command=Actual.sk[Op].isCommand
+                end
+                if Actual.sk[(ini_view-1)+Op].isReplace then
+                    Acc=Actual.sk[(ini_view-1)+Op].sub
+                    State=Actual.sk[(ini_view-1)+Op].sel
+                    Replace_Acc=true
                 end
             end
             if Acc == "invocar" and not Replace_Acc then            
@@ -457,11 +497,29 @@ function acciones()
                     State="select o"
                 end
             end  
+            if Acc=="tools" and Replace_Acc  then
+                filtrarTools()
+                --Msg_debug=Msg_debug.."2Tools "
+            end
+            if Acc=="usar" and Replace_Acc  then
+                --filtrarTools()
+                --Msg_debug=Msg_debug.."2Tools "
+            end
+            if Acc=="bullet" and Replace_Acc  then
+                filtrarBalas()
+                --Msg_debug=Msg_debug.."2Tools "
+            end
     elseif State=="select a" then --all enemy, not tarjet
+    IsInterruccion=false
+        INTERRUCCION_MSG="" 
             Execute=true
     elseif State=="select aa" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
             State="select o"      
     elseif State=="select ee" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="dual M." then
             State="select o"
             Sel_ee=EnemigosVivos[Op].id
@@ -469,6 +527,8 @@ function acciones()
             Sel_cc=Sel_e
         end    
     elseif State=="select e" then --choose enemy
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="atacar"  or Acc=="W.Arts" or Acc=="support.w" or Acc=="atrapar"  or Acc=="Power.Stone" or Acc=="asesinar" or Acc=="invocar" or  Acc == "usar" or Acc == "darkness" or Acc == "dual M." or Acc == "tools" or Acc == "rapido" or Acc=="magic" or Acc=="dual M." or Acc=="bullet" or Acc=="mix" or Acc=="Blu.magic" or Acc=="cargar" or Acc=="tecnica" or Acc=="objeto" or Acc=="robar" or Acc=="quitar" or Acc=="carga" or Acc=="combo" or Acc=="saltar" or Acc=="spirit" or Acc=="lanzar" or Acc=="spell.list" or Acc=="extraer" then
             Execute=true
             State="select"
@@ -482,12 +542,16 @@ function acciones()
             Sel_c=Sel_e
         end
     elseif State=="select cc" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="dual M." then
             State="select o"
             Sel_cc=ActiveParty[Op].id
             Sel_ee=Sel_cc
         end    
     elseif State=="select c" then --choose character
+    IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="magic" or Acc=="dual M." or Acc == "usar" or Acc=="tecnica" or Acc=="objeto" or Acc == "tools" or Acc=="atacar" or Acc=="combo" or Acc=="saltar" or Acc=="mix" or Acc=="Blu.magic" or Acc=="spell.list" then
             Execute=true
             State="select"
@@ -495,29 +559,39 @@ function acciones()
             Sel_e=Sel_c
         end
     elseif State=="select d" then --death character
+    IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="magic" or Acc == "usar" or Acc=="objeto" then
             Execute=true
             State="select"
             Sel_c=Death_party[Op].id
         end
     elseif State=="select a" then --all enemy, not tarjet
+    IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="tecnica"  or Acc=="magic"then
             Execute=true
             State="select"
         end    
     elseif State=="select w" then --choose weapon
+    IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if  Acc=="lanzar"  then
             Sel_w=weapon_inventary[Op].id
             State="select e"
             FiltrarEnemigoVivos()
         end
     elseif State=="select v" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         if Acc == "extraer" then
             Execute=true
            Mg_sel=SelectEnemigo.magicForce[Op]
            State="select"
         end
     elseif State=="select m" then
+        IsInterruccion=false
+        INTERRUCCION_MSG="" 
         Number_sel=Op
         Execute=true
         State="select"
@@ -536,6 +610,62 @@ function acciones()
     inside()
 end   
 
+
+function CostoSkill()
+
+    --[[             Mg_sel=Actual.mg[(ini_view-1)+Op].id
+                    Name_action=Actual.mg[(ini_view-1)+Op].name
+                    Dirr=Actual.mg[(ini_view-1)+Op].dir
+                    Ccost=Actual.mg[(ini_view-1)+Op].cost
+                    Ttipo=Actual.mg[(ini_view-1)+Op].tipo
+                    Ccolor=Actual.mg[(ini_view-1)+Op].color 
+    --]]
+        if Acc == "magic" then
+            if Actual.mp_>Ccost then 
+                Actual.mp_=Actual.mp_-Ccost
+                Actual.SpellPosition=Actual.SpellPosition+1
+                if Actual.SpellPosition>3 then 
+                    Actual.ArraySpell[Actual.SpellPosition+1]=Ccolor; 
+                else
+                    Actual.SpellPosition=0
+                    Actual.ArraySpell[Actual.SpellPosition+1]=Ccolor;
+                end
+            end
+        end
+        if Mg_sel ~= Actual.lastSpellId then
+            if Actual.magicCharge < 4 then
+                Actual.magicCharge=Actual.magicCharge+1
+            end
+        else
+            if Actual.magicCharge > 0 then
+                Actual.magicCharge=Actual.magicCharge-1
+            end
+        end
+
+        Actual.lastSpellId =Mg_sel
+        if Ttipo=="soporte" then
+            if Actual.flee_support==1 then
+                still_turn=false
+                Actual.flee_support=0
+            end
+        end
+        if Ttipo=="sanacion" then
+            if Actual.flee_heal==1 then
+                still_turn=false
+                --Actual.ext=Actual.ext+1
+                Actual.flee_heal = 0
+            end
+        end
+
+        if Acc == "magic" then
+            if Actual.flee_magic==1 then
+                still_turn=false
+                --Actual.ext=Actual.ext+1
+                Actual.flee_magic = 0
+            end
+        end
+
+end
 
 function ejecutar()
     local jump_def=false
@@ -689,7 +819,7 @@ function ejecutar()
         clean()    
     end
     if Acc=="spell.list" then
-        Comando_magic()
+       -- Comando_magic()
         clean()
     end
     if Acc=="extraer" then

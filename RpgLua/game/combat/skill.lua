@@ -119,6 +119,7 @@ function ejecutar_comando()
 
     if str_comando=="ejecutar_Magia" then
        --Msg_debug="ejecutar ejecutar_Magia ".." "
+       
         ejecutarMagia(arreglo[2],arreglo[3], Order)
         clean()
         if Actual.ext_elem==false then

@@ -680,14 +680,16 @@ function ejecutarMagia(sel, v, Order)
     local crit="" --Deprecado
 
     if  v ~= {}   then
-        v.lastDmg=0    
+        if v.lastDmg~=nil then
+            v.lastDmg=0
+        end
         v.slDmg=true
     end
 
     local bono=1
     
     local bonoMagCharge= Actual.seeMagicCharge
-    if bonoMagCharge then bono=bono+(Actual.magicCharge*0.25)+(Buton_bonus*0.25) end
+    if bonoMagCharge then bono = bono+(Actual.magicCharge*0.25)+(Buton_bonus*0.25) end
 
 
     b_dmg_txt=true
@@ -695,9 +697,15 @@ function ejecutarMagia(sel, v, Order)
     
     Name_action=sel
 
-    Efectos[sel](v, Actual,{},false,bono)
+    local foo=Efectos[sel](v, Actual,{},false,bono)
 
-    Actual.hide=false
+    if pcall(foo) then
+        --exitoso
+    else
+        ERROR_MSG="ERROR AL EJECUTAR EFECTO"
+    end
+
+    --Actual.hide=false
 end    
 
 

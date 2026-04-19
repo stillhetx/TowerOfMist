@@ -1072,11 +1072,27 @@ function inside()
                 end
 
             end
+            if Acc=="especiales" then
+                if Op<1 then
+                    Op=#Actual.spe
+                end
+                if  Op>#Actual.spe then
+                    Op=1
+                end
+            end
             if Acc=="tools" then
                 if Op<1 then
                     Op=#Actual.tools
                 end
                 if  Op>#Actual.tools then
+                    Op=1
+                end
+            end
+            if Acc=="W.Arts" then
+                if Op<1 then
+                    Op=#Actual.art
+                end
+                if  Op>#Actual.art then
                     Op=1
                 end
             end
@@ -1563,9 +1579,10 @@ function Atributos_por_nivel()
             i.int=i.int_+math.floor(i.lv/i.levelUP.int)
             i.car=i.car_+math.floor(i.lv/i.levelUP.car)
             i.mnd=i.mnd_+math.floor(i.lv/i.levelUP.mnd)
-            i.hp=i.con*5+i.lv
+            
+            i.hp=i.hp+i.con*5+i.lv*3
             i.hp_=i.hp+mod(i,"hp")
-            i.mp=i.pod*3
+            i.mp=i.mp+i.pod*3*i.lv
             i.mp_=i.mp+mod(i,"mp")
         end
     end
@@ -1960,19 +1977,22 @@ Dice=0
 function acertar(v,b)
     local at=0
     local ob=0
-    if v.ventaja["back"] ~= nil then
-        Dice=flr(rnd(20))
-        at=b.dex+mod(b,"dex")+Dice-3
-    else
-        Dice=flr(rnd(20))
-        at=b.dex+mod(b,"dex")+Dice
-    end    
-    ob=v.agi+mod(b,"agi")+8
-    if at>=ob then
-        activa_Contra_ataque(v)
+    if v~=nil then
+        if v.ventaja~=nil and v.ventaja["back"] ~= nil then
+            Dice=flr(rnd(20))
+            at=b.dex+mod(b,"dex")+Dice-3
+        else
+            Dice=flr(rnd(20))
+            at=b.dex+mod(b,"dex")+Dice
+        end    
+        ob=v.agi+mod(b,"agi")+8
+        if at>=ob then
+            activa_Contra_ataque(v)
+        end
     end
     return at>=ob 
 end
+
 
 function acertarMod(v,b, modificador)
     if v.ventaja["back"] ~= nil then

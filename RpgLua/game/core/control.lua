@@ -650,21 +650,34 @@ function comeback()
     if State=="select" then
         --next()
     elseif State=="select o" then
-        if Acc == "tecnica" then
+        if Acc == "tecnica" or Acc == "magic" or Acc == "W.Arts"  or Acc == "especiales"
+        or Acc == "tecnica" or Acc == "objeto" or Acc =="mix" or Acc=="bailes" 
+        or Acc=="invocar" or Acc=="llamar" or Acc=="tools"  
+        or Acc=="transformacion" or Acc=="Blu.magic" or Acc=="bullet"
+        or Acc=="Power.Stone"  or Acc=="spell.list" or Acc=="runes" 
+        or Acc=="dual M." or Acc=="spirit" or Acc=="ninja" or Acc=="espada" or Acc=="canciones" 
+        or  Acc=="evocar" then
             State ="select"
             Acc=""
         end 
-        if Acc == "magic" then
-            State ="select"
-            Acc=""
-        end 
+
+        --acc={"atacar","W.Arts","tecnica","objeto","defensa"},
     elseif State=="select e" then
-        if  Acc=="atacar" or Acc=="robar" or Acc=="furia" or Acc=="saltar" then
+        if  Acc=="atacar" or Acc=="robar" or Acc=="furia" or Acc=="saltar"  or Acc=="darkness" or Acc=="extraer" 
+        or Acc=="atrapar" or Acc=="asesinar" or Acc=="rapido"
+        or Acc=="extraer" or Acc=="cargar" or Acc=="quitar" 
+        or Acc=="combo"then
             State ="select"
             Acc=""
         end
 
-        if  Acc=="tecnica" or Acc=="magic" then
+        if  Acc == "tecnica" or Acc == "magic" or Acc == "W.Arts"  or Acc == "especiales"
+        or Acc == "tecnica" or Acc == "objeto" or Acc =="mix" or Acc=="bailes" 
+        or Acc=="invocar" or Acc=="llamar" or Acc=="tools"  
+        or Acc=="transformacion" or Acc=="Blu.magic" or Acc=="bullet"
+        or Acc=="Power.Stone"  or Acc=="spell.list" or Acc=="runes" 
+        or Acc=="dual M." or Acc=="spirit" or Acc=="ninja" or Acc=="espada" or Acc=="canciones" 
+        or  Acc=="evocar" then
             State="select o"
             Mg_sel=""
             Dirr=""
@@ -672,18 +685,24 @@ function comeback()
         ini_view=1
         fin_view=1
     elseif State=="select c" then
-        if  Acc=="magic" then
+        if   Acc == "tecnica" or Acc == "magic" or Acc == "W.Arts"  or Acc == "especiales"
+        or Acc == "tecnica" or Acc == "objeto" or Acc =="mix" or Acc=="bailes" 
+        or Acc=="invocar" or Acc=="llamar" or Acc=="tools"  
+        or Acc=="transformacion" or Acc=="Blu.magic" or Acc=="bullet"
+        or Acc=="Power.Stone"  or Acc=="spell.list" or Acc=="runes" 
+        or Acc=="dual M." or Acc=="spirit" or Acc=="ninja" or Acc=="espada" or Acc=="canciones" 
+        or  Acc=="evocar" then
             State="select o"
             Mg_sel=""
             Dirr=""
         end
-        if  Acc=="objeto" then
+        if  Acc=="objeto" or Acc=="usar"  then
             State="select i"
             Mg_sel=""
             Dirr=""
         end
     elseif State=="select i" then
-        if  Acc=="objeto" then
+        if  Acc=="objeto" or Acc=="usar" then
             State="select"
             Acc=""
             Mg_sel=""

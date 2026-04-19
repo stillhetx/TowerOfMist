@@ -18,9 +18,11 @@ function graph_mode()
     for i=1,#ActiveParty do
         if State=="select" then
             if ActiveParty[i].live  then
-                love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,340+(18*i))
+                love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp.."",220,338+(40*(i-1)))
+                Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)
             else
-                love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,340+(18*i))
+                love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,338+(40*(i-1)))
+                Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)            
             end    
         else 
             local str_name=""
@@ -56,6 +58,23 @@ function graph_mode()
         --love.graphics.print( "timer: ".." false "..timer_wait.." ",30,120+(24*-3))
     end
 
+
+    if Replace_Acc then
+       -- love.graphics.print( "T debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-4))
+     else   
+        -- love.graphics.print( "F debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-4))
+     end
+
+
+     if true and not ERROR_MSG=="" then
+        love.graphics.print( "ERROR: "..ERROR_MSG,30,120+(24*-3))
+     end
+
+    if true and not INTERRUCCION_MSG=="" then
+        love.graphics.print( "ERROR: "..ERROR_MSG,30,120+(24*-4))
+     end
+
+    placeHolder()
     --love.graphics.print( "debug: "..Acc.." "..State,30,120+(24*-4))
 
         --love.graphics.print( "debug: "..Debug_temp.." ",30,120+(24*-3))
@@ -76,11 +95,11 @@ function graph_mode()
                     love.graphics.print( "  "..Name_action.." ",200,20+(24*0))
                 end
                 
-                Mostrar_enlaze(v, (v.x)+30,(v.y),false)
+                Mostrar_enlaze(v, (v.x)+10,(v.y),false)
                 show_spr(v, (v.x),(v.y), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",false)  
                 show_msg_dmg(v,v.x,v.y+20-timer_dmg_txt,false)
                 Barra_vida(v, (v.x-14),(v.y)) --- -10 0     0   +20
-                Mostrar_estados(v,(v.x-60),(v.y),false) --50 0
+                --Mostrar_estados(v,(v.x-60),(v.y),false) --50 0
                 Mostrar_animacion_ataque(v, (v.x+40),(v.y),false)
                 Mostrar_icon_mode(v, (v.x),(v.y),false)
                 Mostrar_animacion_dmg(v, (v.x),(v.y),false)
@@ -153,7 +172,7 @@ function graph_mode()
 
                    -- love.graphics.print( "mg:  "..#Actual.mg-(ini_view-1).."/"..#Actual.mg.." ",500,20+(24*-1))
 
-                    show_menus_name_cost(Actual.mg,menu_select_x,menu_y)
+                    Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
                 end
                 if State=="select v" and Acc=="extraer" then   
                     show_menus_name(SelectEnemigo.magicForce,menu_select_x,menu_y)
@@ -171,7 +190,8 @@ function graph_mode()
                     show_menus_name_cost(Actual.morph,menu_select_x,menu_y)
                 end
                 if State=="select o" and Acc=="dual M." then   
-                    show_menus_name_cost(Actual.mg,menu_select_x,menu_y)
+                    Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
+                    --show_menus_name_cost(Actual.mg,menu_select_x,menu_y)
                 end
                 if State=="select o" and Acc=="llamar" then   
                     show_menus_name_cost(Actual.beast,menu_select_x,menu_y)
@@ -180,7 +200,8 @@ function graph_mode()
                     show_menus_name_cost(Actual.spirit,menu_select_x,menu_y)
                 end
                 if State=="select oo" and Acc=="dual M." then   
-                    show_menus_name_cost(Actual.mg,menu_select_x,menu_y)
+                    Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
+                    --show_menus_name_cost(Actual.mg,menu_select_x,menu_y)
                 end
                 if State=="select o" and Acc=="tecnica" then   
                     show_menus_tecnica(Actual.sk,menu_select_x,menu_y)
@@ -248,5 +269,15 @@ function graph_mode()
             print(v,100,320+(i*20))
         end
     end                          
+end
+
+
+function placeHolder()
+    if false then
+        spr_sheet_avanzado(1,posiciones_jugadores[4].x,posiciones_jugadores[4].y,2,2,1,1,sprites)
+        spr_sheet_avanzado(2,posiciones_jugadores[5].x,posiciones_jugadores[5].y,2,2,1,1,sprites)
+        spr_sheet_avanzado(5,posiciones_jugadores[6].x,posiciones_jugadores[6].y,2,2,1,1,sprites)
+    end
+
 end
 

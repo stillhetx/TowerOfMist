@@ -147,7 +147,7 @@ function _init()
             --30 cristales, extraer // nunca lo termine
             local a =6
             local b =6
-            local c =7
+            local c =6
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -159,12 +159,14 @@ function _init()
             r.x_=posiciones_jugadores[1].x   
             r.y_=posiciones_jugadores[1].y   
             r.hp_=r.hp+mod(r,"hp")
+            r.hp=r.hp_
             r.mp_=r.mp+mod(r,"mp")
+            r.mp=r.mp_
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
             --segundo
-            local r=copiar_tabla(Nuevas_clases[b])
+            r=copiar_tabla(Nuevas_clases[b])
             r.ini=Nuevas_clases[b].agi+flr(rnd(20))
             r.p=2
             r.id=Nuevas_clases[b].id..2
@@ -174,12 +176,14 @@ function _init()
             r.x_=posiciones_jugadores[2].x   
             r.y_=posiciones_jugadores[2].y  
             r.hp_=r.hp+mod(r,"hp")
+            r.hp=r.hp_
             r.mp_=r.mp+mod(r,"mp")
+            r.mp=r.mp_
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
             --tercera
-            local r=copiar_tabla(Nuevas_clases[c])
+            r=copiar_tabla(Nuevas_clases[c])
             r.ini=Nuevas_clases[c].agi+flr(rnd(20))
             r.p=3
             r.id=Nuevas_clases[c].id..3
@@ -189,7 +193,9 @@ function _init()
             r.x_=posiciones_jugadores[3].x   
             r.y_=posiciones_jugadores[3].y   
             r.hp_=r.hp+mod(r,"hp")
+            r.hp=r.hp_
             r.mp_=r.mp+mod(r,"mp")
+            r.mp=r.mp_
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)

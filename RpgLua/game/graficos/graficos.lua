@@ -13,7 +13,19 @@ ceguera=96,silencio=97, atrapado=101, herido=95, antimagia=102,bonus_magia=104,b
 Icon_extra={
     fullCharge=35,emptyCharge=36,shield=34,magic_0=24,magic_1=25,magic_2=26,magic_3=27,magic_4=28,gault_1=64,gault_2=65,gault_3=66,
     boton_A=40,boton_A_down=50,super=7,potenciado=7,RC=44,punto=45,bonus_ataque=65,bonus_soporte=64,bonus_heal=66,modo_defensa=93,
-    modo_vuelo=4, delay_1=98, delay_2=99, delay_3=100,
+    modo_vuelo=4, delay_1=98, delay_2=99, delay_3=100, Base_charge=106,
+    Color_red=74,Color_blue=75,Color_green=73,Color_orange=79,Color_white=76,Color_grey=79,Color_light_blue=107,
+    Color_yellow=77,Color_purple=78,Color_brown=79,Color_pink=81
+    
+}
+
+--grey,   nocolor, 
+
+poss_magic_charge={
+    [1]={x=6,y=-22},
+    [2]={x=18,y= -10},
+    [3]={x=6,y=2},
+    [4]={x=-6,y=-10},
 }
 
 local texto_help=""
@@ -201,6 +213,15 @@ function Mostrar_extra(v,x,y,bol)
     if v.seeMagicCharge then
             local str="magic_"..v.magicCharge
             spr_sheet(Icon_extra[str],x,y,1,1,1,1,spritesEstados)
+            spr_sheet(Icon_extra["Base_charge"],x,y+28,1,1,1,1,spritesEstados)
+            for i=1, #v.ArraySpell do
+                    local strTemp= "Color_"..v.ArraySpell[i]
+                    --love.graphics.print( " ["..strTemp.."]",x+16,y+(i*16))
+                    spr_sheet(Icon_extra[strTemp],x+poss_magic_charge[i].x,y+poss_magic_charge[i].y+16+28,1,1,1,1,spritesEstados)
+    end
+    
+
+            
     end
 
       --  if v.sh_>0 then
@@ -443,7 +464,7 @@ function show_spr(v, x,y,x2, y2,x3,y3,bol,bol2)
     if v~= nil then
         if v.tipo=="player" then
             if v.forma then
-                anim_char_forma(v,x,y,bol2) 
+                --anim_char_forma(v,x,y,bol2) 
             else
                 if v.hide then
                     anim_char_hide(v,x,y,bol2)
@@ -797,6 +818,73 @@ function show_menus_name_cost(v,x,y)
             else
                 print("  "..v[(ini_view-1)+i].name.." "..v[(ini_view-1)+i].cost, xi+6, yi+40,6)
             end    
+        --end
+    end
+end
+
+
+
+function Show_menus_name_cost_magic(v,x,y)
+    for i=1,#v-(ini_view-1)  do
+        local column = math.floor((i - 1) / itemsPerColumn)
+        local row = (i - 1) % itemsPerColumn
+        local xi = x + column * columnSpacing
+        local yi = y + row * rowSpacing
+       -- if i<#v then
+        local mult=1
+        local add=0
+        local rest=1
+        local tax={0,0,0,0,0}
+        local restSlot=0
+
+
+
+        
+
+            if Acc=="dual M." and State=="select oo" then
+                mult=1
+            end
+
+            if Acc=="dual M." and State=="select o" then
+                mult=1.5
+                add=Ccost2
+                tax[Llv2]=1
+            end
+      
+            if Actual.slots_[1]>0+tax[1] and v[(ini_view-1)+i].lv==1 then
+                if Llv2 == v[(ini_view-1)+i].lv then
+                    restSlot=1
+                end
+                print("  "..v[(ini_view-1)+i].name.." x"..Actual.slots_[1]-restSlot, xi+6, yi+40,7)
+            elseif Actual.slots_[2]>0+tax[2] and v[i].lv==2 then 
+                if Llv2 == v[(ini_view-1)+i].lv then
+                    restSlot=1
+                end
+                print("  "..v[(ini_view-1)+i].name.." x"..Actual.slots_[2]-restSlot, xi+6, yi+40,7)
+            elseif Actual.slots_[3]>0+tax[3] and v[i].lv==3 then 
+                if Llv2 == v[(ini_view-1)+i].lv then
+                    restSlot=1
+                end
+                print("  "..v[(ini_view-1)+i].name.." x"..Actual.slots_[3]-restSlot, xi+6, yi+40,7)
+            elseif Actual.slots_[4]>0+tax[4] and v[i].lv==4 then    
+                if Llv2 == v[(ini_view-1)+i].lv then
+                    restSlot=1
+                end
+                print("  "..v[(ini_view-1)+i].name.." x"..Actual.slots_[4]-restSlot, xi+6, yi+40,7)
+            elseif Actual.slots_[5]>0+tax[5]  and v[i].lv==5 then
+                if Llv2 == v[(ini_view-1)+i].lv then
+                    restSlot=1
+                end
+                print("  "..v[(ini_view-1)+i].name.." x"..Actual.slots_[5]-restSlot, xi+6, yi+40,7)
+            else
+                if Actual.mp_>= v[(ini_view-1)+i].cost+add then
+                    print("  "..v[(ini_view-1)+i].name.." "..(flr(v[(ini_view-1)+i].cost*mult)+add).."MP", xi+6, yi+40,7)
+                else
+                    print("  "..v[(ini_view-1)+i].name.." "..(flr(v[(ini_view-1)+i].cost*mult)+add).."MP", xi+6, yi+40,6)
+                end 
+            end
+        
+   
         --end
     end
 end
