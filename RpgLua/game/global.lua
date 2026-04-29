@@ -266,3 +266,22 @@ bonus_button=false
 
 
 ComeBackView=""
+
+
+ACC_Default={
+"atacar","secundario","W.Arts", "magic","coleccion","especiales","tecnica","objeto","defensa"
+}
+
+--        acc={"atacar","magic","especiales","objeto","defensa"},
+
+
+--[[
+Atacar
+secundario  habilidad preferida de la clase
+Magias      lista de habilidades magicas
+Colecciones lista de habilidades no magicas
+especiales  habilidades especiales
+tecnicas    Habilidades no magicas
+objetos
+
+]]

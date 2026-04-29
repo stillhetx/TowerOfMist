@@ -116,7 +116,7 @@ mg_sel_global=""
 --stop_frame=false
 function Comando_magic()
     local pay=false
-    if Actual.slots_[Llv]>0 then
+    if Actual.slots_[Llv]~=nil and Actual.slots_[Llv]>0 then
         Actual.slots_[Llv]=Actual.slots_[Llv]-1
         pay=true
     else
@@ -229,26 +229,32 @@ function Comando_dual()
 
     local pay1=false
     local pay2=false
-
-    if Actual.slots_[Llv2]>0 then
-        Actual.slots_[Llv2]=Actual.slots_[Llv2]-1
-        pay1=true
-    else
-        if Actual.mp_>Ccost2 then 
-            Actual.mp_=Actual.mp_-Ccost2
+    if Llv2~=nil and Llv2~=0 then
+        if Actual.slots_[Llv2]>0 then
+            Actual.slots_[Llv2]=Actual.slots_[Llv2]-1
             pay1=true
-        end    
+        else
+            if Actual.mp_>Ccost2 then 
+                Actual.mp_=Actual.mp_-Ccost2
+                pay1=true
+            end    
+        end
+    else
+        Name_action="segundo hechizo sin lv"
     end
 
-
-    if Actual.slots_[Llv]>1 then
-        Actual.slots_[Llv]=Actual.slots_[Llv]-2
-        pay2=true
-    else
-        if Actual.mp_>Ccost*1.5 then 
-            Actual.mp_=Actual.mp_-Ccost*1.5
+    if Llv~=nil and Llv~=0 then
+        if Actual.slots_[Llv]>1 then
+            Actual.slots_[Llv]=Actual.slots_[Llv]-2
             pay2=true
-        end    
+        else
+            if Actual.mp_>Ccost*1.5 then 
+                Actual.mp_=Actual.mp_-Ccost*1.5
+                pay2=true
+            end    
+        end
+    else
+        Name_action="primer hechizo sin lv"
     end
 
     if pay1==true and pay2==true then    
@@ -562,6 +568,7 @@ function Comando_capturar()
 end    
 
 function Comando_tecnica()
+    Msg_debug=Msg_debug.."Ejecutar"
     if Sel_t_cost=="charge" then
         if Actual.carga==1  then
             if Sel_command then
@@ -571,6 +578,7 @@ function Comando_tecnica()
             end            
             Actual.carga=0
         else
+            Name_action="Sin carga"
             Cancel_ejecutar=true
         end
     end
@@ -583,10 +591,21 @@ function Comando_tecnica()
             end
             Actual.rc_=Actual.rc_-1
         else
+            Name_action="Sin RC"
             Cancel_ejecutar=true
         end
     end
-    if Sel_t_cost=="" then     
+    if Sel_t_cost=="" then 
+        Msg_debug= Msg_debug.." before"    
+            if Sel_command then
+                Msg_debug= Msg_debug.." Commando"
+                Ejecutar_Comando()
+            else   
+                all_logic_magic()   
+            end
+    end   
+
+    if Sel_t_cost=="mana" then     
             if Sel_command then
                 Ejecutar_Comando()
             else   
@@ -622,6 +641,14 @@ function Comando_especiales()
         end
     end
     if Sel_t_cost=="" then     
+            if Sel_command then
+                Ejecutar_Comando()
+            else   
+                all_logic_magic()   
+            end
+    end   
+
+    if Sel_t_cost=="mana" then     
             if Sel_command then
                 Ejecutar_Comando()
             else   

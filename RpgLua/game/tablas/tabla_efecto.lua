@@ -2,7 +2,17 @@ Efectos={}
 
 
 --(v objetivo ,w lanzador ,f Objeto , bol --boolean de potenciado, bono multiplicador)
+--commando
 
+Efectos["atrapar"] = function (v, w, f, bol, bono)
+    agregarAccion({"ejecutar_capturar","",v})
+end
+
+Efectos["incontrolable"]= function (v, w, f, bol, bono)
+    agregarAccion({"ejecutar_comando","desenbocado",v,w})
+    agregarAccion({"ejecutar_comando","desenbocado",v,w})
+    agregarAccion({"ejecutar_comando_final","desenbocado",v,w})
+end
 
 Efectos["extraer"] = function (v,w,str)
 
@@ -15,6 +25,7 @@ Efectos["extraer"] = function (v,w,str)
     end
     
 end
+
 
 
 Efectos["extraer_all"] = function (v,w,str)
@@ -1734,6 +1745,11 @@ Efectos["encantar"]= function (v, w, f, bol, bono)
         w.anim_col={1,1,1,1}
     end
 
+Efectos["enfocarse"]= function (v, w, f, bol, bono)
+        w.anim_acc="lanzar"
+        w.anim_col={1,1,1,1}
+    end
+
     ---tecnicas de ataques a distancia
 
 Efectos["disparo_preciso"]= function (v, w, f, bol, bono)
@@ -1779,7 +1795,7 @@ Efectos["lluvia_de_flechas"]= function (v, w, f, bol, bono)
                         DamageProccess(i,w,-((w.dex + mod(w,"dex") +left+right)*mult),crit)
                         i.anim_acc="corte"
                         i.anim_col={1,1,1,1}
-                        jump_start(v)
+                        jump_start(i)
                         checks(i)
                 else
                     eludido(i)    
@@ -1877,11 +1893,7 @@ Efectos["desenbocado"]= function (v, w, f, bol, bono)
             end
     end    
 
-Efectos["incontrolable"]= function (v, w, f, bol, bono)
-    agregarAccion({"ejecutar_comando","desenbocado",v,w})
-    agregarAccion({"ejecutar_comando","desenbocado",v,w})
-    agregarAccion({"ejecutar_comando_final","desenbocado",v,w})
-end
+
 
     ---bailes
     ---
@@ -3221,6 +3233,7 @@ Efectos["Capturar"]= function (v, w, f, bol, bono)
             Actual.anim_acc="magia"
             Actual.anim_col={1,1,1,1}
             v.hp_=0
+            checks(v)
             if  not existList(listaCaptura[v.id_mons].id, Actual.beast) then
                 add(Actual.beast,listaCaptura[v.id_mons])
                 Msg_enemigo(v,"Capturado")

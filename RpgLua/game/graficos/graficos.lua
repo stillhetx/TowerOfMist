@@ -734,6 +734,17 @@ function show_menus_name_bol(v,x,y)
 end 
 
 
+function Show_menus_list(v,x,y)
+    for i=1,#v  do
+        local column = math.floor((i - 1) / itemsPerColumn)
+        local row = (i - 1) % itemsPerColumn
+        local xi = x + column * columnSpacing
+        local yi = y + row * rowSpacing
+        print("  "..v[i], xi+6, yi+40,7)
+    end
+end
+
+
 function show_menus_name(v,x,y)
     for i=1,#v  do
         local column = math.floor((i - 1) / itemsPerColumn)
@@ -823,6 +834,26 @@ function show_menus_name_cost(v,x,y)
 end
 
 
+
+ 
+
+    function drawPixelAura(image, x, y)
+    -- Aura (colores sólidos, sin blur)
+    love.graphics.setColor(0, 1, 1, 0.4)
+
+    local offsets = {
+        {-1, 0}, {1, 0}, {0, -1}, {0, 1}, -- cruz
+        {-1, -1}, {1, -1}, {-1, 1}, {1, 1} -- diagonales
+    }
+
+    for _, o in ipairs(offsets) do
+        love.graphics.draw(image, x + o[1], y + o[2])
+    end
+
+    -- Sprite original encima
+    love.graphics.setColor(1, 1, 1, 1)
+    love.graphics.draw(image, x, y)
+end
 
 function Show_menus_name_cost_magic(v,x,y)
     for i=1,#v-(ini_view-1)  do

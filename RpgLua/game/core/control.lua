@@ -656,12 +656,17 @@ function comeback()
         or Acc=="transformacion" or Acc=="Blu.magic" or Acc=="bullet"
         or Acc=="Power.Stone"  or Acc=="spell.list" or Acc=="runes" 
         or Acc=="dual M." or Acc=="spirit" or Acc=="ninja" or Acc=="espada" or Acc=="canciones" 
-        or  Acc=="evocar" then
+        or  Acc=="evocar"  then
             State ="select"
             Acc=""
         end 
 
         --acc={"atacar","W.Arts","tecnica","objeto","defensa"},
+    elseif State=="select l" then
+        if Acc=="colecciones" or Acc=="magics" then
+            State ="select"
+            Acc=""            
+        end
     elseif State=="select e" then
         if  Acc=="atacar" or Acc=="robar" or Acc=="furia" or Acc=="saltar"  or Acc=="darkness" or Acc=="extraer" 
         or Acc=="atrapar" or Acc=="asesinar" or Acc=="rapido"

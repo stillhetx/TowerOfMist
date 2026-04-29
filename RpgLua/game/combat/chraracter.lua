@@ -384,7 +384,7 @@ function filtrarTools()
 end
 
 function filtrarWeaponArts()
-        for _, mix in pairs(Lista_Weapon_Arts) do
+    for _, mix in pairs(Lista_Weapon_Arts) do
             --Debug_temp=Debug_temp.."# "..#mix.requerimiento
         if puedeUsarWeaponArts(mix.requerimiento) then            
             if not existList(mix.id,Actual.art) then
@@ -392,6 +392,38 @@ function filtrarWeaponArts()
             end    
         end
     end
+    if Actual.weapon.left~={} 
+        and Actual.weapon.left~=nil 
+        and Actual.weapon.left.extra~=nil
+        and Actual.weapon.left.extra~={}
+        and Actual.weapon.left.extra.name~=nil 
+        and Actual.weapon.left.extra.name=="spells" then
+            for k,v in pairs(Actual.weapon.left.extra.value) do
+                if not existList(v.id,Actual.art) then
+                    local temp= Spell_books[v.id]
+                    temp.cant_=v.cant
+                    temp.cant=v.max
+                    table.insert(Actual.art, temp)
+                end  
+            end
+    end
+    
+    if Actual.weapon.right~={} 
+        and  Actual.weapon.right~=nil 
+        and Actual.weapon.right.extra~=nil
+        and Actual.weapon.right.extra~={}
+        and Actual.weapon.right.extra.name~=nil 
+        and Actual.weapon.right.extra.name=="spells" then
+            for k,v in pairs(Actual.weapon.right.extra.value) do
+                if not existList(v.id,Actual.art) then
+                    local temp= Spell_books[v.id]
+                    temp.cant_=v.cant
+                    temp.cant=v.max
+                    table.insert(Actual.art, temp)
+                end  
+            end
+    end
+    
 
 end
 

@@ -671,40 +671,47 @@ function ejecutarComando(sel,v)
 end
 
 function ejecutarMagia(sel, v, Order)
-    Actual.avanzar=true
-    Actual.attack=true
-    Actual.rest=false
-    
-    local mult=1 --Deprecado
-    local c="V" --Deprecado
-    local crit="" --Deprecado
+    local sel = sel or ""
+    local v = v or {}
 
-    if  v ~= {}   then
-        if v.lastDmg~=nil then
-            v.lastDmg=0
+    if(v~={} and sel~="")then
+
+        Actual.avanzar=true
+        Actual.attack=true
+        Actual.rest=false
+        
+        local mult=1 --Deprecado
+        local c="V" --Deprecado
+        local crit="" --Deprecado
+
+        if  v ~= {}   then
+            if v.lastDmg~=nil then
+                v.lastDmg=0
+            end
+            v.slDmg=true
         end
-        v.slDmg=true
-    end
 
-    local bono=1
-    
-    local bonoMagCharge= Actual.seeMagicCharge
-    if bonoMagCharge then bono = bono+(Actual.magicCharge*0.25)+(Buton_bonus*0.25) end
+        local bono=1
+        
+        local bonoMagCharge= Actual.seeMagicCharge
+        if bonoMagCharge then bono = bono+(Actual.magicCharge*0.25)+(Buton_bonus*0.25) end
 
 
-    b_dmg_txt=true
-    --Msg_debug=" "..v.name
-    
-    Name_action=sel
+        b_dmg_txt=true
+        --Msg_debug=" "..v.name
+        
+        Name_action=sel
 
-    local foo=Efectos[sel](v, Actual,{},false,bono)
+        local foo=Efectos[sel](v, Actual,{},false,bono)
 
-    if pcall(foo) then
-        --exitoso
+        if pcall(foo) then
+            --exitoso
+        else
+            ERROR_MSG="ERROR AL EJECUTAR EFECTO"
+        end
     else
-        ERROR_MSG="ERROR AL EJECUTAR EFECTO"
+        Name_action="No ejecutado"    
     end
-
     --Actual.hide=false
 end    
 

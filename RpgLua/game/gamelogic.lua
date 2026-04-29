@@ -602,6 +602,85 @@ end
 function new_OrderV2()
 
 end
+           --[[ ACC_Default={
+"atacar","secundario","W.Arts", "magic","coleccion","especiales","tecnica","objeto","defensa"
+}]]
+
+
+function General_magics(v)
+    local lista={}
+
+    for k,i in pairs(v.magics) do
+        lista[#lista+1]=v.magics[k]
+    end 
+  
+    return lista
+end
+
+function General_coleccion(v)
+    local lista={}
+
+    for k,i in pairs(v.coleccion) do
+        lista[#lista+1]=v.coleccion[k]
+    end   
+    return lista
+end
+
+
+function General_lista(v)
+    local lista={}
+    --v.acc 
+
+    for k,i in pairs(ACC_Default) do
+        if ACC_Default[k]=="atacar" then
+            lista[#lista+1]="atacar"
+        end
+        if ACC_Default[k]=="secundario" then
+            if v.spe_command~="" then
+                lista[#lista+1]=v.spe_command
+            end
+        end
+        if ACC_Default[k]=="W.Arts" then
+            if v.isWArt then
+                lista[#lista+1]="W.Arts"
+            end
+        end
+        if ACC_Default[k]=="magic" then
+            if #v.magics==1 then
+                lista[#lista+1]=v.magics[1]  
+            elseif #v.magics>1 then
+                lista[#lista+1]="magics"
+
+            end
+            
+        end
+        if ACC_Default[k]=="coleccion" then
+            if #v.coleccion==1 then
+                lista[#lista+1]=v.coleccion[1]
+            elseif #v.coleccion>1 then
+                lista[#lista+1]="colecciones"
+            end
+        end
+        if ACC_Default[k]=="especiales" then
+            if #v.spe>1 then
+                lista[#lista+1]="especiales"
+            end
+        end
+        if ACC_Default[k]=="tecnica" then
+            if #v.sk>1 then
+                lista[#lista+1]="tecnica"
+            end
+        end
+        if ACC_Default[k]=="objeto" then
+            lista[#lista+1]="objeto"
+        end
+        if ACC_Default[k]=="defensa" then
+            lista[#lista+1]="defensa"
+        end
+        
+    end
+    return lista
+end    
 
 function Turnos(o)
 
@@ -1178,7 +1257,6 @@ function inside()
             end
         end
         if State=="select i" then
-
                 if #items>6 then
                     if Op > fin_view  then
                         ini_view = ini_view + 1
@@ -1204,6 +1282,25 @@ function inside()
                 if Op>#items then
                     Op=1
                 end
+        end
+        if State=="select l" then
+            if Acc=="magics" then
+                if Op<1 then
+                    Op=#Actual.mag
+                end
+                if Op>#Actual.mag then
+                    Op=1
+                end
+                
+            end
+            if Acc=="colecciones" then
+                if Op<1 then
+                    Op=#Actual.col
+                end
+                if Op>#Actual.col then
+                    Op=1
+                end
+            end
         end
         if State=="select d" then
             if Op<1 then
@@ -1796,7 +1893,7 @@ function msg_efecto(v,str)
 end  
 
 function jump_start(v)
-    if v.hp>0 then
+    if v~=nil and v.hp>0 then
         v.jump=true
         v.jump_time=0
         v.react=true
@@ -1846,75 +1943,94 @@ function getProtector(v)
     end    
 end 
 
-
-function DamageProccess(v, w,value, crit)
+function DamageProccess (v, w,value, crit)
+    
+    
     local hit=1
     local calc=0
-    if w~=nil and w.agi then
-        calc = v.agi+mod(v,"agi") -w.agi+mod(v,"agi")
-    end
-    
-    if calc > 0 then
-        hit=hit+flr(calc/5)
-    end
-
     local defensa=0
-    local obb=getProtector(v)
-    if v.sh_>0 then
-        v.sh_=v.sh_-1
-        obb.lastDmg=1
-        obb.lastDmgM="bloqueado"
-    else    
-        if obb.def ~=nil and obb.def==true then 
-            defensa=2*obb.con 
-            if obb.ext<4 then
-                obb.see_extra_turno=true
-                obb.ext=obb.ext+1 
-            end
-        else 
-             defensa=flr(obb.con/2) 
+
+    if v~=nil and v~={} and w~=nil and w~={} then
+
+        local obb=getProtector(v)
+
+        if  w.agi~=nil and  v~=nil and v.agi~=nil then
+            calc = v.agi+mod(v,"agi") -w.agi+mod(v,"agi")
         end
-        if obb.armadura~=nil and obb.armadura~={} and obb.armadura.def~=nil  then 
-            defensa=defensa+obb.armadura.def  
-        end
-        if value < 0 then
-            value=value + defensa
-            if value > 0 then value=0  end
-        end 
         
-        value=StanceMode(value,w,obb,true)
-        value=StanceMode(value,w,obb,false)
+        if calc > 0 then
+            hit=hit+flr(calc/5)
+        end
 
-       -- if w.modo=="defensa" then
-          --  value=flr(value*0.75)
-        --end
-        --if w.modo=="vuelo" then
-          --  value=flr(value*1.25)
-        --end
-        if obb.modo=="defensa" then
-            value=flr(value*0.75)
+        
+        if  v.sh_~=nil and v.sh_>0 then
+            v.sh_=v.sh_-1
+            obb.lastDmg=1
+            obb.lastDmgM="bloqueado"
+        else    
+            if obb.def ~=nil and obb.def==true then 
+                defensa=2*obb.con 
+                if obb.ext<4 then
+                    obb.see_extra_turno=true
+                    obb.ext=obb.ext+1 
+                end
+            else 
+                if obb.con ~=nil then
+                    defensa=flr(obb.con/2) 
+                end
+            end
+            if obb.armadura~=nil and obb.armadura~={} and obb.armadura.def~=nil  then 
+                defensa=defensa+obb.armadura.def  
+            end
+            if value < 0 then
+                value=value + defensa
+                if value > 0 then value=0  end
+            end 
+            
+            value=StanceMode(value,w,obb,true)
+            value=StanceMode(value,w,obb,false)
+
+        -- if w.modo=="defensa" then
+            --  value=flr(value*0.75)
+            --end
+            --if w.modo=="vuelo" then
+            --  value=flr(value*1.25)
+            --end
+            if obb.modo=="defensa" then
+                value=flr(value*0.75)
+            end
+            if obb.modo=="vuelo" then
+                value=flr(value*0.75)
+            end
+            
+            --Debug_temp= Debug_temp.."$"..value 
+            obb.hp_=obb.hp_+(value*hit)
+            obb.lastDmg=value
+            obb.lastDmgM=value..crit.." "..defensa.."# "..hit.." hits"
         end
-        if obb.modo=="vuelo" then
-            value=flr(value*0.75)
+        
+        if v.gl_<5 then
+            v.gl_=v.gl_+1
+        end  
+
+
+        if value<0 then
+            obb.lastDmgC="R"
+        elseif value==0 then
+            obb.lastDmgC="Y"
+        else
+            obb.lastDmgC="V"
         end
-        --Debug_temp= Debug_temp.."$"..value 
-        obb.hp_=obb.hp_+(value*hit)
-        obb.lastDmg=value
-        obb.lastDmgM=value..crit.." "..defensa.."# "..hit.." hits"
+        
     end
+
     
-    if v.gl_<5 then
-        v.gl_=v.gl_+1
-    end  
 
+end
 
-    if value<0 then
-        obb.lastDmgC="R"
-    elseif value==0 then
-        obb.lastDmgC="Y"
-    else
-        obb.lastDmgC="V"
-    end
+function PDamageProccess(v, w,value, crit)
+    
+   
 end    
 
 function StanceMode(value,w,v,bol)
@@ -1935,14 +2051,14 @@ function adv_weak_Logic(v,w,list,b)
     local crit=""
     if b then
         for i=1,#list do
-            if v.ventaja[list[i]] ~= nil then
+            if v.ventaja~=nil and v.ventaja[list[i]] ~= nil then
                 mu=mu*0.6
                 crit=crit.."%"
             end  
         end 
     else
         for i=1,#list do
-            if v.weak[list[i]] ~= nil then
+            if v.weak~=nil and v.weak[list[i]] ~= nil then
                 mu=mu*2
                 crit=crit.."!"
             end  
@@ -1984,8 +2100,10 @@ function acertar(v,b)
         else
             Dice=flr(rnd(20))
             at=b.dex+mod(b,"dex")+Dice
-        end    
-        ob=v.agi+mod(b,"agi")+8
+        end 
+        if v.agi~=nil then
+            ob=v.agi+mod(b,"agi")+8
+        end
         if at>=ob then
             activa_Contra_ataque(v)
         end

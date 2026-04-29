@@ -142,12 +142,11 @@ function _init()
     local o = enemyGroups
     if true then
         if true then
-            -- "Magia no funciona"
-            --25 oscuridad //done agregar maximo de invocaciones
             --30 cristales, extraer // nunca lo termine
-            local a =6
-            local b =6
-            local c =6
+            --9 es la clase mas complicada
+            local a =9
+            local b =9
+            local c =9
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -162,6 +161,9 @@ function _init()
             r.hp=r.hp_
             r.mp_=r.mp+mod(r,"mp")
             r.mp=r.mp_
+            r.mag=General_magics(Nuevas_clases[a])
+            r.col=General_coleccion(Nuevas_clases[a])
+            r.acc=General_lista(Nuevas_clases[a])
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
@@ -179,6 +181,9 @@ function _init()
             r.hp=r.hp_
             r.mp_=r.mp+mod(r,"mp")
             r.mp=r.mp_
+            r.mag=General_magics(Nuevas_clases[b])
+            r.col=General_coleccion(Nuevas_clases[b])
+            r.acc=General_lista(Nuevas_clases[b])
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
@@ -196,6 +201,9 @@ function _init()
             r.hp=r.hp_
             r.mp_=r.mp+mod(r,"mp")
             r.mp=r.mp_
+            r.mag=General_magics(Nuevas_clases[c])
+            r.col=General_coleccion(Nuevas_clases[c])
+            r.acc=General_lista(Nuevas_clases[c])
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
@@ -213,6 +221,7 @@ function _init()
                 r.y_=posiciones_jugadores[i].y  
                 r.hp_=r.hp+mod(r,"hp")
                 r.mp_=r.mp+mod(r,"mp")
+                r.acc=General_lista(Nuevas_clases[i])
                 add(ActiveParty,r)
                 add(Show_party,r)
                 add(Order, r)

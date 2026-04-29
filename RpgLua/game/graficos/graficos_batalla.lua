@@ -19,6 +19,12 @@ function graph_mode()
         if State=="select" then
             if ActiveParty[i].live  then
                 love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp.."",220,338+(40*(i-1)))
+                if #ActiveParty[i].mag~=nil then
+                    --love.graphics.print("mag"..#ActiveParty[i].mag,550,338+(40*(i-1)))
+                end
+                if #ActiveParty[i].col~=nil then
+                    love.graphics.print("col"..#ActiveParty[i].col,550,338+(40*(i-1)))
+                end
                 Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)
             else
                 love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,338+(40*(i-1)))
@@ -60,9 +66,9 @@ function graph_mode()
 
 
     if Replace_Acc then
-       -- love.graphics.print( "T debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-4))
+        love.graphics.print( "T debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-3))
      else   
-        -- love.graphics.print( "F debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-4))
+         love.graphics.print( "F debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-3))
      end
 
 
@@ -168,11 +174,17 @@ function graph_mode()
                 if State=="secundario" then
                     show_menus(acciones_secundarias ,menu_select_x,menu_y)
                 end
+                if State=="select l" and Acc=="magics" then 
+                    Show_menus_list(Actual.mag,menu_select_x,menu_y)
+                end
+                if State=="select l" and Acc=="colecciones" then 
+                    Show_menus_list(Actual.col,menu_select_x,menu_y)
+                end
                 if State=="select o" and Acc=="magic" then   
-
-                   -- love.graphics.print( "mg:  "..#Actual.mg-(ini_view-1).."/"..#Actual.mg.." ",500,20+(24*-1))
-
                     Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
+                end
+                if State=="select o" and Acc=="w.magic" then   
+                    Show_menus_name_cost_magic(Actual.milagros,menu_select_x,menu_y)
                 end
                 if State=="select v" and Acc=="extraer" then   
                     show_menus_name(SelectEnemigo.magicForce,menu_select_x,menu_y)
@@ -198,6 +210,12 @@ function graph_mode()
                 end
                 if State=="select o" and Acc=="spirit" then   
                     show_menus_name_cost(Actual.spirit,menu_select_x,menu_y)
+                end
+                if State=="select o" and Acc=="canciones" then   
+                    show_menus_name_cost(Actual.cancion,menu_select_x,menu_y)
+                end
+                if State=="select o" and Acc=="bailes" then   
+                    show_menus_tecnica(Actual.bailes,menu_select_x,menu_y)
                 end
                 if State=="select oo" and Acc=="dual M." then   
                     Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)

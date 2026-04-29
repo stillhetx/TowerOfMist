@@ -48,8 +48,8 @@ weapon_inventary={
  {name="daga de asesino",id="daga_de_asesino",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"muerte"},extra={},},
  {name="daga de mago",id="daga_de_mago",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={},extra={{name="comando",value={"magic"}}},},
 
- {name="grimorio basico",id="grimorio_basico",  cost=10,wtipo="equipo", familia="grimorio",subFamilia="default",w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false,cont=1,color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={name="spell.list",value={{name="fuego",id="fuego",tipo="equip",cont=5,max=5},{name="electro",id="electro",tipo="equip",cont=5,max=5},{name="agua",id="agua",tipo="equip",cont=5,max=5}}}},
-{name="grimorio de fuego",id="grimorio_de_fuego",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="spell",value={"fuego","fuego+"}}},},
+ {name="grimorio basico",id="grimorio_basico",  cost=10,wtipo="equipo", familia="grimorio",subFamilia="default",w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false,cont=1,color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={name="spells",value={{id="fuego",cont=5,max=5},{id="electro",cont=5,max=5},{id="agua",cont=5,max=5}}}},
+{name="grimorio de fuego",id="grimorio_de_fuego",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="spells",value={{id="fuego",cont=5,max=5},{id="fuego+",cont=5,max=5}}}},},
 
 
  {name="escudo de hielo",id="escudo_de_hielo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_HIE",name="ABS.HIE", from="equip", value=0, str=""}}},},
@@ -1358,6 +1358,59 @@ listaCaptura={
                 ["objetos"]= {name="objetos",id="objetos",dir="x",cost=1,},
         }
 
+Spell_books={
+
+        ["fuego"]={name="fuego", id="fuego",dir="e",cost=5,tipo="ofensivo",color="red",lv=1,all=true,cant_=5, cant=5, tcost="carga"}, 
+        ["fuego+"]={name="fuego+", id="fuego+",dir="e",cost=15,tipo="ofensivo",color="red",lv=1,all=true, cant_=5, cant=5, tcost="carga"}, 
+        ["fuego++"]={name="fuego++", id="fuego++",dir="e",cost=30,tipo="ofensivo",color="red",lv=1,all=true, cant_=5, cant=5, tcost="carga"}, 
+        
+        ["piedra"]={name="piedra",id="piedra" ,dir="e",cost=5,tipo="ofensivo",color="green",lv=1,all=true, cant_=5, cant=5, tcost="carga"}, 
+        ["piedra+"]={name="piedra+",id="piedra+" ,dir="e",cost=15,tipo="ofensivo", color="green" ,lv=2,all=true, cant_=5, cant=5, tcost="carga"},
+        ["piedra++"]={name="piedra++",id="piedra++" ,dir="e",cost=30,tipo="ofensivo",color="green",lv=3,all=true, cant_=5, cant=5, tcost="carga"}, 
+
+        ["hielo"]=         {name="hielo",  id="hielo",dir="e",cost=5,tipo="ofensivo",color="white",lv=1,all=true, cant_=5, cant=5, tcost="carga"}, 
+        ["hielo+"]=         {name="hielo+",  id="hielo+",dir="e",cost=15,tipo="ofensivo",color="white",lv=2,all=true, cant_=5, cant=5, tcost="carga"}, 
+        ["hielo++"]=         {name="hielo++",  id="hielo++",dir="e",cost=30,tipo="ofensivo",color="white",lv=3,all=true, cant_=5, cant=5, tcost="carga"}, 
+
+        ["aire"]=         {name="aire", id="aire",dir="e",cost=5,tipo="ofensivo",color="light_blue",lv=1,all=true, cant_=5, cant=5, tcost="carga"},
+        ["aire+"]=         {name="aire+", id="aire+",dir="e",cost=15,tipo="ofensivo",color="light_blue",lv=2,all=true, cant_=5, cant=5, tcost="carga"},
+        ["aire++"]=         {name="aire++", id="aire++",dir="e",cost=30,tipo="ofensivo",color="light_blue",lv=3,all=true, cant_=5, cant=5, tcost="carga"},
+
+        ["agua"]=         {name="agua", id="agua",dir="e",cost=5,tipo="ofensivo",color="blue",lv=1,all=true, cant_=5, cant=5, tcost="carga"}, 
+        ["agua+"]=         {name="agua+", id="agua+",dir="e",cost=15,tipo="ofensivo",color="blue",lv=2,all=true, cant_=5, cant=5, tcost="carga"}, 
+        ["agua++"]=         {name="agua++", id="agua++",dir="e",cost=30,tipo="ofensivo",color="blue",lv=3,all=true, cant_=5, cant=5, tcost="carga"}, 
+
+        ["electro"]=         {name="electro", id="electro",dir="e",cost=5,tipo="ofensivo", color="yellow",lv=1,all=true, cant_=5, cant=5, tcost="carga"},
+        ["electro+"]=         {name="electro+", id="electro+",dir="e",cost=15,tipo="ofensivo", color="yellow",lv=2,all=true, cant_=5, cant=5, tcost="carga"},
+        ["electro++"]=         {name="electro++", id="electro++",dir="e",cost=30,tipo="ofensivo", color="yellow",lv=3,all=true, cant_=5, cant=5, tcost="carga"},
+
+        ["Sw.Fire"]=         {name="Sw.Fire",id="Sw_Fire",dir="e",cost=3,tipo="ofensivo",color="red",lv=1,all=true, cant_=5, cant=5, tcost="carga"},
+        ["Sw.Fire+"]=        {name="Sw.Fire+",id="Sw_Fire+",dir="e",cost=9,tipo="ofensivo",color="red",lv=2,all=true, cant_=5, cant=5, tcost="carga"},
+        ["Sw.Fire++"]=         {name="Sw.Fire++",id="Sw_Fire++",dir="e",cost=18,tipo="ofensivo",color="red",lv=3,all=true, cant_=5, cant=5, tcost="carga"},
+
+        ["Sw.ice"]=         {name="Sw.ice", id="Sw_ice", dir="e",cost=3,tipo="ofensivo",color="white",lv=1,all=true, cant_=5, cant=5, tcost="carga"},
+        ["Sw.ice+"]=         {name="Sw.ice+", id="Sw_ice+", dir="e",cost=9,tipo="ofensivo",color="white",lv=2,all=true, cant_=5, cant=5, tcost="carga"},
+        ["Sw.ice++"]=         {name="Sw.ice++", id="Sw_ice++", dir="e",cost=18,tipo="ofensivo",color="white",lv=3,all=true, cant_=5, cant=5, tcost="carga"},
+
+        ["Sw.electro"]=         {name="Sw.electro", id="Sw_electro", dir="e",cost=3,tipo="ofensivo", color="yellow",lv=1,all=false, cant_=5, cant=5, tcost="carga"},
+        ["Sw.electro+"]=         {name="Sw.electro+", id="Sw_electro+", dir="e",cost=9,tipo="ofensivo", color="yellow",lv=2,all=false, cant_=5, cant=5, tcost="carga"},
+        ["Sw.electro++"]=         {name="Sw.electro++", id="Sw_electro++", dir="e",cost=18,tipo="ofensivo", color="yellow",lv=3,all=false, cant_=5, cant=5, tcost="carga"},
+                
+        ["curar"]=         {name="curar", id="curar",dir="c",cost=5,tipo="sanacion",color="green",lv=1,all=true, cant_=5, cant=5, tcost="carga"},
+        ["curar+"]=         {name="curar+", id="curar+",dir="c",cost=10,tipo="sanacion",color="green",lv=2,all=true, cant_=5, cant=5, tcost="carga"},
+        ["curar++"]=         {name="curar++", id="curar++",dir="c",cost=20,tipo="sanacion",color="green",lv=3,all=true, cant_=5, cant=5, tcost="carga"},
+
+        ["lento"]=         {name="lento", id="lento",dir="e",cost=10,tipo="ofensivo",color="purple",lv=2,all=false, cant_=5, cant=5, tcost="carga"},
+        ["paralisis"]=         {name="paralisis", id="paralisis",dir="e",cost=5,tipo="ofensivo",color="yellow",lv=2,all=false, cant_=5, cant=5, tcost="carga"}, 
+        ["congelar"]=         {name="congelar", id="congelar",dir="e",cost=10,tipo="ofensivo",color="white",lv=2,all=false, cant_=5, cant=5, tcost="carga"}, 
+        ["veneno"]=         {name="veneno", id="veneno",dir="e",cost=2,tipo="ofensivo",color="purple",lv=1,all=false, cant_=5, cant=5, tcost="carga"}, 
+        ["dormir"]=         {name="dormir", id="dormir",dir="e",cost=3,tipo="ofensivo",color="white",lv=1,all=false, cant_=5, cant=5, tcost="carga"}, 
+	["ceguera"]=     {name="ceguera",id="ceguera" ,dir="e",cost=5,tipo="ofensivo",color="purple",lv=2,all=false, cant_=5, cant=5, tcost="carga"}, 	
+        ["confundir"]=         {name="confundir",id="confundir" ,dir="e",cost=10,tipo="ofensivo",color="purple",lv=2,all=false, cant_=5, cant=5, tcost="carga"}, 
+        ["silencio"]=         {name="silencio",id="silencio" ,dir="e",cost=5,tipo="ofensivo",color="purple",lv=2,all=false, cant_=5, cant=5, tcost="carga"},
+
+
+}
 
 all_spell={
         --elemental
@@ -1745,12 +1798,52 @@ Lista_Weapon_Arts={
         golpe_fuerte = {name="golpe fuerte",id="golpe_fuerte",isCharge=false,isCommand=false,tCost="",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
         golpe_cargado = {name="golpe cargado",id="golpe_cargado",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
         slash = {name="slash",id="slash",need={},isCharge=false,isCommand=false,tCost="rc",dir="x",requerimiento={"katana"}},
-        desenbocado = {name="desenbocado",id="desenbocado",isCharge=true,isCommand=false, tCost="charge",dir="x",requerimiento={"desarmado"}},
-        incontrolable = {name="incontrolable",id="incontrolable",isCharge=true,isCommand=true,tCost="charge", dir="x",requerimiento={"desarmado"}},
+        --desenbocado = {name="desenbocado",id="desenbocado",isCharge=true,isCommand=false, tCost="charge",dir="x",requerimiento={"desarmado"}},
+        --incontrolable = {name="incontrolable",id="incontrolable",isCharge=true,isCommand=true,tCost="charge", dir="x",requerimiento={"desarmado"}},
         disparo_preciso = {name="disparo preciso",id="disparo_preciso",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco","cannon"}},
         disparo_rapido = {name="disparo rapido",id="disparo_rapido",isCharge=true,isCommand=true,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
         lluvia_de_flechas = {name="lluvia de flechas",id="lluvia_de_flechas",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"arco"}},
         saltar = {name="saltar",id="saltar",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"lanza","alabarda"}},
+
+	corte_aplastante = {name="corte aplastante",id="corte_aplastante",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"espada_larga"}},
+        paso_veloz = {name="paso veloz",id="paso_veloz",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"espada_corta"}},	
+        doble_corte = {name="doble corte",id="doble_corte",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        perforacion_repetida = {name="perforacion repetido",id="perforacion_repetida",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_corta"}},
+	colmillo_perforador = {name="colmillo perforador",id="colmillo_perforador",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_corta"}},
+        corte_giratorio = {name="corte giratorio",id="corte_giratorio",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        tornado_cortante = {name="tornado cortante",id="tornado_cortante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        viento_cortante = {name="viento cortante",id="viento_cortante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        vacio_cortante = {name="vacio cortante",id="vacio_cortante:",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        arma_giratoria = {name="arma giratoria",id="arma_giratoria",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_de_fuego = {name="corte de fuego",id="corte_de_fuego",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_relampago = {name="corte relampago",id="corte_relampago",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_congelante = {name="corte congelante",id="corte_congelante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        viento_sagrado = {name="viento sagrado",id="viento_sagrado",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        viento_sangrante = {name="viento sangrante",id="viento_sangrante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_lanzador = {name="corte lanzador",id="corte_lanzador",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        cazador_de_gigante = {name="cazador_de_gigante",id="cazador_de_gigante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_amplio = {name="corte amplio",id="corte_amplio",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        ataque_fantasma = {name="ataque fantasma",id="ataque_fantasma",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        salto_tormenta = {name="salto tormenta",id="salto_tormenta",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        danza_aerea = {name="danza aerea",id="danza_aerea",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+        giro_helicoptero = {name="giro helicoptero",id="giro_helicoptero",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
+	--contundente
+        estampar = {name="estampar",id="estampar",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"martillos"}},
+
+	--lanzas perforantes
+	lanza_espectral = {name="lanza espectral",id="lanza_espectral",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"lanza","alabarda"}},
+        lanzas_de_hielo = {name="lanzas de hielo",id="lanzas_de_hielo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"lanza","alabarda"}},
+        
+        --proyectiles
+	disparos_multiples = {name="disparos multiples",id="disparos_multiples",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
+        super_disparo = {name="super disparo",id="super_disparo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
+        --flechas
+	flecha_aerea = {name="flecha aerea",id="flecha_aerea",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"arco"}},
+        flecha_pesada = {name="flecha pesada",id="flecha_pesada",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"arco"}},
+        --escudos
+	golpe_escudo = {name="golpe escudo",id="golpe_escudo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"escudo"}},
+        carga_escudo = {name="carga escudo",id="carga_escudo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"escudo"}},
+
 }
 
 --[[
