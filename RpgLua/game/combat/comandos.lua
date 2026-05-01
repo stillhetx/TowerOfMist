@@ -2,7 +2,7 @@
 
 function comando_defensa()
     Actual.def=true
-    Actual.ext=Actual.ext+1
+    --Actual.ext=Actual.ext+1
 end  
 
 

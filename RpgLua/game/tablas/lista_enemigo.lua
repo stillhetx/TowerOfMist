@@ -24,11 +24,11 @@ posiciones_enemigos_uno={
 posiciones_enemigos_dos={
     [1]={
         x=380,
-        y=160,
+        y=110,
     },
     [2]={
         x=380,
-        y=272,},    
+        y=240,},    
 }
 
 enemy_list={

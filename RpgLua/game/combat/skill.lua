@@ -110,10 +110,17 @@ function ejecutar_comando()
     --msg_debug="ejecutar comando "..arreglo[3].name
     if str_comando=="ejecutar_elemental_damage" then
         --Msg_debug="ejecutar comando "..arreglo[3].name.." "..arreglo[2]
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
-        clean()
-        next()
-        wait_start()
+        if arreglo[2]~=nil 
+            and arreglo[2]~={}
+            and arreglo[3]~=nil
+            and arreglo[3]~={} then
+                if arreglo[3].hp_>0 then
+                    ejecutarMagia(arreglo[2],arreglo[3], Order)
+                    clean()
+                    next()
+                    wait_start()
+                end
+        end
     end 
 
 

@@ -52,7 +52,47 @@ Nuevas_clases={
         mg={},
         beast={},
         art={},
-        sk={{name="recuperacion",id="recuperacion",isCharge=false,isCommand=false,isList=true,tCost="rc",dir="x"},},
+        sk={
+                {name="recuperacion",id="recuperacion",isCharge=false,isCommand=false,isList=true,tCost="rc",dir="x"},
+                {name="rompe defensa",id="rompe_defensa",isCharge=false,tCost="",dir="e"},
+                {name="rompe espiritu",id="rompe_espiritu",isCharge=false,tCost="",dir="e"},
+                {name="rompe magia",id="rompe_magia",isCharge=false,tCost="",dir="e"},
+                {name="rompe ataque",id="rompe_ataque",isCharge=false,tCost="",dir="e"},
+                {name="ataque_erradicos",id="ataque_erradicos",isCharge=false,tCost="",dir="e"},
+                {name="ataque critico",id="ataque_critico",isCharge=false,tCost="",dir="e"},
+
+                --tecnicas_brutales
+                {name="pisoton de puas",id="pisoton_de_puas",isCharge=false,tCost="",dir="e"},
+                {name="puñetazo de tierra",id="punnetazo_de_tierra",isCharge=false,tCost="",dir="e"},
+                {name="pisoton terremoto",id="pisoton_terremoto",isCharge=false,tCost="",dir="e"},
+                {name="lanza roca",id="lanza_roca",isCharge=false,tCost="",dir="e"},
+
+                --tecnicas avanzadas
+
+                {name="golpe espiritu",id="golpe_espiritu",isCharge=false,tCost="",dir="e"},
+                {name="presion espiritual",id="presion_espiritual",isCharge=false,tCost="",dir="e"},
+                {name="sed de sangre",id="sed_de_sangre",isCharge=false,tCost="",dir="e"},
+
+                {name="cuerpo de papel",id="cuerpo_de_papel",isCharge=false,tCost="",dir="e"},
+                {name="piel de hierro",id="piel_de_hierro",isCharge=false,tCost="",dir="e"},
+                {name="camino lunar",id="camino_lunar",isCharge=false,tCost="",dir="e"},
+                {name="salto fantasma",id="salto_fantasma",isCharge=false,tCost="",dir="e"},
+                {name="corte de aire",id="corte_de_aire",isCharge=false,tCost="",dir="e"},
+                {name="balas de aire",id="balas_de_aire",isCharge=false,tCost="",dir="e"},
+
+                {name="golpe vibratorio",id="golpe_vibratorio",isCharge=false,tCost="",dir="e"},
+                {name="ataque concentrado",id="ataque_concentrado",isCharge=false,tCost="",dir="e"},
+                {name="cuerpo concentrado",id="cuerpo_concentrado",isCharge=false,tCost="",dir="e"},
+                {name="golpe atmosferico",id="golpe_atmosferico",isCharge=false,tCost="",dir="e"},
+                {name="gotas de agua",id="gotas_de_agua",isCharge=false,tCost="",dir="e"},
+                {name="Modo salvaje",id="Modo_salvaje",isCharge=false,tCost="",dir="e"},
+                {name="berserk",id="berserk",isCharge=false,tCost="",dir="e"},
+                {name="doble imagen",id="doble_imagen",isCharge=false,tCost="",dir="e"},
+                {name="escupir fuego",id="escupir_fuego",isCharge=false,tCost="",dir="e"},
+                {name="Estilo borracho",id="Estilo_borracho",isCharge=false,tCost="",dir="e"},
+                {name="Estilo ciego",id="Estilo_ciego",isCharge=false,tCost="",dir="e"},
+        
+        },
         --"slash"
         blue={},
         morph={},
@@ -383,7 +423,7 @@ Nuevas_clases={
         gl_=1,
         mp=25,
         mp_=25,
-        agi=6,
+        agi=3,
         fue=3,
         pod=5,
         con=2,
@@ -392,7 +432,7 @@ Nuevas_clases={
         int=4,
         car=1,
         mnd=1,
-        agi_=6,
+        agi_=3,
         fue_=4,
         pod_=3,
         con_=4,

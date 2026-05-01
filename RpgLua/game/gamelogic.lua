@@ -55,7 +55,7 @@ function _update()
                     end
                     if (Actual.tipo=="aliado" or Actual.tipo=="enemy") and Actual.live==true then
                         logic(Actual.tipo)
-                        next()
+                        --next()
                     end
                     if (Actual.tipo=="aliado" or Actual.tipo=="enemy") and Actual.live==false then    
                         next()        
@@ -599,14 +599,6 @@ function new_Order()
     qsort(Order, function(a,b) return abs(a.ini) > abs(b.ini) end)
 end
 
-function new_OrderV2()
-
-end
-           --[[ ACC_Default={
-"atacar","secundario","W.Arts", "magic","coleccion","especiales","tecnica","objeto","defensa"
-}]]
-
-
 function General_magics(v)
     local lista={}
 
@@ -687,7 +679,6 @@ function Turnos(o)
     local lista={}
     local final={}
     local low =0
-
 
       for i=1,6 do
         for k,v in pairs(o) do
@@ -1469,14 +1460,16 @@ end
 
 function nextLevel() 
     updateCharacter()
-
+    --Config.Config_table()
     isWin=false
     wait_start()
     Turno=1   
-    o=enemyGroups
+    --Config.Pos_monster_Nvg()
+    local o=enemyGroups
     Show_enemy={}
     Total_enemy={}
     aliados={}
+    EnemigosVivos={}
     Order={}
     TipoLevel=o[Nvg].tipo
     if o[Nvg].tipo=="batalla" then
@@ -1494,14 +1487,16 @@ function nextLevel()
     if o[Nvg].tipo=="batalla"then
         for k,v in pairs(o[Nvg].enemyTeams) do
             local r = copiar_tabla(v)
-            v.ini=r.agi+flr(rnd(20))
+            r.ini=r.agi+flr(rnd(20))
+            r.id=v.id
             add(Order, r)
-            add(All, r)
             add(Total_enemy,r)
+            add(EnemigosVivos,r)
             add(Show_enemy,r)
         end   
     end
-    Order=Turnos(o)
+    All=Order
+    Order=Turnos(All)
     --qsort(Order, function(a,b) return abs(a.ini) > abs(b.ini) end)
     State="select"
     Modo="combat"
@@ -1879,7 +1874,7 @@ end
 
 ----cambiar random
 function logic(str)
-    enemy_action(Actual,str)
+    Enemy_action(Actual,str)
     wait_start()
     b_dmg_txt=true
 end    
@@ -1945,7 +1940,7 @@ end
 
 function DamageProccess (v, w,value, crit)
     
-    
+    --local tdmg=0
     local hit=1
     local calc=0
     local defensa=0
@@ -2021,7 +2016,8 @@ function DamageProccess (v, w,value, crit)
         else
             obb.lastDmgC="V"
         end
-        
+
+        return value
     end
 
     

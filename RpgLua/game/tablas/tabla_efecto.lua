@@ -1146,11 +1146,13 @@ Efectos["elemental_fuego"]= function (v, w, f, bol, bono)
         if acertar(v,w) then
             local left=0
             local right=0
-            if w.weapon.left~={} and w.weapon.left~=nil and w.weapon.left.w~=nil --then
+            if  w.weapon~=nil and 
+                w.weapon.left~={} and w.weapon.left~=nil and w.weapon.left.w~=nil --then
                 and  w.weapon.left.isCast == true and w.weapon.left.cast=="elemental_fuego" then
                 left = w.weapon.left.bw
             end
-            if w.weapon.right~={} and w.weapon.right~=nil and w.weapon.right.w~=nil  --then
+            if w.weapon~=nil and 
+                w.weapon.right~={} and w.weapon.right~=nil and w.weapon.right.w~=nil  --then
                 and  w.weapon.left.isCast == true and w.weapon.right.cast=="elemental_fuego" then
                 right = w.weapon.right.bw
             end
@@ -1893,6 +1895,144 @@ Efectos["desenbocado"]= function (v, w, f, bol, bono)
             end
     end    
 
+
+
+
+---TECNICAS NUEVAS
+    Efectos["rompe_defensa"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["rompe_espiritu"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["rompe_magia"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["rompe_ataque"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["ataque_erradicos"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["ataque_critico"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+--tecnicas brutales
+
+    Efectos["pisoton_de_puas"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["punnetazo_de_tierra"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["pisoton_terremoto"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["lanza_roca"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+--tecnicas avanzadas
+    Efectos["golpe_espiritu"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["presion_espiritual"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["sed_de_sangre"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+
+    Efectos["cuerpo_de_papel"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["piel_de_hierro"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["camino_lunar"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["salto_fantasma"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["corte_de_aire"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["balas_de_aire"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["golpe_vibratorio"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["ataque_concentrado"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["cuerpo_concentrado"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["golpe_atmosferico"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+
+    Efectos["gotas_de_agua"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["Modo_salvaje"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["doble_imagen"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+
+    Efectos["escupir_fuego"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["Estilo_borracho"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
+    Efectos["Estilo_ciego"]= function (v, w, f, bol, bono)
+            w.anim_acc="puñetazos"
+            w.anim_col={1,1,1,1}
+    end
 
 
     ---bailes
@@ -3054,6 +3194,21 @@ Efectos["veneno"]= function (v, w, f, bol, bono)
         end   
     end
 
+
+Efectos["enfermedad"]= function (v, w, f, bol, bono)
+        w.anim_acc="magia"
+        w.anim_col={0,1,0,1}
+
+        if acertar(v,w)  then
+            v.state["veneno"]={name="veneno",id="veneno",spr=11,value=w.pod/2,cont=5,ini=5}
+            ---add(v.state,veneno)
+            jump_start(v)
+            checks(v)
+        else
+            eludido(v)    
+        end   
+    end
+
     --sanar
 
 Efectos["recuperacion"]= function (v, w, f, bol, bono)
@@ -3596,9 +3751,87 @@ Efectos["libro_fuego"]= function (v, w, f, bol, bono)
 
 end  
 
+--efectos enemigos
 
 
 
+Efectos["atacar"]= function (v, w, f, bol, bono)
+
+            w.avanzar=true
+            w.rest=false
+            w.anim_acc="ataque_arma"
+            w.anim_col={1,1,1,1}
+            if acertar(v, w) then
+                v.lastDmg=0
+                v.slDmg=true
+                v.lastDmgC="V"
+                local crit =""
+                local mult=1
+                mult, crit =  adv_weak_Logic(v,w,{"cosmic"},false )
+                DamageProccess(v,w,-(((w.fue + flr(rnd(2)))*mult)),crit)
+                jump_start(v)
+                checks(v)
+                v.anim_acc="corte"
+                v.anim_col={1,0,0,1}
+            else
+                eludido(v)    
+            end
+
+end  
 
 
+Efectos["flojera"] = function (v, w, f, bol, bono)
+        w.avanzar=true
+        w.rest=false
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+end
 
+
+Efectos["drenar_vida"] = function (v, w, f, bol, bono)
+            w.avanzar=true
+            w.rest=false
+            w.anim_acc="ataque_arma"
+            w.anim_col={1,1,1,1}
+            if acertar(v, w) then
+                v.lastDmg=0
+                v.slDmg=true
+                v.lastDmgC="V"
+                local crit =""
+                local mult=1
+                local dmg=0
+                mult, crit =  adv_weak_Logic(v,w,{"cosmic"},false )
+                dmg = DamageProccess(v,w,-(((w.fue + flr(rnd(2)))*mult)),crit)
+                if dmg~=nil and dmg<0 then
+                    w.hp_=w.hp_+flr(dmg*-0.25)
+                end
+                jump_start(v)
+                checks(v)
+                v.anim_acc="corte"
+                v.anim_col={1,0,0,1}
+            else
+                eludido(v)    
+            end
+end
+
+Efectos["ataque_psi"]= function (v, w, f, bol, bono)
+            w.avanzar=true
+            w.rest=false
+            w.anim_acc="ataque_arma"
+            w.anim_col={1,1,1,1}
+            if acertar(v, w) then
+                v.lastDmg=0
+                v.slDmg=true
+                v.lastDmgC="V"
+                local crit =""
+                local mult=1
+                mult, crit =  adv_weak_Logic(v,w,{"psi"},false )
+                DamageProccess(v,w,-(((w.fue + flr(rnd(2)))*mult)),crit)
+                jump_start(v)
+                checks(v)
+                v.anim_acc="corte"
+                v.anim_col={1,0,0,1}
+            else
+                eludido(v)    
+            end
+end  

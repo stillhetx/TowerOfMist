@@ -44,7 +44,7 @@ function main_control(key,scancode,isrepeat)
                         end
                         inside()
                     end
-                else
+                elseif Modo=="WIN" then
                     if key=="z" then
                         nextLevel() 
                     end
@@ -141,11 +141,15 @@ function main_control_travel(key,scancode,isrepeat)
     end
 end
 
-acciones_secundarias={"huir"}
+Acciones_secundarias={"huir","extra","arma","compl."}
+
 
 function boton_a()
     if State=="select" then
         State="secundario"
+    end
+    if State=="secundario" then
+        State="select"
     end
 end    
 
@@ -153,7 +157,9 @@ function boton_s()
     if State=="secundario" then
         State="select"
     end
-
+    if State=="select" then
+        State="secundario"
+    end
 end  
 
 function up()

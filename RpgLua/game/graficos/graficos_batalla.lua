@@ -3,7 +3,12 @@ function graph_mode()
     cls()
 
     --love.graphics.draw(fondo,0,0)
-    love.graphics.draw(img_intro, 0, 0,0,1,1)
+
+    if Modo=="WIN" then
+        love.graphics.draw(Finish_fight, 0, 0,0,1,1)
+    else
+        love.graphics.draw(img_intro, 0, 0,0,1,1)
+    end
 
     --love.graphics.rectangle("fill", 16,16, 608,60)
     --608,60
@@ -15,35 +20,38 @@ function graph_mode()
     count_dmg_timer()
     count_wait_win()
 
-    for i=1,#ActiveParty do
-        if State=="select" then
-            if ActiveParty[i].live  then
-                love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp.."",220,338+(40*(i-1)))
-                if #ActiveParty[i].mag~=nil then
-                    --love.graphics.print("mag"..#ActiveParty[i].mag,550,338+(40*(i-1)))
-                end
-                if #ActiveParty[i].col~=nil then
-                    love.graphics.print("col"..#ActiveParty[i].col,550,338+(40*(i-1)))
-                end
-                Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)
-            else
-                love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,338+(40*(i-1)))
-                Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)            
-            end    
-        else 
-            local str_name=""
-            if false then
-                if #ActiveParty[i].name>9 then
-                    str_name=string.sub(ActiveParty[i].name, 1, 6).."..."
+    if Modo=="combat" then
+        
+        for i=1,#ActiveParty do
+            if State=="select" or State=="secundario" then
+                if ActiveParty[i].live  then
+                    love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp.."",220,338+(40*(i-1)))
+                    if #ActiveParty[i].mag~=nil then
+                        --love.graphics.print("mag"..#ActiveParty[i].mag,550,338+(40*(i-1)))
+                    end
+                    if #ActiveParty[i].col~=nil then
+                        --love.graphics.print("col"..#ActiveParty[i].col,550,338+(40*(i-1)))
+                    end
+                    Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)
                 else
-                    str_name=string.sub(ActiveParty[i].name, 1, 9)
-                end
+                    love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,338+(40*(i-1)))
+                    Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)            
+                end    
+            else 
+                local str_name=""
+                if false then
+                    if #ActiveParty[i].name>9 then
+                        str_name=string.sub(ActiveParty[i].name, 1, 6).."..."
+                    else
+                        str_name=string.sub(ActiveParty[i].name, 1, 9)
+                    end
 
-                if ActiveParty[i].live then
-                    love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
-                else
-                    love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
-                end 
+                    if ActiveParty[i].live then
+                        love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
+                    else
+                        love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
+                    end 
+                end
             end
         end
     end
@@ -148,8 +156,13 @@ function graph_mode()
         barra_turnos(600,100)
         bonus_boton()
 
+        --for k,v in pairs(enemyGroups[Nvg].enemyTeams) do
+        for k,v in pairs(EnemigosVivos) do
+            print("#"..k.." "..v.id,350,222+(16*k),7)
+        end
+        print(">"..Op,350,222+(16*-1),7)
 
-
+        
 
         if B_wait==false then
             --cuadroTexto(16,306,36,600/4)
@@ -172,7 +185,7 @@ function graph_mode()
                     show_menus_name_wide(Actual.acc ,menu_select_x,menu_y)
                 end
                 if State=="secundario" then
-                    show_menus(acciones_secundarias ,menu_select_x,menu_y)
+                    show_menus(Acciones_secundarias ,menu_select_x,menu_y)
                 end
                 if State=="select l" and Acc=="magics" then 
                     Show_menus_list(Actual.mag,menu_select_x,menu_y)
@@ -277,14 +290,15 @@ function graph_mode()
         
     else
 
-
-        print("you win",260,240)
-        print(msg_reconpensa,100,280)
-        print(msg_exp,100,300)
-        print(msg_dinero,100,320)
+        local off=120
+        local offx=50
+        print("you win",240+offx,240-off)
+        print(msg_reconpensa,100+offx,280-off)
+        print(msg_exp,100+offx,300-off)
+        print(msg_dinero,100+offx,320-off)
 
         for i,v in pairs(lista_hechizos_azules_obtenidos) do
-            print(v,100,320+(i*20))
+            print(v,100+offx,320+(i*20)-off)
         end
     end                          
 end

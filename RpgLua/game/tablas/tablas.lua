@@ -1792,58 +1792,141 @@ level_Up={
 }
 
 
+Tecnicas_scroll={
+	--tecnicas asesinas
+	asesinar={name="asesinar",id="asesinar",isCharge=false,isCommand=true,isReplace=false,tCost="",dir="e"},
+	esconderse={name="esconderse",id="esconderse",isCharge=false,isCommand=true,isReplace=false,tCost="",dir="x"},
 
+	--tecnicas berserks
+	desenbocado={name="desenbocado",id="desenbocado",isCharge=true,isCommand=false, tCost="charge",dir="x"},
+	incontrolable={name="incontrolable",id="incontrolable",isCharge=true,isCommand=true,tCost="charge", dir="x"},
+	
+	--tecnicas Genericas
+	recuperacion={name="recuperacion",id="recuperacion",isCharge=false,isCommand=false,isList=true,tCost="rc",dir="x"},
+	golpe_fuerte={name="golpe fuerte",id="golpe_fuerte",isCharge=false,tCost="",dir="e"},
+	golpe_cargado={name="golpe cargado",id="golpe_cargado",isCharge=true,isCommand=false,tCost="charge",dir="e"},
+
+	--tecnias de punteria
+        enfocarse={name="enfocarse",id="enfocarse",isCharge=false,isCommand=false,tCost="",dir="x"},
+	
+	--tecnicas desarmado
+	combo={name="combo",id="combo",isCharge=true,isCommand=false,tCost="mana",cost=0, dir="x"},
+		
+        rompe_defensa={name="rompe defensa",id="rompe_defensa",isCharge=false,tCost="",dir="e"},
+        rompe_espiritu={name="rompe espiritu",id="rompe_espiritu",isCharge=false,tCost="",dir="e"},
+        rompe_magia={name="rompe magia",id="rompe_magia",isCharge=false,tCost="",dir="e"},
+        rompe_ataque={name="rompe ataque",id="rompe_ataque",isCharge=false,tCost="",dir="e"},
+        ataque_erradicos={name="ataque_erradicos",id="ataque_erradicos",isCharge=false,tCost="",dir="e"},
+        ataque_critico={name="ataque critico",id="ataque_critico",isCharge=false,tCost="",dir="e"},
+        
+
+        --tecnicas_brutales
+        pisoton_de_puas={name="pisoton de puas",id="pisoton_de_puas",isCharge=false,tCost="",dir="e"},
+        punnetazo_de_tierra={name="puñetazo de tierra",id="punnetazo_de_tierra",isCharge=false,tCost="",dir="e"},
+        pisoton_terremoto={name="pisoton terremoto",id="pisoton_terremoto",isCharge=false,tCost="",dir="e"},
+        lanza_roca={name="lanza roca",id="lanza_roca",isCharge=false,tCost="",dir="e"},
+
+        --tecnicas avanzadas
+
+        golpe_espiritu={name="golpe espiritu",id="golpe_espiritu",isCharge=false,tCost="",dir="e"},
+        presion_espiritual={name="presion espiritual",id="presion_espiritual",isCharge=false,tCost="",dir="e"},
+        sed_de_sangre={name="sed de sangre",id="sed_de_sangre",isCharge=false,tCost="",dir="e"},
+
+        cuerpo_de_papel={name="cuerpo de papel",id="cuerpo_de_papel",isCharge=false,tCost="",dir="e"},
+        piel_de_hierro={name="piel de hierro",id="piel_de_hierro",isCharge=false,tCost="",dir="e"},
+        camino_lunar={name="camino lunar",id="camino_lunar",isCharge=false,tCost="",dir="e"},
+        salto_fantasma={name="salto fantasma",id="salto_fantasma",isCharge=false,tCost="",dir="e"},
+        corte_de_aire={name="corte de aire",id="corte_de_aire",isCharge=false,tCost="",dir="e"},
+        balas_de_aire={name="balas de aire",id="balas_de_aire",isCharge=false,tCost="",dir="e"},
+
+        golpe_vibratorio={name="golpe vibratorio",id="golpe_vibratorio",isCharge=false,tCost="",dir="e"},
+        ataque_concentrado={name="ataque concentrado",id="ataque_concentrado",isCharge=false,tCost="",dir="e"},
+        cuerpo_concentrado={name="cuerpo concentrado",id="cuerpo_concentrado",isCharge=false,tCost="",dir="e"},
+        golpe_atmosferico={name="golpe atmosferico",id="golpe_atmosferico",isCharge=false,tCost="",dir="e"},
+        gotas_de_agua={name="gotas de agua",id="gotas_de_agua",isCharge=false,tCost="",dir="e"},
+        Modo_salvaje={name="Modo salvaje",id="Modo_salvaje",isCharge=false,tCost="",dir="e"},
+        berserk={name="berserk",id="berserk",isCharge=false,tCost="",dir="e"},
+        doble_imagen={name="doble imagen",id="doble_imagen",isCharge=false,tCost="",dir="e"},
+        escupir_fuego={name="escupir fuego",id="escupir_fuego",isCharge=false,tCost="",dir="e"},
+        Estilo_borracho={name="Estilo borracho",id="Estilo_borracho",isCharge=false,tCost="",dir="e"},
+        Estilo_ciego={name="Estilo ciego",id="Estilo_ciego",isCharge=false,tCost="",dir="e"},
+
+
+
+}
 
 Lista_Weapon_Arts={      
-        golpe_fuerte = {name="golpe fuerte",id="golpe_fuerte",isCharge=false,isCommand=false,tCost="",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        golpe_cargado = {name="golpe cargado",id="golpe_cargado",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        slash = {name="slash",id="slash",need={},isCharge=false,isCommand=false,tCost="rc",dir="x",requerimiento={"katana"}},
+        golpe_fuerte = {name="golpe fuerte",id="golpe_fuerte",isCharge=false,isCommand=false,tCost="",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        golpe_cargado = {name="golpe cargado",id="golpe_cargado",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        slash = {name="slash",id="slash",need={},isCharge=false,isCommand=false,tCost="rc",dir="x", lvm=1,requerimiento={"katana"}},
         --desenbocado = {name="desenbocado",id="desenbocado",isCharge=true,isCommand=false, tCost="charge",dir="x",requerimiento={"desarmado"}},
         --incontrolable = {name="incontrolable",id="incontrolable",isCharge=true,isCommand=true,tCost="charge", dir="x",requerimiento={"desarmado"}},
-        disparo_preciso = {name="disparo preciso",id="disparo_preciso",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco","cannon"}},
-        disparo_rapido = {name="disparo rapido",id="disparo_rapido",isCharge=true,isCommand=true,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
-        lluvia_de_flechas = {name="lluvia de flechas",id="lluvia_de_flechas",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"arco"}},
-        saltar = {name="saltar",id="saltar",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"lanza","alabarda"}},
+        disparo_preciso = {name="disparo preciso",id="disparo_preciso",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"revolver","arco","cannon"}},
+        disparo_rapido = {name="disparo rapido",id="disparo_rapido",isCharge=true,isCommand=true,tCost="charge",dir="e", lvm=1,requerimiento={"revolver","arco"}},
+        lluvia_de_flechas = {name="lluvia de flechas",id="lluvia_de_flechas",isCharge=true,isCommand=false,tCost="charge",dir="e",lvm=1,requerimiento={"arco"}},
+        saltar = {name="saltar",id="saltar",isCharge=true,isCommand=false,tCost="charge",dir="e",lvm=1,requerimiento={"lanza","alabarda"}},
 
-	corte_aplastante = {name="corte aplastante",id="corte_aplastante",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"espada_larga"}},
-        paso_veloz = {name="paso veloz",id="paso_veloz",isCharge=true,isCommand=false,tCost="charge",dir="a",requerimiento={"espada_corta"}},	
-        doble_corte = {name="doble corte",id="doble_corte",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        perforacion_repetida = {name="perforacion repetido",id="perforacion_repetida",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_corta"}},
-	colmillo_perforador = {name="colmillo perforador",id="colmillo_perforador",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_corta"}},
-        corte_giratorio = {name="corte giratorio",id="corte_giratorio",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        tornado_cortante = {name="tornado cortante",id="tornado_cortante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        viento_cortante = {name="viento cortante",id="viento_cortante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        vacio_cortante = {name="vacio cortante",id="vacio_cortante:",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        arma_giratoria = {name="arma giratoria",id="arma_giratoria",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        corte_de_fuego = {name="corte de fuego",id="corte_de_fuego",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        corte_relampago = {name="corte relampago",id="corte_relampago",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        corte_congelante = {name="corte congelante",id="corte_congelante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        viento_sagrado = {name="viento sagrado",id="viento_sagrado",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        viento_sangrante = {name="viento sangrante",id="viento_sangrante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        corte_lanzador = {name="corte lanzador",id="corte_lanzador",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        cazador_de_gigante = {name="cazador_de_gigante",id="cazador_de_gigante",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        corte_amplio = {name="corte amplio",id="corte_amplio",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        ataque_fantasma = {name="ataque fantasma",id="ataque_fantasma",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        salto_tormenta = {name="salto tormenta",id="salto_tormenta",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        danza_aerea = {name="danza aerea",id="danza_aerea",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-        giro_helicoptero = {name="giro helicoptero",id="giro_helicoptero",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"espada_larga","espada_corta","katana"}},
-	--contundente
-        estampar = {name="estampar",id="estampar",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"martillos"}},
-
-	--lanzas perforantes
-	lanza_espectral = {name="lanza espectral",id="lanza_espectral",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"lanza","alabarda"}},
-        lanzas_de_hielo = {name="lanzas de hielo",id="lanzas_de_hielo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"lanza","alabarda"}},
+        --espadas
+	corte_aplastante = {name="corte aplastante",id="corte_aplastante",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga"}},
+        paso_veloz = {name="paso veloz",id="paso_veloz",isCharge=true,isCommand=false,tCost="charge",dir="x",lvm=1,requerimiento={"espada_corta"}},	
+        doble_corte = {name="doble corte",id="doble_corte",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        perforacion_repetida = {name="perforacion repetido",id="perforacion_repetida",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_corta"}},
+	colmillo_perforador = {name="colmillo perforador",id="colmillo_perforador",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_corta"}},
+        corte_giratorio = {name="corte giratorio",id="corte_giratorio",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        tornado_cortante = {name="tornado cortante",id="tornado_cortante",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        viento_cortante = {name="viento cortante",id="viento_cortante",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        vacio_cortante = {name="vacio cortante",id="vacio_cortante:",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        arma_giratoria = {name="arma giratoria",id="arma_giratoria",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_de_fuego = {name="corte de fuego",id="corte_de_fuego",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_relampago = {name="corte relampago",id="corte_relampago",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_congelante = {name="corte congelante",id="corte_congelante",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        viento_sagrado = {name="viento sagrado",id="viento_sagrado",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        viento_sangrante = {name="viento sangrante",id="viento_sangrante",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_lanzador = {name="corte lanzador",id="corte_lanzador",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        cazador_de_gigante = {name="cazador_de_gigante",id="cazador_de_gigante",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        corte_amplio = {name="corte amplio",id="corte_amplio",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        ataque_fantasma = {name="ataque fantasma",id="ataque_fantasma",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        salto_tormenta = {name="salto tormenta",id="salto_tormenta",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        danza_aerea = {name="danza aerea",id="danza_aerea",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+        giro_helicoptero = {name="giro helicoptero",id="giro_helicoptero",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"espada_larga","espada_corta","katana"}},
+	
+        --contundente, mazas y martillos
+        estampar = {name="estampar",id="estampar",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"martillos"}},
+        impacto_terremoto = {name="impacto terremoto",id="impacto_terremoto",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
+        puas_de_roca = {name="puas de roca",id="puas_de_roca",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
+        punnetazo_de_piedra = {name="puñetazo de piedra",id="punnetazo_de_piedra",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
+        impacto_sonnador = {name="impacto soñador",id="impacto_sonnador",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
+        impacto_aturdidor = {name="impacto aturdidor",id="impacto_aturdidor",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
+        impacto_lanzador = {name="impacto lanzador",id="impacto_lanzador",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
+        impacto_silenciador = {name="impacto silenciador",id="impacto_silenciador",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
+        impacto_segador = {name="impacto segador",id="impacto_segador",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"maza","martillo"}},
         
+	--lanzas perforantes
+	lanza_espectral = {name="lanza espectral",id="lanza_espectral",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda"}},
+        lanzas_de_hielo = {name="lanzas de hielo",id="lanzas_de_hielo",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda"}},
+        anti_armadura = {name="anti_armadura",id="anti_armadura",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda","estoque"}},
+	danno_interno_ligero = {name="daño_interno_ligero",id="danno_interno_ligero",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda","estoque"}},
+	danno_interno_medio = {name="daño_interno_medio",id="danno_interno_medio",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda","estoque"}},
+	danno_interno_alto = {name="daño_interno_alto",id="danno_interno_alto",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda","estoque"}},
+	danno_interno_maximo = {name="daño_interno_maximo",id="danno_interno_maximo",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda","estoque"}},
+	danno_calculado = {name="Daño_calculado",id="danno_calculado",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda","estoque"}},
+        perforacion_critica={name="perforacion critica",id="perforacion_critica",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"lanza","alabarda","estoque"}},
         --proyectiles
-	disparos_multiples = {name="disparos multiples",id="disparos_multiples",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
-        super_disparo = {name="super disparo",id="super_disparo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"revolver","arco"}},
+	disparos_multiples = {name="disparos multiples",id="disparos_multiples",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"revolver","arco"}},
+        super_disparo = {name="super disparo",id="super_disparo",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"revolver","arco"}},
+        
         --flechas
-	flecha_aerea = {name="flecha aerea",id="flecha_aerea",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"arco"}},
-        flecha_pesada = {name="flecha pesada",id="flecha_pesada",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"arco"}},
+	flecha_aerea = {name="flecha aerea",id="flecha_aerea",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"arco"}},
+        flecha_pesada = {name="flecha pesada",id="flecha_pesada",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"arco"}},
+        
         --escudos
-	golpe_escudo = {name="golpe escudo",id="golpe_escudo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"escudo"}},
-        carga_escudo = {name="carga escudo",id="carga_escudo",isCharge=true,isCommand=false,tCost="charge",dir="e",requerimiento={"escudo"}},
+	golpe_escudo = {name="golpe escudo",id="golpe_escudo",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"escudo"}},
+        carga_escudo = {name="carga escudo",id="carga_escudo",isCharge=true,isCommand=false,tCost="charge",dir="e", lvm=1,requerimiento={"escudo"}},
 
+
+        
+		
+	
 }
 
 --[[

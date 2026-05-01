@@ -1,6 +1,58 @@
+function Enemy_action(criatura,alineamiento)
+    IA_enemy[criatura.id_mons](criatura,alineamiento)
+    --Enemy_random_action(criatura,alineamiento)
+end
+--preferir esta version
+function Personality_random_action(str,alineamiento)
+    local label=""
+    if type(str)=="string" then
+        label=str
+    end
+    if type(str)== "table" then
+        label=str.id_mons
+    end 
 
 
-function enemy_action(Enemy,alineamiento)
+    local list= Lista_acciones_enemigo[label]
+    local accion=""
+    local objetivo={}
+    accion=ElegirAccion(list)
+
+    if alineamiento~="enemy" then
+        objetivo=obtener_objetivo()
+    else
+        objetivo=obtener_enemigo()
+    end
+
+    --Name_action=accion.."#"..objetivo.id
+
+    agregarAccion({"ejecutar_Magia",accion,objetivo})
+
+end
+--just normal enemy
+function Enemy_random_action(criatura,alineamiento)
+    local list={}
+    local accion=""
+    local objetivo={}
+
+    if Lista_acciones_enemigo[criatura.id_mons]==nil then
+         list= Lista_acciones_enemigo["default"]
+    else
+         list= Lista_acciones_enemigo[criatura.id_mons]
+    end
+
+    accion=ElegirAccion(list)
+    
+    if alineamiento~="enemy" then
+        objetivo=obtener_objetivo()
+    else
+        objetivo=obtener_enemigo()
+    end
+
+    agregarAccion({"ejecutar_Magia",accion,objetivo})
+end
+
+function enemy_action_LEGADO(Enemy,alineamiento)
     local accion_elegida=false
     local objetivo=0   --Deprecado
     local last_e=Actual.id --Deprecado
@@ -36,6 +88,27 @@ function enemy_action(Enemy,alineamiento)
     else
         msg_efecto(Actual, razon)
     end       
+end
+
+
+function ElegirAccion(lista)
+    local total = 0
+
+    -- sumar probabilidades
+    for _, accion in ipairs(lista) do
+        total = total + accion.prob
+    end
+
+    -- número aleatorio entre 1 y total
+    local r = math.random() * total
+
+    local acumulado = 0
+    for _, accion in ipairs(lista) do
+        acumulado = acumulado + accion.prob
+        if r <= acumulado then
+            return accion.nombre
+        end
+    end
 end
 
 

@@ -56,9 +56,12 @@ Colecciones
     Power.Stone
     tools
     llamar
+    compañeros
+    ordenes
     bullet
     usar
     
+
 --v.weapon.left.extra.value[1] v.weapon.left.extra.name
 
 "Power.Stone"

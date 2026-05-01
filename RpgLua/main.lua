@@ -3,6 +3,9 @@ require("game/global")
 require("game/tablas/tablas")
 require("game/tablas/tabla_efecto")
 require("game/tablas/tabla_jobs")
+require("game/tablas/tabla_acciones_enemy")
+require("game/tablas/tabla_IA_enemy")
+require("game/tablas/tabla_gambit")
 
 require("game/flag_events")
 
@@ -22,6 +25,7 @@ require("game/graficos/graficos")
 require("game/core/util")
 require("game/core/control")
 require("game/combat/acciones")
+require("game/combat/info")
 require("game/mapa/map")
 require("game/mapa/eventosCards")
 
@@ -64,6 +68,7 @@ function love.load()
     fondo_pasto=love.graphics.newImage("Fondo_pasto.png")
     fondo_sprites= loadbackGround("Fondos_sheet.png", 152, 15)
     img_intro=love.graphics.newImage("intro.png")
+    Finish_fight=love.graphics.newImage("Finish_fight.png")
     --newSprites = loadSpritesheet("pico-rpg.png", 16)
     backgroundTile = loadSpritesheet("backgroundTile.png", 16)
     spritesEstados = loadSpritesheet("estados_alterados.png", 10)
@@ -144,9 +149,9 @@ function _init()
         if true then
             --30 cristales, extraer // nunca lo termine
             --9 es la clase mas complicada
-            local a =9
-            local b =9
-            local c =9
+            local a =2
+            local b =2
+            local c =2
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -252,8 +257,10 @@ function _init()
     for k,v in pairs(o[Nvg].enemyTeams) do
         local r = copiar_tabla(v)
         r.ini=r.agi+flr(rnd(20))
+        r.id=v.id
         add(Order, r)
         add(Total_enemy,r)
+        add(EnemigosVivos,r)
         add(Show_enemy,r)
     end
     All=Order
