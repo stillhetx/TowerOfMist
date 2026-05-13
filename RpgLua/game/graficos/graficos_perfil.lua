@@ -14,7 +14,7 @@ function perfil_mode()
     love.graphics.print("ATTACK: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")+promWeaponDmg(ActiveParty[l])),220,20+(24*3))
     love.graphics.print("defensa: "..(flr((ActiveParty[l].con+mod(ActiveParty[l],"con"))/2) + ModArmadura(ActiveParty[l])),220,20+(24*4))
 
-    love.graphics.print( "debug:   "..Debug_temp,240,140+(24*0))
+    love.graphics.print( "debug:   ".."",240,140+(24*0))
     --love.graphics.print( "debug:  "..#armadura_inventary_see.."/"..#armadura_inventary,400,120+(24*0))
 
 
@@ -83,6 +83,9 @@ function perfil_mode()
                 if i.id == "weapon_der" and ActiveParty[seePerfil].weapon.right ~= nil and ActiveParty[seePerfil].weapon.right.name ~= nil then
                     love.graphics.print( " : "..ActiveParty[seePerfil].weapon.right.name ,300,220+(24*k))
                 end  
+                if i.id == "cabeza" and ActiveParty[seePerfil].head ~= nil and ActiveParty[seePerfil].head.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[seePerfil].weapon.right.name ,300,220+(24*k))
+                end  
                 if i.id == "armadura" and ActiveParty[seePerfil].armadura ~= nil  and ActiveParty[seePerfil].armadura ~= {} and ActiveParty[seePerfil].armadura.name ~= nil then
                     love.graphics.print( " : "..ActiveParty[seePerfil].armadura.name ,300,220+(24*k))
                 end
@@ -92,11 +95,38 @@ function perfil_mode()
                 if i.id == "accesorio_2" and ActiveParty[seePerfil].accesorio_2 ~= nil  and ActiveParty[seePerfil].accesorio_2 ~= {} and ActiveParty[seePerfil].accesorio_2.name ~= nil then
                     love.graphics.print( " : "..ActiveParty[seePerfil].accesorio_2.name ,300,220+(24*k))
                 end
+                if i.id == "artefacto" and ActiveParty[seePerfil].artefacto ~= nil  and ActiveParty[seePerfil].artefacto ~= {} and ActiveParty[seePerfil].artefacto.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[seePerfil].artefacto.name ,300,220+(24*k))
+                end
+                if i.id == "complemento" and ActiveParty[seePerfil].complemento ~= nil  and ActiveParty[seePerfil].complemento ~= {} and ActiveParty[seePerfil].complemento.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[seePerfil].complemento.name ,300,220+(24*k))
+                end
             end
         end    
 
+        --[[
+        
+        {name="mano izq", id="weapon_izq"},
+{name="mano der", id="weapon_der"},
+{name="complemento", id="complemento"},
+{name="armadura", id="armadura"},
+{name="accesorio 1", id="accesorio_1"},
+{name="accesorio 2", id="accesorio_2"},
+{name="Artefacto", id="Artefacto"},
+
+        ]]
+
         if select_mp=="weapon" then
             love.graphics.print( "armas: ",100,220+(24*0))
+
+            if weapon_inventary_see[Opm]~=nil and weapon_inventary_see[Opm].familia=="escudo" then
+                love.graphics.print( "DEF: "..GetDefense(weapon_inventary_see[Opm]),460,160+(24*0))
+                love.graphics.print( "MDEF: "..GetMDefense(weapon_inventary_see[Opm]),460,160+(24*1))
+            else    
+                if weapon_inventary_see[Opm]~=nil then
+                love.graphics.print( "DMG: "..GetPromDamage(weapon_inventary_see[Opm]),460,160+(24*0))
+                end
+            end
             menu_weapon(weapon_inventary_see,9)
         end    
 
@@ -109,6 +139,20 @@ function perfil_mode()
             love.graphics.print( "accesorio: ",100,220+(24*0))
             menu(Accesorios_inventary_see,9)
         end 
+
+        if select_mp=="cabeza" then
+            love.graphics.print( "cabeza: ",100,220+(24*0))
+            menu(Accesorios_inventary_see,9)
+        end
+
+        if select_mp=="artefacto" then
+            love.graphics.print( "artefacto: ",100,220+(24*0))
+            menu(Accesorios_inventary_see,9)
+        end
+        if select_mp=="complemento" then
+            love.graphics.print( "complemento: ",100,220+(24*0))
+            menu(Accesorios_inventary_see,9)
+        end
     end
 
     if showPerfil=="inventario" then

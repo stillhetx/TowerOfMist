@@ -2,9 +2,13 @@
 equipo_slot={
 {name="mano izq", id="weapon_izq"},
 {name="mano der", id="weapon_der"},
+{name="complemento", id="complemento"},
+{name="cabeza", id="cabeza"},
 {name="armadura", id="armadura"},
 {name="accesorio 1", id="accesorio_1"},
 {name="accesorio 2", id="accesorio_2"},
+{name="artefacto", id="artefacto"},
+
 
 }
 
@@ -30,212 +34,211 @@ weapon_inventary_see={}
 weapon_inventary={
 
 
+ {tipo_item="arma",name="espada larga",   cost=10,wtipo="equipo",id="espada_larga",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=1,tipo="cortante",subTipo="cortante", modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+ {tipo_item="arma",name="espada larga de piromante",   cost=10, wtipo="equipo",id="espada_larga_de_piromante",familia="espada_larga",subFamilia="default",nv=1,def=0,w=8,bw=6,tipo="cortante",subTipo="fuego", modo="2h",smodo="white",dex="C",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
+ {tipo_item="arma",name="Espada de la luz",   cost=10,wtipo="equipo",id="espada_de_la_luz",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_luz"},extra={},},
+{tipo_item="arma",name="Espada de fuego",   cost=10, wtipo="equipo",id="espada_de_fuego",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
+ {tipo_item="arma",name="Espada electrica",   cost=10,wtipo="equipo",id="espada_electrica",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
+ {tipo_item="arma",name="Espada de hielo",   cost=10, wtipo="equipo",id="espada_de_hielo",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_hielo"},extra={},},
 
- {name="espada larga",   cost=10,wtipo="equipo",id="espada_larga",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=1,tipo="cortante",subTipo="cortante", modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
- {name="espada larga de piromante",   cost=10, wtipo="equipo",id="espada_larga_de_piromante",familia="espada_larga",subFamilia="default",nv=1,def=0,w=8,bw=6,tipo="cortante",subTipo="fuego", modo="2h",smodo="white",dex="C",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
- {name="Espada de la luz",   cost=10,wtipo="equipo",id="espada_de_la_luz",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_luz"},extra={},},
-{name="Espada de fuego",   cost=10, wtipo="equipo",id="espada_de_fuego",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
- {name="Espada electrica",   cost=10,wtipo="equipo",id="espada_electrica",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
- {name="Espada de hielo",   cost=10, wtipo="equipo",id="espada_de_hielo",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_hielo"},extra={},},
-
- {name="Espada de la oscuridad",   cost=10,wtipo="equipo",id="espada_de_la_oscuridad",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_oscuridad"},extra={},},
- {name="Espada mitica",   cost=10, wtipo="equipo",id="espada_mitica",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="config",value={"crit"}}},},
+ {tipo_item="arma",name="Espada de la oscuridad",   cost=10,wtipo="equipo",id="espada_de_la_oscuridad",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_oscuridad"},extra={},},
+ {tipo_item="arma",name="Espada mitica",   cost=10, wtipo="equipo",id="espada_mitica",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="config",value={"crit"}}},},
 
 
  
-{name="daga de serpiente",id="daga_venenosa",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"veneno"},extra={},},
- {name="daga del sueño",id="daga_del_suenno",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"sueño"},extra={},},
- {name="daga de asesino",id="daga_de_asesino",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"muerte"},extra={},},
- {name="daga de mago",id="daga_de_mago",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={},extra={{name="comando",value={"magic"}}},},
+{tipo_item="arma",name="daga de serpiente",id="daga_venenosa",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"veneno"},extra={},},
+ {tipo_item="arma",name="daga del sueño",id="daga_del_suenno",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"sueño"},extra={},},
+ {tipo_item="arma",name="daga de asesino",id="daga_de_asesino",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"muerte"},extra={},},
+ {tipo_item="arma",name="daga de mago",id="daga_de_mago",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={},extra={{name="comando",value={"magic"}}},},
 
- {name="grimorio basico",id="grimorio_basico",  cost=10,wtipo="equipo", familia="grimorio",subFamilia="default",w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false,cont=1,color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={name="spells",value={{id="fuego",cont=5,max=5},{id="electro",cont=5,max=5},{id="agua",cont=5,max=5}}}},
-{name="grimorio de fuego",id="grimorio_de_fuego",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="spells",value={{id="fuego",cont=5,max=5},{id="fuego+",cont=5,max=5}}}},},
+ {tipo_item="arma",name="grimorio basico",id="grimorio_basico",  cost=10,wtipo="equipo", familia="grimorio",subFamilia="default",w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false,cont=1,color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={name="spells",value={{id="fuego",cont=5,max=5},{id="electro",cont=5,max=5},{id="agua",cont=5,max=5}}}},
+{tipo_item="arma",name="grimorio de fuego",id="grimorio_de_fuego",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="spells",value={{id="fuego",cont=5,max=5},{id="fuego+",cont=5,max=5}}}},},
 
 
- {name="escudo de hielo",id="escudo_de_hielo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_HIE",name="ABS.HIE", from="equip", value=0, str=""}}},},
- {name="escudo de fuego",id="escudo_de_fuego",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_FUE",name="ABS.FUE", from="equip", value=0, str=""}}},},
- {name="escudo del rayo",id="escudo_del_rayo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="ABS_ELE",name="ABS.ELE", from="equip", value=0, str=""}}},},
- {name="escudo espejo",id="escudo_espejo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=1, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="REFLEJO",name="REFLEJO", from="equip", value=0, str=""}}},},
+ {tipo_item="arma",name="escudo de hielo",id="escudo_de_hielo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_HIE",name="ABS.HIE", from="equip", value=0, str=""}}},},
+ {tipo_item="arma",name="escudo de fuego",id="escudo_de_fuego",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_FUE",name="ABS.FUE", from="equip", value=0, str=""}}},},
+ {tipo_item="arma",name="escudo del rayo",id="escudo_del_rayo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="ABS_ELE",name="ABS.ELE", from="equip", value=0, str=""}}},},
+ {tipo_item="arma",name="escudo espejo",id="escudo_espejo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=1, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="REFLEJO",name="REFLEJO", from="equip", value=0, str=""}}},},
 
 }
 
 weapon_list={
 --KATANAS
-katana = {name="katana",id="katana",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={}, extra={}, efectos={}},
-katana_sangrienta = {name="katana sangrienta",id="katana_sangrienta",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="", isCast=false,cast={}, extra={}, efectos={["sangrado"]=10,}},
-masamune = {name="katana sangrienta",id="katana_sangrienta",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={}, extra={}, efectos={["muerte"]=10,}},
-katana_maldita = {name="katana maldita",id="katana_maldita",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={}, extra={{name="auto",value="berserk"}}, efectos={["muerte"]=10,}},
+katana = {tipo_item="arma",name="katana",id="katana",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={}, extra={}, efectos={}},
+katana_sangrienta = {tipo_item="arma",name="katana sangrienta",id="katana_sangrienta",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="", isCast=false,cast={}, extra={}, efectos={["sangrado"]=10,}},
+masamune = {tipo_item="arma",name="katana sangrienta",id="katana_sangrienta",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={}, extra={}, efectos={["muerte"]=10,}},
+katana_maldita = {tipo_item="arma",name="katana maldita",id="katana_maldita",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={}, extra={{name="auto",value="berserk"}}, efectos={["muerte"]=10,}},
 
 --ESPADAS
-espada_corta = {name="espada corta",  cost=10,wtipo="equipo",id="espada_corta", familia="espada_corta",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",subTipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+espada_corta = {tipo_item="arma",name="espada corta", id="espada_corta",cost=10,wtipo="equipo", familia="espada_corta",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",subTipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 --espada corta demo 
-espada_corta_de_fuego = {name="Espada corta de fuego",   cost=10, wtipo="equipo",id="espada_corta_de_fuego",familia="espada_corta",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="1h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=true,cast={"elemental_fuego"},extra={},},
-espada_lunar = {name="Espada lunar",   cost=10, wtipo="equipo",id="espada_lunar",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="1h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=true,cast={"elemental_fuego"},extra={{name="arte",value={"corte_lunar"}}},},
+espada_corta_de_fuego = {tipo_item="arma",name="Espada corta de fuego",   cost=10, wtipo="equipo",id="espada_corta_de_fuego",familia="espada_corta",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="1h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=true,cast={"elemental_fuego"},extra={},},
+espada_lunar = {tipo_item="arma",name="Espada lunar",   cost=10, wtipo="equipo",id="espada_lunar",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="1h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=true,cast={"elemental_fuego"},extra={{name="arte",value={"corte_lunar"}}},},
 
  
 
 
-espada_larga = {name="espada larga",   cost=10,wtipo="equipo",id="espada_larga",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=1,tipo="cortante",subTipo="cortante", modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-espada_larga_de_piromante = {name="espada larga de piromante",   cost=10, wtipo="equipo",id="espada_larga_de_piromante",familia="espada_larga",subFamilia="default",nv=1,def=0,w=8,bw=6,tipo="cortante",subTipo="fuego", modo="2h",smodo="white",dex="C",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
-espada_de_la_luz = {name="Espada de la luz",   cost=10,wtipo="equipo",id="espada_de_la_luz",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_luz"},extra={},},
-espada_de_fuego = {name="Espada de fuego",   cost=10, wtipo="equipo",id="espada_de_fuego",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
-espada_electrica = {name="Espada electrica",   cost=10,wtipo="equipo",id="espada_electrica",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
-espada_de_hielo = {name="Espada de hielo",   cost=10, wtipo="equipo",id="espada_de_hielo",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_hielo"},extra={},},
+espada_larga = {tipo_item="arma",name="espada larga",   cost=10,wtipo="equipo",id="espada_larga",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=1,tipo="cortante",subTipo="cortante", modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+espada_larga_de_piromante = {tipo_item="arma",name="espada larga de piromante",   cost=10, wtipo="equipo",id="espada_larga_de_piromante",familia="espada_larga",subFamilia="default",nv=1,def=0,w=8,bw=6,tipo="cortante",subTipo="fuego", modo="2h",smodo="white",dex="C",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
+espada_de_la_luz = {tipo_item="arma",name="Espada de la luz",   cost=10,wtipo="equipo",id="espada_de_la_luz",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_luz"},extra={},},
+espada_de_fuego = {tipo_item="arma",name="Espada de fuego",   cost=10, wtipo="equipo",id="espada_de_fuego",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
+espada_electrica = {tipo_item="arma",name="Espada electrica",   cost=10,wtipo="equipo",id="espada_electrica",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
+espada_de_hielo = {tipo_item="arma",name="Espada de hielo",   cost=10, wtipo="equipo",id="espada_de_hielo",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_hielo"},extra={},},
 
 
 --mejorar
-espada_de_la_oscuridad = {name="Espada de la oscuridad",   cost=10,wtipo="equipo",id="espada_de_la_oscuridad",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_oscuridad"},extra={},},
-espada_mitica = {name="Espada mitica",   cost=10, wtipo="equipo",id="espada_mitica",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="config",value={"crit"}}},},
-ultra_espadon = {name="ultra espadon",id="ultra_espadon",   cost=10,wtipo="equipo",familia="espada_larga", subFamilia="gran",nv=1,def=2, w=12,bw=1,tipo="golpe",modo="2h",smodo="white",dex="D",fue="S", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-shotel = {name="shotel",id="shotel",  cost=10,wtipo="equipo",familia="espada_corta",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-espada_elemental=  {name="Espada de hielo",   cost=10, wtipo="equipo",id="espada_de_hielo",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuerza"},extra={{name="arte","corte_fuego"},{name="arte","corte_hielo"},{name="arte","corte_electrico"}},},
+espada_de_la_oscuridad = {tipo_item="arma",name="Espada de la oscuridad",   cost=10,wtipo="equipo",id="espada_de_la_oscuridad",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_oscuridad"},extra={},},
+espada_mitica = {tipo_item="arma",name="Espada mitica",   cost=10, wtipo="equipo",id="espada_mitica",subFamilia="default",nv=1,def=0, familia="espada_larga", w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="config",value={"crit"}}},},
+ultra_espadon = {tipo_item="arma",name="ultra espadon",id="ultra_espadon",   cost=10,wtipo="equipo",familia="espada_larga", subFamilia="gran",nv=1,def=2, w=12,bw=1,tipo="golpe",modo="2h",smodo="white",dex="D",fue="S", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+shotel = {tipo_item="arma",name="shotel",id="shotel",  cost=10,wtipo="equipo",familia="espada_corta",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+espada_elemental=  {tipo_item="arma",name="Espada de hielo",   cost=10, wtipo="equipo",id="espada_de_hielo",familia="espada_larga",subFamilia="default",nv=1,def=0, w=8,bw=6,tipo="cortante",subTipo="luz", modo="2h",smodo="white",dex="",fue="C", int="C",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuerza"},extra={{name="arte","corte_fuego"},{name="arte","corte_hielo"},{name="arte","corte_electrico"}},},
 
 --lanzas
-lanza_glacial = {name="lanza glacial",wtipo="equipo",id="lanza_glacial",  cost=10, familia="lanza",subFamilia="default",nv=1,def=0, w=10,bw=6,tipo="perforante",subTipo="hielo", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_hielo"},extra={},},
-lanza_electrica = {name="lanza de zeus",wtipo="equipo",id="lanza_de_zeus",  cost=10, familia="lanza",subFamilia="default",nv=1,def=0, w=10,bw=6,tipo="perforante",subTipo="hielo", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
-lanza_de_fuego = {name="lanza de fuego",wtipo="equipo",id="lanza_de_fuego",  cost=10, familia="lanza",subFamilia="default",nv=1,def=0, w=10,bw=6,tipo="perforante",subTipo="hielo", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
+lanza_glacial = {tipo_item="arma",name="lanza glacial",wtipo="equipo",id="lanza_glacial",  cost=10, familia="lanza",subFamilia="default",nv=1,def=0, w=10,bw=6,tipo="perforante",subTipo="hielo", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_hielo"},extra={},},
+lanza_electrica = {tipo_item="arma",name="lanza de zeus",wtipo="equipo",id="lanza_de_zeus",  cost=10, familia="lanza",subFamilia="default",nv=1,def=0, w=10,bw=6,tipo="perforante",subTipo="hielo", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
+lanza_de_fuego = {tipo_item="arma",name="lanza de fuego",wtipo="equipo",id="lanza_de_fuego",  cost=10, familia="lanza",subFamilia="default",nv=1,def=0, w=10,bw=6,tipo="perforante",subTipo="hielo", modo="2h",smodo="white",dex="B",fue="B", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_fuego"},extra={},},
 
 --alabarda
-alabarda = {name="alabarda",id="alabarda",  cost=10,wtipo="equipo",familia="alabarda",subFamilia="default",nv=1,def=2, w=10,bw=1,tipo="golpe",modo="2h",smodo="white",dex="C",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={},},
-tridente = {name="tridente",id="tridente",  cost=10,wtipo="equipo",familia="alabarda",subFamilia="default",nv=1,def=2, w=10,bw=1,tipo="golpe",modo="2h",smodo="white",dex="C",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={},},
-tridente_de_poseidon = {name="tridente de poseidon",id="tridente_de_poseidon",  cost=10,wtipo="equipo",familia="alabarda",subFamilia="default",nv=1,def=2, w=10,bw=1,tipo="golpe",modo="2h",smodo="white",dex="C",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_agua"},extra={},},
+alabarda = {tipo_item="arma",name="alabarda",id="alabarda",  cost=10,wtipo="equipo",familia="alabarda",subFamilia="default",nv=1,def=2, w=10,bw=1,tipo="golpe",modo="2h",smodo="white",dex="C",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={},},
+tridente = {tipo_item="arma",name="tridente",id="tridente",  cost=10,wtipo="equipo",familia="alabarda",subFamilia="default",nv=1,def=2, w=10,bw=1,tipo="golpe",modo="2h",smodo="white",dex="C",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={},},
+tridente_de_poseidon = {tipo_item="arma",name="tridente de poseidon",id="tridente_de_poseidon",  cost=10,wtipo="equipo",familia="alabarda",subFamilia="default",nv=1,def=2, w=10,bw=1,tipo="golpe",modo="2h",smodo="white",dex="C",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_agua"},extra={},},
 
 
 --baculo
-baculo = {name="baculo",id="baculo",  cost=10,wtipo="equipo",familia="baculo",subFamilia="default",nv=1,def=2, w=4,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-varita_magica = {name="varita_magica",id="varita_magica",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="proyectil magico", damage="POD", isCast=false,cast={},extra={{name="pod",value=10}},},
-varita_de_novato = {name="varita de novato",id="varita_de_novato",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="POD", isCast=false,cast={},extra={{name="pod",value=20}},},
-bara_de_salud={name="varita de novato",id="varita_de_novato",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="healing", damage="POD", isCast=false,cast={},extra={{name="pod",value=20}},},
+baculo = {tipo_item="arma",name="baculo",id="baculo",  cost=10,wtipo="equipo",familia="baculo",subFamilia="default",nv=1,def=2, w=4,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+varita_magica = {tipo_item="arma",name="varita_magica",id="varita_magica",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="proyectil magico", damage="POD", isCast=false,cast={},extra={{name="pod",value=10}},},
+varita_de_novato = {tipo_item="arma",name="varita de novato",id="varita_de_novato",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="POD", isCast=false,cast={},extra={{name="pod",value=20}},},
+bara_de_salud={tipo_item="arma",name="varita de novato",id="varita_de_novato",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="healing", damage="POD", isCast=false,cast={},extra={{name="pod",value=20}},},
 
 --Baston
-baston = {name="baston",id="baston",  cost=10,wtipo="equipo",familia="baston",subFamilia="default",nv=1,def=0, w=5,bw=1,tipo="golpe",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},  ataque="", damage="", isCast=false,cast={},extra={},},
-bara_simple = {name="baston simple",id="bara_simple",  cost=10,wtipo="equipo",familia="baston",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={},},
-bara_de_piromante = {name="baston de piromante",id="bara_de_piromante",  cost=10,wtipo="equipo",familia="baston",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"fuego"},extra={},},
+baston = {tipo_item="arma",name="baston",id="baston",  cost=10,wtipo="equipo",familia="baston",subFamilia="default",nv=1,def=0, w=5,bw=1,tipo="golpe",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},  ataque="", damage="", isCast=false,cast={},extra={},},
+bara_simple = {tipo_item="arma",name="baston simple",id="bara_simple",  cost=10,wtipo="equipo",familia="baston",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={},},
+bara_de_piromante = {tipo_item="arma",name="baston de piromante",id="bara_de_piromante",  cost=10,wtipo="equipo",familia="baston",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"fuego"},extra={},},
 
 
 
 --MARTILLOS y mazos
 
-maza = {name="maza",  cost=10,wtipo="equipo",id="maza",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="POD",  isCast=false,cast={},extra={},},
-maza_azul = {name="maza azul",  cost=10,wtipo="equipo",id="maza",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="",  damage="POD", isCast=false,cast={},extra={},},
-maza_de_mago = {name="maza de mago",id="maza_de_mago",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="",  damage="POD", isCast=false,cast={},extra={},},
+maza = {tipo_item="arma",name="maza",  cost=10,wtipo="equipo",id="maza",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="POD",  isCast=false,cast={},extra={},},
+maza_azul = {tipo_item="arma",name="maza azul",  cost=10,wtipo="equipo",id="maza",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="",  damage="POD", isCast=false,cast={},extra={},},
+maza_de_mago = {tipo_item="arma",name="maza de mago",id="maza_de_mago",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="",  damage="POD", isCast=false,cast={},extra={},},
 
 ---Cetros
 
-cetro_de_mago = {name="cetro de mago",id="cetro_de_mago",  cost=10,wtipo="equipo",familia="cetro",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+cetro_de_mago = {tipo_item="arma",name="cetro de mago",id="cetro_de_mago",  cost=10,wtipo="equipo",familia="cetro",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="C", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 
-cetro_de_apoyo = {name="Cetro de apoyo",id="cetro_de_apoyo",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="POD", isCast=false,cast={},extra={{name="arte","coraza", tipo="carga",cant=2,max=2}},},
-cetro_elemental = {name="Cetro elemental   ",id="cetro_elemental",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="",  damage="POD", isCast=false,cast={},extra={{name="arte","fuego", tipo="carga",cant=2,max=2},
+cetro_de_apoyo = {tipo_item="arma",name="Cetro de apoyo",id="cetro_de_apoyo",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="POD", isCast=false,cast={},extra={{name="arte","coraza", tipo="carga",cant=2,max=2}},},
+cetro_elemental = {tipo_item="arma",name="Cetro elemental   ",id="cetro_elemental",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="",  damage="POD", isCast=false,cast={},extra={{name="arte","fuego", tipo="carga",cant=2,max=2},
                                                                                                                                                                                                                                                                                                                        {name="arte","hielo", tipo="carga",cant=3,max=3},
                                                                                                                                                                                                                                                                                                                        {name="arte","electrico", tipo="carga",cant=3,max=3}},},
-cetro_de_sanacion = {name="cetro de sanacion  ",id="cetro_de_sanacion",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="POD", isCast=false,cast={},extra={{name="arte","curar", tipo="carga",cant=2,max=2}},},
+cetro_de_sanacion = {tipo_item="arma",name="cetro de sanacion  ",id="cetro_de_sanacion",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="maza", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1},ataque="", damage="POD", isCast=false,cast={},extra={{name="arte","curar", tipo="carga",cant=2,max=2}},},
 
 
 
-martillo = {name="martillo",  cost=10,wtipo="equipo",id="martillo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+martillo = {tipo_item="arma",name="martillo",  cost=10,wtipo="equipo",id="martillo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 
-martillo_cegadora = {name="martillo",  cost=10,wtipo="equipo",id="martillo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"ceguera"},extra={},},
-martillo_del_silencio = {name="martillo del silencio", id="martillo_del_silencio" ,  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"silencio"},extra={},},
-martillo_mermador = {name="martillo mermador", id="martillo_mermador",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"mermar"},extra={},},
-martillo_cosmico = {name="martillo cosmico", id="martillo_cosmico",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"mermar"},extra={},},
-martillo_catalizador = {name="martillo catalizador", id="martillo_catalizador",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"exiliar"},extra={{name="change",value="CON Cast"}},},
+martillo_cegadora = {tipo_item="arma",name="martillo",  cost=10,wtipo="equipo",id="martillo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"ceguera"},extra={},},
+martillo_del_silencio = {tipo_item="arma",name="martillo del silencio", id="martillo_del_silencio" ,  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"silencio"},extra={},},
+martillo_mermador = {tipo_item="arma",name="martillo mermador", id="martillo_mermador",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"mermar"},extra={},},
+martillo_cosmico = {tipo_item="arma",name="martillo cosmico", id="martillo_cosmico",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"mermar"},extra={},},
+martillo_catalizador = {tipo_item="arma",name="martillo catalizador", id="martillo_catalizador",  cost=10,wtipo="equipo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"exiliar"},extra={{name="change",value="CON Cast"}},},
 
 
-martillo_de_trabajo = {name="martillo de trabajo",  cost=10,wtipo="equipo",id="martillo_de_trabajo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-martillo_de_piedra = {name="martillo de piedra",  cost=10,wtipo="equipo",id="martillo_de_piedra",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-martillo_de_la_tormenta = {name="martillo de la tormenta",  cost=10,wtipo="equipo",id="martillo_de_la_tormenta",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
-ultra_martillo = {name="ultra martillo",  cost=10,wtipo="equipo",id="ultra_martillo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-gran_mazo = {name="gran mazo",  cost=10,wtipo="equipo",id="gran_mazo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-gran_Arbol_petrificado = {name="gran Arbol petrificado",  cost=10,wtipo="equipo",id="gran_Arbol_petrificado",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+martillo_de_trabajo = {tipo_item="arma",name="martillo de trabajo",  cost=10,wtipo="equipo",id="martillo_de_trabajo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+martillo_de_piedra = {tipo_item="arma",name="martillo de piedra",  cost=10,wtipo="equipo",id="martillo_de_piedra",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+martillo_de_la_tormenta = {tipo_item="arma",name="martillo de la tormenta",  cost=10,wtipo="equipo",id="martillo_de_la_tormenta",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_electrico"},extra={},},
+ultra_martillo = {tipo_item="arma",name="ultra martillo",  cost=10,wtipo="equipo",id="ultra_martillo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+gran_mazo = {tipo_item="arma",name="gran mazo",  cost=10,wtipo="equipo",id="gran_mazo",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+gran_Arbol_petrificado = {tipo_item="arma",name="gran Arbol petrificado",  cost=10,wtipo="equipo",id="gran_Arbol_petrificado",subFamilia="default",nv=1,def=0, familia="martillo", w=8,bw=6,tipo="golpe",subTipo="hielo", modo="2h",smodo="white",dex="",fue="A", int="",pod="C",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 
 --Hachas
-hacha = {name="hacha",id="hacha",  cost=10,wtipo="equipo", familia="hachas",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="E",fue="A", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-hacha_de_enano = {name="hacha de enano",id="hachas_de_enano",  cost=10,wtipo="equipo", familia="hachas",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="E",fue="A", int="",pod="",sh=false, cont=1, color={1,1,1,1},  ataque="", damage="",isCast=false,cast={},extra={},},
-hacha_de_gigante = {name="hacha de gigante",id="hacha_de_gigante",  cost=10,wtipo="equipo", familia="hachas",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="E",fue="A", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+hacha = {tipo_item="arma",name="hacha",id="hacha",  cost=10,wtipo="equipo", familia="hachas",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="E",fue="A", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+hacha_de_enano = {tipo_item="arma",name="hacha de enano",id="hachas_de_enano",  cost=10,wtipo="equipo", familia="hachas",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="E",fue="A", int="",pod="",sh=false, cont=1, color={1,1,1,1},  ataque="", damage="",isCast=false,cast={},extra={},},
+hacha_de_gigante = {tipo_item="arma",name="hacha de gigante",id="hacha_de_gigante",  cost=10,wtipo="equipo", familia="hachas",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="E",fue="A", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 
 --dagas
-daga={name="daga",id="daga",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-daga_venenosa = {name="daga de serpiente",id="daga_venenosa",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_veneno"},extra={},},
-daga_del_suenno = {name="daga del sueño",id="daga_del_suenno",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"sueño"},extra={},},
-daga_de_asesino = {name="daga de asesino",id="daga_de_asesino",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=true,cast={"muerte"},extra={},},
-daga_de_mago = {name="daga de mago",id="daga_de_mago",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={},extra={{name="comando",value={"magic"}}},},
-daga_catalizadora = {name="daga catalizadora",id="daga_catalizadora",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={},extra={{name="pod",value=20}}},
+daga={tipo_item="arma",name="daga",id="daga",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+daga_venenosa = {tipo_item="arma",name="daga de serpiente",id="daga_venenosa",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"elemental_veneno"},extra={},},
+daga_del_suenno = {tipo_item="arma",name="daga del sueño",id="daga_del_suenno",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={"sueño"},extra={},},
+daga_de_asesino = {tipo_item="arma",name="daga de asesino",id="daga_de_asesino",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=true,cast={"muerte"},extra={},},
+daga_de_mago = {tipo_item="arma",name="daga de mago",id="daga_de_mago",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={},extra={{name="comando",value={"magic"}}},},
+daga_catalizadora = {tipo_item="arma",name="daga catalizadora",id="daga_catalizadora",  cost=10,wtipo="equipo",familia="dagas",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=true,cast={},extra={{name="pod",value=20}}},
 
 --florete
 
-florete={name="florete",id="florete",  cost=10,wtipo="equipo",familia="florete",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="perforante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-florete_catalizador={name="florete catalizador",id="florete_catalizador",  cost=10,wtipo="equipo",familia="florete",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="perforante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="pod",value="20"}},},
-florete_de_asesino={name="florete de asesino",id="florete_de_asesino",  cost=10,wtipo="equipo",familia="florete",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="perforante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="arte","invisible"}},},
+florete={tipo_item="arma",name="florete",id="florete",  cost=10,wtipo="equipo",familia="florete",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="perforante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+florete_catalizador={tipo_item="arma",name="florete catalizador",id="florete_catalizador",  cost=10,wtipo="equipo",familia="florete",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="perforante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="pod",value="20"}},},
+florete_de_asesino={tipo_item="arma",name="florete de asesino",id="florete_de_asesino",  cost=10,wtipo="equipo",familia="florete",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="perforante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="arte","invisible"}},},
 
 
 --Arcos
-arco_corto = {name="arco corto",id="arco_corto", cost=10,wtipo="equipo",familia="arco",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="perforante",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-arco_largo = {name="arco largo",id="arco_largo",  cost=10, wtipo="equipo",familia="arco",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="perforante",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-arco_pesado = {name="arco pesado",id="arco_pesado",  cost=10,wtipo="equipo",familia="arco",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="perforante",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={},},
+arco_corto = {tipo_item="arma",name="arco corto",id="arco_corto", cost=10,wtipo="equipo",familia="arco",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="perforante",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+arco_largo = {tipo_item="arma",name="arco largo",id="arco_largo",  cost=10, wtipo="equipo",familia="arco",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="perforante",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+arco_pesado = {tipo_item="arma",name="arco pesado",id="arco_pesado",  cost=10,wtipo="equipo",familia="arco",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="perforante",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={},},
 
 --Grimorios
-grimorio_de_fuego = {name="grimorio de fuego",id="grimorio_de_fuego",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",isCast=false,cast={}, extra={{name="spell",value={"fuego","fuego+"}}},},
-grimorio_de_hielo = {name="grimorio de hielo",id="grimorio_de_hielo",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="", isCast=false,cast={}, extra={{name="spell",value={"hielo","hielo+"}}},},
-grimorio_del_rayo = {name="grimorio de rayo",id="grimorio_del_rayo",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",isCast=false,cast={}, extra={{name="spell",value={"electro","electro+"}}},},
-grimorio_basico = {name="grimorio basico",id="grimorio_basico",  cost=10,wtipo="equipo", familia="grimorio",subFamilia="default",w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false,cont=1, color={1,1,1,1}, ataque="", damage="",isCast=false,cast={},extra={name="spell.list",value={{name="fuego",id="fuego",tipo="equip",cont=5,max=5},{name="electro",id="electro",tipo="equip",cont=5,max=5},{name="agua",id="agua",tipo="equip",cont=5,max=5}}}},
+grimorio_de_fuego = {tipo_item="arma",name="grimorio de fuego",id="grimorio_de_fuego",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",isCast=false,cast={}, extra={{name="spell",value={"fuego","fuego+"}}},},
+grimorio_de_hielo = {tipo_item="arma",name="grimorio de hielo",id="grimorio_de_hielo",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="", isCast=false,cast={}, extra={{name="spell",value={"hielo","hielo+"}}},},
+grimorio_del_rayo = {tipo_item="arma",name="grimorio de rayo",id="grimorio_del_rayo",  cost=10,wtipo="equipo",familia="grimorio",subFamilia="default",nv=1,def=0, w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",isCast=false,cast={}, extra={{name="spell",value={"electro","electro+"}}},},
+grimorio_basico = {tipo_item="arma",name="grimorio basico",id="grimorio_basico",  cost=10,wtipo="equipo", familia="grimorio",subFamilia="default",w=4,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false,cont=1, color={1,1,1,1}, ataque="", damage="",isCast=false,cast={},extra={name="spell.list",value={{name="fuego",id="fuego",tipo="equip",cont=5,max=5},{name="electro",id="electro",tipo="equip",cont=5,max=5},{name="agua",id="agua",tipo="equip",cont=5,max=5}}}},
 
 
 --Fuego
-revolver = {name="revolver",id="revolver",  cost=10,wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=4,bw=2,tipo="golpe",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-escopeta = {name="escopeta",id="revolver",  cost=10,wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=6,bw=3,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-ballesta = {name="ballesta",id="ballesta",  cost=10,wtipo="equipo",familia="ballesta",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-fusil = {name="fusil",id="fusil",  cost=10,wtipo="equipo",familia="ballesta",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-ametralladora = {name="ametralladora",id="ametralladora",  cost=10,wtipo="equipo",familia="ballesta",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+revolver = {tipo_item="arma",name="revolver",id="revolver",  cost=10,wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=4,bw=2,tipo="golpe",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+escopeta = {tipo_item="arma",name="escopeta",id="revolver",  cost=10,wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=6,bw=3,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+ballesta = {tipo_item="arma",name="ballesta",id="ballesta",  cost=10,wtipo="equipo",familia="ballesta",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+fusil = {tipo_item="arma",name="fusil",id="fusil",  cost=10,wtipo="equipo",familia="ballesta",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+ametralladora = {tipo_item="arma",name="ametralladora",id="ametralladora",  cost=10,wtipo="equipo",familia="ballesta",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="B",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 
 
 
 --instrumento
-campana = {name="campana",id="campana",  cost=10,wtipo="equipo",familia="instrumento",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-harpa = {name="harpa",id="harpa",  cost=10,wtipo="equipo",familia="instrumento",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-guitarra = {name="guitarra",id="guitarra",  cost=10,wtipo="equipo",familia="instrumento",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+campana = {tipo_item="arma",name="campana",id="campana",  cost=10,wtipo="equipo",familia="instrumento",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+harpa = {tipo_item="arma",name="harpa",id="harpa",  cost=10,wtipo="equipo",familia="instrumento",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+guitarra = {tipo_item="arma",name="guitarra",id="guitarra",  cost=10,wtipo="equipo",familia="instrumento",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 
 --Escudos
-escudo_de_madera = {name="escudo de madera",id="escudo_de_madera",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-escudo_de_diamante = {name="escudo de diamante",id="escudo_de_diamante",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",isCast=false,cast={}, extra={},},
-escudo_de_hielo = {name="escudo de hielo",id="escudo_de_hielo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_HIE",name="ABS.HIE", from="equip", value=0, str=""}}},},
-escudo_de_fuego = {name="escudo de fuego",id="escudo_de_fuego",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_FUE",name="ABS.FUE", from="equip", value=0, str=""}}},},
-escudo_del_rayo = {name="escudo del rayo",id="escudo_del_rayo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="ABS_ELE",name="ABS.ELE", from="equip", value=0, str=""}}},},
-escudo_de_bronce = {name="escudo de bronce",id="escudo_de_bronce",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-escudo_de_plata = {name="escudo de plata",id="escudo_de_plata",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-escudo_dorado = {name="escudo dorado",id="escudo_dorado",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-escudo_de_mitrilo = {name="escudo de mitrilo",id="escudo_de_mitrilo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",dex="A",fue="", int="",pod="",smodo="white",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
-escudo_del_bosque = {name="escudo del bosque",id="escudo_del_bosque",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",dex="A",fue="", int="",pod="",smodo="white",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={},},
-escudo_espejo = {name="escudo espejo",id="escudo_espejo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=1, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="REFLEJO",name="REFLEJO", from="equip", value=0, str=""}}},},
-escudo_de_puas = {name="escudo de puas",id="escudo_de_puas",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+escudo_de_madera = {tipo_item="arma",name="escudo de madera",id="escudo_de_madera",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+escudo_de_diamante = {tipo_item="arma",name="escudo de diamante",id="escudo_de_diamante",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2, mdef=0,w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",isCast=false,cast={}, extra={},},
+escudo_de_hielo = {tipo_item="arma",name="escudo de hielo",id="escudo_de_hielo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_HIE",name="ABS.HIE", from="equip", value=0, str=""}}},},
+escudo_de_fuego = {tipo_item="arma",name="escudo de fuego",id="escudo_de_fuego",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="",  isCast=false,cast={},extra={{name="perks",value={id="ABS_FUE",name="ABS.FUE", from="equip", value=0, str=""}}},},
+escudo_del_rayo = {tipo_item="arma",name="escudo del rayo",id="escudo_del_rayo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="ABS_ELE",name="ABS.ELE", from="equip", value=0, str=""}}},},
+escudo_de_bronce = {tipo_item="arma",name="escudo de bronce",id="escudo_de_bronce",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+escudo_de_plata = {tipo_item="arma",name="escudo de plata",id="escudo_de_plata",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+escudo_dorado = {tipo_item="arma",name="escudo dorado",id="escudo_dorado",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+escudo_de_mitrilo = {tipo_item="arma",name="escudo de mitrilo",id="escudo_de_mitrilo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",dex="A",fue="", int="",pod="",smodo="white",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
+escudo_del_bosque = {tipo_item="arma",name="escudo del bosque",id="escudo_del_bosque",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",dex="A",fue="", int="",pod="",smodo="white",sh=false, cont=1, color={1,1,1,1},ataque="", damage="",  isCast=false,cast={},extra={},},
+escudo_espejo = {tipo_item="arma",name="escudo espejo",id="escudo_espejo",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=1,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={{name="perks",value={id="REFLEJO",name="REFLEJO", from="equip", value=0, str=""}}},},
+escudo_de_puas = {tipo_item="arma",name="escudo de puas",id="escudo_de_puas",  cost=10,wtipo="equipo",familia="escudo",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={},extra={},},
 
 --exoticos
 
 
-disco = {name="disco",id="disco",  cost=10,wtipo="equipo",familia="lanzables",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="ataque_amplio", damage="", isCast=false,cast={},extra={},},
-bumeran = {name="bumeran",id="bumeran",  cost=10,wtipo="equipo",familia="lanzables",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="ataque_amplio", damage="", isCast=false,cast={},extra={},},
-latigo = {name="latigo",id="latigo",  cost=10,wtipo="equipo",familia="latigo",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="ataque_amplio",damage="", isCast=false,cast={},extra={},},
+disco = {tipo_item="arma",name="disco",id="disco",  cost=10,wtipo="equipo",familia="lanzables",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="ataque_amplio", damage="", isCast=false,cast={},extra={},},
+bumeran = {tipo_item="arma",name="bumeran",id="bumeran",  cost=10,wtipo="equipo",familia="lanzables",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="ataque_amplio", damage="", isCast=false,cast={},extra={},},
+latigo = {tipo_item="arma",name="latigo",id="latigo",  cost=10,wtipo="equipo",familia="latigo",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="ataque_amplio",damage="", isCast=false,cast={},extra={},},
 
 --azar
-Dado_solitario={name="Dado_solitario",id="Dado_solitario",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dado_solitario", damage="",isCast=false,cast={},extra={},},
-Dados_gemelos={name="Dados_gemelos",id="Dados_gemelos",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-Dados_trillisos={name="Dados_trillisos",id="Dados_trillisos",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-Dados_arreglados={name="Dados_arreglados",id="Dados_arreglados",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos",damage="", isCast=false,cast={},extra={},},
-mazo_ingles={name="mazo_ingles",id="mazo_ingles",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},  
-mazo_espannol={name="mazo_espannol",id="mazo_espannol",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-mazo_tarot  ={name="mazo_tarot",id="mazo_tarot",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-Dardos={name="Dardos",id="Dardos",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-D100={name="D100",id="D100",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-D20={name="D20",id="D20",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-D12={name="D12",id="D12",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-d10={name="d10",id="d10",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-D8={name="D8",id="D8",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-D4={name="D4",id="D4",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
-coin={name="coin",id="coin",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos",damage="", isCast=false,cast={},extra={},},
+Dado_solitario={tipo_item="arma",name="Dado_solitario",id="Dado_solitario",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dado_solitario", damage="",isCast=false,cast={},extra={},},
+Dados_gemelos={tipo_item="arma",name="Dados_gemelos",id="Dados_gemelos",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+Dados_trillisos={tipo_item="arma",name="Dados_trillisos",id="Dados_trillisos",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+Dados_arreglados={tipo_item="arma",name="Dados_arreglados",id="Dados_arreglados",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos",damage="", isCast=false,cast={},extra={},},
+mazo_ingles={tipo_item="arma",name="mazo_ingles",id="mazo_ingles",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},  
+mazo_espannol={tipo_item="arma",name="mazo_espannol",id="mazo_espannol",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+mazo_tarot  ={tipo_item="arma",name="mazo_tarot",id="mazo_tarot",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+Dardos={tipo_item="arma",name="Dardos",id="Dardos",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+D100={tipo_item="arma",name="D100",id="D100",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+D20={tipo_item="arma",name="D20",id="D20",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+D12={tipo_item="arma",name="D12",id="D12",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+d10={tipo_item="arma",name="d10",id="d10",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+D8={tipo_item="arma",name="D8",id="D8",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+D4={tipo_item="arma",name="D4",id="D4",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos", damage="",isCast=false,cast={},extra={},},
+coin={tipo_item="arma",name="coin",id="coin",  cost=10,wtipo="equipo",familia="azar",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="Dados_gemelos",damage="", isCast=false,cast={},extra={},},
 
 --lanzador
 
-lanzador_de_bombas= {name="lanzador_de_bombas",id="lanzador_de_bombas",  cost=10,wtipo="equipo",familia="lanzador",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="",damage="", isCast=false,cast={},extra={},},
-resolteras= {name="resolteras",id="resolteras",  cost=10,wtipo="equipo",familia="lanzador",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="",damage="", isCast=false,cast={},extra={},},
+lanzador_de_bombas= {tipo_item="arma",name="lanzador_de_bombas",id="lanzador_de_bombas",  cost=10,wtipo="equipo",familia="lanzador",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="",damage="", isCast=false,cast={},extra={},},
+resolteras= {tipo_item="arma",name="resolteras",id="resolteras",  cost=10,wtipo="equipo",familia="lanzador",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="",damage="", isCast=false,cast={},extra={},},
 }
 
 armadura_mod={}
@@ -246,70 +249,74 @@ armadura_inventary={
 }
 
 armadura_list={
-        armadura_bronce = {name="armadura bronce",id="armadura_bronce",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_plata = {name="armadura plata",id="armadura_plata",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_mitrillo = {name="armadura mitrillo",id="armadura_mitrillo",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_dorada = {name="armadura dorada",id="armadura_dorada",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_oscura = {name="armadura oscura",id="armadura_oscura",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_de_diamante = {name="armadura de diamante",id="armadura_de_diamante",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_de_cuero = {name="armadura de cuero",id="armadura_de_cuero",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        capa = {name="capa",id="capa",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        capa_de_heroe = {name="capa de heroe",id="capa_de_heroe",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        poncho = {name="poncho",id="poncho",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        tunica = {name="tunica",id="tunica",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        tunica_de_escolar = {name="tunica de escolar",id="tunica_de_escolar",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        tunica_de_mago = {name="tunica de mago",id="tunica_de_mago",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        tunica_de_clerigo = {name="tunica de clerigo",id="tunica_de_clerigo",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_congelada = {name="Armadura congelada",id="armadura_congelada",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
-        armadura_infernal = {name="Armadura infernal",id="armadura_infernal",wtipo="equipo",familia="revolver",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={},},
+        ropa_simple= {tipo_item="torso",name="ropa simple",id="ropa_simple",wtipo="equipo",familia="liviana",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_bronce = {tipo_item="torso",name="armadura bronce",id="armadura_bronce",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_plata = {tipo_item="torso",name="armadura plata",id="armadura_plata",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_mitrillo = {tipo_item="torso",name="armadura mitrillo",id="armadura_mitrillo",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_dorada = {tipo_item="torso",name="armadura dorada",id="armadura_dorada",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_oscura = {tipo_item="torso",name="armadura oscura",id="armadura_oscura",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_de_diamante = {tipo_item="torso",name="armadura de diamante",id="armadura_de_diamante",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_de_cuero = {tipo_item="torso",name="armadura de cuero",id="armadura_de_cuero",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        capa = {tipo_item="torso",name="capa",id="capa",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        capa_de_heroe = {tipo_item="torso",name="capa de heroe",id="capa_de_heroe",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        poncho = {tipo_item="torso",name="poncho",id="poncho",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        tunica = {tipo_item="torso",name="tunica",id="tunica",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        tunica_de_escolar = {tipo_item="torso",name="tunica de escolar",id="tunica_de_escolar",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        tunica_de_mago = {tipo_item="torso",name="tunica de mago",id="tunica_de_mago",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        tunica_de_clerigo = {tipo_item="torso",name="tunica de clerigo",id="tunica_de_clerigo",wtipo="equipo",familia="livina",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_congelada = {tipo_item="torso",name="Armadura congelada",id="armadura_congelada",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
+        armadura_infernal = {tipo_item="torso",name="Armadura infernal",id="armadura_infernal",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
 }
 Accesorios_inventary_see={}
 Accesorios_inventary={
-        {name="lazo rojo",id="lazo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasivo",value={name="ALL Resist",id="ALL_Resist",value=0}}},},
-        {name="absorvedor",id="absorvedor",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="comando",value="extraer"}},},
-        {name="collar_de_huesos",id="collar_de_huesos",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="comando",value={name="desarrollo",id="desarollo",value=0}}},},      
-        {name="anillo rojo",id="anillo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="HP +50%",id="HP_+50%",value=50, operation="+%"}}},},
-        {name="anillo azul",id="anillo_azul",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="MP +50%",id="HP_+50%",value=50,operation="+%"}}},},  
-        {name="anillo del guerrero",id="anillo_del_guerrero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="FUE +5",id="FUE_+5",value=5,operation="+"}}},},
-        {name="anillo del guardian",id="anillo_del_guardian",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="CON +5",id="CON_+5",value=5,operation="+"}}},},
-        {name="anillo del escolar",id="anillo_del_escolar",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="INT +5",id="INT_+5",value=5,operation="+"}}},},
-        {name="anillo del hechizero",id="anillo_del_Hechizero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="POD +5",id="POD_+5",value=5,operation="+"}}},},
-        {name="anillo del asesino",id="anillo_del_asesino",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="AGI +5",id="AGI_+5",value=5,operation="+"}}},},
-        {name="anillo del arquero",id="anillo_del_arquero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="DEX +5",id="DEX_+5",value=5,operation="+"}}},},
-        {name="anillo ambidiestro",id="anillo_ambidiestro",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="ambidiestro",id="ambidiestro",value=5,operation="+"}}},},
-        {name="anillo del heroe",id="anillo_del_heroe",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="ALL +1",id="ALL_+1",value=5,operation="+"}}},},
-        {name="anillo de eficiencia",id="anillo_de_eficiencia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="Mana -1",id="Mana_-1",value=5,operation="+"}}},},
-        {name="tablilla",id="tablilla",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="1 slot",id="1_slot",value=5,operation="+"}}},},
-        {name="tablilla dual",id="tablilla_dual",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="2 slots",id="2_slots",value=5,operation="+"}}},},
-        {name="tablilla de tres",id="tablilla_de_tres",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="3 slots",id="3_slots",value=5,operation="+"}}},},
-        {name="brasalete de furia",id="brasalete_de_furia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="estado",value={name="furia",id="furia",value=5,operation="+"}}},},
-        {name="brasalete de mercurio",id="brasalete_de_mercurio",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="estado",value={name="prisa",id="prisa",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="lazo rojo",id="lazo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasivo",value={name="ALL Resist",id="ALL_Resist",value=0}}},},
+        {tipo_item="accesorio",name="absorvedor",id="absorvedor",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="comando",value="extraer"}},},
+        {tipo_item="accesorio",name="collar_de_huesos",id="collar_de_huesos",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="comando",value={name="desarrollo",id="desarollo",value=0}}},},      
+        {tipo_item="accesorio",name="anillo rojo",id="anillo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="HP +50%",id="HP_+50%",value=50, operation="+%"}}},},
+        {tipo_item="accesorio",name="anillo azul",id="anillo_azul",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="MP +50%",id="HP_+50%",value=50,operation="+%"}}},},  
+        {tipo_item="accesorio",name="anillo del guerrero",id="anillo_del_guerrero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="FUE +5",id="FUE_+5",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo del guardian",id="anillo_del_guardian",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="CON +5",id="CON_+5",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo del escolar",id="anillo_del_escolar",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="INT +5",id="INT_+5",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo del hechizero",id="anillo_del_Hechizero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="POD +5",id="POD_+5",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo del asesino",id="anillo_del_asesino",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="AGI +5",id="AGI_+5",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo del arquero",id="anillo_del_arquero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="DEX +5",id="DEX_+5",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo ambidiestro",id="anillo_ambidiestro",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="ambidiestro",id="ambidiestro",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo del heroe",id="anillo_del_heroe",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="ALL +1",id="ALL_+1",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="anillo de eficiencia",id="anillo_de_eficiencia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="Mana -1",id="Mana_-1",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="tablilla",id="tablilla",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="1 slot",id="1_slot",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="tablilla dual",id="tablilla_dual",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="2 slots",id="2_slots",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="tablilla de tres",id="tablilla_de_tres",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="3 slots",id="3_slots",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="brasalete de furia",id="brasalete_de_furia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="estado",value={name="furia",id="furia",value=5,operation="+"}}},},
+        {tipo_item="accesorio",name="brasalete de mercurio",id="brasalete_de_mercurio",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="estado",value={name="prisa",id="prisa",value=5,operation="+"}}},},
 
 }
 
 Accesorios_list={
-        lazo_rojo = {name="lazo rojo",id="lazo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasivo",value={name="ALL Resist",id="ALL_Resist",value=0}}},},
-        absorvedor = {name="absorvedor",id="absorvedor",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="comando",value="extraer"}},},
-        collar_de_huesos = {name="collar_de_huesos",id="collar_de_huesos",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="comando",value={name="desarrollo",id="desarollo",value=0}}},},      
-        anillo_rojo = {name="anillo rojo",id="anillo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="HP +50%",id="HP_+50%",value=50, operation="+%"}}},},
-        anillo_azul = {name="anillo azul",id="anillo_azul",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="MP +50%",id="HP_+50%",value=50,operation="+%"}}},},  
-        anillo_del_guerrero = {name="anillo del guerrero",id="anillo_del_guerrero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="FUE +5",id="FUE_+5",value=5,operation="+"}}},},
-        anillo_del_guardian = {name="anillo del guardian",id="anillo_del_guardian",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="CON +5",id="CON_+5",value=5,operation="+"}}},},
-        anillo_del_escolar = {name="anillo del escolar",id="anillo_del_escolar",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="INT +5",id="INT_+5",value=5,operation="+"}}},},
-        anillo_del_Hechizero = {name="anillo del hechizero",id="anillo_del_Hechizero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="POD +5",id="POD_+5",value=5,operation="+"}}},},
-        anillo_del_asesino = {name="anillo del asesino",id="anillo_del_asesino",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="AGI +5",id="AGI_+5",value=5,operation="+"}}},},
-        anillo_del_arquero = {name="anillo del arquero",id="anillo_del_arquero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="DEX +5",id="DEX_+5",value=5,operation="+"}}},},
-        anillo_ambidiestro = {name="anillo ambidiestro",id="anillo_ambidiestro",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="ambidiestro",id="ambidiestro",value=5,operation="+"}}},},
-        anillo_del_heroe = {name="anillo del heroe",id="anillo_del_heroe",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="ALL +1",id="ALL_+1",value=5,operation="+"}}},},
-        anillo_de_eficiencia = {name="anillo de eficiencia",id="anillo_de_eficiencia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="Mana -1",id="Mana_-1",value=5,operation="+"}}},},
-        tablilla = {name="tablilla",id="tablilla",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="1 slot",id="1_slot",value=5,operation="+"}}},},
-        tablilla_dual = {name="tablilla dual",id="tablilla_dual",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="2 slots",id="2_slots",value=5,operation="+"}}},},
-        tablilla_de_tres = {name="tablilla de tres",id="tablilla_de_tres",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="pasiva",value={name="3 slots",id="3_slots",value=5,operation="+"}}},},
-        brasalete_de_furia = {name="brasalete de furia",id="brasalete_de_furia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="estado",value={name="furia",id="furia",value=5,operation="+"}}},},
-        brasalete_de_mercurio = {name="brasalete de mercurio",id="brasalete_de_mercurio",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1},extra={{name="estado",value={name="prisa",id="prisa",value=5,operation="+"}}},},
+        lazo_rojo = {tipo_item="accesorio",name="lazo rojo",id="lazo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasivo",value={name="ALL Resist",id="ALL_Resist",value=0}}},},
+        absorvedor = {tipo_item="accesorio",name="absorvedor",id="absorvedor",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="comando",value="extraer"}},},
+        collar_de_huesos = {tipo_item="accesorio",name="collar_de_huesos",id="collar_de_huesos",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, cost=10,color={1,1,1,1},extra={{name="comando",value={name="desarrollo",id="desarollo",value=0}}},},      
+        anillo_rojo = {tipo_item="accesorio",name="anillo rojo",id="anillo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="HP +50%",id="HP_+50%",value=50, operation="+%"}}},},
+        anillo_azul = {tipo_item="accesorio",name="anillo azul",id="anillo_azul",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="MP +50%",id="HP_+50%",value=50,operation="+%"}}},},  
+        anillo_del_guerrero = {tipo_item="accesorio",name="anillo del guerrero",id="anillo_del_guerrero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="FUE +5",id="FUE_+5",value=5,operation="+"}}},},
+        anillo_del_guardian = {tipo_item="accesorio",name="anillo del guardian",id="anillo_del_guardian",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="CON +5",id="CON_+5",value=5,operation="+"}}},},
+        anillo_del_escolar = {tipo_item="accesorio",name="anillo del escolar",id="anillo_del_escolar",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="INT +5",id="INT_+5",value=5,operation="+"}}},},
+        anillo_del_Hechizero = {tipo_item="accesorio",name="anillo del hechizero",id="anillo_del_Hechizero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="POD +5",id="POD_+5",value=5,operation="+"}}},},
+        anillo_del_asesino = {tipo_item="accesorio",name="anillo del asesino",id="anillo_del_asesino",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="AGI +5",id="AGI_+5",value=5,operation="+"}}},},
+        anillo_del_arquero = {tipo_item="accesorio",name="anillo del arquero",id="anillo_del_arquero",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="DEX +5",id="DEX_+5",value=5,operation="+"}}},},
+        anillo_ambidiestro = {tipo_item="accesorio",name="anillo ambidiestro",id="anillo_ambidiestro",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="ambidiestro",id="ambidiestro",value=5,operation="+"}}},},
+        anillo_del_heroe = {tipo_item="accesorio",name="anillo del heroe",id="anillo_del_heroe",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="ALL +1",id="ALL_+1",value=5,operation="+"}}},},
+        anillo_de_eficiencia = {tipo_item="accesorio",name="anillo de eficiencia",id="anillo_de_eficiencia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="Mana -1",id="Mana_-1",value=5,operation="+"}}},},
+        tablilla = {tipo_item="accesorio",name="tablilla",id="tablilla",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="1 slot",id="1_slot",value=5,operation="+"}}},},
+        tablilla_dual = {tipo_item="accesorio",name="tablilla dual",id="tablilla_dual",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="2 slots",id="2_slots",value=5,operation="+"}}},},
+        tablilla_de_tres = {tipo_item="accesorio",name="tablilla de tres",id="tablilla_de_tres",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasiva",value={name="3 slots",id="3_slots",value=5,operation="+"}}},},
+        brasalete_de_furia = {tipo_item="accesorio",name="brasalete de furia",id="brasalete_de_furia",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, cost=10,color={1,1,1,1},extra={{name="estado",value={name="furia",id="furia",value=5,operation="+"}}},},
+        brasalete_de_mercurio = {tipo_item="accesorio",name="brasalete de mercurio",id="brasalete_de_mercurio",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="estado",value={name="prisa",id="prisa",value=5,operation="+"}}},},
 
 }
 
+
+Complemento_inventary_see={}
+Complemento_inventary={}
 Complemento_list={
 ["extractor"]={},
 ["Municion_revolver"]={},
@@ -347,6 +354,10 @@ Complemento_list={
 }
 
 
+Artefacto_inventary_see={}
+Artefacto_inventary={}
+Artefacto_list={}
+
 
 
 Talismanes_inventary={}
@@ -357,6 +368,7 @@ Talismanes_list={}
 
 lista_items_juego={
         pocion={
+                tipo_item="consumible",
                 name="pocion",
                 id="pocion_item",
                 wtipo="consumible",
@@ -368,6 +380,7 @@ lista_items_juego={
                 cont=22,  
                 },
         ether =        {
+                tipo_item="consumible",
                 name="ether",
                 id="ether_item",
                 wtipo="consumible",
@@ -379,6 +392,7 @@ lista_items_juego={
                 cont=22,  
                 },
         bomba =        {
+                tipo_item="consumible",
                 name="bomba",
                 id="bomba",
                 wtipo="consumible",
@@ -390,6 +404,7 @@ lista_items_juego={
                 cont=30,  
                 },
         revivir=        {
+                tipo_item="consumible",
                 name="revivir",
                 id="revivir",
                 wtipo="consumible",
@@ -402,6 +417,7 @@ lista_items_juego={
                 cont=30,  
                 },
         roca =        {
+                tipo_item="consumible",
                 name="roca",
                 id="roca",
                 wtipo="consumible",
@@ -415,6 +431,7 @@ lista_items_juego={
                 },      
                 
         antidoto =        {
+                tipo_item="consumible",
                 name="antidoto",
                 id="antidoto",
                 wtipo="consumible",
@@ -427,6 +444,7 @@ lista_items_juego={
                 cont=1,  
                 },  
         piedra_roja=        {
+                tipo_item="consumible",
                 name="piedra roja",
                 id="piedra_roja",
                 tipo="piedra_especial",
@@ -440,6 +458,7 @@ lista_items_juego={
                 add={},
                 },
         piedra_azul =        {
+                tipo_item="consumible",
         name="piedra_azul",
         id="piedra_azul",
         tipo="piedra_especial",
@@ -453,6 +472,7 @@ lista_items_juego={
         add={},
         },
         piedra_liviana =         {
+                tipo_item="consumible",
         name="piedra_liviana",
         id="piedra_liviana",
         tipo="piedra_especial",
@@ -466,6 +486,7 @@ lista_items_juego={
         add={},
         },
         piedra_maleable =        {
+                tipo_item="consumible",
         name="piedra_maleable",
         id="piedra_maleable",
         tipo="piedra_especial",
@@ -479,6 +500,7 @@ lista_items_juego={
         add={},
         },
         piedra_pesada =        {
+                tipo_item="consumible",
         name="piedra_pesada",
         id="piedra_pesada",
         tipo="piedra_especial",
@@ -492,6 +514,7 @@ lista_items_juego={
         add={},
         },
         piedra_resistente =        {
+                tipo_item="consumible",
         name="piedra_resistente",
         id="piedra_resistente",
         tipo="piedra_especial",
@@ -505,6 +528,7 @@ lista_items_juego={
         add={},
         },
         piedra_energizante =        {
+                tipo_item="consumible",
         name="piedra_energizante",
         id="piedra_energizante",
         tipo="piedra_especial",
@@ -518,6 +542,7 @@ lista_items_juego={
         add={},
         },
         piedra_clara =        {
+                tipo_item="consumible",
         name="piedra_clara",
         id="piedra_clara",
         tipo="piedra_especial",
@@ -531,6 +556,7 @@ lista_items_juego={
         add={},
         },
         piedra_transparante =        {
+                tipo_item="consumible",
         name="piedra_transparante",
         id="piedra_transparante",
         tipo="piedra_especial",
@@ -544,6 +570,7 @@ lista_items_juego={
         add={},
         },
         piedra_hermosa =        {
+                tipo_item="consumible",
         name="piedra_hermosa",
         id="piedra_hermosa",
         tipo="piedra_especial",
@@ -557,6 +584,7 @@ lista_items_juego={
         add={},
         },
         piedra_luminosa =                {
+                tipo_item="consumible",
         name="piedra_luminosa",
         id="piedra_luminosa",
         tipo="piedra_especial",
@@ -570,6 +598,7 @@ lista_items_juego={
         add={},
         },
         potenciador =        {
+                tipo_item="consumible",
         name="potenciador",
         id="potenciador",
         tipo="ingredientes",
@@ -589,12 +618,12 @@ numero_spell={["fuego"]={num=10},["fuego+"]={num=5},["fuego++"]={num=1},
 
 
 objetos_especiales={
-        metralleta={name="metralleta",id="metralleta",wtipo="tools",dir="e",cost=500},
-        lanza_llamas={name="lanza llamas",id="lanza_llamas",wtipo="tools",dir="e",cost=500},
-        generador_electrico={name="generador electrico",id="generador_electrico",wtipo="tools",dir="e",cost=500},
-        generador_de_gravedad={name="generador de gravedad",id="generador_de_gravedad",wtipo="tools",dir="e",cost=500},
-        misiles={name="misiles",id="misiles",wtipo="tools",dir="e",cost=500},
-        disparador_sonico={name="disparador sonico",id="disparador_sonico",wtipo="tools",dir="e",cost=500},
+        metralleta={tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools",dir="e",cost=500},
+        lanza_llamas={tipo_item="especiales",name="lanza llamas",id="lanza_llamas",wtipo="tools",dir="e",cost=500},
+        generador_electrico={tipo_item="especiales",name="generador electrico",id="generador_electrico",wtipo="tools",dir="e",cost=500},
+        generador_de_gravedad={tipo_item="especiales",name="generador de gravedad",id="generador_de_gravedad",wtipo="tools",dir="e",cost=500},
+        misiles={tipo_item="especiales",name="misiles",id="misiles",wtipo="tools",dir="e",cost=500},
+        disparador_sonico={tipo_item="especiales",name="disparador sonico",id="disparador_sonico",wtipo="tools",dir="e",cost=500},
 }
 
 
@@ -606,17 +635,18 @@ ListaFuerzasMagicas={
 Evocaciones={}
 
 lista_tools = {
-        metralleta={name="metralleta",id="metralleta",wtipo="tools", ingredientes = {"metralleta"},dir="e",},
-        lanza_llamas={name = "lanza llamas",id="lanza_llamas", wtipo="tools",ingredientes = {"lanza_llamas"},dir="e",},
-        generador_electrico={name = "generador electrico",id="generador_electrico",wtipo="tools", ingredientes = {"generador_electrico"},dir="e",},
-        generador_de_gravedad ={name = "generador de gravedad",id="generador_de_gravedad", wtipo="tools",ingredientes = {"generador_de_gravedad"},dir="e",},
-        misiles={name = "misiles",id="misiles", wtipo="tools", ingredientes = {"misiles"},dir="e",},
-        disparador_sonico={name = "disparador sonico",id="disparador_sonico", wtipo="tools", ingredientes = {"disparador_sonico"},dir="e",},
+        metralleta={tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools", ingredientes = {"metralleta"},dir="e",},
+        lanza_llamas={tipo_item="especiales",name = "lanza llamas",id="lanza_llamas", wtipo="tools",ingredientes = {"lanza_llamas"},dir="e",},
+        generador_electrico={tipo_item="especiales",name = "generador electrico",id="generador_electrico",wtipo="tools", ingredientes = {"generador_electrico"},dir="e",},
+        generador_de_gravedad ={tipo_item="especiales",name = "generador de gravedad",id="generador_de_gravedad", wtipo="tools",ingredientes = {"generador_de_gravedad"},dir="e",},
+        misiles={tipo_item="especiales",name = "misiles",id="misiles", wtipo="tools", ingredientes = {"misiles"},dir="e",},
+        disparador_sonico={tipo_item="especiales",name = "disparador sonico",id="disparador_sonico", wtipo="tools", ingredientes = {"disparador_sonico"},dir="e",},
 }
 
 
 libros_lista={
         libro_fuego = {
+                tipo_item="consumible",
         name="libro fuego",
         id="libro_fuego",
         tipo="libro",
@@ -630,6 +660,7 @@ libros_lista={
         add={name="fuego",dir="e",cost=1,},
         },
         libro_agua = {
+                tipo_item="consumible",
         name="libro agua",
         id="libro_agua",
         tipo="libro",
@@ -643,6 +674,7 @@ libros_lista={
         add={name="agua",dir="e",cost=1,},
         },
         libro_oscuridad = {
+                tipo_item="consumible",
         name="libro oscuridad",
         id="libro_oscuridad",
         tipo="libro",
@@ -656,6 +688,7 @@ libros_lista={
         add={name="oscuridad",dir="e",cost=1,},
         },
         libro_aire = {
+                tipo_item="consumible",
         name="libro aire",
         id="libro_aire",
         tipo="libro",
@@ -670,6 +703,7 @@ libros_lista={
         },
 
         libro_hielo = {
+                tipo_item="consumible",
         name="libro hielo",
         id="libro_hielo",
         tipo="libro",
@@ -683,6 +717,7 @@ libros_lista={
         add={id="hielo",name="hielo",dir="e",cost=1,},
         },
         libro_electro = {
+                tipo_item="consumible",
         name="libro electro",
         id="libro_electro",
         tipo="libro",
@@ -696,6 +731,7 @@ libros_lista={
         add={id="electro",name="electro",dir="e",cost=1,},
         },
         libro_bio = {
+                tipo_item="consumible",
         name="libro bio",
         id="libro_bio",
         tipo="libro",
@@ -709,6 +745,7 @@ libros_lista={
         add={id="bio",name="bio",dir="e",cost=1,},
         },
         libro_dormir = {
+                tipo_item="consumible",
         name="libro dormir",
         id="libro_dormir",
         tipo="libro",
@@ -722,6 +759,7 @@ libros_lista={
         add={id="dormir",name="dormir",dir="e",cost=1,},
         },
         libro_silencio = {
+                tipo_item="consumible",
         name="libro silencio",
         id="libro_silencio",
         tipo="libro",
@@ -735,6 +773,7 @@ libros_lista={
         add={id="silencio",name="silencio",dir="e",cost=1,},
         },
         libro_ceguera = {
+                tipo_item="consumible",
         name="libro ceguera",
         id="libro_ceguera",
         tipo="libro",
@@ -748,6 +787,7 @@ libros_lista={
         add={id="ceguera",name="ceguera",dir="e",cost=1,},
         },
         libro_petrificacion = {
+                tipo_item="consumible",
         name="libro petrificacion",
         id="libro_petrificacion",
         tipo="libro",
@@ -762,6 +802,7 @@ libros_lista={
         },
 
         libro_sagrado = {
+                tipo_item="consumible",
         name="libro sagrado",
         id="libro_sagrado",
         tipo="libro",
@@ -776,6 +817,7 @@ libros_lista={
         },
 
         libro_terremoto = {
+                tipo_item="consumible",
         name="libro terremoto",
         id="libro_terremoto",
         tipo="libro",
@@ -790,6 +832,7 @@ libros_lista={
         },
 
         libro_gravedad = {
+                tipo_item="consumible",
         name="libro gravedad",
         id="libro_gravedad",
         tipo="libro",
@@ -804,6 +847,7 @@ libros_lista={
         },
 
         libro_tornado = {
+                tipo_item="consumible",
         name="libro tornado",
         id="libro_tornado",
         tipo="libro",
@@ -818,6 +862,7 @@ libros_lista={
         },
 
         libro_meteoro = {
+                tipo_item="consumible",
         name="libro meteoro",
         id="libro_meteoro",
         tipo="libro",
@@ -832,6 +877,7 @@ libros_lista={
         },
 
         libro_ultima = {
+                tipo_item="consumible",
         name="libro ultima",
         id="libro_ultima",
         tipo="libro",
@@ -849,6 +895,7 @@ libros_lista={
 
 items={
         {
+                tipo_item="consumible",
         name="pocion",
         id="pocion_item",
         tipo="consumible",
@@ -860,6 +907,7 @@ items={
         cont=22,  
         },
         {
+                tipo_item="consumible",
         name="ether",
         id="ether_item",
         tipo="consumible",
@@ -871,6 +919,7 @@ items={
         cont=22,  
         },
         {
+                tipo_item="consumible",
         name="bomba",
         id="bomba_item",
         tipo="consumible",
@@ -882,6 +931,7 @@ items={
         cont=30,  
         },
         {
+                tipo_item="consumible",
         name="revivir",
         id="revivir_item",
         tipo="consumible",
@@ -894,6 +944,7 @@ items={
         cont=30,  
         },
         {
+                tipo_item="consumible",
         name="roca",
         id="roca_item",
         tipo="consumible",
@@ -906,6 +957,7 @@ items={
         cont=30,  
         },
         {
+                tipo_item="consumible",
         name="Balas Potentes",
         id="Balas_Potentes",
         tipo="consumible",
@@ -919,6 +971,7 @@ items={
         },
         --Objeto para pruebas
         {
+                tipo_item="consumible",
         name="Objeto anomalo",
         id="libro_fuego",
         tipo="libro",
@@ -1108,8 +1161,8 @@ Desc_Comandos={
 
 posiciones_jugadores={
 {x=120,y=116-16},
-{x=160,y=182-16},
-{x=120,y=248-16},
+{x=182,y=182-16},
+{x=120,y=238-16},
 {x=80,y=116+16},
 {x=50,y=182+16},
 {x=10,y=182-16},

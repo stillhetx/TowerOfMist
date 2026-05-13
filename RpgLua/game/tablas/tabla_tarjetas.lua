@@ -1008,11 +1008,11 @@ Tiendas["vendedor_tienda_pueblo_inicio"]={
     tipo="store",
     inn_cost=0,
     itemsList={
-        {id=lista_items_juego["pocion"].id,name=lista_items_juego["pocion"].name,cost=lista_items_juego["pocion"].cost+10,objeto=lista_items_juego["pocion"]},
-        {id=lista_items_juego["ether"].id,name=lista_items_juego["ether"].name,cost=lista_items_juego["ether"].cost+10,objeto=lista_items_juego["ether"]},
-        {id=lista_items_juego["bomba"].id,name=lista_items_juego["bomba"].name,cost=lista_items_juego["bomba"].cost+10,objeto=lista_items_juego["bomba"]},
-        {id=lista_items_juego["revivir"].id,name=lista_items_juego["revivir"].name,cost=lista_items_juego["revivir"].cost+10,objeto=lista_items_juego["revivir"]},
-        {id=lista_items_juego["antidoto"].id,name=lista_items_juego["antidoto"].name,cost=lista_items_juego["antidoto"].cost+10,objeto=lista_items_juego["antidoto"]},
+        {id=lista_items_juego["pocion"].id,name=lista_items_juego["pocion"].name,cost=lista_items_juego["pocion"].cost+10,objeto=lista_items_juego["pocion"],itemType="consumible"},
+        {id=lista_items_juego["ether"].id,name=lista_items_juego["ether"].name,cost=lista_items_juego["ether"].cost+10,objeto=lista_items_juego["ether"],itemType="consumible"},
+        {id=lista_items_juego["bomba"].id,name=lista_items_juego["bomba"].name,cost=lista_items_juego["bomba"].cost+10,objeto=lista_items_juego["bomba"],itemType="consumible"},
+        {id=lista_items_juego["revivir"].id,name=lista_items_juego["revivir"].name,cost=lista_items_juego["revivir"].cost+10,objeto=lista_items_juego["revivir"],itemType="consumible"},
+        {id=lista_items_juego["antidoto"].id,name=lista_items_juego["antidoto"].name,cost=lista_items_juego["antidoto"].cost+10,objeto=lista_items_juego["antidoto"],itemType="consumible"},
      }
 }
 
@@ -1021,8 +1021,8 @@ Tiendas["vendedor_inn_pueblo_inicio"]={
     tipo="inn",
     inn_cost=10,
     itemsList={
-        {id=lista_items_juego["pocion"].id,name=lista_items_juego["pocion"].name,cost=lista_items_juego["pocion"].cost+10,objeto=lista_items_juego["pocion"]},
-        {id=lista_items_juego["ether"].id,name=lista_items_juego["ether"].name,cost=lista_items_juego["ether"].cost+10,objeto=lista_items_juego["ether"]},
+        {id=lista_items_juego["pocion"].id,name=lista_items_juego["pocion"].name,cost=lista_items_juego["pocion"].cost+10,objeto=lista_items_juego["pocion"],itemType="consumible"},
+        {id=lista_items_juego["ether"].id,name=lista_items_juego["ether"].name,cost=lista_items_juego["ether"].cost+10,objeto=lista_items_juego["ether"],itemType="consumible"},
      }
 }
 Tiendas["vendedor_herrero_pueblo_inicio"]={
@@ -1030,13 +1030,13 @@ Tiendas["vendedor_herrero_pueblo_inicio"]={
     tipo="store",
     inn_cost=0,
     itemsList={
-        {id=weapon_list["espada_corta"].id,name=weapon_list["espada_corta"].name,cost=weapon_list["espada_corta"].cost,objeto=weapon_list["espada_corta"]},
-        {id=weapon_list["espada_larga"].id,name=weapon_list["espada_larga"].name,cost=weapon_list["espada_larga"].cost,objeto=weapon_list["espada_larga"]},
-        {id=weapon_list["hacha"].id,name=weapon_list["hacha"].name,cost=weapon_list["hacha"].cost,objeto=weapon_list["hacha"]},
-        {id=weapon_list["daga"].id,name=weapon_list["daga"].name,cost=weapon_list["daga"].cost,objeto=weapon_list["daga"]},
-        {id=weapon_list["arco_corto"].id,name=weapon_list["arco_corto"].name,cost=weapon_list["arco_corto"].cost,objeto=weapon_list["arco_corto"]},
-        {id=weapon_list["escudo_de_madera"].id,name=weapon_list["escudo_de_madera"].name,cost=weapon_list["escudo_de_madera"].cost,objeto=weapon_list["escudo_de_madera"]},
-        {id=armadura_list["armadura_bronce"].id,name=armadura_list["armadura_bronce"].name,cost=armadura_list["armadura_bronce"].cost,objeto=armadura_list["armadura_bronce"]},
+        {id=weapon_list["espada_corta"].id,name=weapon_list["espada_corta"].name,cost=weapon_list["espada_corta"].cost,objeto=weapon_list["espada_corta"],itemType="arma"},
+        {id=weapon_list["espada_larga"].id,name=weapon_list["espada_larga"].name,cost=weapon_list["espada_larga"].cost,objeto=weapon_list["espada_larga"],itemType="arma"},
+        {id=weapon_list["hacha"].id,name=weapon_list["hacha"].name,cost=weapon_list["hacha"].cost,objeto=weapon_list["hacha"],itemType="arma"},
+        {id=weapon_list["daga"].id,name=weapon_list["daga"].name,cost=weapon_list["daga"].cost,objeto=weapon_list["daga"],itemType="arma"},
+        {id=weapon_list["arco_corto"].id,name=weapon_list["arco_corto"].name,cost=weapon_list["arco_corto"].cost,objeto=weapon_list["arco_corto"],itemType="arma"},
+        {id=weapon_list["escudo_de_madera"].id,name=weapon_list["escudo_de_madera"].name,cost=weapon_list["escudo_de_madera"].cost,objeto=weapon_list["escudo_de_madera"],itemType="escudo"},
+        {id=armadura_list["armadura_bronce"].id,name=armadura_list["armadura_bronce"].name,cost=armadura_list["armadura_bronce"].cost,objeto=armadura_list["armadura_bronce"],itemType="equip"},
      }
 }
 
@@ -1046,9 +1046,9 @@ Tiendas["vendedor_spell_pueblo_inicio"]={
     tipo="store",
     inn_cost=0,
     itemsList={
-        {id=libros_lista["libro_fuego"].id,name=libros_lista["libro_fuego"].name,cost=libros_lista["libro_fuego"].cost,objeto=libros_lista["libro_fuego"]},
-        {id=libros_lista["libro_hielo"].id,name=libros_lista["libro_hielo"].name,cost=libros_lista["libro_hielo"].cost,objeto=libros_lista["libro_hielo"]},
-        {id=libros_lista["libro_electro"].id,name=libros_lista["libro_electro"].name,cost=libros_lista["libro_electro"].cost,objeto=libros_lista["libro_electro"]},
+        {id=libros_lista["libro_fuego"].id,name=libros_lista["libro_fuego"].name,cost=libros_lista["libro_fuego"].cost,objeto=libros_lista["libro_fuego"],itemType="other"},
+        {id=libros_lista["libro_hielo"].id,name=libros_lista["libro_hielo"].name,cost=libros_lista["libro_hielo"].cost,objeto=libros_lista["libro_hielo"],itemType="other"},
+        {id=libros_lista["libro_electro"].id,name=libros_lista["libro_electro"].name,cost=libros_lista["libro_electro"].cost,objeto=libros_lista["libro_electro"],itemType="other"},
      }
 }
 

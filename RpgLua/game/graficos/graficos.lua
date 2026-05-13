@@ -120,8 +120,12 @@ function fondo_background()
 end
 
 function mostrar_background()
-    for i,v in pairs(lista_terreno[enemyGroups[Nvg].terrain]) do
-        spr_sheet(v.spr,v.x,v.y,1,1,1,1,backgroundTile)
+    if enemyGroups[Nvg]~= nil and enemyGroups[Nvg]~={} 
+        and enemyGroups[Nvg].terrain ~= nil and enemyGroups[Nvg].terrain~={}
+        and lista_terreno[enemyGroups[Nvg].terrain]~= nil then
+        for i,v in pairs(lista_terreno[enemyGroups[Nvg].terrain]) do
+            spr_sheet(v.spr,v.x,v.y,1,1,1,1,backgroundTile)
+        end
     end
 end    
 
@@ -469,7 +473,13 @@ function show_spr(v, x,y,x2, y2,x3,y3,bol,bol2)
                 if v.hide then
                     anim_char_hide(v,x,y,bol2)
                 else
-                    anim_char_avanzado(v,x,y,bol2) 
+                    if true and v.sheet~=nil and v.sheet[1]~="" then
+                        anim_char_avanzadoV2(v,x,y,bol2)
+                        --sprSheetV2(v.sheet[2],x,y,1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4])
+                    else    
+                        anim_char_avanzado(v,x,y,bol2)
+                    end 
+                     
                 end                
             end
         else
@@ -592,6 +602,33 @@ function anim_char_avanzado(v,x,y,bol)
                 spr_sheet_avanzado(v.anim.frm[v.anim.ac].spr,x,y,-2,2,1,1,sprites)
             else
                 spr_sheet_avanzado(v.anim.frm[v.anim.ac].spr,x,y,2,2,1,1,sprites)
+            end
+    else
+        spr(v.d_spr,x,y,2,1)
+    end
+end
+
+
+
+function anim_char_avanzadoV2(v,x,y,bol)
+    v.anim.ti=v.anim.ti+1
+    local te=v.anim.frm[1].t
+    local tee=v.anim.frm[2].t
+    local teee=v.anim.ac
+    if v.anim.frm[v.anim.ac].t ~= nil then
+        if v.anim.ti==v.anim.frm[v.anim.ac].t then
+            v.anim.ti=0
+            v.anim.ac=v.anim.ac+1
+            if v.anim.ac > #v.anim.frm then
+                v.anim.ac=1
+            end    
+        end  
+    end  
+    if v.live then
+            if bol then 
+                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,-1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4])
+            else
+                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4])
             end
     else
         spr(v.d_spr,x,y,2,1)
@@ -837,22 +874,22 @@ end
 
  
 
-    function drawPixelAura(image, x, y)
+function drawPixelAura(image,quad, x, y,d,h,w)
     -- Aura (colores sólidos, sin blur)
-    love.graphics.setColor(0, 1, 1, 0.4)
-
+    love.graphics.setColor(0, 1, 1, 1)
+    local offsetValue=1
     local offsets = {
-        {-1, 0}, {1, 0}, {0, -1}, {0, 1}, -- cruz
-        {-1, -1}, {1, -1}, {-1, 1}, {1, 1} -- diagonales
+        {-offsetValue, 0}, {offsetValue, 0}, {0, -offsetValue}, {0, 1}, -- cruz
+        {-offsetValue, -offsetValue}, {offsetValue, -offsetValue}, {-offsetValue, offsetValue}, {offsetValue, offsetValue} -- diagonales
     }
 
     for _, o in ipairs(offsets) do
-        love.graphics.draw(image, x + o[1], y + o[2])
+        love.graphics.draw(image,quad, x + o[1]-4, y + o[2]-4,d,h*1.2,w*1.2)
     end
 
     -- Sprite original encima
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.draw(image, x, y)
+    --love.graphics.draw(image,quad, x, y,d,h,w)
 end
 
 function Show_menus_name_cost_magic(v,x,y)

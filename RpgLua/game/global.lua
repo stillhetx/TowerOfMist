@@ -193,8 +193,8 @@ cont_dt=0
 max_dt=100
 
 
-Show_view="graph"
---Show_view="travel"
+--Show_view="graph"
+Show_view="travel"
 
 Temp_e=""  
 Temp_c=""  

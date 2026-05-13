@@ -358,7 +358,17 @@ end
 function filtrarArmadura()
     armadura_inventary_see={}
     for _, mix in ipairs(armadura_inventary) do
-        if mix.cont>0 then
+        if mix.cont>0 and mix.tipo_item=="torso" then
+            table.insert(armadura_inventary_see, mix) 
+        end
+    end
+end
+
+
+function filtrarCabeza()
+    armadura_inventary_see={}
+    for _, mix in ipairs(armadura_inventary) do
+        if mix.cont>0 and mix.tipo_item=="cabeza" then
             table.insert(armadura_inventary_see, mix) 
         end
     end
@@ -369,6 +379,26 @@ function filtrarAccesorio()
     for _, mix in ipairs(Accesorios_inventary) do
         if mix.cont>0 then
             table.insert(Accesorios_inventary_see, mix) 
+        end
+    end
+end
+
+
+function filtrarComplementos()
+    Complemento_inventary_see={}
+    for _, mix in ipairs(Complemento_inventary) do
+        if mix.cont>0 then
+            table.insert(Complemento_inventary_see, mix) 
+        end
+    end
+end
+
+
+function filtrarArtefactos()
+    Artefacto_inventary_see={}
+    for _, mix in ipairs(Artefacto_inventary) do
+        if mix.cont>0 then
+            table.insert(Artefacto_inventary_see, mix) 
         end
     end
 end

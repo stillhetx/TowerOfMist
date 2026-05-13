@@ -176,9 +176,34 @@ function spr_sheet(n, x, y, w, h, flip_x, flip_y, sheet)
 
     if quad then
         love.graphics.draw(
-            sheet.image, quad, x, y,0, 3,3
+            sheet.image, quad, x, y,0, 2,2
         )
     end
+end
+
+
+function GetDefense(obj)
+    obj = obj or {}
+    if obj~={} and obj.def~=nil and obj.def~={} then
+        return obj.def
+    end
+    return 0
+end
+
+function GetMDefense(obj)
+    obj = obj or {}
+    if obj~={} and obj.mdef~=nil and obj.mdef~={} then
+        return obj.mdef
+    end
+    return 0
+end
+
+function GetPromDamage(obj)
+    obj = obj or {}
+    if obj~={} and obj.w~=nil and obj.w~={} and obj.bw~=nil and obj.bw~={}  then
+        return (obj.w/2)+obj.bw      
+    end
+    return 0
 end
 
 function spr_sheet_test(n, x, y, w, h, flip_x, flip_y, sheet)
@@ -207,7 +232,7 @@ function spr_sheet_avanzado(n, x, y, w, h, flip_x, flip_y, sheet)
     flip_y = flip_y or false
     local f_x= flip_x and -1 or 1
     local f_y= flip_x and -1 or 1
-    local tile_size=2
+    local tile_size=1.75
 
     local quad = sheet.quads[n + 1] -- PICO-8 indexa desde 0, Lua desde 1
 
@@ -222,20 +247,23 @@ end
 function sprSheetV2(n, x, y, w, h, flip_x, flip_y, sheet,hs,ws)
 
     --TODO Agregar codigo
+    n = n or 0
     w = w or 1
     h = h or 1
     flip_x = flip_x or false
     flip_y = flip_y or false
 
-
-    for i=0,hs do
-        for ii=0,ws do
-                local quad = sheet.quads[n +(ii*7 )+i + 1] -- PICO-8 indexa desde 0, Lua desde 1
+    local mult=1
+    for i=0, hs-1 do
+        for ii=0, ws-1 do
+                local index=0
+                index = n + (ii*64 )+i + 1
+                local quad = sheet.quads[index] -- PICO-8 indexa desde 0, Lua desde 1
 
                 if quad then
-                    love.graphics.draw(
-                        sheet.image, quad, x+(i*16), y+(ii*16),0, w*2,h*2
-                    )
+                    --drawPixelAura(sheet.image,quad, x+(i*32*mult), y+(ii*32*mult),0, w*2*mult,h*2*mult)
+                    love.graphics.draw(sheet.image, quad, x+(i*32*mult), y+(ii*32*mult),0, w*2*mult,h*2*mult)                   
+                    
                 end
         end
     end

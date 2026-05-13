@@ -146,6 +146,8 @@ function count_items(str)
     end
 end
 
+
+
 function add_inventary_items_list(t)   
     if existList(t.id, items) then
         --si existe el registro
@@ -393,6 +395,15 @@ function cambio_equipo()
         end 
 
         if select_mp_slot=="accesorio_3" then
+
+        end 
+        if select_mp_slot=="cabeza" then
+
+        end 
+        if select_mp_slot=="artefacto" then
+
+        end 
+        if select_mp_slot=="complemento" then
 
         end 
 

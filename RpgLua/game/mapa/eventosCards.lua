@@ -1,7 +1,8 @@
 Eventos={}
 Eventos.top_cards={intro_card={id="guia_1"},}
 --Definir mapa
-Eventos.level_card=lugares["escape_Bosque"]
+--Eventos.level_card=lugares["escape_Bosque"]
+Eventos.level_card=lugares["pueblo_inicio_01"]
 --Definir nivel
 Eventos.carta_actual=Eventos.level_card[1]
 Eventos.travel=1

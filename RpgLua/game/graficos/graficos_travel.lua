@@ -1,29 +1,30 @@
 
 function EventosCards()
     cls()
-    love.graphics.setColor(255,255,255)
-    love.graphics.rectangle("fill", 10,10, 620, 460)
+    love.graphics.draw(Finish_fight, 0, 0,0,1,1)
+    --love.graphics.setColor(255,255,255)
+    --love.graphics.rectangle("fill", 16,16, 620, 448)
 
-    love.graphics.setColor(0,0,0)
-    love.graphics.rectangle("fill", 20,20, 600, 2)
+    --love.graphics.setColor(0,0,0)
+    --love.graphics.rectangle("fill", 20,20, 600, 2)
 
-    love.graphics.rectangle("fill", 20,18, 6, 6)
+    --love.graphics.rectangle("fill", 20,18, 6, 6)
 
     local step=5
     local dist=lerp(0, 600,step)
 
     for i=1, step do
-        love.graphics.rectangle("fill", 20+(dist*i),18, 6, 6)
+       -- love.graphics.rectangle("fill", 20+(dist*i),18, 6, 6)
     end
 
+    --love.graphics.setColor(255,255,255)
+    --love.graphics.rectangle("fill", 21+(dist*Eventos.travel),19, 4, 4)
+
+
+    --love.graphics.setColor(0,0,0)
+
+    --love.graphics.rectangle("fill", 140,30, 364, 120)
     love.graphics.setColor(255,255,255)
-    love.graphics.rectangle("fill", 21+(dist*Eventos.travel),19, 4, 4)
-
-
-    love.graphics.setColor(0,0,0)
-
-    love.graphics.rectangle("fill", 140,30, 364, 120)
-
     love.graphics.print( Eventos.carta_actual.desq, 30,180)
     --un_boton()
     if not Eventos.resulto then
@@ -32,13 +33,13 @@ function EventosCards()
                 love.graphics.print( " "..v.label, 25,205+(k*40))
                 love.graphics.print( "      "..v.req, 25,225+(k*40))
             end
-            love.graphics.print( "> ", 14,205+(Eventos.op_menu*40))
+            love.graphics.print( ">", 20,205+(Eventos.op_menu*40))
         else
             for k,v in pairs(Eventos.carta_actual.opciones) do
                 love.graphics.print( " "..v.label, 25,225+(k*20))
                 --love.graphics.print( "      "..v.req, 25,245+(k*20))
             end
-            love.graphics.print( "> ", 14,225+(Eventos.op_menu*20))
+            love.graphics.print( ">", 20,225+(Eventos.op_menu*20))
         end
         
     else

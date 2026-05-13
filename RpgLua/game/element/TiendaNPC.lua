@@ -5,6 +5,10 @@ Tienda.tipo=""
 Tienda.etapa="front" --"front","Show","buy", "comprado"
 Tienda.Sel_tienda=1
 Tienda.inn_cost=0
+-----
+Tienda.Objeto={}
+Tienda.itemType=""
+Tienda.cost=0
 Tienda.menu={{id="hablar",name="hablar"},
             {id="comprar",name="comprar"},
             {id="vender",name="vender"},
@@ -20,6 +24,9 @@ Tienda.confirmar={{id="yes",name="Si"},
 function Tienda.control_tienda(key,scancode,isrepeat)
     if key=="z" then
         Tienda.Tienda_Z()
+    end
+    if key=="x" then
+        Tienda.Tienda_X()
     end
     if key=="up" then
         Tienda.Tienda_up()
@@ -61,7 +68,7 @@ function Tienda.regular()
         end
     end
 end
-Tienda.Objeto={}
+
 function Tienda.Tienda_Z()
     if Tienda.etapa=="front" and Tienda.tipo=="store" and Tienda.menu[Tienda.Sel_tienda].id=="comprar" then
        Tienda.etapa="show"
@@ -82,8 +89,10 @@ function Tienda.Tienda_Z()
         Show_view="travel"
         Tienda.Sel_tienda=1
     elseif Tienda.etapa=="show" then
-        Tienda.Objeto=Tienda.ListaStore[Tienda.Sel_tienda]
-        Debug_temp=Tienda.ListaStore[Tienda.Sel_tienda].name
+        Tienda.Objeto=Tienda.ListaStore[Tienda.Sel_tienda].objeto
+        --Debug_temp=Tienda.ListaStore[Tienda.Sel_tienda].name
+        Tienda.itemType=Tienda.ListaStore[Tienda.Sel_tienda].itemType
+        Tienda.cost=Tienda.ListaStore[Tienda.Sel_tienda].cost
         Tienda.etapa="buy"
         Tienda.Sel_tienda=1
     elseif Tienda.etapa=="show_sell" then
@@ -91,8 +100,8 @@ function Tienda.Tienda_Z()
         Tienda.etapa="sell"
         Tienda.Sel_tienda=1
     elseif Tienda.etapa=="buy" and Tienda.confirmar[Tienda.Sel_tienda].id=="yes" then
-        Debug_temp=Tienda.ListaStore[Tienda.Sel_tienda].name
-        if Comprar(Tienda.Objeto) then
+        --Debug_temp=Tienda.ListaStore[Tienda.Sel_tienda].itemType
+        if Comprar(Tienda.Objeto, Tienda.itemType,Tienda.cost) then
             Tienda.etapa="comprado"
         else    
             Tienda.etapa="buy"
@@ -134,14 +143,44 @@ function Tienda.Tienda_Z()
 end
 
 
-function Comprar(objeto)
-    if Dinero>=Dinero then
-        Dinero=Dinero-objeto.cost
+function Tienda.Tienda_X()
+
+
+    if Tienda.etapa=="front" and Tienda.tipo=="store"  then
+        Show_view="travel"
+        Tienda.Sel_tienda=1
+    elseif Tienda.etapa=="show" then
+        Tienda.etapa="front"
+        Tienda.Sel_tienda=1
+    elseif Tienda.etapa=="show_sell" then
+        Tienda.etapa="front"
+        Tienda.Sel_tienda=1
+    end
+
+end
+
+
+function Comprar(objeto,type,cost)
+    cost= cost or 0
+    if Dinero>=cost then
+        Dinero=Dinero-cost
     else
         return false
     end
-   add_inventary_items_list(objeto)
-   return true
+    if type=="arma" or type =="escudo"  then
+        Debug_temp="ID"..objeto.id
+        add_inventary_Weapon_list(objeto)
+        return true
+    elseif type =="equip" then
+        Debug_temp=Debug_temp.."ID"..objeto.id
+        add_inventary_Armadura_list(objeto)  
+        return true
+    else
+        add_inventary_items_list(objeto)
+        return true
+    end
+   
+   return false
 end    
 
 function Vender(objeto)

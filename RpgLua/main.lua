@@ -9,6 +9,8 @@ require("game/tablas/tabla_gambit")
 
 require("game/flag_events")
 
+require("game/PerfilControl")
+
 require("game/tablas/tabla_tarjetas")
 require("game/tablas/lista_enemigo")
 require("game/tablas/tabla_enemy")
@@ -62,6 +64,7 @@ function love.load()
     min_dt = 1/30 --fps
     next_time = love.timer.getTime()
     fondo = love.graphics.newImage("fondo.png")
+    new_sprites_jobs= loadSpritesheet("new_sprites_jobs.png",16)
     spr_animacion= loadSpritesheet("animacion.png", 16)
     sprites = loadSpritesheet("pico-rpg.png", 16)
     caja_texto= loadSpritesheet("MsgSprite.png", 8)
@@ -149,9 +152,9 @@ function _init()
         if true then
             --30 cristales, extraer // nunca lo termine
             --9 es la clase mas complicada
-            local a =2
+            local a =1
             local b =2
-            local c =2
+            local c =4
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
