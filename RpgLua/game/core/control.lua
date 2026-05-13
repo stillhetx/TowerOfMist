@@ -339,11 +339,11 @@ spell_data={}
 
 function perfil()
     Show_view="perfil"
-    showPerfil="perfil"
+    Perfil.showPerfil="perfil"
     if Opm<1 then
-        Opm=#ActiveParty[seePerfil].opciones
+        Opm=#ActiveParty[Perfil.seePerfil].opciones
     end    
-    if Opm>#ActiveParty[seePerfil].opciones then
+    if Opm>#ActiveParty[Perfil.seePerfil].opciones then
         Opm=1
     end  
 end 

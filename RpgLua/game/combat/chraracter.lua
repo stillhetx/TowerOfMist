@@ -347,7 +347,7 @@ function filtrarWeapons()
     weapon_inventary_see={}
     for _, mix in ipairs(weapon_inventary) do
         if mix.cont>0 then
-            if ActiveParty[seePerfil].prof[mix.familia] ~= nil then
+            if ActiveParty[Perfil.seePerfil].prof[mix.familia] ~= nil then
                 table.insert(weapon_inventary_see, mix) 
             end
         end

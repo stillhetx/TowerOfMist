@@ -250,160 +250,160 @@ function cambio_equipo()
 
     if Show_view=="perfil" then
         --texto_help=""   
-        if select_mp_slot=="weapon_izq" then
+        if Perfil.select_mp_slot=="weapon_izq" then
             --texto_help=texto_help.."izq " 
-            if select_mp_Item ~= "quitar" then 
-                local arm_inventario= getChars(select_mp_Item, weapon_inventary)
+            if Perfil.select_mp_Item ~= "quitar" then 
+                local arm_inventario= getChars(Perfil.select_mp_Item, weapon_inventary)
                 if arm_inventario.cont > 0 then
                     arm_inventario.cont=arm_inventario.cont-1
-                    if ActiveParty[seePerfil].weapon.left  == {}  then
+                    if ActiveParty[Perfil.seePerfil].weapon.left  == {}  then
                         --texto_help=texto_help.."A " 
                         --Si no tiene arma. agrega la nueva
-                        ActiveParty[seePerfil].weapon.left=arm_inventario
+                        ActiveParty[Perfil.seePerfil].weapon.left=arm_inventario
                     else
                         --texto_help=texto_help.."b " 
                         --si ya tiene arma, guarda la vieja para agregar la nueva
-                        local arma_left=ActiveParty[seePerfil].weapon.left
-                        Remove_skill_equip(arma_left,ActiveParty[seePerfil])
+                        local arma_left=ActiveParty[Perfil.seePerfil].weapon.left
+                        Remove_skill_equip(arma_left,ActiveParty[Perfil.seePerfil])
                         add_inventary_Weapon_list(arma_left)
-                        ActiveParty[seePerfil].weapon.left=arm_inventario
+                        ActiveParty[Perfil.seePerfil].weapon.left=arm_inventario
                     end
-                    Add_skill_equip(arm_inventario,ActiveParty[seePerfil])
-                    if ActiveParty[seePerfil].weapon.left~={} and ActiveParty[seePerfil].weapon.right  ~= nil and ActiveParty[seePerfil].weapon.left.modo=="2h" then
+                    Add_skill_equip(arm_inventario,ActiveParty[Perfil.seePerfil])
+                    if ActiveParty[Perfil.seePerfil].weapon.left~={} and ActiveParty[Perfil.seePerfil].weapon.right  ~= nil and ActiveParty[Perfil.seePerfil].weapon.left.modo=="2h" then
                         --texto_help=texto_help.."C " 
-                        if  ActiveParty[seePerfil].weapon.right ~= {} then
-                            local arma_right = ActiveParty[seePerfil].weapon.right
+                        if  ActiveParty[Perfil.seePerfil].weapon.right ~= {} then
+                            local arma_right = ActiveParty[Perfil.seePerfil].weapon.right
                             add_inventary_Weapon_list(arma_right)
-                            Remove_skill_equip(arma_right,ActiveParty[seePerfil])
+                            Remove_skill_equip(arma_right,ActiveParty[Perfil.seePerfil])
                         end
                         
-                        ActiveParty[seePerfil].weapon.right={}
+                        ActiveParty[Perfil.seePerfil].weapon.right={}
                     end  
-                    if ActiveParty[seePerfil].weapon.left~={} and ActiveParty[seePerfil].weapon.right  ~= nil and ActiveParty[seePerfil].weapon.left.modo=="1h"  then
+                    if ActiveParty[Perfil.seePerfil].weapon.left~={} and ActiveParty[Perfil.seePerfil].weapon.right  ~= nil and ActiveParty[Perfil.seePerfil].weapon.left.modo=="1h"  then
                         --texto_help=texto_help.."E " 
-                        if  ActiveParty[seePerfil].weapon.right ~= {} and ActiveParty[seePerfil].weapon.right.modo=="2h" then
+                        if  ActiveParty[Perfil.seePerfil].weapon.right ~= {} and ActiveParty[Perfil.seePerfil].weapon.right.modo=="2h" then
                             --texto_help=texto_help.."H " 
-                            local arma_right = ActiveParty[seePerfil].weapon.right
+                            local arma_right = ActiveParty[Perfil.seePerfil].weapon.right
                             add_inventary_Weapon_list(arma_right)
-                            Remove_skill_equip(arma_right,ActiveParty[seePerfil])
-                            ActiveParty[seePerfil].weapon.right={}
+                            Remove_skill_equip(arma_right,ActiveParty[Perfil.seePerfil])
+                            ActiveParty[Perfil.seePerfil].weapon.right={}
                         end    
                     end
                 end        
             else 
-                add_inventary_Weapon_list(ActiveParty[seePerfil].weapon.left)
-                ActiveParty[seePerfil].weapon.left={}
+                add_inventary_Weapon_list(ActiveParty[Perfil.seePerfil].weapon.left)
+                ActiveParty[Perfil.seePerfil].weapon.left={}
             end          
         end  
         
-        if select_mp_slot=="weapon_der" then
+        if Perfil.select_mp_slot=="weapon_der" then
             --texto_help=texto_help.."der " 
-            if select_mp_Item  ~= "quitar" then 
-                local arm_inventario= getChars(select_mp_Item, weapon_inventary)
+            if Perfil.select_mp_Item  ~= "quitar" then 
+                local arm_inventario= getChars(Perfil.select_mp_Item, weapon_inventary)
                 if arm_inventario.cont > 0 then
                     arm_inventario.cont=arm_inventario.cont-1
-                    if ActiveParty[seePerfil].weapon.right  == {} then
+                    if ActiveParty[Perfil.seePerfil].weapon.right  == {} then
                         --texto_help=texto_help.."A " 
-                        ActiveParty[seePerfil].weapon.right=arm_inventario
+                        ActiveParty[Perfil.seePerfil].weapon.right=arm_inventario
                     else
                         --texto_help=texto_help.."b " 
-                        local arma_right=ActiveParty[seePerfil].weapon.right
-                        Remove_skill_equip(arma_right,ActiveParty[seePerfil])
+                        local arma_right=ActiveParty[Perfil.seePerfil].weapon.right
+                        Remove_skill_equip(arma_right,ActiveParty[Perfil.seePerfil])
                         add_inventary_Weapon_list(arma_right)
-                        ActiveParty[seePerfil].weapon.right=arm_inventario
+                        ActiveParty[Perfil.seePerfil].weapon.right=arm_inventario
                     end  
-                    Add_skill_equip(arm_inventario,ActiveParty[seePerfil])
-                    if ActiveParty[seePerfil].weapon.right  ~= {} and ActiveParty[seePerfil].weapon.right  ~= nil and ActiveParty[seePerfil].weapon.right.modo=="2h" then
+                    Add_skill_equip(arm_inventario,ActiveParty[Perfil.seePerfil])
+                    if ActiveParty[Perfil.seePerfil].weapon.right  ~= {} and ActiveParty[Perfil.seePerfil].weapon.right  ~= nil and ActiveParty[Perfil.seePerfil].weapon.right.modo=="2h" then
                         --texto_help=texto_help.."C " 
-                        if  ActiveParty[seePerfil].weapon.left ~= {} then
+                        if  ActiveParty[Perfil.seePerfil].weapon.left ~= {} then
                             --texto_help=texto_help.."D " 
-                            local arma_left=ActiveParty[seePerfil].weapon.left
-                            Remove_skill_equip(arma_left,ActiveParty[seePerfil])
+                            local arma_left=ActiveParty[Perfil.seePerfil].weapon.left
+                            Remove_skill_equip(arma_left,ActiveParty[Perfil.seePerfil])
                             add_inventary_Weapon_list(arma_left)
                         end    
-                        ActiveParty[seePerfil].weapon.left={}
+                        ActiveParty[Perfil.seePerfil].weapon.left={}
                     end  
-                    if ActiveParty[seePerfil].weapon.right  ~= {} and ActiveParty[seePerfil].weapon.right  ~= nil and ActiveParty[seePerfil].weapon.right.modo=="1h"  then
+                    if ActiveParty[Perfil.seePerfil].weapon.right  ~= {} and ActiveParty[Perfil.seePerfil].weapon.right  ~= nil and ActiveParty[Perfil.seePerfil].weapon.right.modo=="1h"  then
                         --texto_help=texto_help.."E " 
-                        if  ActiveParty[seePerfil].weapon.left ~= {} and ActiveParty[seePerfil].weapon.left.modo=="2h" then
+                        if  ActiveParty[Perfil.seePerfil].weapon.left ~= {} and ActiveParty[Perfil.seePerfil].weapon.left.modo=="2h" then
                             --texto_help=texto_help.."H " 
-                            local arma_left=ActiveParty[seePerfil].weapon.left
-                            Remove_skill_equip(arma_left,ActiveParty[seePerfil])
+                            local arma_left=ActiveParty[Perfil.seePerfil].weapon.left
+                            Remove_skill_equip(arma_left,ActiveParty[Perfil.seePerfil])
                             add_inventary_Weapon_list(arma_left)
-                            ActiveParty[seePerfil].weapon.left={}
+                            ActiveParty[Perfil.seePerfil].weapon.left={}
                         end    
                     end
                 end      
             else 
-                add_inventary_Weapon_list(ActiveParty[seePerfil].weapon.right)
-                ActiveParty[seePerfil].weapon.right={}
+                add_inventary_Weapon_list(ActiveParty[Perfil.seePerfil].weapon.right)
+                ActiveParty[Perfil.seePerfil].weapon.right={}
             end  
         end 
 
-        if select_mp_slot=="armadura" then
-            if select_mp_Item  ~= "quitar" then 
-                local temp= getChars(select_mp_Item, armadura_inventary)
+        if Perfil.select_mp_slot=="armadura" then
+            if Perfil.select_mp_Item  ~= "quitar" then 
+                local temp= getChars(Perfil.select_mp_Item, armadura_inventary)
                 temp.cont=temp.cont-1
-                local antiguoEquipado = ActiveParty[seePerfil].armadura
-                ActiveParty[seePerfil].armadura=temp
-                Add_skill_equip(temp,ActiveParty[seePerfil])
+                local antiguoEquipado = ActiveParty[Perfil.seePerfil].armadura
+                ActiveParty[Perfil.seePerfil].armadura=temp
+                Add_skill_equip(temp,ActiveParty[Perfil.seePerfil])
                 add_inventary_Armadura_list(antiguoEquipado)
             else 
-                local temp= ActiveParty[seePerfil].armadura
-                ActiveParty[seePerfil].armadura={}
-                Remove_skill_equip(temp,ActiveParty[seePerfil])
+                local temp= ActiveParty[Perfil.seePerfil].armadura
+                ActiveParty[Perfil.seePerfil].armadura={}
+                Remove_skill_equip(temp,ActiveParty[Perfil.seePerfil])
                 add_inventary_Armadura_list(temp)
             end  
         end 
 
-        if select_mp_slot=="accesorio_1" then
-            if select_mp_Item  ~= "quitar" then 
-                local temp= getChars(select_mp_Item, Accesorios_inventary)
+        if Perfil.select_mp_slot=="accesorio_1" then
+            if Perfil.select_mp_Item  ~= "quitar" then 
+                local temp= getChars(Perfil.select_mp_Item, Accesorios_inventary)
                 temp.cont=temp.cont-1
-                local antiguoEquipado = ActiveParty[seePerfil].accesorio_1
-                ActiveParty[seePerfil].accesorio_1=temp
-                Add_skill_equip(temp,ActiveParty[seePerfil])
+                local antiguoEquipado = ActiveParty[Perfil.seePerfil].accesorio_1
+                ActiveParty[Perfil.seePerfil].accesorio_1=temp
+                Add_skill_equip(temp,ActiveParty[Perfil.seePerfil])
                 if antiguoEquipado.id~=nil  then
-                    Remove_skill_equip(antiguoEquipado,ActiveParty[seePerfil])
+                    Remove_skill_equip(antiguoEquipado,ActiveParty[Perfil.seePerfil])
                 end                
                 add_inventary_Armadura_list(antiguoEquipado)
             else 
-                local temp= ActiveParty[seePerfil].accesorio_1
-                ActiveParty[seePerfil].accesorio_1={}
-                Remove_skill_equip(temp,ActiveParty[seePerfil])
+                local temp= ActiveParty[Perfil.seePerfil].accesorio_1
+                ActiveParty[Perfil.seePerfil].accesorio_1={}
+                Remove_skill_equip(temp,ActiveParty[Perfil.seePerfil])
                 add_inventary_Armadura_list(temp)
             end           
         end 
 
-        if select_mp_slot=="accesorio_2" then
-            if select_mp_Item  ~= "quitar" then 
-                local temp= getChars(select_mp_Item, Accesorios_inventary)
+        if Perfil.select_mp_slot=="accesorio_2" then
+            if Perfil.select_mp_Item  ~= "quitar" then 
+                local temp= getChars(Perfil.select_mp_Item, Accesorios_inventary)
                 temp.cont=temp.cont-1
-                local antiguoEquipado = ActiveParty[seePerfil].accesorio_2
-                ActiveParty[seePerfil].accesorio_2=temp
-                Add_skill_equip(temp,ActiveParty[seePerfil])
+                local antiguoEquipado = ActiveParty[Perfil.seePerfil].accesorio_2
+                ActiveParty[Perfil.seePerfil].accesorio_2=temp
+                Add_skill_equip(temp,ActiveParty[Perfil.seePerfil])
                 if antiguoEquipado.id~=nil  then
-                    Remove_skill_equip(antiguoEquipado,ActiveParty[seePerfil])
+                    Remove_skill_equip(antiguoEquipado,ActiveParty[Perfil.seePerfil])
                 end  
                 add_inventary_Armadura_list(antiguoEquipado)
             else 
-                local temp= ActiveParty[seePerfil].accesorio_2
-                ActiveParty[seePerfil].accesorio_2={}
-                Remove_skill_equip(temp,ActiveParty[seePerfil])
+                local temp= ActiveParty[Perfil.seePerfil].accesorio_2
+                ActiveParty[Perfil.seePerfil].accesorio_2={}
+                Remove_skill_equip(temp,ActiveParty[Perfil.seePerfil])
                 add_inventary_Armadura_list(temp)
             end    
         end 
 
-        if select_mp_slot=="accesorio_3" then
+        if Perfil.select_mp_slot=="accesorio_3" then
 
         end 
-        if select_mp_slot=="cabeza" then
+        if Perfil.select_mp_slot=="cabeza" then
 
         end 
-        if select_mp_slot=="artefacto" then
+        if Perfil.select_mp_slot=="artefacto" then
 
         end 
-        if select_mp_slot=="complemento" then
+        if Perfil.select_mp_slot=="complemento" then
 
         end 
 

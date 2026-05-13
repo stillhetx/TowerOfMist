@@ -1,22 +1,29 @@
+Perfil={}
+Perfil.seePerfil=1
+Perfil.select_mp=""
+Perfil.select_mp_slot=""
+Perfil.select_mp_Item=""
+Perfil.showPerfil=""
+Perfil.accion_mp=""
 
-function main_perfil(key,scancode,isrepeat)
+function Perfil.main_perfil(key,scancode,isrepeat)
                 if key=="left" then
-                    perfil_left()
+                    Perfil.perfil_left()
                 end
                 if key=="right" then
-                    perfil_right()
+                    Perfil.perfil_right()
                 end
                 if key=="up" then
-                    perfil_up()
+                    Perfil.perfil_up()
                 end
                 if key=="down" then
-                    perfil_down()
+                    Perfil.perfil_down()
                 end
                 if key=="z" then
-                    perfil_z()
+                    Perfil.perfil_z()
                 end
                 if key=="x" then
-                    perfil_X()
+                    Perfil.perfil_X()
                 end
 
                 if key=="p" then
@@ -25,9 +32,9 @@ function main_perfil(key,scancode,isrepeat)
                     elseif ComeBackView=="tienda" then
                         --
                     elseif ComeBackView=="graph" then
-                        show_combat_mode()    
+                        Perfil.show_combat_mode()    
                     else    
-                        show_combat_mode()
+                        Perfil.show_combat_mode()
                     end
                 end
 
@@ -40,9 +47,9 @@ function main_perfil(key,scancode,isrepeat)
                     elseif ComeBackView=="tienda" then
                         --
                     elseif ComeBackView=="graph" then
-                        show_combat_mode()    
+                        Perfil.show_combat_mode()    
                     else    
-                        show_combat_mode()
+                        Perfil.show_combat_mode()
                     end
                     
                 end
@@ -50,241 +57,241 @@ function main_perfil(key,scancode,isrepeat)
 end
 
 
-function perfil_left()
-    seePerfil=seePerfil-1
-    if seePerfil<=0 then
-        seePerfil=3
+function Perfil.perfil_left()
+    Perfil.seePerfil=Perfil.seePerfil-1
+    if Perfil.seePerfil<=0 then
+        Perfil.seePerfil=3
     end 
     
-    if seePerfil>3 then
-        seePerfil=1
+    if Perfil.seePerfil>3 then
+        Perfil.seePerfil=1
     end  
 end 
 
-function perfil_right()
-    seePerfil=seePerfil+1
-    if seePerfil<=0 then
-        seePerfil=3
+function Perfil.perfil_right()
+    Perfil.seePerfil=Perfil.seePerfil+1
+    if Perfil.seePerfil<=0 then
+        Perfil.seePerfil=3
     end 
     
-    if seePerfil>3 then
-        seePerfil=1
+    if Perfil.seePerfil>3 then
+        Perfil.seePerfil=1
     end  
 end   
 
 
 
 
-function perfil_z()
+function Perfil.perfil_z()
 local ejecutar_menu=false
-    if select_mp=="select" then
-        if ActiveParty[seePerfil].opciones[Opm] == "equipo" then
-            showPerfil="equip"
-            select_mp="equipo"
-            accion_mp="equipo"
+    if Perfil.select_mp=="select" then
+        if ActiveParty[Perfil.seePerfil].opciones[Opm] == "equipo" then
+            Perfil.showPerfil="equip"
+            Perfil.select_mp="equipo"
+            Perfil.accion_mp="equipo"
         end
-        if ActiveParty[seePerfil].opciones[Opm] == "inventario" then
-            showPerfil="inventario"
-            select_mp="inventario"
-            accion_mp="inventario"
+        if ActiveParty[Perfil.seePerfil].opciones[Opm] == "inventario" then
+            Perfil.showPerfil="inventario"
+            Perfil.select_mp="inventario"
+            Perfil.accion_mp="inventario"
         end
-        if ActiveParty[seePerfil].opciones[Opm] == "magia"  then
-            showPerfil="magia"
-            select_mp="magia"
-            accion_mp="magia"
+        if ActiveParty[Perfil.seePerfil].opciones[Opm] == "magia"  then
+            Perfil.showPerfil="magia"
+            Perfil.select_mp="magia"
+            Perfil.accion_mp="magia"
         end
-        if ActiveParty[seePerfil].opciones[Opm] == "perks"  then
-            showPerfil="perks"
-            select_mp="perks"
-            accion_mp="perks"
+        if ActiveParty[Perfil.seePerfil].opciones[Opm] == "perks"  then
+            Perfil.showPerfil="perks"
+            Perfil.select_mp="perks"
+            Perfil.accion_mp="perks"
         end
-        if ActiveParty[seePerfil].opciones[Opm] == "acciones"  then
-            showPerfil="acciones"
-            select_mp="acciones"
-            accion_mp="acciones"
+        if ActiveParty[Perfil.seePerfil].opciones[Opm] == "acciones"  then
+            Perfil.showPerfil="acciones"
+            Perfil.select_mp="acciones"
+            Perfil.accion_mp="acciones"
         end
-    elseif select_mp=="inventario" then
+    elseif Perfil.select_mp=="inventario" then
         Objeto_selec = items[Opm]
         Debug_temp=Objeto_selec.id
-        select_mp="aceptar"
+        Perfil.select_mp="aceptar"
         
-    elseif select_mp=="aceptar" then
+    elseif Perfil.select_mp=="aceptar" then
         if Opm == 1 then
             
-            EjecutarItem(ActiveParty[seePerfil],ActiveParty[seePerfil],Objeto_selec)
-            select_mp = "usado"
+            EjecutarItem(ActiveParty[Perfil.seePerfil],ActiveParty[Perfil.seePerfil],Objeto_selec)
+            Perfil.select_mp = "usado"
         elseif Opm==2 then
-           select_mp="inventario"
+           Perfil.select_mp="inventario"
         end
-    elseif select_mp=="usado" then 
-           select_mp="inventario"
-    elseif select_mp=="equipo" then            
-            select_mp_slot=equipo_slot[Opm].id
-            if select_mp_slot=="weapon_izq" or select_mp_slot=="weapon_der" then
+    elseif Perfil.select_mp=="usado" then 
+           Perfil.select_mp="inventario"
+    elseif Perfil.select_mp=="equipo" then            
+            Perfil.select_mp_slot=equipo_slot[Opm].id
+            if Perfil.select_mp_slot=="weapon_izq" or Perfil.select_mp_slot=="weapon_der" then
                 filtrarWeapons()
                 Opm=1
-                select_mp="weapon"
+                Perfil.select_mp="weapon"
                 ini_view=1
                 fin_view=9
             end
-            if select_mp_slot=="armadura" then
+            if Perfil.select_mp_slot=="armadura" then
                 filtrarArmadura()
                 Opm=1
-                select_mp="armadura"
+                Perfil.select_mp="armadura"
                 ini_view=1
                 fin_view=9
             end
-            if select_mp_slot=="accesorio_1" then
+            if Perfil.select_mp_slot=="accesorio_1" then
                 filtrarAccesorio()
                 Opm=1
-                select_mp="accesorio"
+                Perfil.select_mp="accesorio"
                 ini_view=1
                 fin_view=9
             end
-            if select_mp_slot=="accesorio_2" then
+            if Perfil.select_mp_slot=="accesorio_2" then
                 filtrarAccesorio()
                 Opm=1
-                select_mp="accesorio"
+                Perfil.select_mp="accesorio"
                 ini_view=1
                 fin_view=9
             end
-            if select_mp_slot=="cabeza" then
+            if Perfil.select_mp_slot=="cabeza" then
                 filtrarCabeza()
                 Opm=1
-                select_mp="cabeza"
+                Perfil.select_mp="cabeza"
                 ini_view=1
                 fin_view=9
             end
-            if select_mp_slot=="artefacto" then
+            if Perfil.select_mp_slot=="artefacto" then
                 filtrarArtefactos()
                 Opm=1
-                select_mp="artefacto"
+                Perfil.select_mp="artefacto"
                 ini_view=1
                 fin_view=9
             end
-            if select_mp_slot=="complemento" then
+            if Perfil.select_mp_slot=="complemento" then
                 filtrarComplementos()
                 Opm=1
-                select_mp="complemento"
+                Perfil.select_mp="complemento"
                 ini_view=1
                 fin_view=9
             end
-    elseif select_mp=="weapon" then
-        select_mp_Item=weapon_inventary_see[((ini_view-1))+Opm].id 
+    elseif Perfil.select_mp=="weapon" then
+        Perfil.select_mp_Item=weapon_inventary_see[((ini_view-1))+Opm].id 
         ejecutar_menu=true
-        select_mp="equipo"
-    elseif select_mp=="armadura" then
-        select_mp_Item=armadura_inventary_see[((ini_view-1))+Opm].id 
+        Perfil.select_mp="equipo"
+    elseif Perfil.select_mp=="armadura" then
+        Perfil.select_mp_Item=armadura_inventary_see[((ini_view-1))+Opm].id 
         ejecutar_menu=true
-        select_mp="equipo"    
-    elseif select_mp=="accesorio" then
-        select_mp_Item=Accesorios_inventary_see[((ini_view-1))+Opm].id 
+        Perfil.select_mp="equipo"    
+    elseif Perfil.select_mp=="accesorio" then
+        Perfil.select_mp_Item=Accesorios_inventary_see[((ini_view-1))+Opm].id 
         ejecutar_menu=true
-        select_mp="equipo"        
+        Perfil.select_mp="equipo"        
     end
 
     if ejecutar_menu==true then
-        if accion_mp=="equipo" then
+        if Perfil.accion_mp=="equipo" then
             cambio_equipo()
         end
     end    
         
-    row_comprobar()
+    Perfil.row_comprobar()
 
 end    
 
 
-function perfil_X()
+function Perfil.perfil_X()
 
-    if select_mp=="select" then
+    if Perfil.select_mp=="select" then
         --//
 
-    elseif  showPerfil=="magia" then    
-            showPerfil="perfil"
-            select_mp="select"
-            accion_mp=""
-    elseif  showPerfil=="perks" then   
-            showPerfil="perfil"
-            select_mp="select"
-            accion_mp="" 
-    elseif  showPerfil=="acciones" then  
-            showPerfil="perfil"
-            select_mp="select"
-            accion_mp=""  
-    elseif select_mp=="equipo" and showPerfil=="equip" then
-            showPerfil="perfil"
-            select_mp="select"
-            accion_mp=""
-    elseif select_mp=="weapon" and showPerfil=="equip" then
+    elseif  Perfil.showPerfil=="magia" then    
+            Perfil.showPerfil="perfil"
+            Perfil.select_mp="select"
+            Perfil.accion_mp=""
+    elseif  Perfil.showPerfil=="perks" then   
+            Perfil.showPerfil="perfil"
+            Perfil.select_mp="select"
+            Perfil.accion_mp="" 
+    elseif  Perfil.showPerfil=="acciones" then  
+            Perfil.showPerfil="perfil"
+            Perfil.select_mp="select"
+            Perfil.accion_mp=""  
+    elseif Perfil.select_mp=="equipo" and Perfil.showPerfil=="equip" then
+            Perfil.showPerfil="perfil"
+            Perfil.select_mp="select"
+            Perfil.accion_mp=""
+    elseif Perfil.select_mp=="weapon" and Perfil.showPerfil=="equip" then
         
-        select_mp="equipo"
-        select_mp_Item=""
-        select_mp_slot=""
+        Perfil.select_mp="equipo"
+        Perfil.select_mp_Item=""
+        Perfil.select_mp_slot=""
 
-    elseif select_mp=="armadura" and showPerfil=="equip" then
-        select_mp="equipo"
-        select_mp_Item=""
-        select_mp_slot=""   
+    elseif Perfil.select_mp=="armadura" and Perfil.showPerfil=="equip" then
+        Perfil.select_mp="equipo"
+        Perfil.select_mp_Item=""
+        Perfil.select_mp_slot=""   
 
-    elseif select_mp=="accesorio" and showPerfil=="equip" then
-        select_mp="equipo"
-        select_mp_Item=""
-        select_mp_slot=""   
+    elseif Perfil.select_mp=="accesorio" and Perfil.showPerfil=="equip" then
+        Perfil.select_mp="equipo"
+        Perfil.select_mp_Item=""
+        Perfil.select_mp_slot=""   
 
-    elseif select_mp=="inventario" and showPerfil=="inventario" then
-        showPerfil="perfil"
-        select_mp="select"
-        accion_mp=""
-    elseif select_mp=="aceptar" and showPerfil=="inventario" then
-        showPerfil="perfil"
-        select_mp="inventario"
-        accion_mp=""    
-    elseif select_mp=="inventario" and showPerfil=="armadura" then
-        showPerfil="perfil"
-        select_mp="select"
-        accion_mp=""  
-    elseif select_mp=="inventario" and showPerfil=="accesorio" then
-        showPerfil="perfil"
-        select_mp="select"
-        accion_mp=""
-    elseif select_mp=="inventario" and showPerfil=="artefacto" then
-        showPerfil="perfil"
-        select_mp="select"
-        accion_mp=""
-    elseif select_mp=="inventario" and showPerfil=="complemento" then
-        showPerfil="perfil"
-        select_mp="select"
-        accion_mp=""    
-    elseif select_mp=="inventario" and showPerfil=="cabeza" then
-        showPerfil="perfil"
-        select_mp="select"
-        accion_mp=""       
+    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="inventario" then
+        Perfil.showPerfil="perfil"
+        Perfil.select_mp="select"
+        Perfil.accion_mp=""
+    elseif Perfil.select_mp=="aceptar" and Perfil.showPerfil=="inventario" then
+        Perfil.showPerfil="perfil"
+        Perfil.select_mp="inventario"
+        Perfil.accion_mp=""    
+    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="armadura" then
+        Perfil.showPerfil="perfil"
+        Perfil.select_mp="select"
+        Perfil.accion_mp=""  
+    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="accesorio" then
+        Perfil.showPerfil="perfil"
+        Perfil.select_mp="select"
+        Perfil.accion_mp=""
+    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="artefacto" then
+        Perfil.showPerfil="perfil"
+        Perfil.select_mp="select"
+        Perfil.accion_mp=""
+    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="complemento" then
+        Perfil.showPerfil="perfil"
+        Perfil.select_mp="select"
+        Perfil.accion_mp=""    
+    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="cabeza" then
+        Perfil.showPerfil="perfil"
+        Perfil.select_mp="select"
+        Perfil.accion_mp=""       
     end
     
-    row_comprobar()
+    Perfil.row_comprobar()
 
 end    
 
-function perfil_up()
+function Perfil.perfil_up()
     Opm=Opm-1
-    row_comprobar()
+    Perfil.row_comprobar()
 end
 
-function perfil_down()
+function Perfil.perfil_down()
     Opm=Opm+1
-    row_comprobar()
+    Perfil.row_comprobar()
 end
 
 
 
-function row_comprobar()
+function Perfil.row_comprobar()
 
-    if showPerfil=="equip" and select_mp=="equipo" then
+    if Perfil.showPerfil=="equip" and Perfil.select_mp=="equipo" then
         if Opm<1 then
             Opm=#equipo_slot
         end
     end
-    if showPerfil=="equip" and select_mp=="weapon" then
+    if Perfil.showPerfil=="equip" and Perfil.select_mp=="weapon" then
         if #weapon_inventary>9 then
             if Opm<1 and ini_view==1 then
                 Opm=9
@@ -304,7 +311,7 @@ function row_comprobar()
             end
         end
     end
-    if showPerfil=="equip" and select_mp=="armadura" then
+    if Perfil.showPerfil=="equip" and Perfil.select_mp=="armadura" then
         if #armadura_inventary>9 then
             if Opm<1 and ini_view==1 then
                 Opm=9
@@ -326,7 +333,7 @@ function row_comprobar()
 
 
 
-    if showPerfil=="equip" and select_mp=="accesorio" then
+    if Perfil.showPerfil=="equip" and Perfil.select_mp=="accesorio" then
         if #Accesorios_inventary>9 then
             if Opm<1 and ini_view==1 then
                 Opm=9
@@ -349,26 +356,26 @@ function row_comprobar()
 
 
 
-    if showPerfil=="inventario" and select_mp=="inventario" then
+    if Perfil.showPerfil=="inventario" and Perfil.select_mp=="inventario" then
         if Opm<1 then
             Opm=#items
         end
     end
 
-    if showPerfil=="perfil" then
+    if Perfil.showPerfil=="perfil" then
         if Opm<1 then
-            Opm=#ActiveParty[seePerfil].opciones 
+            Opm=#ActiveParty[Perfil.seePerfil].opciones 
         end
     end
 
 
-    if showPerfil=="equip" and select_mp=="equipo" then
+    if Perfil.showPerfil=="equip" and Perfil.select_mp=="equipo" then
         if Opm>#equipo_slot then
             Opm=1
         end  
     end
 
-    if showPerfil=="equip" and select_mp=="weapon" then
+    if Perfil.showPerfil=="equip" and Perfil.select_mp=="weapon" then
         if #weapon_inventary_see>9 then        
             if  Opm>9 then
                 ini_view=ini_view+1
@@ -386,7 +393,7 @@ function row_comprobar()
             end
         end
     end
-    if showPerfil=="equip" and (select_mp=="armadura" or select_mp=="cabeza" ) then
+    if Perfil.showPerfil=="equip" and (Perfil.select_mp=="armadura" or Perfil.select_mp=="cabeza" ) then
         if #armadura_inventary_see>9 then
             if  Opm>9 then
                 ini_view=ini_view+1
@@ -404,7 +411,7 @@ function row_comprobar()
             end
         end
     end
-    if showPerfil=="equip" and select_mp=="accesorio" then
+    if Perfil.showPerfil=="equip" and Perfil.select_mp=="accesorio" then
         if #Accesorios_inventary_see>9 then
             if  Opm>9 then
                 ini_view=ini_view+1
@@ -423,7 +430,7 @@ function row_comprobar()
         end    
     end
 
- if showPerfil=="equip" and select_mp=="artefacto" then
+ if Perfil.showPerfil=="equip" and Perfil.select_mp=="artefacto" then
         if #Artefacto_inventary_see>9 then
             if  Opm>9 then
                 ini_view=ini_view+1
@@ -442,7 +449,7 @@ function row_comprobar()
         end    
     end
 
-     if showPerfil=="equip" and select_mp=="complemento" then
+     if Perfil.showPerfil=="equip" and Perfil.select_mp=="complemento" then
         if #Complemento_inventary_see>9 then
             if  Opm>9 then
                 ini_view=ini_view+1
@@ -462,14 +469,14 @@ function row_comprobar()
     end
 
 
-    if showPerfil=="inventario" and select_mp=="inventario" then
+    if Perfil.showPerfil=="inventario" and Perfil.select_mp=="inventario" then
         if Opm>#items then
             Opm=1
         end  
     end
 
-    if showPerfil=="perfil" then
-        if Opm>#ActiveParty[seePerfil].opciones then
+    if Perfil.showPerfil=="perfil" then
+        if Opm>#ActiveParty[Perfil.seePerfil].opciones then
             Opm=1
         end  
     end
@@ -477,11 +484,11 @@ function row_comprobar()
 
 end   
 
-function show_combat_mode()
+function Perfil.show_combat_mode()
     Show_view="graph" 
-    showPerfil="perfil"
-    select_mp_Item=""
-    select_mp_slot=""
-    select_mp=""
-    accion_mp=""
+    Perfil.showPerfil="perfil"
+    Perfil.select_mp_Item=""
+    Perfil.select_mp_slot=""
+    Perfil.select_mp=""
+    Perfil.accion_mp=""
 end 

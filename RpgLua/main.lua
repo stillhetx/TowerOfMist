@@ -294,7 +294,7 @@ function love.keypressed(key, scancode, isrepeat)
         main_control(key,scancode,isrepeat)
     end
     if Show_view == "perfil" then 
-        main_perfil(key,scancode,isrepeat)
+        Perfil.main_perfil(key,scancode,isrepeat)
     end
     if Show_view == "standBy"  then
         main_standBy(key,scancode,isrepeat)

@@ -1,7 +1,7 @@
 function perfil_mode()
     --love.graphics.print("info_label:  state: "..state,10,5)
     love.graphics.draw(fondo,0,0)
-    local l=seePerfil
+    local l=Perfil.seePerfil
     love.graphics.print(ActiveParty[l].name,20,2+(24*1))
     love.graphics.print("$: "..Dinero,360,2+(24*1))
     love.graphics.print("EXP: "..ActiveParty[l].exp,180,2+(24*1))
@@ -20,7 +20,7 @@ function perfil_mode()
 
     anim_char(ActiveParty[l],280,30)
 
-    if showPerfil=="perfil" or showPerfil=="equip"  then
+    if Perfil.showPerfil=="perfil" or Perfil.showPerfil=="equip"  then
 
         if ActiveParty[l].weapon.left ~= nil and ActiveParty[l].weapon.left ~= {} and ActiveParty[l].weapon.left.name ~= nil then 
             love.graphics.print( "weapon L: "..ActiveParty[l].weapon.left.name,100,160+(24*0)) 
@@ -36,7 +36,7 @@ function perfil_mode()
 
     end
 
-    if showPerfil=="perfil" then
+    if Perfil.showPerfil=="perfil" then
 
         love.graphics.print( ">" ,480,20+(24*Opm))
 
@@ -72,34 +72,34 @@ function perfil_mode()
 
     end
 
-    if showPerfil=="equip" then
+    if Perfil.showPerfil=="equip" then
         love.graphics.print( ">" ,80,220+(24*Opm))
-        if select_mp=="equipo" then
+        if Perfil.select_mp=="equipo" then
             for k,i in pairs(equipo_slot) do
                 love.graphics.print( i.id ,100,220+(24*k))
-                if i.id == "weapon_izq" and ActiveParty[seePerfil].weapon.left ~= nil and ActiveParty[seePerfil].weapon.left.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].weapon.left.name ,300,220+(24*k))
+                if i.id == "weapon_izq" and ActiveParty[Perfil.seePerfil].weapon.left ~= nil and ActiveParty[Perfil.seePerfil].weapon.left.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].weapon.left.name ,300,220+(24*k))
                 end
-                if i.id == "weapon_der" and ActiveParty[seePerfil].weapon.right ~= nil and ActiveParty[seePerfil].weapon.right.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].weapon.right.name ,300,220+(24*k))
+                if i.id == "weapon_der" and ActiveParty[Perfil.seePerfil].weapon.right ~= nil and ActiveParty[Perfil.seePerfil].weapon.right.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].weapon.right.name ,300,220+(24*k))
                 end  
-                if i.id == "cabeza" and ActiveParty[seePerfil].head ~= nil and ActiveParty[seePerfil].head.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].weapon.right.name ,300,220+(24*k))
+                if i.id == "cabeza" and ActiveParty[Perfil.seePerfil].head ~= nil and ActiveParty[Perfil.seePerfil].head.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].weapon.right.name ,300,220+(24*k))
                 end  
-                if i.id == "armadura" and ActiveParty[seePerfil].armadura ~= nil  and ActiveParty[seePerfil].armadura ~= {} and ActiveParty[seePerfil].armadura.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].armadura.name ,300,220+(24*k))
+                if i.id == "armadura" and ActiveParty[Perfil.seePerfil].armadura ~= nil  and ActiveParty[Perfil.seePerfil].armadura ~= {} and ActiveParty[Perfil.seePerfil].armadura.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].armadura.name ,300,220+(24*k))
                 end
-                if i.id == "accesorio_1" and ActiveParty[seePerfil].accesorio_1 ~= nil  and ActiveParty[seePerfil].accesorio_1 ~= {} and ActiveParty[seePerfil].accesorio_1.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].accesorio_1.name ,300,220+(24*k))
+                if i.id == "accesorio_1" and ActiveParty[Perfil.seePerfil].accesorio_1 ~= nil  and ActiveParty[Perfil.seePerfil].accesorio_1 ~= {} and ActiveParty[Perfil.seePerfil].accesorio_1.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].accesorio_1.name ,300,220+(24*k))
                 end 
-                if i.id == "accesorio_2" and ActiveParty[seePerfil].accesorio_2 ~= nil  and ActiveParty[seePerfil].accesorio_2 ~= {} and ActiveParty[seePerfil].accesorio_2.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].accesorio_2.name ,300,220+(24*k))
+                if i.id == "accesorio_2" and ActiveParty[Perfil.seePerfil].accesorio_2 ~= nil  and ActiveParty[Perfil.seePerfil].accesorio_2 ~= {} and ActiveParty[Perfil.seePerfil].accesorio_2.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].accesorio_2.name ,300,220+(24*k))
                 end
-                if i.id == "artefacto" and ActiveParty[seePerfil].artefacto ~= nil  and ActiveParty[seePerfil].artefacto ~= {} and ActiveParty[seePerfil].artefacto.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].artefacto.name ,300,220+(24*k))
+                if i.id == "artefacto" and ActiveParty[Perfil.seePerfil].artefacto ~= nil  and ActiveParty[Perfil.seePerfil].artefacto ~= {} and ActiveParty[Perfil.seePerfil].artefacto.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].artefacto.name ,300,220+(24*k))
                 end
-                if i.id == "complemento" and ActiveParty[seePerfil].complemento ~= nil  and ActiveParty[seePerfil].complemento ~= {} and ActiveParty[seePerfil].complemento.name ~= nil then
-                    love.graphics.print( " : "..ActiveParty[seePerfil].complemento.name ,300,220+(24*k))
+                if i.id == "complemento" and ActiveParty[Perfil.seePerfil].complemento ~= nil  and ActiveParty[Perfil.seePerfil].complemento ~= {} and ActiveParty[Perfil.seePerfil].complemento.name ~= nil then
+                    love.graphics.print( " : "..ActiveParty[Perfil.seePerfil].complemento.name ,300,220+(24*k))
                 end
             end
         end    
@@ -116,7 +116,7 @@ function perfil_mode()
 
         ]]
 
-        if select_mp=="weapon" then
+        if Perfil.select_mp=="weapon" then
             love.graphics.print( "armas: ",100,220+(24*0))
 
             if weapon_inventary_see[Opm]~=nil and weapon_inventary_see[Opm].familia=="escudo" then
@@ -130,86 +130,86 @@ function perfil_mode()
             menu_weapon(weapon_inventary_see,9)
         end    
 
-        if select_mp=="armadura" then
+        if Perfil.select_mp=="armadura" then
             love.graphics.print( "armadura: ",100,220+(24*0))
             menu_armor(armadura_inventary_see,9)
         end 
 
-        if select_mp=="accesorio" then
+        if Perfil.select_mp=="accesorio" then
             love.graphics.print( "accesorio: ",100,220+(24*0))
             menu(Accesorios_inventary_see,9)
         end 
 
-        if select_mp=="cabeza" then
+        if Perfil.select_mp=="cabeza" then
             love.graphics.print( "cabeza: ",100,220+(24*0))
             menu(Accesorios_inventary_see,9)
         end
 
-        if select_mp=="artefacto" then
+        if Perfil.select_mp=="artefacto" then
             love.graphics.print( "artefacto: ",100,220+(24*0))
             menu(Accesorios_inventary_see,9)
         end
-        if select_mp=="complemento" then
+        if Perfil.select_mp=="complemento" then
             love.graphics.print( "complemento: ",100,220+(24*0))
             menu(Accesorios_inventary_see,9)
         end
     end
 
-    if showPerfil=="inventario" then
-        if select_mp=="inventario" then
+    if Perfil.showPerfil=="inventario" then
+        if Perfil.select_mp=="inventario" then
             love.graphics.print( ">" ,80,220+(24*Opm))
             for k,i in pairs(items) do
                 love.graphics.print( i.name.."["..i.cont.."]" ,100,220+(24*k))
             end
         end     
-        if select_mp=="aceptar" then
+        if Perfil.select_mp=="aceptar" then
             love.graphics.print( ">" ,80,220+(24*Opm))         
             love.graphics.print( "Si" ,100,220+(24*1))
             love.graphics.print( "No" ,100,220+(24*2))              
         end
-        if select_mp=="usado" then
+        if Perfil.select_mp=="usado" then
             love.graphics.print( "Objeto utilizado" ,100,220+(24*1))   
         end
     end
 
-    if showPerfil=="magia" then
-        if #ActiveParty[seePerfil].mg>0 then
+    if Perfil.showPerfil=="magia" then
+        if #ActiveParty[Perfil.seePerfil].mg>0 then
             love.graphics.print( "Magia" ,80,200)
             --love.graphics.print( ">" ,80,220+(24*Opm))
-            for k,i in pairs(ActiveParty[seePerfil].mg) do
+            for k,i in pairs(ActiveParty[Perfil.seePerfil].mg) do
                 love.graphics.print( i.name .." "..i.cost.."MP",100,220+(24*k))
             end
             --[[
-            if existList(ActiveParty[seePerfil].mg[Opm].id, Desc_Spells) then
-                love.graphics.print( ActiveParty[seePerfil].mg[Opm].name..": " ,100,160+(24*0))
-                love.graphics.print( Desc_Spells[ActiveParty[seePerfil].mg[Opm].id] ,100,160+(24*1))
+            if existList(ActiveParty[Perfil.seePerfil].mg[Opm].id, Desc_Spells) then
+                love.graphics.print( ActiveParty[Perfil.seePerfil].mg[Opm].name..": " ,100,160+(24*0))
+                love.graphics.print( Desc_Spells[ActiveParty[Perfil.seePerfil].mg[Opm].id] ,100,160+(24*1))
             end
             ]]
         end
     end
 
-    if showPerfil=="perks" then
+    if Perfil.showPerfil=="perks" then
         love.graphics.print( "Perks" ,80,200)
-        if #ActiveParty[seePerfil].perks>0 then
+        if #ActiveParty[Perfil.seePerfil].perks>0 then
             local nline=1
-            for k,i in pairs(ActiveParty[seePerfil].perks) do
+            for k,i in pairs(ActiveParty[Perfil.seePerfil].perks) do
                 love.graphics.print( i.name ,100,220+(24*nline))
                 nline=nline+1
             end
         end
 
     end
-    if showPerfil=="acciones" then
+    if Perfil.showPerfil=="acciones" then
         love.graphics.print( "Acciones" ,80,200)
-        if #ActiveParty[seePerfil].acc>0 then
-            for k,i in pairs(ActiveParty[seePerfil].acc) do
+        if #ActiveParty[Perfil.seePerfil].acc>0 then
+            for k,i in pairs(ActiveParty[Perfil.seePerfil].acc) do
                 love.graphics.print( i ,100,220+(24*k))
             end
         end
 
     end
 
-    if showPerfil=="runas" then
+    if Perfil.showPerfil=="runas" then
 
     end
 
@@ -264,7 +264,7 @@ function menu_weapon(list,mx)
 end    
 
 function equip_mode()
-    local l=seePerfil
+    local l=Perfil.seePerfil
     love.graphics.print(ActiveParty[l].name,20,2+(24*1))
     love.graphics.print(" HP: "..ActiveParty[l].hp_.."/"..(ActiveParty[l].hp+mod(ActiveParty[l],"hp")).." MP: "..ActiveParty[l].mp_.."/"..(ActiveParty[l].mp+mod(ActiveParty[l],"mp")),20,2+(24*2))
     love.graphics.print("CON: "..(ActiveParty[l].con+mod(ActiveParty[l],"con")).." POD: "..(ActiveParty[l].pod+mod(ActiveParty[l],"pod")),20,20+(24*3))

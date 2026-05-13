@@ -75,15 +75,15 @@ Opv=1
 
 Opm=1
 
-select_mp="select"
-accion_mp=""
+Perfil.select_mp="select"
+Perfil.accion_mp=""
 
-select_mp_Item=""
-select_mp_slot=""
+Perfil.select_mp_Item=""
+Perfil.select_mp_slot=""
 
 SelectEnemigo={}
 
-showPerfil="perfil"
+Perfil.showPerfil="perfil"
 
 -- botones bonus
 
@@ -239,7 +239,7 @@ world_y=10
 
 ini_overworld=true
 
-seePerfil=1
+--Perfil.seePerfil=""
 
 maps={
 
