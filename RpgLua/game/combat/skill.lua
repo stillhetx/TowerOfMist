@@ -322,6 +322,7 @@ function ejecutar_comando()
 
     if str_comando=="ejecutar_Magic_Dual_segundo" then
         --Debug_temp=Debug_temp.." "..arreglo[2].." "..arreglo[3].name
+        local obj=arreglo[3]
         if arreglo[3].hp_> 0  then
             ejecutarMagia(arreglo[2],arreglo[3],Order)
              cleanEjecutarComando()

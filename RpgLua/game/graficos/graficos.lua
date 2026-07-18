@@ -215,14 +215,14 @@ function Mostrar_extra(v,x,y,bol)
         end    
     end
     if v.seeMagicCharge then
-            local str="magic_"..v.magicCharge
-            spr_sheet(Icon_extra[str],x,y,1,1,1,1,spritesEstados)
-            spr_sheet(Icon_extra["Base_charge"],x,y+28,1,1,1,1,spritesEstados)
-            for i=1, #v.ArraySpell do
+        local str="magic_"..v.magicCharge
+        --spr_sheet(Icon_extra[str],x,y,1,1,1,1,spritesEstados)
+        spr_sheet(Icon_extra["Base_charge"],x,y+28,1,1,1,1,spritesEstados)
+        for i=1, #v.ArraySpell do
                     local strTemp= "Color_"..v.ArraySpell[i]
                     --love.graphics.print( " ["..strTemp.."]",x+16,y+(i*16))
                     spr_sheet(Icon_extra[strTemp],x+poss_magic_charge[i].x,y+poss_magic_charge[i].y+16+28,1,1,1,1,spritesEstados)
-    end
+        end
     
 
             
@@ -254,7 +254,8 @@ function barra_turnos(x,y)
             love.graphics.setColor(1, 1, 1)
             love.graphics.rectangle("line", x,y+(16*d), 16, 16)
             love.graphics.setColor(1, 1, 1)
-            spr_sheet(Order[i].ico,x+2,y+2+(16*d),1,1,1,1,spritesIcon) 
+            --spr_sheet(Order[i].ico,x+2,y+2+(16*d),1,1,1,1,spritesIcon) 
+            spr_sheet_avanzado_size(Order[i].ico,x+2,y+2+(16*d),1,1,3,1,1,spritesIcon)
         end
     end    
 end    
@@ -958,20 +959,34 @@ function Show_menus_name_cost_magic(v,x,y)
 end
 
 function show_menus_tecnica(v,x,y)
-    for i=1,#v  do
+    for i=1,#v-(ini_view-1)  do
         local column = math.floor((i - 1) / itemsPerColumn)
         local row = (i - 1) % itemsPerColumn
         local xi = x + column * columnSpacing
         local yi = y + row * rowSpacing
-        if v[i].isCharge then
-            if Actual.carga==1  then  
-                print("  "..v[i].name.."[C]", xi+6, yi+40,7)
-            else 
-                print("  "..v[i].name.."[C]", xi+6, yi+40,5)   
-            end
-        else
-            print("  "..v[i].name, xi+6, yi+40,7)
-        end    
+        if v[i+(ini_view-1)] then
+            if v[i+(ini_view-1)].isCharge then
+                if Actual.carga==1  then  
+                    if #v[i+(ini_view-1)].name<12 then
+                        print("  "..v[i+(ini_view-1)].name.."[C]", xi+6, yi+40,7)
+                    else
+                        print("  "..string.sub(v[i+(ini_view-1)].name.."...", 1 ,10) .."...[C]", xi+6, yi+40,7)
+                    end
+                else 
+                    if #v[i+(ini_view-1)].name<12 then
+                        print("  "..v[i+(ini_view-1)].name.."[C]", xi+6, yi+40,5)   
+                    else
+                        print("  "..string.sub(v[i+(ini_view-1)].name, 1 ,10) .."...[C]", xi+6, yi+40,5)
+                    end
+                end
+            else
+                if #v[i+(ini_view-1)].name<12 then
+                    print("  "..v[i+(ini_view-1)].name, xi+6, yi+40,7)
+                else
+                    print("  "..string.sub(v[i+(ini_view-1)].name, 1 ,13).."...", xi+6, yi+40,7)   
+                end    
+            end    
+        end
     end
 end  
 

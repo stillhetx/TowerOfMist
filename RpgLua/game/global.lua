@@ -20,7 +20,7 @@ My_party={}
 ActiveParty={}
 Show_party={}
 Death_party={}
-All_party={}
+--All_party={}
 Total_enemy={}
 Show_enemy={}
 
@@ -75,15 +75,15 @@ Opv=1
 
 Opm=1
 
-Perfil.select_mp="select"
-Perfil.accion_mp=""
+--Perfil.select_mp="select"
+--Perfil.accion_mp=""
 
-Perfil.select_mp_Item=""
-Perfil.select_mp_slot=""
+--Perfil.select_mp_Item=""
+--Perfil.select_mp_slot=""
 
 SelectEnemigo={}
 
-Perfil.showPerfil="perfil"
+--Perfil.showPerfil="perfil"
 
 -- botones bonus
 
@@ -93,7 +93,7 @@ Buton_bonus=0
 
 Acc=""
 Replace_Acc=false
-obj=""
+--obj=""
 Last_sel_e=""
 Sel_e=""
 Sel_ee=""
@@ -138,21 +138,21 @@ Sel_command=false
 --bolean sobre la ejecucion de habilidades
 Execute=false
 
-objetivo=0
+--objetivo=0
 
-time=10
+--time=10
 
 auto=false
 count_auto=0
 
-cont=0
+--cont=0
 
 --Modo="overWorld"  
 
 Modo="combat"
 
-last_a="" --Deprecado?
-last_e="" --Deprecado?
+--last_a="" --Deprecado?
+--last_e="" --Deprecado?
 
 
 str="" --Deprecado?
@@ -186,26 +186,27 @@ VIRTUAL_WIDTH= 128
 VIRTUAL_HEIGHT=128
 game_width = 640
 game_height = 480
-scale_mode = true
+--scale_mode = true
 scale=8
 
-cont_dt=0
-max_dt=100
+--cont_dt=0
+--max_dt=100
 
 
---Show_view="graph"
-Show_view="travel"
+Show_view="graph"
+--Show_view="travel"
 
 Temp_e=""  
 Temp_c=""  
 
-
+ini_view=1
+fin_view=18
 
 --tabla_menu={} --Deprecado?
 Name_action=""
-last_key=""
+--last_key=""
 
-inverso=false 
+--inverso=false 
 
 start_caracter=false 
 
@@ -262,8 +263,9 @@ fin_view=0
 
 bonus_boton_time_max=26
 bonus_boton_time_cont=0
-bonus_button=false
+--bonus_button=false
 
+animated_bonus_boton=false
 
 ComeBackView=""
 

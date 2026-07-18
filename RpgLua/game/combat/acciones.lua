@@ -1,248 +1,98 @@
 
+--[[
+
+Menu.Acc=""
+Menu.Replace_Acc=false
+Menu.obj=""
+Menu.Last_sel_e=""
+Menu.Sel_e=""
+Menu.Sel_ee=""
+Menu.Last_sel_ee=""
+Menu.Sel_i=""
+
+
+
+Menu.Ttipo=""
+Menu.Ccolor=""
+Menu.Llv=0
+Menu.Ccost=0
+Menu.Mg_sel=""
+Menu.Last_mg_sel=""
+Menu.Mg_2sel=""
+Menu.Last_mg_2sel=""
+Menu.Last_sel_c=""
+Menu.Sel_c=""
+Menu.Last_sel_cc=""
+Menu.Sel_cc=""
+Menu.Dirr="e"
+Menu.Dirr2=""
+
+Menu.Ttipo2=""
+Menu.Ccolor2=""
+Menu.Llv2=0
+Menu.Ccost2=0
+
+Menu.Last_dirr=""
+Menu.Last_acc=""
+Menu.Number_sel=0
+
+IsInterruccion=false
+INTERRUCCION_MSG=""
+
+Menu.continuar_turno=false
+
+Menu.IsCharge=false
+Menu.Sel_t_cost=""
+Menu.Sel_command=false
+
+]]
+
+
+Eleg=""
+
 function acciones()
     local eleg=(ini_view-1)+Op
     Replace_Acc=false
+    Actual.carga=1
 
     if State=="select" then
         sel1=Op 
-        if Actual.acc[eleg]=="atacar" and Actual.state["paralisis"] == nil then
-            State="select e"
-            Acc="atacar"
+        Acc=Actual.acc[eleg]
+        Eleg=eleg
+        State=Tabla_acciones[Acc]
+
+        if State=="select e" then
             FiltrarEnemigoVivos()
         end
-        if Actual.acc[eleg]=="W.Arts"then
-            State="select o"
-            Acc="W.Arts"
-            filtrarWeaponArts()
-        end
-        if Actual.acc[eleg]=="support.w" then
-            State="select e"
-            Acc="support.w"
-            FiltrarEnemigoVivos()
-        end
-        --
-        if Actual.acc[eleg]=="mix" then
-            filtrarHechizos()
-            State="select o"
-            Acc="mix"
-        end
-        if Actual.acc[eleg]=="slash" then
-            Execute=true
-            Acc="slash"
-        end
-        if Actual.acc[eleg]=="tecnica"  then
-            State="select o"
-            Acc="tecnica"
-        end
-        if Actual.acc[eleg]=="especiales" then
-            State="select o"
-            Acc="especiales"
-        end
-        if Actual.acc[eleg]=="invocar"  then
-            State="select o"
-            Acc="invocar"
-        end
-        if Actual.acc[eleg]=="atrapar"  then
-            State="select e"
-            Acc="atrapar"
-            FiltrarEnemigoVivos()
-        end
-        if Actual.acc[eleg]=="asesinar"  then
-            State="select e"
-            Acc="asesinar"
-            FiltrarEnemigoVivos()
-        end
-        if Actual.acc[eleg]=="esconderse"  then
-            State="select"
-            Acc="esconderse"
+        if State=="Execute" then
             Execute=true
         end
-        if Actual.acc[eleg]=="llamar" then
-            if #Actual.beast >0 then
-                State="select o"
-                Acc="llamar"
-            else
-                State="select"
-                Acc=""
-            end
+
+        if Tabla_acciones_funcion and Tabla_acciones_funcion[Acc] and  type(Tabla_acciones_funcion[Acc])=="function" then
+            Tabla_acciones_funcion[Acc]()
         end
-        if Actual.acc[eleg]=="tools" then
-            filtrarTools()
-            --Msg_debug="1Tools "
-            if #Actual.tools > 0 then
-                State="select o"
-                Acc="tools"
-            else
-                Acc=""
-                State="select"
-            end
-        end
-        if Actual.acc[eleg]=="transformacion" then
-            State="select o"
-            Acc="transformacion"
-        end
-        if Actual.acc[eleg]=="destransformar" then
-            Acc="destransformar"
-            Execute=true
-        end
-        if Actual.acc[eleg]=="Blu.magic" then
-            filtrarHechizosAzules()
-            if #Actual.blue > 0 then
-                State="select o"
-                Acc="Blu.magic"
-            else
-                Acc=""
-                State="select"
-            end
-        end
-        if Actual.acc[eleg]=="bullet" then
-            filtrarBalas()
-            if #Actual.bullet > 0 then
-                State="select o"
-                Acc="bullet"
-            else
-                Acc=""
-                State="select"
-            end
-        end
-        if Actual.acc[eleg]=="rapido" then
-            State="select e"
-            Acc="rapido"
-            FiltrarEnemigoVivos()
-        end
-        --
-        if Actual.acc[eleg]=="runes" then
-            State="select o"
-            Acc="spell.list"
-            FiltrarSpellList()
-        end
-        if Actual.acc[eleg]=="spell.list" then
-            State="select o"
-            Acc="spell.list"
-            FiltrarSpellList()
-        end
-        if Actual.acc[eleg]=="Power.Stone" then
-            State="select o"
-            Acc="Power.Stone"
-            FiltrarPowerStone()
-        end
-        if Actual.acc[eleg]=="extraer" then
-            State="select e"
-            Acc="extraer"
-        end
-        if Actual.acc[eleg]=="cargar" then
-            State="select e"
-            Acc="cargar"
-            FiltrarEnemigoVivos()
-        end
-        if Actual.acc[eleg]=="guardia" then
-            Acc="guardia"
-            Execute=true
-        end
-        if Actual.acc[eleg]=="darkness" then
-            Acc="darkness"
-            State="select e"
-            FiltrarEnemigoVivos()
-        end
-        if Actual.acc[eleg]=="quitar" then
-            State="select e"
-            Acc="quitar"
-            FiltrarEnemigoVivos()
-        end
-        if Actual.acc[eleg]=="mimic" then
-            Acc="mimic"
-            Execute=true
-        end
-        if Actual.acc[eleg]=="dual M." then
-            State="select oo"
-            Acc="dual M."
-        end
-        if Actual.acc[eleg]=="spirit" then
-            State="select o"
-            Acc="spirit"
-        end
-        if Actual.acc[eleg]=="magic" or Actual.acc[eleg]=="ninja" or Actual.acc[eleg]=="espada"  then
-            State="select o"
-            Acc="magic"
-        end 
-        if Actual.acc[eleg]=="magics" then
-            State="select l"
-            Acc="magics"
-        end
-        if Actual.acc[eleg]=="coleccion" then
-            State="select l"
-            Acc="coleccion"
-        end
-        if Actual.acc[eleg]=="colecciones" then
-            State="select l"
-            Acc="colecciones"
-        end
-        if Actual.acc[eleg]=="canciones" then
-            State="select o"
-            Acc="canciones"
-        end
-        if Actual.acc[eleg]=="espada" then
-            State="select o"
-            Acc="espada"
-        end
-        if Actual.acc[eleg]=="ninja" then
-            State="select o"
-            Acc="ninja"
-        end
-        if Actual.acc[eleg]=="bailes" then
-            State="select o"
-            Acc="bailes"
-        end
-        if Actual.acc[eleg]=="evocar" then
-            State="select o"
-            Acc="evocar"
-            FiltrarFuerzas()
-        end
-        if Actual.acc[eleg]=="robar" then
-            State="select e"
-            Acc="robar"
-            FiltrarEnemigoVivos()
-        end 
-        if Actual.acc[eleg]=="objeto" then
-            State="select i"
-            Acc="objeto"
-        end
-        if Actual.acc[eleg]=="usar" then
-            State="select i"
-            Acc="usar"
-        end
-        if Actual.acc[eleg]=="combo" then
-            State="select e"
-            Acc="combo"
-            FiltrarEnemigoVivos()
-        end
-        if Actual.acc[eleg]=="defensa" then
-            Acc="defensa"
-            Execute=true
-        end
-        if Actual.acc[eleg]=="proteger" then
-            Acc="proteger"
-            Execute=true
-        end
-        if Actual.acc[eleg]=="saltar" then
-            State="select e"
-            Acc="saltar"
-            FiltrarEnemigoVivos()
-        end
-        if Actual.acc[eleg]=="lanzar" then
-            State="select w"
-            Acc="lanzar"
-        end 
-        if Actual.acc[eleg]=="suerte" then
-            Execute=true
-            Acc="suerte"
-        end 
-        if Actual.acc[eleg]=="geo" then
-            Execute=true
-            Acc="geo"
-        end 
+
         ini_view=1
-        fin_view=6
+        fin_view=18
+    elseif State=="select m" then
+        if Acc=="memory" then
+            if Actual.memory[(ini_view-1)+Op].isReplace == true then
+                Acc=Actual.memory[(ini_view-1)+Op].sub
+                State=Actual.memory[(ini_view-1)+Op].sel
+            else
+                Acc=Actual.memory[(ini_view-1)+Op].sub
+                State=Actual.memory[(ini_view-1)+Op].sel
+                Mg_sel=Actual.memory[(ini_view-1)+Op].id
+                Name_action=Actual.memory[(ini_view-1)+Op].name
+                Dirr=Actual.memory[(ini_view-1)+Op].dir
+                Ccost=Actual.memory[(ini_view-1)+Op].cost
+                Ttipo=Actual.memory[(ini_view-1)+Op].tipo
+                Ccolor=Actual.memory[(ini_view-1)+Op].color
+                Llv=Actual.memory[(ini_view-1)+Op].lv
+            end    
+
+            
+        end
     elseif State=="select l" then
         if Acc == "magics" then
             Acc=Actual.mag[Op]
@@ -332,14 +182,22 @@ function acciones()
             --
         end     
     elseif State=="select o" then
-        IsInterruccion=false
-        INTERRUCCION_MSG="" 
+        --IsInterruccion=false
+        --INTERRUCCION_MSG="" 
         --Sacar Replace_Acc y reemplazar por else and else if
             if Acc == "magic" then            
                 if Actual.mp_< Actual.mg[(ini_view-1)+Op].cost then
                     State ="select"
                     Acc=""
                 else
+                    ConfigAccion(Actual.mg[(ini_view-1)+Op].id,
+                    Actual.mg[(ini_view-1)+Op].name,
+                    Actual.mg[(ini_view-1)+Op].dir,
+                    Actual.mg[(ini_view-1)+Op].cost,
+                    Actual.mg[(ini_view-1)+Op].tipo,
+                    Actual.mg[(ini_view-1)+Op].color,
+                    Actual.mg[(ini_view-1)+Op].lv)
+
                     Mg_sel=Actual.mg[(ini_view-1)+Op].id
                     Name_action=Actual.mg[(ini_view-1)+Op].name
                     Dirr=Actual.mg[(ini_view-1)+Op].dir
@@ -436,10 +294,10 @@ function acciones()
                 Sel_t_cost=Actual.sk[Op].tCost
                 IsCharge=Actual.sk[Op].isCharge
                 Sel_command=Actual.sk[Op].isCommand
-                if Actual.sk[Op].tCost=="charge" and not Actual.carga==1 then
+                if Actual.sk[Op].tCost=="charge" and not (Actual.carga==1) then
                         State = "select"
                         Acc=""
-                elseif Actual.sk[Op].tCost=="rc" and not Actual.rc_>0 then
+                elseif Actual.sk[Op].tCost=="rc" and not (Actual.rc_>0) then
                         State = "select"
                         Acc=""                          
                 end
@@ -555,18 +413,12 @@ function acciones()
                 end
             end  
 
-
             if Acc=="tools" and Replace_Acc  then
                 filtrarTools()
                 --Msg_debug=Msg_debug.."2Tools "
             end
-            if Acc=="usar" and Replace_Acc  then
-                --filtrarTools()
-                --Msg_debug=Msg_debug.."2Tools "
-            end
             if Acc=="bullet" and Replace_Acc  then
                 filtrarBalas()
-                --Msg_debug=Msg_debug.."2Tools "
             end
             if Acc=="llamar" and Replace_Acc then
                 if not (#Actual.beast>0) then
@@ -616,6 +468,7 @@ function acciones()
             Execute=true
             State="select"
             Sel_c=Death_party[Op].id
+            Sel_e=Sel_c
         end
     elseif State=="select a" then --all enemy, not tarjet
         if  Acc=="tecnica"  or Acc=="magic"then
@@ -639,6 +492,10 @@ function acciones()
         Execute=true
         State="select"
     end
+    --Verificar()
+    if Execute == true then
+        Verificar()
+    end
     if Execute==true then
         guardar_ultima_accion()
         ejecutar()
@@ -653,6 +510,83 @@ function acciones()
     inside()
 end   
 
+ERROR_MENU=""
+
+function Verificar()
+    if Acc=="" or Acc==nil then
+        ERROR_MENU="Error Accion"..Acc
+        CleanMenu()
+        return 
+    end
+    if Dirr=="" or Dirr== nil then
+        ERROR_MENU="Error DIRR"
+        CleanMenu()
+        return 
+    end
+    if Dirr=="e" or Dirr=="c" or  Dirr=="d" then
+        if Sel_e=="" or Sel_e==nil then
+            ERROR_MENU="Error Sel_e"
+            CleanMenu()
+            Sel_e=""
+            return 
+        end
+        if Sel_c=="" or Sel_c==nil then
+            ERROR_MENU="Error Sel_c"
+            CleanMenu()
+            Sel_c=""
+            return 
+        end
+    end
+    if Dirr=="d" then
+        if Sel_c=="" or Sel_c==nil then
+            ERROR_MENU="Error Sel_c"
+            CleanMenu()
+            Sel_c=""
+            return 
+        end
+    end
+    if Dirr=="w" then
+        if Sel_w=="" or Sel_w==nil then
+            ERROR_MENU="Error Sel_w"
+            CleanMenu()
+            Sel_w=""
+            return 
+        end
+    end
+    if Dirr=="i" then
+        if Sel_i=="" or Sel_i==nil then
+            CleanMenu()
+            Sel_i=""
+            return 
+        end
+    end
+
+
+
+
+end
+
+function CleanMenu()
+    Acc=""
+    Dirr=""
+    Execute=false
+end
+
+function ConfigAccion(mg_sel,name_action,dirr,ccost,ttipo,ccolor,llv)
+    mg_sel = mg_sel or ""
+    name_action = name_action or ""
+    dirr = dirr or ""
+    ccost = ccost or ""
+    llv = llv or ""
+
+    Mg_sel=mg_sel
+    Name_action=name_action
+    Dirr=dirr
+    Ccost=ccost
+    Ttipo=ttipo
+    Ccolor=ccolor
+    Llv=llv
+end
 
 function CostoSkill()
 

@@ -1,18 +1,23 @@
+Graficos_Batalla={}
+require("game/graficos/graficos_batalla_menu")
+require("game/graficos/graficos_batalla_debug_menu")
+require("game/graficos/graficos_batalla_show_character")
+require("game/graficos/graficos_batalla_show_enemy")
+require("game/graficos/graficos_batalla_show_otros")
+require("game/graficos/graficos_batalla_offview_panels")
+
 
 function graph_mode()
     cls()
 
     --love.graphics.draw(fondo,0,0)
 
-    if Modo=="WIN" then
-        love.graphics.draw(Finish_fight, 0, 0,0,1,1)
-    else
-        love.graphics.draw(img_intro, 0, 0,0,1,1)
-    end
+ 
 
     --love.graphics.rectangle("fill", 16,16, 608,60)
     --608,60
     
+    Graficos_Batalla.off_panel()
 
     fondo_background()
   
@@ -56,38 +61,11 @@ function graph_mode()
         end
     end
 
-
-
-    --love.graphics.print( "Debug: #Sprites "..  #fondo_sprites.quads.." ",30,114+(24*-4))
-
-     if Cancel_ejecutar then
-       -- love.graphics.print( "Cancel: true",30,120+(24*-2))
-     else   
-        --love.graphics.print( "Cancel: false",30,120+(24*-2))
-     end
-
-    if Execute then
-        --love.graphics.print( "timer: ".." true "..timer_wait.." ",30,120+(24*-3))
-    else
-        --love.graphics.print( "timer: ".." false "..timer_wait.." ",30,120+(24*-3))
+    if true then
+        Graficos_Batalla.debug_log()
     end
 
-
-    if Replace_Acc then
-        love.graphics.print( "T debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-3))
-     else   
-         love.graphics.print( "F debug: "..Acc.." "..State.." "..Msg_debug,30,120+(24*-3))
-     end
-
-
-     if true and not ERROR_MSG=="" then
-        love.graphics.print( "ERROR: "..ERROR_MSG,30,120+(24*-3))
-     end
-
-    if true and not INTERRUCCION_MSG=="" then
-        love.graphics.print( "ERROR: "..ERROR_MSG,30,120+(24*-4))
-     end
-
+   
     placeHolder()
     --love.graphics.print( "debug: "..Acc.." "..State,30,120+(24*-4))
 
@@ -103,56 +81,12 @@ function graph_mode()
         mostrar_background()
         --spr(0,0,0,4,4,false,false,fondo_sprites)
         
-        for k,v in pairs(ActiveParty) do
-            if v.see then  
-                if true then
-                    love.graphics.print( "  "..Name_action.." ",200,20+(24*0))
-                end
-                if Actual.id==v.id then
-                    Mostrar_enlaze(v, (v.x)+10,(v.y),false)
-                    Mostrar_icon_mode(v, (v.x),(v.y),false)
-                    Mostrar_extra(v, (v.x+56),(v.y),false)
-                    Mostrar_shield(v,(v.x-26),v.y+26,false)
-                    Mostrar_rc(v, (v.x-16),(v.y),false)
-                    Mostrar_extra_acciones(v, (v.x),(v.y),false)
-                    
-                end
-                
-                show_spr(v, (v.x),(v.y), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",false)  
-                show_msg_dmg(v,v.x,v.y+20-timer_dmg_txt,false)
-                Barra_vida(v, (v.x-14),(v.y)) --- -10 0     0   +20
-                --Mostrar_estados(v,(v.x-60),(v.y),false) --50 0
-                Mostrar_animacion_ataque(v, (v.x+40),(v.y),false)
-                Mostrar_animacion_dmg(v, (v.x),(v.y),false)
-                Mostrar_animacion_summon(v, (v.summon_x),(v.summon_y),false)
-                Mostrar_barra(v, (v.x-16),(v.y+62),false)
+        Graficos_Batalla.show_character()
 
-            end 
+        Graficos_Batalla.show_enemy()
+   
+        Graficos_Batalla.show_otros()
 
-        end    
-        for k,v in pairs(Total_enemy) do
-                --love.graphics.print( ":"..v.react_time.."-"..react_time_max_var,(v.x),(v.y-40))
-
-                show_spr(v, (v.x),(v.y), v.x,v.y-timer_dmg_txt, (v.x),(v.y),Temp_e==v.id and State=="select e",false)
-                show_msg_dmg(v,v.x,v.y-timer_dmg_txt,false)
-                Barra_vida(v, (v.x+40), (v.y))
-                Mostrar_estados(v,(v.x+76),(v.y),true)
-                Mostrar_debilidades(v,(v.x+76),(v.y+20))
-                Mostrar_animacion_ataque(v, (v.x),(v.y),true)
-                Mostrar_animacion_dmg(v, (v.x+60),(v.y),true)
-                
-        end     
-        
-        for k,v in pairs(aliados) do
-                --love.graphics.print( "debug: X "..v.x.." Y "..v.y,30,120+(24*0))
-                show_spr(v, (v.x),(v.y), v.x,v.y-timer_dmg_txt, (v.x),(v.y),Temp_e==v.id and State=="select e",true)
-                show_msg_dmg(v,v.x,v.y-timer_dmg_txt,false)
-                Mostrar_barra(v, (v.x-16),(v.y+62),false)
-                Mostrar_estados(v,(v.x+76),(v.y),false)
-                Mostrar_animacion_ataque(v, (v.x),(v.y),false)
-                Mostrar_animacion_dmg(v, (v.x),(v.y),false)
-                
-        end 
         
         local menu_x=12
         local menu_y=314
@@ -165,125 +99,12 @@ function graph_mode()
             --print("#"..k.." "..v.id,350,222+(16*k),7)
         end
         --print(">"..Op,350,222+(16*-1),7)
-
         
-
-        if B_wait==false then
-            --cuadroTexto(16,306,36,600/4)
-            print(Actual.name.." X"..(Actual.ext+1),menu_x+38,menu_y+22,7)
-            
-            print("  ",menu_x+100,menu_y+24,7)
-
-            spr_sheet(Actual.ico,menu_x+12,menu_y + 24,1,1,1,1,spritesIcon) 
-
-            if Actual.tipo=="player" then
-
-                local posAva={}
-                posAva.x=30
-                --posAva.x=120+26
-                posAva.y=360
-
-                show_spr(Actual, (posAva.x),(posAva.y), 0,0,(posAva.x),(posAva.y+20),Temp_c==Actual.id and State=="select c",false)  
-
-                if State=="select" then
-                    show_menus_name_wide(Actual.acc ,menu_select_x,menu_y)
-                end
-                if State=="secundario" then
-                    show_menus(Acciones_secundarias ,menu_select_x,menu_y)
-                end
-                if State=="select l" and Acc=="magics" then 
-                    Show_menus_list(Actual.mag,menu_select_x,menu_y)
-                end
-                if State=="select l" and Acc=="colecciones" then 
-                    Show_menus_list(Actual.col,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="magic" then   
-                    Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="w.magic" then   
-                    Show_menus_name_cost_magic(Actual.milagros,menu_select_x,menu_y)
-                end
-                if State=="select v" and Acc=="extraer" then   
-                    show_menus_name(SelectEnemigo.magicForce,menu_select_x,menu_y)
-                end
-                if State=="select m" and SubState=="number" then   
-                    show_number_dial(menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="spell.list" then   
-                    show_menus_cont(Actual.mg,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="Power.Stone" then   
-                    show_menus_name_cantidad(Actual.powerStone,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="transformacion" then   
-                    show_menus_name_cost(Actual.morph,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="dual M." then   
-                    Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
-                    --show_menus_name_cost(Actual.mg,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="llamar" then   
-                    show_menus_name_cost(Actual.beast,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="spirit" then   
-                    show_menus_name_cost(Actual.spirit,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="canciones" then   
-                    show_menus_name_cost(Actual.cancion,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="bailes" then   
-                    show_menus_tecnica(Actual.bailes,menu_select_x,menu_y)
-                end
-                if State=="select oo" and Acc=="dual M." then   
-                    Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
-                    --show_menus_name_cost(Actual.mg,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="tecnica" then   
-                    show_menus_tecnica(Actual.sk,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="W.Arts" then   
-                    show_menus_tecnica(Actual.art,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="mix" then   
-                    show_menus_name(Actual.mix,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="bullet" then   
-                    show_menus_name(Actual.bullet,menu_select_x,menu_y)
-                end 
-                if State=="select o" and Acc=="Blu.magic" then   
-                    show_menus_name(Actual.blue,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="invocar" then   
-                    show_menus_name(Actual.invo,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="tools" then   
-                    show_menus_name(Actual.tools,menu_select_x,menu_y)
-                end
-                if State=="select o" and Acc=="especiales" then   
-                    show_menus_name(Actual.spe,menu_select_x,menu_y)
-                end
-                if State=="select a" or  State=="select aa"then
-                    show_menus(lista_todos,menu_select_x,menu_y)
-                end
-                if State=="select e" or State=="select ee" then
-                    show_menus_name(EnemigosVivos,menu_select_x,menu_y)
-                end 
-                if State=="select c" or State=="select cc" then
-                    show_menus_name(AliadosVivos,menu_select_x,menu_y)
-                end
-                if State=="select d" then
-                    show_menus_name(AliadosMuertos,menu_select_x,menu_y)
-                end
-                if State=="select i" then
-                    menu_cont_name(items,6,menu_select_x+12+4,menu_y+24)
-                end
-                if State=="select w" then
-                    menu_cont_name(weapon_inventary,6,menu_select_x+12+4,menu_y+24)
-                end
-                --arrow_menu(Op,menu_x, menu_y)
-                arrow_menu_OLD(Op,menu_x+60, menu_y)
-            end
-        end 
+        love.graphics.setColor(0,0,0)
+        love.graphics.rectangle("fill", 0,320, 800,200)
+        love.graphics.setColor(255,255,255) -- reset colours
+        
+        Graficos_Batalla.menu()
     elseif Modo=="NPC" then 
         for k,v in pairs(ActiveParty) do
             if v.see then  
@@ -304,7 +125,13 @@ function graph_mode()
         for i,v in pairs(lista_hechizos_azules_obtenidos) do
             print(v,100+offx,320+(i*20)-off)
         end
-    end                          
+    end         
+    
+    if Modo=="WIN" then
+        love.graphics.draw(Finish_fight, 0, 0,0,1,1)
+    else
+        love.graphics.draw(img_intro, 0, 0,0,1,1)
+    end
 end
 
 

@@ -1,3 +1,5 @@
+Control={}
+
 function main_control(key,scancode,isrepeat)
 
     if key == "f11" then
@@ -32,6 +34,7 @@ function main_control(key,scancode,isrepeat)
                         end
                         if key=="right" then
                             right()
+                            
                         end
                         if key=="p" then
                             perfil()
@@ -218,9 +221,12 @@ function right()
         ini_view=ini_view+6
         --State="secundario"
     end 
-    if State=="select o" and Acc=="magic" then
+    if State=="select o" and (Acc=="magic" or Acc=="tecnica")  then
          Op=Op+6
-
+        if Op>fin_view then
+            ini_view=ini_view+6
+            fin_view=fin_view+6
+        end
     end 
     if State=="select e" then
         State="select c"  
@@ -230,15 +236,25 @@ function right()
     end     
 end   
 
+
+
 function left()
     if State=="select" then
-                Op=Op-6
+        Op=Op-6
         ini_view=ini_view-6
         --up()
     end 
-    if State=="select o" and Acc=="magic" then
+    if State=="select o" and (Acc=="magic" or Acc=="tecnica")  then
          Op=Op-6
+        if Op+(ini_view-1)<ini_view then
+            --ini_view = ini_view - 6
+        end
+        if Op<ini_view then
+            ini_view=ini_view-6
+            fin_view=fin_view-6
+        end
     end 
+    
     if State=="secundario" then
         State="select"
     end 
@@ -265,6 +281,17 @@ Objeto_selec={}
 function comeback()
     if State=="select" then
         --next()
+
+    elseif State=="select oo" then
+        if Acc=="dual M." then
+            State ="select"
+            Acc=""
+        end
+    elseif State=="select ee" then
+        if Acc=="dual M." then
+            State ="select"
+            Acc=""
+        end    
     elseif State=="select o" then
         if Acc == "tecnica" or Acc == "magic" or Acc == "W.Arts"  or Acc == "especiales"
         or Acc == "tecnica" or Acc == "objeto" or Acc =="mix" or Acc=="bailes" 
@@ -272,7 +299,7 @@ function comeback()
         or Acc=="transformacion" or Acc=="Blu.magic" or Acc=="bullet"
         or Acc=="Power.Stone"  or Acc=="spell.list" or Acc=="runes" 
         or Acc=="dual M." or Acc=="spirit" or Acc=="ninja" or Acc=="espada" or Acc=="canciones" 
-        or  Acc=="evocar"  then
+        or  Acc=="evocar" or   Acc=="w.magic" or Acc=="magia" or Acc=="espadas" then
             State ="select"
             Acc=""
         end 
@@ -287,7 +314,7 @@ function comeback()
         if  Acc=="atacar" or Acc=="robar" or Acc=="furia" or Acc=="saltar"  or Acc=="darkness" or Acc=="extraer" 
         or Acc=="atrapar" or Acc=="asesinar" or Acc=="rapido"
         or Acc=="extraer" or Acc=="cargar" or Acc=="quitar" 
-        or Acc=="combo"then
+        or Acc=="combo" or Acc=="dual M." or  Acc=="w.magic" then
             State ="select"
             Acc=""
         end

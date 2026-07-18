@@ -14,8 +14,10 @@ function perfil_mode()
     love.graphics.print("ATTACK: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")+promWeaponDmg(ActiveParty[l])),220,20+(24*3))
     love.graphics.print("defensa: "..(flr((ActiveParty[l].con+mod(ActiveParty[l],"con"))/2) + ModArmadura(ActiveParty[l])),220,20+(24*4))
 
-    love.graphics.print( "debug:   ".."",240,140+(24*0))
-    --love.graphics.print( "debug:  "..#armadura_inventary_see.."/"..#armadura_inventary,400,120+(24*0))
+    --
+    
+    love.graphics.print( "debug:   "..Perfil.select_mp .." ".. Perfil.showPerfil.." ",240,140+(24*0))
+    --love.graphics.print( "debug:  "..Debug_temp,400,120+(24*0))
 
 
     anim_char(ActiveParty[l],280,30)
@@ -45,9 +47,15 @@ function perfil_mode()
         end
 
         love.graphics.print( "skill: ",30,220+(24*0))
+        local skillCount=0
         if #ActiveParty[l].mg>0 then
             for k,t in pairs(ActiveParty[l].mg) do
                 love.graphics.print( t.name ,30,220+(24*k))
+                skillCount=skillCount+1
+                if skillCount>=8 then
+                    love.graphics.print( "..." ,30,220+(24*(k+1)))
+                    break
+                end
             end
         end
         if ActiveParty[l].sk~=nil then
@@ -55,6 +63,11 @@ function perfil_mode()
             for k,i in pairs(ActiveParty[l].sk) do
                 love.graphics.print( i.name ,30,220+(24*nline))
                 nline=nline+1
+                skillCount=skillCount+1
+                if skillCount>=8 then
+                    love.graphics.print( "..." ,30,220+(24*(nline)))
+                    break
+                end
             end
         end
 
@@ -68,6 +81,10 @@ function perfil_mode()
         for k,i in pairs(ActiveParty[l].perks) do
             love.graphics.print( i.name ,450,220+(24*line))
             line=line+1
+            if line>=8 then
+                    love.graphics.print( "..." ,30,220+(24*(line)))
+                    break
+            end            
         end
 
     end
@@ -142,16 +159,16 @@ function perfil_mode()
 
         if Perfil.select_mp=="cabeza" then
             love.graphics.print( "cabeza: ",100,220+(24*0))
-            menu(Accesorios_inventary_see,9)
+            menu(armadura_inventary_see,9)
         end
 
         if Perfil.select_mp=="artefacto" then
             love.graphics.print( "artefacto: ",100,220+(24*0))
-            menu(Accesorios_inventary_see,9)
+            menu(Artefacto_inventary_see,9)
         end
         if Perfil.select_mp=="complemento" then
             love.graphics.print( "complemento: ",100,220+(24*0))
-            menu(Accesorios_inventary_see,9)
+            menu(Complemento_inventary_see,9)
         end
     end
 
@@ -227,14 +244,22 @@ function menu_armor(list,mx)
         local r=1
         for k=ini_view, fin_view do
             if i[k].name ~= nil then 
-                love.graphics.print( ""..i[k].cont .."x "..i[k].name.." def: "..i[k].def ,100,220+(24*r))
+                if i[k].id~="quitar" then
+                    love.graphics.print( ""..i[k].cont .."x "..i[k].name.." def: "..i[k].def ,100,220+(24*r))
+                else
+                    love.graphics.print( i[k].name,100,220+(24*r))
+                end    
             end    
             r=r+1
         end
     else
         for k,i in pairs(list) do
             if i.name ~= nil then 
-                love.graphics.print( ""..i.cont .."x "..i.name.." def: "..i.def ,100,220+(24*k))
+                if i.id~="quitar" then
+                    love.graphics.print( ""..i.cont .."x "..i.name.." def: "..i.def ,100,220+(24*k))
+                else
+                    love.graphics.print( i.name,100,220+(24*k))
+                end  
             end    
         end   
     end

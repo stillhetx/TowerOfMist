@@ -243,6 +243,27 @@ function spr_sheet_avanzado(n, x, y, w, h, flip_x, flip_y, sheet)
     end
 end
 
+--spr_sheet(n, x, y, w, h, flip_x, flip_y, sheet)
+
+function spr_sheet_avanzado_size(n, x, y, w, h,size, flip_x, flip_y, sheet)
+    size= size or 1.75
+    w = w or 1
+    h = h or 1
+    flip_x = flip_x or false
+    flip_y = flip_y or false
+    local f_x= flip_x and -1 or 1
+    local f_y= flip_x and -1 or 1
+    local tile_size=size
+
+    local quad = sheet.quads[n + 1] -- PICO-8 indexa desde 0, Lua desde 1
+
+    if quad then
+        love.graphics.draw(
+            sheet.image, quad, x, y,0, w*tile_size,h*tile_size
+        )
+    end
+end
+
 
 function sprSheetV2(n, x, y, w, h, flip_x, flip_y, sheet,hs,ws)
 

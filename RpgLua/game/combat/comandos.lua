@@ -33,7 +33,7 @@ end
 function config_comando()
     count_auto=0
     wait_start()
-	animated_bonus_boton=true
+	--animated_bonus_boton=true
     Buton_bonus=0
     Cancel_ejecutar=true
 end
@@ -193,7 +193,7 @@ function all_logic_magic()
         local objetivo=selecionar_objetivo()
         --Msg_debug="hechizo: "..Mg_sel.." objetivo:"..Sel_c..Sel_e
         --if Dirr=="e"  or Dirr=="a"  then
-            animated_bonus_boton=true
+            --animated_bonus_boton=true
             Buton_bonus=0
             local next_comando="ejecutar_Magia"
             --Msg_debug="//"..Mg_sel
@@ -559,7 +559,7 @@ function Comando_capturar()
     local objetivo_global=getChars(Sel_e,Order);
     count_auto=0
 	wait_start()
-	animated_bonus_boton=true
+	--animated_bonus_boton=true
     Buton_bonus=0
     local next_comando="ejecutar_capturar"
         agregarAccion({next_comando,"",objetivo_global})
@@ -568,7 +568,7 @@ function Comando_capturar()
 end    
 
 function Comando_tecnica()
-    Msg_debug=Msg_debug.."Ejecutar"
+    --Msg_debug=Msg_debug.."Ejecutar"
     if Sel_t_cost=="charge" then
         if Actual.carga==1  then
             if Sel_command then
@@ -663,7 +663,7 @@ function Comando_furia()
     local objetivo=selecionar_objetivo()
     count_auto=0
 	wait_start()
-	animated_bonus_boton=true
+	--animated_bonus_boton=true
     Buton_bonus=0
     local next_comando="ejecutar_Combo"
     agregarAccion({next_comando,"",objetivo})

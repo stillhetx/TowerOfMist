@@ -1,6 +1,6 @@
 Perfil={}
 Perfil.seePerfil=1
-Perfil.select_mp=""
+Perfil.select_mp="select"
 Perfil.select_mp_slot=""
 Perfil.select_mp_Item=""
 Perfil.showPerfil=""
@@ -24,6 +24,9 @@ function Perfil.main_perfil(key,scancode,isrepeat)
                 end
                 if key=="x" then
                     Perfil.perfil_X()
+                end
+                if key=="q" then
+                    Perfil.perfil_Q()
                 end
 
                 if key=="p" then
@@ -84,8 +87,10 @@ end
 
 function Perfil.perfil_z()
 local ejecutar_menu=false
+Debug_temp="press "..Perfil.select_mp.." "
     if Perfil.select_mp=="select" then
         if ActiveParty[Perfil.seePerfil].opciones[Opm] == "equipo" then
+            
             Perfil.showPerfil="equip"
             Perfil.select_mp="equipo"
             Perfil.accion_mp="equipo"
@@ -258,19 +263,32 @@ function Perfil.perfil_X()
         Perfil.showPerfil="perfil"
         Perfil.select_mp="select"
         Perfil.accion_mp=""
-    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="complemento" then
-        Perfil.showPerfil="perfil"
-        Perfil.select_mp="select"
-        Perfil.accion_mp=""    
-    elseif Perfil.select_mp=="inventario" and Perfil.showPerfil=="cabeza" then
-        Perfil.showPerfil="perfil"
-        Perfil.select_mp="select"
-        Perfil.accion_mp=""       
+    elseif Perfil.select_mp=="complemento" and Perfil.showPerfil=="equip" then
+        Perfil.select_mp="equipo"
+        Perfil.select_mp_Item=""
+        Perfil.select_mp_slot=""   
+    elseif Perfil.select_mp=="cabeza" and Perfil.showPerfil=="equip" then
+        Perfil.select_mp="equipo"
+        Perfil.select_mp_Item=""
+        Perfil.select_mp_slot=""    
+    elseif Perfil.select_mp=="artefacto" and Perfil.showPerfil=="equip" then
+        Perfil.select_mp="equipo"
+        Perfil.select_mp_Item=""
+        Perfil.select_mp_slot=""    
     end
     
     Perfil.row_comprobar()
 
 end    
+
+function Perfil.perfil_Q()
+--remover
+    if  Perfil.select_mp=="equipo" then 
+            Perfil.select_mp_slot=equipo_slot[Opm].id
+            RemoveEquip(Perfil.select_mp_slot,ActiveParty[Perfil.seePerfil]);
+    end
+
+end
 
 function Perfil.perfil_up()
     Opm=Opm-1

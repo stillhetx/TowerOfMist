@@ -1873,25 +1873,30 @@ Efectos["desenbocado"]= function (v, w, f, bol, bono)
             w.anim_acc="puñetazos"
             w.anim_col={1,1,1,1}
             FiltrarEnemigoVivos()
-            local enemy=flr(rnd(#EnemigosVivos-1)+1)
+            local enemy=flr(rnd(#EnemigosVivos))
+            --Msg_debug="num "..enemy.."/"..#EnemigosVivos
             local enemy_target=EnemigosVivos[enemy]
-            local left=0
-            local right=0
-            if w.weapon.left~={} and w.weapon.left.w~=nil  then
-                left=flr(rnd(w.weapon.left.w)) + w.weapon.left.bw
-            end
-            if w.weapon.right~={} and w.weapon.right.w~=nil  then
-                right=flr(rnd(w.weapon.right.w)) + w.weapon.right.bw
-            end
-            if acertar(enemy_target,w) then
-                local mult, crit =  adv_weak_Logic(enemy_target,w,{"fuego","magia"},false )
-                DamageProccess(enemy_target,w,-((w.fue + mod(w,"fue") +left+right)*mult),crit)
-                enemy_target.anim_acc="corte"
-                enemy_target.anim_col={1,1,1,1}
-                jump_start(enemy_target)
-                checks(enemy_target)
-            else
-                eludido(enemy_target)    
+            if enemy_target then
+                local left=0
+                local right=0
+                if w.weapon.left and w.weapon.left.w  then
+                    left=flr(rnd(w.weapon.left.w)) + w.weapon.left.bw
+                end
+                if w.weapon.right and w.weapon.right.w  then
+                    right=flr(rnd(w.weapon.right.w)) + w.weapon.right.bw
+                end
+                if acertar(enemy_target,w) then
+                    local mult, crit =  adv_weak_Logic(enemy_target,w,{"fuego","magia"},false )
+                    DamageProccess(enemy_target,w,-((w.fue + mod(w,"fue") +left+right)*mult),crit)
+                    enemy_target.anim_acc="corte"
+                    enemy_target.anim_col={1,1,1,1}
+                    jump_start(enemy_target)
+                    checks(enemy_target)
+                else
+                    eludido(enemy_target)    
+                end
+            else 
+                --
             end
     end    
 
@@ -2069,7 +2074,7 @@ Efectos["alegria"]= function (v, w, f, bol, bono)
             w.anim_acc="puñetazos"
             w.anim_col={1,1,1,1}
             FiltrarEnemigoVivos()
-            local enemy=flr(rnd(#EnemigosVivos-1)+1)
+            local enemy=flr(rnd(#EnemigosVivos))
             local enemy_target=EnemigosVivos[enemy]
             local left=0
             local right=0

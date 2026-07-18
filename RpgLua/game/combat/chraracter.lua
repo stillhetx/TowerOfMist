@@ -282,7 +282,7 @@ end
 
 function GetGrupoEnemigoVivos()
     GruposEnemigos={}
-    for _, o in ipairs(Order) do
+    for _, o in ipairs(All) do
         if o.tipo=="enemy" and o.hp_>0 then
                 table.insert(GruposEnemigos, NombreEspecie[o.id_mons]) 
         end
@@ -296,7 +296,7 @@ end
 function FiltrarGrupoEnemigoVivos()
     GruposEnemigos={}
     local num=0
-    for _, o in ipairs(Order) do
+    for _, o in ipairs(All) do
         if o.tipo=="enemy" and o.hp_>0 then
                 table.insert(GruposEnemigos, NombreEspecie[o.id_mons]) 
         end
@@ -306,7 +306,7 @@ end
 
 function GetAliadosVivos()
     AliadosVivos={}
-    for _, o in ipairs(Order) do
+    for _, o in ipairs(All) do
         if (o.tipo=="player" or o.tipo=="aliado")  and o.hp_>0 then
                 table.insert(AliadosVivos, o) 
         end
@@ -316,7 +316,7 @@ end
 
 function FiltrarAliadosVivos()
     AliadosVivos={}
-    for _, o in ipairs(Order) do
+    for _, o in ipairs(All) do
         if (o.tipo=="player" or o.tipo=="aliado")  and o.hp_>0 then
                 table.insert(AliadosVivos, o) 
         end
@@ -325,7 +325,7 @@ end
 
 function GetAliadosMuerto()
     AliadosMuertos={}
-    for _, o in ipairs(Order) do
+    for _, o in ipairs(All) do
         if (o.tipo=="player" or o.tipo=="aliado")  and o.hp_<=0 then
                 table.insert(AliadosVivos, o) 
         end
@@ -335,14 +335,52 @@ end
 
 function FiltrarAliadosMuertos()
     AliadosMuertos={}
-    for _, o in ipairs(Order) do
+    for _, o in ipairs(All) do
         if (o.tipo=="player" or o.tipo=="aliado")  and o.hp_<=0 then
                 table.insert(AliadosVivos, o) 
         end
     end
 end
 
+function RemoveEquip(str,persona)
+    persona = persona or {}
+    if persona ~= {} then
+        if str=="weapon_izq" and persona.weapon.left~={} then
+            Remove_skill_equip(persona.weapon.left,persona)
+            add_inventary_Weapon_list(persona.weapon.left)
+            persona.weapon.left={}
+        elseif str=="weapon_der" and persona.weapon.right~={} then   
+            Remove_skill_equip(persona.weapon.right,persona)
+            add_inventary_Weapon_list(persona.weapon.right)
+            persona.weapon.right={}
+        elseif str=="armadura" and persona.armadura~={} then 
+                add_inventary_Armadura_list(persona.armadura)
+                Remove_skill_equip(persona.armadura,persona)
+                persona.armadura={}  
+        elseif str=="accesorio_1" and persona.armadura~={} then
+            Remove_skill_equip(persona.accesorio_1,persona)
+            add_inventary_Accesorio_list(persona.accesorio_1)
+            persona.accesorio_1={}
+        elseif str=="accesorio_2" and persona.armadura~={} then   
+            Remove_skill_equip(persona.accesorio_2,persona)
+            add_inventary_Accesorio_list(persona.accesorio_2)
+            persona.accesorio_2={}
+        elseif str=="cabeza" and persona.head~={} then   
+            Remove_skill_equip(persona.head,persona)
+            add_inventary_Armadura_list(persona.head)
+            persona.head={}
+        elseif str=="artefacto" and persona.artefacto~={} then           
+            Remove_skill_equip(persona.artefacto,persona)
+            add_inventary_Artefacto_list(persona.artefacto)
+            persona.artefacto={}
+        elseif str=="complemento" and persona.complemento~={} then   
+            Remove_skill_equip(persona.complemento,persona)
+            add_inventary_Complemento_list(persona.complemento)
+            persona.complemento={}
+        end
+    end
 
+end
 function filtrarWeapons()
     weapon_inventary_see={}
     for _, mix in ipairs(weapon_inventary) do
@@ -361,6 +399,9 @@ function filtrarArmadura()
         if mix.cont>0 and mix.tipo_item=="torso" then
             table.insert(armadura_inventary_see, mix) 
         end
+    end
+    if #armadura_inventary_see>0 then
+        table.insert(armadura_inventary_see, {name="quitar",id="quitar",def=0,cont=1,tipo_item="quitar"}) 
     end
 end
 

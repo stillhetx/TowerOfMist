@@ -104,3 +104,60 @@ tecnicas    Habilidades no magicas
         milagros={},
         oracion={},
         variable={},
+
+
+
+fantasmas: aparecen de monstruos derrotados
+desconocido: algunos monstruos esconden su naturaleza, para mostrar otro tipo de monstruo.
+babosas: crean clones mas debiles.
+secuaces: llaman refuerzos.
+buffeador: potencia a sus aliados.
+sanadores: sanan los monstruos.
+shaman: reviven enemigos derrotados.
+invocador: llaman criaturas fuertes.
+
+lobos: llaman por ayuda.
+
+armaduras: poseen una enorme defensa.
+metal: solo es afectado por criticos.
+golem: resistentes y mucha vida.
+
+Anti-magia: inmune a la magia.
+inti-fisico/espectros: inmunes a los ataques fisicos.
+
+elementales: debilidad elemental y absorven elemento.
+
+espiritus: debilidad elemental y repelen elemento.
+
+magicos: debilidad elemental y resistentes a elemento.
+
+brujas: maldicen-debuff 
+poderoso: poderosos critico.
+tirador: poderosos critico.
+
+estratega: prioriza sanador y magos.
+luchador: prioriza luchador.
+
+malvados: atacan al mas debil.
+
+
+#bosque
+---------
+spider -- arachnophobia mode
+lobos
+murcielago
+serpientes
+lagarto
+
+#Agua
+------
+serpiente marina
+tiburon
+pulpo
+medusa
+
+
+#bosque_magico
+-------------
+Arbol maligno
+slime

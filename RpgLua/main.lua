@@ -1,6 +1,8 @@
 require("game/global")
 
 require("game/tablas/tablas")
+require("game/tablas/tabla_acciones_jugador")
+--require("game/tablas/tabla_comandos")
 require("game/tablas/tabla_efecto")
 require("game/tablas/tabla_jobs")
 require("game/tablas/tabla_acciones_enemy")
@@ -9,7 +11,7 @@ require("game/tablas/tabla_gambit")
 
 require("game/flag_events")
 
-require("game/PerfilControl")
+require("game/element/PerfilControl")
 
 require("game/tablas/tabla_tarjetas")
 require("game/tablas/lista_enemigo")
@@ -153,8 +155,8 @@ function _init()
             --30 cristales, extraer // nunca lo termine
             --9 es la clase mas complicada
             local a =1
-            local b =2
-            local c =4
+            local b =1
+            local c =1
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
