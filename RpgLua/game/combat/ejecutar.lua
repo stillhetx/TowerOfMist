@@ -59,7 +59,7 @@ function items_list(bol)
         end
     end
 end
-
+--Ejecuta ataque basico
 function ejecutar_ataque_basico(v,str)
     --Debug_temp=Debug_temp.." "..str.." "
     Actual.carga=1
@@ -167,6 +167,7 @@ function ejecutar_ataque_a_ejecutor(v,e)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end               
@@ -185,6 +186,7 @@ function ejecutar_ataque_a_ejecutor(v,e)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -231,6 +233,7 @@ function ejecutar_ataque_b_ejecutor(v,e)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -249,6 +252,7 @@ function ejecutar_ataque_b_ejecutor(v,e)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -287,6 +291,7 @@ function ejecutar_ataque_a(v)
             if Actual.weapon.left.smodo== "white" then
                 Actual.avanzar=true
                 Actual.rest=false
+                Animacion.add_action_animation(Actual,"ataque_arma",{1,1,1,1})
                 Actual.anim_acc="ataque_arma"
                 Actual.anim_col={1,1,1,1}    
                 if acertar(v,Actual) then
@@ -300,6 +305,7 @@ function ejecutar_ataque_a(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end               
@@ -319,6 +325,7 @@ function ejecutar_ataque_a(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -452,6 +459,7 @@ function ejecutar_ataque_b(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -471,6 +479,7 @@ function ejecutar_ataque_b(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -549,6 +558,7 @@ function ejecutarArma(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -563,6 +573,7 @@ function ejecutarArma(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -585,6 +596,7 @@ function ejecutarArma(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -605,6 +617,7 @@ function ejecutarArma(v)
                     jump_start(v)
                     v.anim_acc="corte"
                     v.anim_col={1,1,1,1}
+                    Animacion.add_action_animation(v,"corte",{1,1,1,1})
                 else
                     eludido(v)    
                 end   
@@ -943,7 +956,7 @@ function ejecutar_lanzar() --deprecado
     Actual.avanzar=true
     Actual.rest=false
     local v= getChars(Sel_e, Order)
-    local weapon = getChars(sel_w,weapon_inventary)
+    local weapon = getChars(Sel_w,weapon_inventary)
     mult=1
     wait_start()
     b_dmg_txt=true
@@ -977,7 +990,7 @@ function ejecutar_saltar(v) --deprecado
         local crit=""
         local mult=1
         mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-        DamageProccess(v,w,-flr((Actual.con + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*3*mult),crit)
+        DamageProccess(v,Actual,-flr((Actual.con + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*3*mult),crit)
         checks(v)
         jump_start(v)
     else
@@ -995,7 +1008,7 @@ function ejecutarFuria(v) --deprecar
         local crit=""
         local mult=1
         mult, crit =  adv_weak_Logic(v,Actual,{"volar"},true )
-        DamageProccess(v,w,-flr(2*(Actual.fue+Actual.con)*mult*1.5),crit)
+        DamageProccess(v,Actual,-flr(2*(Actual.fue+Actual.con)*mult*1.5),crit)
         checks(v)
         jump_start(v)
     else

@@ -53,7 +53,7 @@ arma_seleccionada_global={}
 function comando_lanzar() 
     config_comando()
     local objetivo_global=selecionar_objetivo()
-    local arma_seleccionada_global=sel_w
+    local arma_seleccionada_global=Sel_w
     local next_comando="ejecutar_Lanzar" 
     agregarAccion({next_comando,arma_seleccionada_global,objetivo_global})
 
@@ -696,10 +696,11 @@ function Comando_atacar()
     local objetivo_global=selecionar_objetivo()
     Dirr="e"
 	wait_start()
+    Debug_temp=Debug_temp.."x"
     local next_comando="ejecutar_atacar_A"
     agregarAccion({next_comando,"",objetivo_global})
 
-    if Actual.weapon.right.isCast==true then
+    if Actual.weapon and Actual.weapon.right.isCast==true then
         for k,i in pairs(Actual.weapon.right.cast) do
             agregarAccion({"ejecutar_elemental_damage",i,objetivo_global})
         end
@@ -708,7 +709,7 @@ function Comando_atacar()
     next_comando="ejecutar_atacar_B"
     agregarAccion({next_comando,"",objetivo_global})
 
-    if Actual.weapon.left.isCast==true then
+    if Actual.weapon and Actual.weapon.left.isCast==true then
         for k,i in pairs(Actual.weapon.left.cast) do
             agregarAccion({"ejecutar_elemental_damage",i,objetivo_global})
         end

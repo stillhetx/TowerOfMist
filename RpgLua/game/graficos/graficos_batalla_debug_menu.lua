@@ -8,7 +8,11 @@ function Graficos_Batalla.debug_log()
     end
     if Actual.tipo=="player" then
         local value= 3-Actual.sheet[4]
-        love.graphics.print( "Debug: >"..Op.." ".. ini_view.."-"..fin_view.."  ",30,114+(24*-4))
+        love.graphics.print( "Debug: >"..Debug_temp.."  "..Acc..State,30,114+(24*-4))
+
+        --love.graphics.print( "Debug: >"..State.." ".. Acc,30,114+(24*-4))
+
+        --love.graphics.print( "Debug: >"..Op.." ".. ini_view.."-"..fin_view.."  ",30,114+(24*-4))
     end
      if Cancel_ejecutar then
        -- love.graphics.print( "Cancel: true",30,120+(24*-2))

@@ -44,6 +44,12 @@ function ejecutar_comando()
     if #Acciones>0 then
         arreglo = obtenerPrimeraAccion()
         str_comando=arreglo[1]
+        if str_comando=="ejecutar_atacar_A" then
+            Debug_temp=Debug_temp.."A"
+        end
+        if str_comando=="ejecutar_atacar_B" then
+            Debug_temp=Debug_temp.."B"
+        end
         eliminarPrimeraAccion()
         local tet=arreglo[3]
         
@@ -54,7 +60,7 @@ function ejecutar_comando()
         --Debug_temp=" "..str_comando
         local obj=arreglo[3]
         if obj~=nil and obj~={} then
-            --Debug_temp=Debug_temp.." !"
+            Debug_temp=Debug_temp.."!"
             --mult=1
             wait_start()
             b_dmg_txt=true
@@ -66,11 +72,18 @@ function ejecutar_comando()
             ejecutar_ataque_basico(obj,"left")
             checks(obj)
             clean()
+        else
+            Debug_temp=Debug_temp.."null"
+            local enemy_target=GetPrimerEnemigoVivo()
+            if enemy_target then
+                ejecutar_ataque_basico(enemy_target,"left")
+            end
         end
     end
 
     if str_comando=="ejecutar_atacar_B" then
         --Debug_temp=Debug_temp.." "..str_comando
+        Debug_temp=Debug_temp.."!"
 
         local obj=arreglo[3]
         if obj~=nil and obj~={} then
@@ -88,7 +101,13 @@ function ejecutar_comando()
                 checks(obj)
                 clean()
             end 
-        end       
+        else
+            Debug_temp=Debug_temp.."null"
+            local enemy_target=GetPrimerEnemigoVivo()
+            if enemy_target then
+                ejecutar_ataque_basico(enemy_target,"left")
+            end
+        end     
         next()
     end  
 
@@ -379,8 +398,8 @@ function automatico(v)
                         w.lastDmgC="R"
                         ejecutarFuria(w)
 
-                        Msg_debug="ejecutar comando "..arreglo[3].name.." "..arreglo[2]
-                        ejecutarMagia(arreglo[2],arreglo[3], Order)
+                        --Msg_debug="ejecutar comando "..arreglo[3].name.." "..arreglo[2]
+                        --ejecutarMagia(arreglo[2],arreglo[3], Order)
                         checks(w)
                     else
                         B_wait=false
@@ -400,7 +419,7 @@ function automatico(v)
         end    
     end
     --incontrolable
-    if next_atack=="disparo_rapido" then
+    if Actual.next_atack=="disparo_rapido" then
         if count_auto < 4 then
             local w = getChars(auto_obj, Order)
             if auto_obj == w.id then
@@ -427,7 +446,7 @@ function automatico(v)
         end    
     end   
     
-    if next_atack=="incontrolable" then
+    if Actual.next_atack=="incontrolable" then
         if count_auto < 4 then
             --Dirr="a"
            -- Mg_sel="incontrolable"
@@ -442,13 +461,13 @@ function automatico(v)
         end    
     end
 
-    if next_atack=="Berserk_Attack" then
+    if Actual.next_atack=="Berserk_Attack" then
         ejecutarMagia("Berserk_Attack",{}, Order)
         clean()
         next()
     end
 
-    if next_atack=="Berserk_move" then
+    if Actual.next_atack=="Berserk_move" then
         ejecutarMagia("Berserk_move","", "")
         clean()
         next()

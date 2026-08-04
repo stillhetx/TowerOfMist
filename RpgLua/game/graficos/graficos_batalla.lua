@@ -81,12 +81,14 @@ function graph_mode()
         mostrar_background()
         --spr(0,0,0,4,4,false,false,fondo_sprites)
         
+
         Graficos_Batalla.show_character()
 
         Graficos_Batalla.show_enemy()
    
         Graficos_Batalla.show_otros()
-
+        
+        Animacion.show_anima_pile()
         
         local menu_x=12
         local menu_y=314

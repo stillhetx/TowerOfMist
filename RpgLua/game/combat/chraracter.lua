@@ -35,8 +35,8 @@ end
 function guardar_ultima_accion()
     if Acc ~= "mimic" then
         Last_sel_e=Sel_e
-        Last_sel_ee=sel_ee
-        Last_sel_c=sel_c
+        Last_sel_ee=Sel_ee
+        Last_sel_c=Sel_c
         Last_sel_cc=Sel_cc
         Last_acc=Acc
         Last_mg_2sel=Mg_2sel
@@ -162,9 +162,11 @@ end
 
 function selecionar_objetivo()
     local objetivo={}
-
+        Debug_temp=Dirr..","
         if Dirr=="e" then
-            objetivo=getChars(Sel_e,Order)
+            FiltrarEnemigoVivos()
+            objetivo=getChars(Sel_e,EnemigosVivos)
+            Debug_temp=Debug_temp..Sel_e..","
         end 
         if Dirr=="a" then
             objetivo={}
@@ -173,7 +175,8 @@ function selecionar_objetivo()
             objetivo=Actual
         end
         if Dirr=="c" then
-            objetivo=getChars(Sel_c,Order)
+            FiltrarAliadosVivos()
+            objetivo=getChars(Sel_c,AliadosVivos)
         end
         
     return objetivo
@@ -252,6 +255,11 @@ function FiltrarFuerzas()
 end
 
 
+function GetPrimerEnemigoVivo()
+    FiltrarEnemigoVivos()
+    return EnemigosVivos[1]
+end
+
 function FiltrarEnemigoVivos()
     EnemigosVivos={}
     for _, o in ipairs(All) do
@@ -272,7 +280,7 @@ end
 
 function LlenarListaExtraer(objetivo)
     for _,o in ipairs(objetivo.magicForce) do
-        table.insert(Actual.blue, mix)
+        table.insert(Actual.blue, o)
     end
 
                     
@@ -445,12 +453,12 @@ function filtrarArtefactos()
 end
 
 function filtrarTools()
-    for _, mix in pairs(lista_tools) do
-        if puedeLanzarTools(mix.ingredientes) then            
+    Debug_temp="filtrarTools"
+    for _, mix in pairs(lista_tools) do  
+            Debug_temp=Debug_temp..", "..mix.id          
             if not existList(mix.id,Actual.tools) then
                 table.insert(Actual.tools, mix)
             end    
-        end
     end
 end
 

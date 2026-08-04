@@ -1,6 +1,6 @@
-local msg_exito_max_time=30
-local msg_exito_cont_time=0
-local msg_exito_bol=false
+Msg_exito_max_time=30
+ Msg_exito_cont_time=0
+ Msg_exito_bol=false
 
 Icon_element={fuego=13,agua=17,hielo=15,electricidad=12,bio=16,aire=14,
 paralisis=5,congelar=6,congelado=6,veneno=11,confundir=0,dormir=29,marca=18,super=7,stun=48,
@@ -360,7 +360,6 @@ function standBy_mode()
         love.graphics.print( "* Perfil [p]",320,120+(24*1))
         love.graphics.print( "* Continuar [z]",320,120+(24*2))
 
-
         for k,v in pairs(ActiveParty) do
             if v.see then  
                 
@@ -639,27 +638,30 @@ end
 
 function anim_general(str,x,y,h,w,t, color,bol)
     local v=anim_list[str]
-    v.ti=v.ti+1
-    if v.frm[v.ac].t ~= nil then
-        if v.ti==v.frm[v.ac].t then
-            v.ti=0
-            v.ac=v.ac+1
-            if v.ac > #v.frm then
-                v.ac=1
-            end    
+    if v then 
+        v.ti=v.ti+1
+        if v.frm[v.ac].t ~= nil then
+            if v.ti==v.frm[v.ac].t then
+                v.ti=0
+                v.ac=v.ac+1
+                if v.ac > #v.frm then
+                    v.ac=1
+                end    
+            end  
         end  
-    end  
+  
     
-    if t then love.graphics.setColor(color) end
+        if t then love.graphics.setColor(color) end
 
-    if bol then 
-        spr_sheet_avanzado(v.frm[v.ac].spr,x,y,-h,w,1,1,spr_animacion)
-    else
-        spr_sheet_avanzado(v.frm[v.ac].spr,x,y,h,w,1,1,spr_animacion)
+        if bol then 
+            spr_sheet_avanzado(v.frm[v.ac].spr,x,y,-h,w,1,1,spr_animacion)
+        else
+            spr_sheet_avanzado(v.frm[v.ac].spr,x,y,h,w,1,1,spr_animacion)
+        end
+        
+
+        if t then love.graphics.setColor(1, 1, 1) end
     end
-    
-
-    if t then love.graphics.setColor(1, 1, 1) end
 end
 
 

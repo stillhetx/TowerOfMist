@@ -16,7 +16,7 @@ require("game/element/PerfilControl")
 require("game/tablas/tabla_tarjetas")
 require("game/tablas/lista_enemigo")
 require("game/tablas/tabla_enemy")
-
+require("game/tablas/Tabla_animacion")
 
 require("game/element/questEntity")
 require("game.element.TiendaNPC")
@@ -49,6 +49,10 @@ require("game/graficos/graficos_tienda")
 
 require("game/graficos/graficos_travel")
 
+
+
+require("game/graficos/graficos_animacion")
+
 --function nextLevel() 
 
 table.unpack = table.unpack or unpack
@@ -60,10 +64,12 @@ react_time_max_var=22
 
 sprites={}
 
+Min_dt=0
+
 function love.load()
     love.filesystem.write("logfile.txt", "Inicio del log\n")
     
-    min_dt = 1/30 --fps
+    Min_dt = 1/30 --fps
     next_time = love.timer.getTime()
     fondo = love.graphics.newImage("fondo.png")
     new_sprites_jobs= loadSpritesheet("new_sprites_jobs.png",16)
@@ -119,7 +125,7 @@ end
 
 
 function love.update()
-    next_time = next_time + min_dt
+    next_time = next_time + Min_dt
     if Op==nil then
         Op=1
     end
@@ -151,12 +157,14 @@ function _init()
     Config.Config_table()
     local o = enemyGroups
     if true then
-        if true then
-            --30 cristales, extraer // nunca lo termine
-            --9 es la clase mas complicada
-            local a =1
-            local b =1
-            local c =1
+        if false then
+            --4, 6 y 10 
+            --7  necesitan nuevos sprites(miku y esper)
+            --9 espada y w.arts
+            -- add new class 12
+            local a =7
+            local b =7
+            local c =7
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -219,7 +227,7 @@ function _init()
             add(Order, r)
         else    
             for i=1,3 do
-                local t=flr(rnd(#Nuevas_clases-1)+1)
+                local t=flr(rnd(#Nuevas_clases))
                 local r=copiar_tabla(Nuevas_clases[t])
                 r.ini=Nuevas_clases[t].agi+flr(rnd(20))
                 r.p=i

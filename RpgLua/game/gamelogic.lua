@@ -487,11 +487,11 @@ function bucles()
     local avanzar_time_max = 8
     local lateral_gravity = 3
     local max_timer_summon = 12
-    if msg_exito_bol then
-        msg_exito_cont_time = msg_exito_cont_time + 1
-        if msg_exito_max_time == msg_exito_cont_time then
-            msg_exito_bol = false
-            msg_exito_cont_time = 0
+    if Msg_exito_bol then
+        Msg_exito_cont_time = Msg_exito_cont_time + 1
+        if Msg_exito_max_time == Msg_exito_cont_time then
+            Msg_exito_bol = false
+            Msg_exito_cont_time = 0
         end
     end
     if animated_bonus_boton then
@@ -1526,42 +1526,53 @@ end
 
 function reset()
     updateCharacter()
-    o = enemyGroups
+    Config.Pos_monster_Nvg()
+    local o = enemyGroups
+    Nvg= 1
     Order = {}
     Show_enemy = {}
     Total_enemy = {}
     Show_party = {}
     ActiveParty = {}
+    Turno=1
 
-    for i = 1, 3 do
-        t = flr(rnd(#Nuevas_clases - 1) + 1)
-        local r = copiar_tabla(Nuevas_clases[t])
-        r.ini = Nuevas_clases[t].agi + flr(rnd(20))
-        r.p = i
-        r.id = Nuevas_clases[t].id .. i
-        r.name = Nuevas_clases[t].name
-        r.x = posiciones_jugadores[i].x
-        r.y = posiciones_jugadores[i].y
-        r.x_ = posiciones_jugadores[i].x
-        r.y_ = posiciones_jugadores[i].y
-        r.hp_ = r.hp + mod(r, "hp")
-        r.mp_ = r.mp + mod(r, "mp")
-        add(ActiveParty, r)
-        add(Show_party, r)
+    for i=1,3 do
+        local t=flr(rnd(#Nuevas_clases))
+        local r=copiar_tabla(Nuevas_clases[t])
+        r.ini=Nuevas_clases[t].agi+flr(rnd(20))
+        r.p=i
+        r.id=Nuevas_clases[t].id..i
+        r.name=Nuevas_clases[t].name
+        r.x=posiciones_jugadores[i].x   
+        r.y=posiciones_jugadores[i].y    
+        r.x_=posiciones_jugadores[i].x   
+        r.y_=posiciones_jugadores[i].y  
+        r.hp_=r.hp+mod(r,"hp")
+        r.mp_=r.mp+mod(r,"mp")
+        r.acc=General_lista(Nuevas_clases[i])
+        add(ActiveParty,r)
+        add(Show_party,r)
         add(Order, r)
     end
 
     for k, v in pairs(o[Nvg].enemyTeams) do
-        v.ini = v.agi + flr(rnd(20))
-        add(Order, v)
-        add(All, v)
-        add(Total_enemy, v)
-        add(Show_enemy, v)
+        local r = copiar_tabla(v)
+        r.ini=r.agi+flr(rnd(20))
+        r.id=v.id
+        add(Order, r)
+        add(All, r)
+        add(Total_enemy, r)
+        add(Show_enemy, r)
     end
-    Order = Turnos(o)
+    All=Order
+    Atributos_por_nivel()
+    Order = Turnos(All)
     --qsort(Order, function(a,b) return abs(a.ini) > abs(b.ini) end)
     State = "select"
     Modo = "combat"
+
+    Actual=Order[1]
+
 end
 
 function nextLevel()
@@ -1688,7 +1699,7 @@ function winState()
         if enemyGroups[Nvg].tipo ~= "stand" then
             obtenerReconpensa()
         end
-
+        Animacion.clean()
         cleanCharacter()
         --cleanEnemy()
         Nvg = Nvg + 1
@@ -1717,12 +1728,12 @@ end
 function add_rnd_character()
     if #ActiveParty < 3 then
         local num = #ActiveParty + 1
-        local t = flr(rnd(#allcharacter - 1) + 1)
-        local r = cOpiar_tabla(allcharacter[t])
-        r.ini = allcharacter[t].agi + flr(rnd(20))
+        local t = flr(rnd(#Allcharacter - 1) + 1)
+        local r = copiar_tabla(Allcharacter[t])
+        r.ini = Allcharacter[t].agi + flr(rnd(20))
         r.p = num
-        r.id = allcharacter[t].id .. num
-        r.name = allcharacter[t].name
+        r.id = Allcharacter[t].id .. num
+        r.name = Allcharacter[t].name
         r.x = posiciones_jugadores[num].x
         r.y = posiciones_jugadores[num].y
         r.x_ = posiciones_jugadores[num].x
@@ -1918,12 +1929,12 @@ function obtenerReconpensa()
     local list = enemyGroups[Nvg].recompensa
     msg_exp = "Obtiene " .. enemyGroups[Nvg].exp .. " puntos de experiencia"
     msg_dinero = "Obtiene " .. enemyGroups[Nvg].credit .. " guilds"
-    local rand = flr(rnd(#list - 1) + 1)
+    local rand = flr(rnd(#list))
     local str = list[rand]
     local item = lista_items_juego[str]
 
 
-    if item ~= nil and item.name ~= nil then
+    if item  then
         msg_reconpensa = "Obtiene " .. item.name
         if item.tipo == "equipo" then
             add_inventary_Weapon_list(lista_items_juego[str])
@@ -2087,7 +2098,14 @@ function DamageProccess(v, w, value, crit)
             --Debug_temp= Debug_temp.."$"..value
             obb.hp_ = obb.hp_ + (value * hit)
             obb.lastDmg = value
-            obb.lastDmgM = value .. crit .. " " .. defensa .. "# " .. hit .. " hits"
+            local dmgTexte= value .. crit .. " " .. defensa .. "# " .. hit .. " hits"
+            local dmgLabel=value .. crit
+            local hitsLabel=hit .. " hits"
+            obb.lastDmgM = dmgTexte
+            Animacion.add_texto_anima(obb,dmgLabel,30,"Red",0,0,0.1)
+            Animacion.add_texto_anima(obb,hitsLabel,30,"Red",0,-20,0.1)
+            --Animacion.add_texto_anima(obb,defensa,30,"Yellow",0,-40,0.1)
+            --Animacion.add_texto_anima(obb,hit,30,"White",0,-60,0.1)
         end
 
         if v.gl_ < 5 then
@@ -2154,6 +2172,7 @@ function eludido(v)
     v.slDmg = true
     v.lastDmgM = "Eludido"
     v.typeMsg = true
+    Animacion.add_texto_anima(v,"Eludido",30,"White",0,-20,0.1)
 end
 
 function Msg_enemigo(v, msg)
@@ -2183,6 +2202,7 @@ function acertar(v, b)
             activa_Contra_ataque(v)
         end
     end
+    Animacion.add_texto_anima(v,Dice.."#",30,"White",0,-40,0.1)
     return at >= ob
 end
 
@@ -2198,6 +2218,7 @@ function acertarMod(v, b, modificador)
     if at >= ob then
         activa_Contra_ataque(v)
     end
+    Animacion.add_texto_anima(v,Dice.."+"..modificador.."#",30,"White",0,-40,0.1)
     return at >= ob
 end
 

@@ -57,6 +57,7 @@ end
 Efectos["esconderse"] = function (v,w,f,bol,bono)
     w.anim_acc="magia"
     w.anim_col={1,1,1,1}
+    Animacion.add_action_animation(w,"magia",{1,1,1,1})
     w.hide=true    
     --v.hide=true    
 end
@@ -67,6 +68,7 @@ Efectos["asesinar"]= function (v,w,f,bol,bono)
 
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local escon=1
             if w.hide then
@@ -78,6 +80,7 @@ Efectos["asesinar"]= function (v,w,f,bol,bono)
             DamageProccess(v,w,-((w.dex*2 + mod(w,"dex") + flr(rnd(6)))*bono*escon*ultra*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -91,6 +94,7 @@ Efectos["saltar"]= function (v,w,f,bol,bono)
 
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         Actual.avanzar=true
         Actual.rest=false
         if acertarMod(v,w,6) then
@@ -101,6 +105,7 @@ Efectos["saltar"]= function (v,w,f,bol,bono)
             DamageProccess(v,w,-flr((Actual.con + flr(rnd(Actual.weapon.left.w)) + Actual.weapon.left.bw)*3*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -113,11 +118,13 @@ end
 Efectos["metralleta"]= function(v,w,f,bol,bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","magia"},false )
             DamageProccess(v,w,-((w.dex*2 + mod(w,"dex") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -129,11 +136,13 @@ Efectos["metralleta"]= function(v,w,f,bol,bono)
 Efectos["generador_electrico"]= function(v,w,f,bol,bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","magia"},false )
             DamageProccess(v,w,-((w.dex*2 + mod(w,"dex") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -145,12 +154,13 @@ Efectos["generador_electrico"]= function(v,w,f,bol,bono)
 Efectos["disparador_sonico"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
-
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"sonido","fisico"},false )
             DamageProccess(v,w,-((w.dex*3 + mod(w,"dex") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -161,12 +171,13 @@ Efectos["disparador_sonico"]= function(v,w,f,bol)
 Efectos["misiles"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
-
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"explosion","fisico"},false )
             DamageProccess(v,w,-((w.dex*3 + mod(w,"dex") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -178,12 +189,13 @@ Efectos["misiles"]= function(v,w,f,bol)
 Efectos["generador_de_gravedad"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
-
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"gravedad","fisico"},false )
             DamageProccess(v,w,-((w.dex*3 + mod(w,"dex") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -195,12 +207,13 @@ Efectos["generador_de_gravedad"]= function(v,w,f,bol)
 Efectos["tecnologia_prohibida"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
-
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","fisico"},false )
             DamageProccess(v,w,-((w.dex*3 + mod(w,"dex") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -212,12 +225,14 @@ Local_debug=""
 Efectos["lanza_llamas"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             Local_debug=v.name
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","fisico"},false )
             DamageProccess(v,w,-((w.dex*3 + mod(w,"dex") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="fuego"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"fuego",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -230,6 +245,7 @@ Efectos["lanza_llamas"]= function(v,w,f,bol)
 Efectos["destransformar"]= function(v,w,f,bol)
         v.anim_acc="magia"
         v.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         v.forma=false
         v.acc=v.accResp
     end
@@ -237,6 +253,7 @@ Efectos["destransformar"]= function(v,w,f,bol)
 Efectos["forma_murcielago"]= function(v,w,f,bol)
         v.anim_acc="magia"
         v.anim_col={1,1,1,1}
+        Animacion.add_action_animation(v,"magia",{1,1,1,1})
         v.forma=true
         v.sec_anim={ti=0,ac=1,frm={{t=32,spr=3},{t=32,spr=32},}}
         v.acc={"atacar","destransformar","defensa","objetos"}
@@ -245,6 +262,7 @@ Efectos["forma_murcielago"]= function(v,w,f,bol)
 Efectos["forma_serpiente"]= function(v,w,f,bol)
         v.anim_acc="magia"
         v.anim_col={1,1,1,1}
+        Animacion.add_action_animation(v,"magia",{1,1,1,1})
         v.forma=true
         v.sec_anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},}}
         v.acc={"atacar","destransformar","defensa","objetos"}
@@ -253,6 +271,7 @@ Efectos["forma_serpiente"]= function(v,w,f,bol)
 Efectos["forma_slime"]= function(v,w,f,bol)
         v.anim_acc="magia"
         v.anim_col={1,1,1,1}
+        Animacion.add_action_animation(v,"magia",{1,1,1,1})
         v.forma=true
         v.sec_anim={ti=0,ac=1,frm={{t=32,spr=70},{t=32,spr=71},}}
         v.acc={"atacar","destransformar","defensa","objetos"}
@@ -263,12 +282,14 @@ Efectos["forma_slime"]= function(v,w,f,bol)
 Efectos["darkness"]= function(v,w,f,bol)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
-        
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","magia"},false )
             DamageProccess(v,w,-((w.pod*3 + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -281,6 +302,7 @@ Efectos["darkness"]= function(v,w,f,bol)
 Efectos["anomalia"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         w.summon=true
         w.ani_summon="anomalia"
         w.avanzar_x=400
@@ -292,6 +314,7 @@ Efectos["anomalia"]= function(v,w,f,bol)
             DamageProccess(v,w,-(((w.pod*3) + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -305,6 +328,7 @@ Efectos["anomalia"]= function(v,w,f,bol)
 Efectos["Demonio_protector"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         w.summon=true
         w.ani_summon="Demonio_protector"
         w.avanzar_x=400
@@ -316,6 +340,7 @@ Efectos["Demonio_protector"]= function(v,w,f,bol)
             DamageProccess(v,w,-(((w.pod*5) + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -326,11 +351,13 @@ Efectos["Demonio_protector"]= function(v,w,f,bol)
 Efectos["dragon_de_fuego "]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -341,11 +368,13 @@ Efectos["dragon_de_fuego "]= function(v,w,f,bol)
 Efectos["Tiphon_de_agua"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fisico","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -356,11 +385,13 @@ Efectos["Tiphon_de_agua"]= function(v,w,f,bol)
 Efectos["relampago_divino"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"electricidad","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -371,11 +402,13 @@ Efectos["relampago_divino"]= function(v,w,f,bol)
 Efectos["petalos_cortantes"]= function(v,w,f,bol)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"corte","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -385,11 +418,13 @@ Efectos["petalos_cortantes"]= function(v,w,f,bol)
 Efectos["danza_helada"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"frio","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -400,11 +435,13 @@ Efectos["danza_helada"]= function (v, w, f, bol, bono)
 Efectos["fuerza_del_bosque"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"golpe","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -415,11 +452,13 @@ Efectos["fuerza_del_bosque"]= function (v, w, f, bol, bono)
 Efectos["voluntad_de_la_tierra"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"golpe","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -430,11 +469,13 @@ Efectos["voluntad_de_la_tierra"]= function (v, w, f, bol, bono)
 Efectos["corte_infernal"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"corte","fuego","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -445,11 +486,13 @@ Efectos["corte_infernal"]= function (v, w, f, bol, bono)
 Efectos["giga_mecha"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","fisico"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -460,11 +503,13 @@ end
 Efectos["voluntad_divina"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"sagrado","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -478,6 +523,7 @@ Efectos["Elemental_de_fuego"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -492,6 +538,7 @@ Efectos["Elemental_de_agua"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -505,6 +552,7 @@ Efectos["Elemental_de_relampago"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -518,6 +566,7 @@ Efectos["Elemental_de_aire"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -531,6 +580,7 @@ Efectos["Elemental_del_bosque"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -544,6 +594,7 @@ Efectos["Elemental_de_tierra"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -557,6 +608,7 @@ Efectos["regalo"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -570,6 +622,7 @@ Efectos["roca!!"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -583,6 +636,7 @@ Efectos["fantasma"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             add(aliados,char)
             char.x=aliadosPosicion[#aliados].x
@@ -597,6 +651,7 @@ Efectos["murcielago"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["murcielago_aliado"])
             char.id="murcielago_aliado"..(#aliados+1)
             char.x=aliadosPosicion[#aliados+1].x
@@ -613,6 +668,7 @@ Efectos["zombie"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["zombie_aliado"])
             char.id="zombie_aliado"..(#aliados+1)
             char.x=aliadosPosicion[#aliados+1].x
@@ -629,6 +685,7 @@ Efectos["esqueleto"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["Esqueleto_aliado"])
             char.id="Esqueleto_aliado"..(#aliados+1)
             char.x=aliadosPosicion[#aliados+1].x
@@ -644,6 +701,7 @@ Efectos["demonio"]= function (v, w, f, bol, bono)
         if #aliados<3 then
             w.anim_acc="magia"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"magia",{1,1,1,1})
             local char=copiar_tabla(invocaciones_fisicas["demonio_aliado"])
             char.id="demonio_aliado"..(#aliados+1)
             char.x=aliadosPosicion[#aliados+1].x
@@ -662,6 +720,7 @@ Efectos["demonio"]= function (v, w, f, bol, bono)
 Efectos["dia_lluvioso"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="agua"
         for k,i in pairs(EnemigosVivos)do
             if i.hp_>0 then
@@ -684,6 +743,7 @@ Efectos["dia_lluvioso"]= function (v, w, f, bol, bono)
 Efectos["dia_caluroso"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="fuego"
         Debug_temp = " //this"
         FiltrarEnemigoVivos()
@@ -707,6 +767,7 @@ Efectos["dia_caluroso"]= function (v, w, f, bol, bono)
 Efectos["dia_nevado"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="nevado"
         FiltrarEnemigoVivos()
         for k,i in pairs(EnemigosVivos)do
@@ -730,6 +791,7 @@ Efectos["dia_nevado"]= function (v, w, f, bol, bono)
 Efectos["dia_con_viento"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="pladera"
         FiltrarEnemigoVivos()
         for k,i in pairs(EnemigosVivos)do
@@ -754,6 +816,7 @@ Efectos["dia_con_viento"]= function (v, w, f, bol, bono)
 Efectos["dia_harucanado"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="pladera"
         FiltrarEnemigoVivos()
         for k,i in pairs(EnemigosVivos)do
@@ -778,6 +841,7 @@ Efectos["dia_harucanado"]= function (v, w, f, bol, bono)
 Efectos["aliento_de_hielo"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         FiltrarEnemigoVivos()
         for k,i in pairs(EnemigosVivos)do
             if i.hp_>0 then
@@ -798,6 +862,7 @@ Efectos["aliento_de_hielo"]= function (v, w, f, bol, bono)
 Efectos["aliento_de_fuego"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         FiltrarEnemigoVivos()
         for k,i in pairs(EnemigosVivos)do
             if i.hp_>0 then
@@ -819,6 +884,7 @@ Efectos["aliento_de_fuego"]= function (v, w, f, bol, bono)
 Efectos["auto_destruccion"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         FiltrarEnemigoVivos()
         for k,i in pairs(EnemigosVivos)do
             if i.live then
@@ -840,6 +906,7 @@ Efectos["auto_destruccion"]= function (v, w, f, bol, bono)
 Efectos["mega_destruccion"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         for k,i in pairs(Order)do
             if i.live then
                 if acertarMod(v,w,6) then
@@ -863,11 +930,13 @@ Efectos["mega_destruccion"]= function (v, w, f, bol, bono)
 Efectos["condena"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -879,6 +948,7 @@ Efectos["condena"]= function (v, w, f, bol, bono)
 Efectos["viento_milagroso"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         for k,i in pairs(Order) do
             if i.tipo=="player" then
                 local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
@@ -895,6 +965,7 @@ Efectos["viento_milagroso"]= function (v, w, f, bol, bono)
 Efectos["ruleta"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         local muerto= flr(rnd(5))+1
         if acertarMod(Order[muerto],w,6) then
             Order[muerto].hp_=0
@@ -913,10 +984,12 @@ Efectos["ruleta"]= function (v, w, f, bol, bono)
 Efectos["anular"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             v.state={}
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -928,10 +1001,12 @@ Efectos["anular"]= function (v, w, f, bol, bono)
 Efectos["1000"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             v.hp_=v.hp_-1000
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -942,10 +1017,12 @@ Efectos["1000"]= function (v, w, f, bol, bono)
 Efectos["10000"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             v.hp_=v.hp_-10000
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -957,10 +1034,12 @@ Efectos["10000"]= function (v, w, f, bol, bono)
 Efectos["77777"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             v.hp_=v.hp_-77777
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -973,11 +1052,13 @@ Efectos["77777"]= function (v, w, f, bol, bono)
 Efectos["aliento_toxico"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
 
 
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -988,11 +1069,13 @@ Efectos["aliento_toxico"]= function (v, w, f, bol, bono)
 Efectos["ataque_mental"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"mental"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1003,11 +1086,13 @@ Efectos["ataque_mental"]= function (v, w, f, bol, bono)
 Efectos["esencia_de_oscuridad"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1018,11 +1103,13 @@ Efectos["esencia_de_oscuridad"]= function (v, w, f, bol, bono)
 Efectos["explosion"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1037,11 +1124,13 @@ Efectos["explosion"]= function (v, w, f, bol, bono)
 Efectos["desintegrar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1052,11 +1141,13 @@ Efectos["desintegrar"]= function (v, w, f, bol, bono)
 Efectos["Disminuir_nivel"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1067,6 +1158,7 @@ Efectos["Disminuir_nivel"]= function (v, w, f, bol, bono)
 Efectos["the_end"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         for k,i in pairs(Order) do
             if i.tipo=="enemy" then
                 v.hp_=0
@@ -1083,11 +1175,13 @@ Efectos["the_end"]= function (v, w, f, bol, bono)
 Efectos["ultima_duplicado"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             DamageProccess(v,w,-((w.pod*27 + mod(w,"pod") + flr(rnd(6)))*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1098,21 +1192,25 @@ Efectos["ultima_duplicado"]= function (v, w, f, bol, bono)
 Efectos["regeneracion"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         w.state["regeneracion"]={name="regeneracion",id="regeneracion",spr=11,value=w.pod/2,cont=5,ini=5}
     end
 
 Efectos["berserk"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
     end
 
 Efectos["coraza"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
     end
 Efectos["barrera"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
     end
 
 
@@ -1120,22 +1218,26 @@ Efectos["barrera"]= function (v, w, f, bol, bono)
 Efectos["runa_absorcion"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
     end
 -- ninja
 
 Efectos["humo"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
     end
 
 Efectos["imagen"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
     end
 
 Efectos["doble"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
     end
 
 
@@ -1160,6 +1262,7 @@ Efectos["elemental_fuego"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((flr(w.pod)*0.5 +  flr(mod(w,"pod")*0.5) + left + right)*mult),crit) 
             v.anim_acc="fuego"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"fuego",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1204,8 +1307,9 @@ Efectos["elemental_electrico"]= function (v, w, f, bol, bono)
             end
             local mult, crit =  adv_weak_Logic(v,w,{"electricidad"},false )
             DamageProccess(v,w,-((flr(w.pod)*0.5 +  flr(mod(w,"pod")*0.5) + left + right)*mult),crit) 
-            v.anim_acc="rayo"
+            v.anim_acc="hielo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"hielo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1229,6 +1333,7 @@ Efectos["elemental_hielo"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((flr(w.pod)*0.5 +  flr(mod(w,"pod")*0.5) + left + right)*mult),crit) 
             v.anim_acc="hielo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"hielo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1252,6 +1357,7 @@ Efectos["elemental_oscuridad"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((flr(w.pod)*0.5 +  flr(mod(w,"pod")*0.5) + left + right)*mult),crit) 
             v.anim_acc="magia"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"magia",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1264,6 +1370,8 @@ end
 Efectos["Balas_Rapidas"]= function (v, w, f, bol, bono)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
+        Animacion.add_action_animation(v,"ataque_arma",{1,1,1,1})
         if acertarMod(v,w,6) then
             local left=0
             local right=0
@@ -1277,6 +1385,7 @@ Efectos["Balas_Rapidas"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((flr(w.dex *0.5) +  flr(mod(w,"dex")*0.5) + left + right)*mult),crit) 
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1289,6 +1398,8 @@ Efectos["Balas_Rapidas"]= function (v, w, f, bol, bono)
 Efectos["Balas_Potentes"]= function (v, w, f, bol, bono)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertarMod(v,w,6) then
             --local it2 = getChars("plus",items)
             --it2.cont=it2.cont-1
@@ -1296,6 +1407,7 @@ Efectos["Balas_Potentes"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((w.dex + (5)+ mod(w,"dex"))*mult),crit) 
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1308,6 +1420,7 @@ Efectos["Balas_Potentes"]= function (v, w, f, bol, bono)
 Efectos["Ultra_pocion"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(v,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1321,6 +1434,7 @@ Efectos["Ultra_pocion"]= function (v, w, f, bol, bono)
     Efectos["Ultra_ether"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(v,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1333,6 +1447,7 @@ Efectos["Ultra_pocion"]= function (v, w, f, bol, bono)
     Efectos["Ultra_veneno"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(v,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1345,6 +1460,7 @@ Efectos["Ultra_pocion"]= function (v, w, f, bol, bono)
     Efectos["Ultra_Dormir"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1357,6 +1473,7 @@ Efectos["Ultra_pocion"]= function (v, w, f, bol, bono)
 Efectos["Ultra_paralisis"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1369,6 +1486,7 @@ Efectos["Ultra_paralisis"]= function (v, w, f, bol, bono)
 Efectos["Ultra_bomba"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1381,6 +1499,7 @@ Efectos["Ultra_bomba"]= function (v, w, f, bol, bono)
     Efectos["ultra_elixir"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1393,6 +1512,7 @@ Efectos["Ultra_bomba"]= function (v, w, f, bol, bono)
 Efectos["Ultra_revivir"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1405,6 +1525,7 @@ Efectos["Ultra_revivir"]= function (v, w, f, bol, bono)
 Efectos["Ultra_potencia"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1417,6 +1538,7 @@ Efectos["Ultra_potencia"]= function (v, w, f, bol, bono)
 Efectos["Ultra_evacion"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1429,6 +1551,7 @@ Efectos["Ultra_evacion"]= function (v, w, f, bol, bono)
 Efectos["Ultra_rapidez"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1441,6 +1564,7 @@ Efectos["Ultra_rapidez"]= function (v, w, f, bol, bono)
 Efectos["Ultra_defenza"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1453,6 +1577,7 @@ Efectos["Ultra_defenza"]= function (v, w, f, bol, bono)
 Efectos["panacea_spray"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1465,6 +1590,7 @@ Efectos["panacea_spray"]= function (v, w, f, bol, bono)
 Efectos["Pocion_spray"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1477,6 +1603,7 @@ Efectos["Pocion_spray"]= function (v, w, f, bol, bono)
 Efectos["Ether_spray"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1489,6 +1616,7 @@ Efectos["Ether_spray"]= function (v, w, f, bol, bono)
 Efectos["elixir_spray"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1501,6 +1629,7 @@ Efectos["elixir_spray"]= function (v, w, f, bol, bono)
 Efectos["Gas_de_resureccion"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1513,6 +1642,7 @@ Efectos["Gas_de_resureccion"]= function (v, w, f, bol, bono)
 Efectos["Gas_Venenoso"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1525,6 +1655,7 @@ Efectos["Gas_Venenoso"]= function (v, w, f, bol, bono)
 Efectos["Gas_dormir"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1537,6 +1668,7 @@ Efectos["Gas_dormir"]= function (v, w, f, bol, bono)
 Efectos["Gas_paralisante"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1549,6 +1681,7 @@ Efectos["Gas_paralisante"]= function (v, w, f, bol, bono)
 Efectos["Gas_de_potencia"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1561,6 +1694,7 @@ Efectos["Gas_de_potencia"]= function (v, w, f, bol, bono)
 Efectos["Gas_de_evacion"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1573,6 +1707,7 @@ Efectos["Gas_de_evacion"]= function (v, w, f, bol, bono)
 Efectos["Gas_de_rapidez"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1585,6 +1720,7 @@ Efectos["Gas_de_rapidez"]= function (v, w, f, bol, bono)
 Efectos["Gas_de_defenza"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1597,6 +1733,7 @@ Efectos["Gas_de_defenza"]= function (v, w, f, bol, bono)
 Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1611,6 +1748,7 @@ Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
     Efectos["bomba_electrico"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1625,6 +1763,7 @@ Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
     Efectos["bomba_Frio"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1639,6 +1778,7 @@ Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
     Efectos["Bomba_veneno"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1653,6 +1793,7 @@ Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
     Efectos["Bomba_dormir"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1665,6 +1806,7 @@ Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
     Efectos["Mix_Pocion_ether"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1677,6 +1819,7 @@ Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
     Efectos["Mix_Panacea_pocion"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1689,6 +1832,7 @@ Efectos["bomba_fuego"]= function (v, w, f, bol, bono)
 Efectos["Mix_Panacea_ether"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
         local it1 = getChars("pocion",items)
         local it2 = getChars("plus",items)
         --it1.cont=it1.cont-1
@@ -1702,54 +1846,65 @@ Efectos["Mix_Panacea_ether"]= function (v, w, f, bol, bono)
 Efectos["cancion_de_la_vida"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
 Efectos["cancion_de_alegria"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
 Efectos["Cancion_de_burla"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
 Efectos["cancion_encantadora"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 Efectos["cancion_del_viento"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
 Efectos["cuatro_pasos"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 Efectos["baile_de_miradas"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 Efectos["vuelta"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
 Efectos["controlar"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
     
 Efectos["encantar"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
 Efectos["enfocarse"]= function (v, w, f, bol, bono)
         w.anim_acc="lanzar"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"lanzar",{1,1,1,1})
     end
 
     ---tecnicas de ataques a distancia
@@ -1757,6 +1912,7 @@ Efectos["enfocarse"]= function (v, w, f, bol, bono)
 Efectos["disparo_preciso"]= function (v, w, f, bol, bono)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             local left=0
@@ -1770,6 +1926,7 @@ Efectos["disparo_preciso"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((w.dex + mod(w,"dex") +left+right)*mult),crit) 
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -1781,6 +1938,7 @@ Efectos["disparo_preciso"]= function (v, w, f, bol, bono)
 Efectos["lluvia_de_flechas"]= function (v, w, f, bol, bono)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         --w.carga=0
         local left=0
         local right=0
@@ -1832,7 +1990,8 @@ end
 Efectos["disparo_rapido_shot"]= function (v, w, f, bol, bono)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
-            --next_atack="disparo_rapido"
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
+            --Actual.next_atack="disparo_rapido"
             --count_auto=count_auto+1
             --auto=true
             --auto_obj=v.id
@@ -1849,6 +2008,7 @@ Efectos["disparo_rapido_shot"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((w.dex + mod(w,"dex") +left+right)*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
             if v.live==false then
@@ -1872,6 +2032,7 @@ end
 Efectos["desenbocado"]= function (v, w, f, bol, bono)
             w.anim_acc="puñetazos"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"puñetazos",{1,1,1,1})
             FiltrarEnemigoVivos()
             local enemy=flr(rnd(#EnemigosVivos))
             --Msg_debug="num "..enemy.."/"..#EnemigosVivos
@@ -1907,6 +2068,8 @@ Efectos["desenbocado"]= function (v, w, f, bol, bono)
     Efectos["rompe_defensa"]= function (v, w, f, bol, bono)
             w.anim_acc="puñetazos"
             w.anim_col={1,1,1,1}
+            Animacion.add_action_animation(w,"puñetazos",{1,1,1,1})
+
     end
 
     Efectos["rompe_espiritu"]= function (v, w, f, bol, bono)
@@ -2103,6 +2266,7 @@ Efectos["alegria"]= function (v, w, f, bol, bono)
 Efectos["golpe_fuerte"]= function (v, w, f, bol, bono)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             local left=0
@@ -2116,6 +2280,7 @@ Efectos["golpe_fuerte"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((w.fue + mod(w,"fue") +left+right)*0.8*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2126,6 +2291,7 @@ Efectos["golpe_fuerte"]= function (v, w, f, bol, bono)
 Efectos["golpe_cargado"]= function (v, w, f, bol, bono)
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"fuego","magia"},false )
             local left=0
@@ -2139,6 +2305,7 @@ Efectos["golpe_cargado"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-((w.fue + mod(w,"fue") +left+right)*1.5*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2151,10 +2318,12 @@ Efectos["golpe_cargado"]= function (v, w, f, bol, bono)
 Efectos["marca"]= function (v, w, f, bol, bono) ---completar estado
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
         if acertar(v,w)  then
             v.state["marca"]={name="marca",id="marca",spr=18,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2165,6 +2334,7 @@ Efectos["marca"]= function (v, w, f, bol, bono) ---completar estado
 Efectos["sangrado"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             DamageProccess(v,w,-((flr(v.hp/2) )),crit)
             v.anim_acc="magia"
@@ -2179,6 +2349,8 @@ Efectos["sangrado"]= function (v, w, f, bol, bono)
 Efectos["petrificacion"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
+
         if acertar(v,w)  then
             v.state["trasmutado"]={name="trasmutado",id="trasmutado",spr=84,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2192,8 +2364,9 @@ Efectos["petrificacion"]= function (v, w, f, bol, bono)
 
 
 Efectos["stun"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["stun"]={name="stun",id="stun",spr=48,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2206,8 +2379,9 @@ Efectos["stun"]= function (v, w, f, bol, bono)
     end
 
 Efectos["ceguera"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["ceguera"]={name="ceguera",id="ceguera",spr=3,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2220,8 +2394,9 @@ Efectos["ceguera"]= function (v, w, f, bol, bono)
     end
     
 Efectos["confundir"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["confundir"]={name="confundir",id="confundir",spr=0,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2234,8 +2409,9 @@ Efectos["confundir"]= function (v, w, f, bol, bono)
     end
     
 Efectos["silencio"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["silencio"]={name="silencio",id="silencio",spr=3,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2249,8 +2425,9 @@ Efectos["silencio"]= function (v, w, f, bol, bono)
     
 
 Efectos["dormir"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["dormir"]={name="dormir",id="dormir",spr=29,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2264,8 +2441,9 @@ Efectos["dormir"]= function (v, w, f, bol, bono)
 
 Efectos["confundir_duplicado"]= function (v, w, f, bol, bono)
         name_action="confundir"
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["confundir"]={name="confundir",id="confundir",spr=3,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2278,8 +2456,9 @@ Efectos["confundir_duplicado"]= function (v, w, f, bol, bono)
     end
 Efectos["aturdir"]= function (v, w, f, bol, bono)
         name_action="aturdir"
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["stun"]={name="stun",id="stun",spr=48,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2293,8 +2472,9 @@ Efectos["aturdir"]= function (v, w, f, bol, bono)
 
 Efectos["muerte"]= function (v, w, f, bol, bono)
         name_action="muerte"
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["muerte"]={name="muerte",id="muerte",spr=3,value=w.pod,val=v.pod,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2310,11 +2490,13 @@ Efectos["lianas"]= function (v, w, f, bol, bono)
         name_action="lianas"
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"planta","magia"},false )            
             DamageProccess(v,w,-((w.pod + mod(w,"pod") + flr(rnd(6)))*5*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2326,11 +2508,13 @@ Efectos["lianas+"]= function (v, w, f, bol, bono)
         name_action="hechizo "..Mg_sel
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertarMod(v,w,6) then
             local mult, crit =  adv_weak_Logic(v,w,{"planta","magia"},false )            
             DamageProccess(v,w,-(((w.pod*5) + mod(w,"pod") + flr(rnd(6)))*12*bono*mult),crit)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2342,6 +2526,7 @@ Efectos["enredadera"]= function (v, w, f, bol, bono)
         name_action="hechizo "..Mg_sel
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             v.state["atrapado"]={name="atrapado",id="atrapado",spr=5,value=0,cont=3,ini=5}
             v.anim_acc="magia"
@@ -2362,6 +2547,7 @@ Efectos["fuego"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(6)))*5*bono*mult),crit)
             v.anim_acc="fuego"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"fuego",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2377,6 +2563,7 @@ Efectos["fuego+"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(6)))*12*bono*mult),crit)
             v.anim_acc="fuego"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"fuego",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2393,6 +2580,7 @@ Efectos["fuego++"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(6)))*25*bono*mult),crit)
             v.anim_acc="fuego"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"fuego",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2409,6 +2597,7 @@ Efectos["hielo"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(6)))*5*bono*mult),crit)
             v.anim_acc="hielo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"hielo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2424,6 +2613,7 @@ Efectos["hielo+"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(6)))*12*bono*mult),crit)
             v.anim_acc="hielo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"hielo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2440,6 +2630,7 @@ Efectos["hielo++"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(6)))*26*bono*mult),crit)
             v.anim_acc="hielo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"hielo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2455,6 +2646,7 @@ Efectos["electro"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(4)))*5*bono*mult),crit)
             v.anim_acc="rayo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"rayo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2470,6 +2662,7 @@ Efectos["electro+"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(((w.pod*5)+ mod(w,"pod") + flr(rnd(4)))*12*bono*mult),crit)
             v.anim_acc="rayo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"rayo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2485,6 +2678,7 @@ Efectos["electro++"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(((w.pod*5)+ mod(w,"pod") + flr(rnd(4)))*26*bono*mult),crit)
             v.anim_acc="rayo"
             v.anim_col={1,1,1,1}
+            Animacion.add_action_animation(v,"rayo",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2496,8 +2690,9 @@ Efectos["electro++"]= function (v, w, f, bol, bono)
 
 
 Efectos["aire"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"corte","fisico","aire","magia"},false )
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) )*5*bono*mult) ,crit)
@@ -2511,8 +2706,9 @@ Efectos["aire"]= function (v, w, f, bol, bono)
     end
 
 Efectos["aire+"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"corte","fisico","aire","magia"},false )
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(2)) )*12*bono*mult) ,crit)
@@ -2526,8 +2722,9 @@ Efectos["aire+"]= function (v, w, f, bol, bono)
     end
 
 Efectos["aire++"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"corte","fisico","aire","magia"},false )
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(2)) )*26*bono*mult) ,crit)
@@ -2588,6 +2785,7 @@ Efectos["agua++"]= function (v, w, f, bol, bono)
 Efectos["choque"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"fisico","contundente","aire","magia"},false )
             DamageProccess(v,w,-flr((w.fue + mod(w,"fue") + flr(rnd(2)) + 1)*5*bono*mult)  ,crit)
@@ -2603,6 +2801,7 @@ Efectos["choque"]= function (v, w, f, bol, bono)
 Efectos["choque+"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"fisico","contundente","aire","magia"},false )
             DamageProccess(v,w,-flr(((w.fue*5) + mod(w,"fue") + flr(rnd(2)) + 1)*12*bono*mult)  ,crit)
@@ -2618,6 +2817,7 @@ Efectos["choque+"]= function (v, w, f, bol, bono)
     Efectos["choque++"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"fisico","contundente","aire","magia"},false )
             DamageProccess(v,w,-flr(((w.fue*5) + mod(w,"fue") + flr(rnd(2)) + 1)*26*bono*mult)  ,crit)
@@ -2633,6 +2833,7 @@ Efectos["choque+"]= function (v, w, f, bol, bono)
 Efectos["sagrado"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"sagrado","magia"},false )
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) + 1)*100*bono*mult)  ,crit)
@@ -2647,6 +2848,7 @@ Efectos["sagrado"]= function (v, w, f, bol, bono)
 Efectos["sagrado+"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"sagrado","magia"},false )
             DamageProccess(v,w,-flr(((w.pod * 5 )+ mod(w,"pod") + flr(rnd(2)) + 1)*260*bono*mult)  ,crit)
@@ -2662,6 +2864,7 @@ Efectos["sagrado+"]= function (v, w, f, bol, bono)
 Efectos["oscuridad"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","aire","magia"},false )
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) + 1)*6*bono*mult)  ,crit)
@@ -2677,6 +2880,7 @@ Efectos["oscuridad"]= function (v, w, f, bol, bono)
 Efectos["oscuridad+"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","aire","magia"},false )
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(2)) + 1)*12*bono*mult)  ,crit)
@@ -2692,6 +2896,7 @@ Efectos["oscuridad+"]= function (v, w, f, bol, bono)
 Efectos["oscuridad++"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"piedra","magia"},false )
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(2)) + 1)*26*bono*mult)  ,crit)
@@ -2708,6 +2913,7 @@ Efectos["oscuridad++"]= function (v, w, f, bol, bono)
 Efectos["piedra"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"piedra","contundente","magia"},false )
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) + 1)*6*bono*mult)  ,crit)
@@ -2724,6 +2930,7 @@ Efectos["piedra"]= function (v, w, f, bol, bono)
 Efectos["piedra+"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"piedra","contundente","magia"},false )
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) + 1)*12*bono*mult)  ,crit)
@@ -2740,6 +2947,7 @@ Efectos["piedra+"]= function (v, w, f, bol, bono)
 Efectos["piedra++"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"oscuridad","aire","magia"},false )
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) + 1)*26*bono*mult)  ,crit)
@@ -2755,6 +2963,7 @@ Efectos["piedra++"]= function (v, w, f, bol, bono)
 Efectos["bio"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"biologico","aire","magia"},false )
             DamageProccess(v,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) + 1)*6*bono*mult)  ,crit)
@@ -2771,6 +2980,7 @@ Efectos["bio"]= function (v, w, f, bol, bono)
 Efectos["bio+"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"magia",{1,1,1,1})
         if acertar(v,w) then
             local mult, crit =  adv_weak_Logic(v,w,{"biologico","aire","magia"},false )
             DamageProccess(v,w,-flr(((w.pod*5) + mod(w,"pod") + flr(rnd(2)) + 1)*12*bono*mult)  ,crit)
@@ -2891,6 +3101,7 @@ Efectos["Sw_Fire"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2909,6 +3120,7 @@ Efectos["Sw_Fire+"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2927,6 +3139,7 @@ Efectos["Sw_Fire++"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2947,6 +3160,7 @@ Efectos["Sw_ice"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2967,6 +3181,7 @@ Efectos["Sw_ice+"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -2987,6 +3202,7 @@ Efectos["Sw_ice++"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -3009,6 +3225,7 @@ Efectos["Sw_electro"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -3030,6 +3247,7 @@ Efectos["Sw_electro+"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -3051,6 +3269,7 @@ Efectos["Sw_electro++"]= function (v, w, f, bol, bono)
             DamageProccess(v,w,-flr(ecc)  ,crit..crit2)
             v.anim_acc="corte"
             v.anim_col={1,1,1,1}
+             Animacion.add_action_animation(v,"corte",{1,1,1,1})
             jump_start(v)
             checks(v)
         else
@@ -3118,8 +3337,9 @@ Efectos["fuerte"]= function (v, w, f, bol, bono)
 
 
 Efectos["lento"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         if acertar(v,w)  then
             v.state["lento"]={name="lento",id="lento",spr=3,value=w.pod,val=v.pod,cont=5,ini=5}
             v.ini=v.agi+mod(v,"agi")+flr(rnd(20))
@@ -3186,8 +3406,9 @@ Efectos["congelar"]= function (v, w, f, bol, bono)
     end
 
 Efectos["veneno"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
 
         if acertar(v,w)  then
             v.state["veneno"]={name="veneno",id="veneno",spr=11,value=w.pod/2,cont=5,ini=5}
@@ -3201,8 +3422,9 @@ Efectos["veneno"]= function (v, w, f, bol, bono)
 
 
 Efectos["enfermedad"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
 
         if acertar(v,w)  then
             v.state["veneno"]={name="veneno",id="veneno",spr=11,value=w.pod/2,cont=5,ini=5}
@@ -3222,8 +3444,9 @@ Efectos["recuperacion"]= function (v, w, f, bol, bono)
 
 
         DamageProccess(w,w,((w.con + flr(rnd(6)) + 1)) ,"")
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         --w.anim_acc="magia"
         --w.anim_col={1,1,1,1}
 
@@ -3498,8 +3721,9 @@ end
 
 
 Efectos["curar"]= function (v, w, f, bol, bono)
-        w.anim_acc="magia"
-        w.anim_col={0,1,0,1}
+        w.anim_acc="ataque_arma"
+        w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         local mult, crit =  adv_weak_Logic(v,w,{"curar"},false )
         if v.weak["curar"] ~= nil then
             mult=-1
@@ -3512,6 +3736,7 @@ Efectos["curar"]= function (v, w, f, bol, bono)
 Efectos["curar+"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
         local mult, crit =  adv_weak_Logic(v,w,{"curar"},false )
         if v.weak["curar"] ~= nil then
             mult=-1
@@ -3524,6 +3749,7 @@ Efectos["curar+"]= function (v, w, f, bol, bono)
 Efectos["curar++"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
         local mult, crit =  adv_weak_Logic(v,w,{"curar"},false )
         if v.weak["curar"] ~= nil then
             mult=-1
@@ -3536,6 +3762,7 @@ Efectos["curar++"]= function (v, w, f, bol, bono)
 Efectos["revivir"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
         v.hp_=10
         v.live=true
         v.state={}
@@ -3545,6 +3772,7 @@ Efectos["revivir"]= function (v, w, f, bol, bono)
 Efectos["sanar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
         v.state={}
         v.anim_acc="magia"
         v.anim_col={1,1,1,1}
@@ -3552,6 +3780,7 @@ Efectos["sanar"]= function (v, w, f, bol, bono)
 Efectos["disipar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
         v.state={}
         v.anim_acc="magia"
         v.anim_col={1,1,1,1}
@@ -3560,6 +3789,7 @@ Efectos["disipar"]= function (v, w, f, bol, bono)
 Efectos["drenar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
         v.anim_acc="magia"
@@ -3568,6 +3798,7 @@ Efectos["drenar"]= function (v, w, f, bol, bono)
 Efectos["absorber"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
         v.anim_acc="magia"
@@ -3576,6 +3807,7 @@ Efectos["absorber"]= function (v, w, f, bol, bono)
 Efectos["vampiro"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
         v.anim_acc="magia"
@@ -3585,6 +3817,7 @@ Efectos["vampiro"]= function (v, w, f, bol, bono)
 Efectos["teleport"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
         
@@ -3593,6 +3826,7 @@ Efectos["teleport"]= function (v, w, f, bol, bono)
     Efectos["exiliar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
     end
@@ -3602,6 +3836,7 @@ Efectos["teleport"]= function (v, w, f, bol, bono)
     Efectos["lanzar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
     end
@@ -3609,6 +3844,7 @@ Efectos["teleport"]= function (v, w, f, bol, bono)
     Efectos["portal"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
     end
@@ -3616,6 +3852,7 @@ Efectos["teleport"]= function (v, w, f, bol, bono)
     Efectos["expulsar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
     end
@@ -3623,6 +3860,7 @@ Efectos["teleport"]= function (v, w, f, bol, bono)
 Efectos["volar"]= function (v, w, f, bol, bono)
         w.anim_acc="magia"
         w.anim_col={0,1,0,1}
+        Animacion.add_action_animation(w,"magia",{0,1,0,1})
 
         v.state={}
     end
@@ -3724,7 +3962,7 @@ Efectos["roca_item"]= function (v, w, f, bol, bono)
                 v.jump_time=0
                 v.rest=false
                 local str=f.id
-                --mult, crit =  adv_weak_Logic(v,w,{"fuego"},false )
+                mult, crit =  adv_weak_Logic(v,w,{"fuego"},false )
                 if bol then DamageProccess(v,w,-(rndp(f.attack)*1.5*mult),crit)
                 else DamageProccess(v,w,-(rndp(f.attack)*mult),crit) end
                 checks(v)
@@ -3790,6 +4028,7 @@ Efectos["flojera"] = function (v, w, f, bol, bono)
         w.rest=false
         w.anim_acc="ataque_arma"
         w.anim_col={1,1,1,1}
+        Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
 end
 
 

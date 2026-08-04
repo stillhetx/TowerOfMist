@@ -1,4 +1,6 @@
 
+local love = love
+
 function EventosCards()
     cls()
     love.graphics.draw(Finish_fight, 0, 0,0,1,1)

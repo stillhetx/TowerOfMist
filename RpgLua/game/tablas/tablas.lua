@@ -641,6 +641,15 @@ objetos_especiales={
         disparador_sonico={tipo_item="especiales",name="disparador sonico",id="disparador_sonico",wtipo="tools",dir="e",cost=500},
 }
 
+objetos_equipados={
+        {tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools",dir="e",cost=500},
+        {tipo_item="especiales",name="lanza llamas",id="lanza_llamas",wtipo="tools",dir="e",cost=500},
+        {tipo_item="especiales",name="generador electrico",id="generador_electrico",wtipo="tools",dir="e",cost=500},
+        {tipo_item="especiales",name="generador de gravedad",id="generador_de_gravedad",wtipo="tools",dir="e",cost=500},
+        {tipo_item="especiales",name="misiles",id="misiles",wtipo="tools",dir="e",cost=500},
+        {tipo_item="especiales",name="disparador sonico",id="disparador_sonico",wtipo="tools",dir="e",cost=500},
+}
+
 
 ListaFuerzasMagicas={
         
@@ -650,12 +659,12 @@ ListaFuerzasMagicas={
 Evocaciones={}
 
 lista_tools = {
-        metralleta={tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools", ingredientes = {"metralleta"},dir="e",},
-        lanza_llamas={tipo_item="especiales",name = "lanza llamas",id="lanza_llamas", wtipo="tools",ingredientes = {"lanza_llamas"},dir="e",},
-        generador_electrico={tipo_item="especiales",name = "generador electrico",id="generador_electrico",wtipo="tools", ingredientes = {"generador_electrico"},dir="e",},
-        generador_de_gravedad ={tipo_item="especiales",name = "generador de gravedad",id="generador_de_gravedad", wtipo="tools",ingredientes = {"generador_de_gravedad"},dir="e",},
-        misiles={tipo_item="especiales",name = "misiles",id="misiles", wtipo="tools", ingredientes = {"misiles"},dir="e",},
-        disparador_sonico={tipo_item="especiales",name = "disparador sonico",id="disparador_sonico", wtipo="tools", ingredientes = {"disparador_sonico"},dir="e",},
+        {tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools", ingredientes = {"metralleta"},dir="e",},
+        {tipo_item="especiales",name = "lanza llamas",id="lanza_llamas", wtipo="tools",ingredientes = {"lanza_llamas"},dir="e",},
+        {tipo_item="especiales",name = "generador electrico",id="generador_electrico",wtipo="tools", ingredientes = {"generador_electrico"},dir="e",},
+        {tipo_item="especiales",name = "generador de gravedad",id="generador_de_gravedad", wtipo="tools",ingredientes = {"generador_de_gravedad"},dir="e",},
+        {tipo_item="especiales",name = "misiles",id="misiles", wtipo="tools", ingredientes = {"misiles"},dir="e",},
+        {tipo_item="especiales",name = "disparador sonico",id="disparador_sonico", wtipo="tools", ingredientes = {"disparador_sonico"},dir="e",},
 }
 
 
@@ -1106,34 +1115,34 @@ lista_encuentro={["murcielago"]= true, ["murcielago_fuego"]= false,["murcielago_
 
 
 anim_list={["ataque_arma"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=48,
         frm={{t=8,spr=0},{t=8,spr=1},{t=16,spr=2},{t=8,spr=3},{t=8,spr=4}}},
         ["magia"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=48,
         frm={{t=8,spr=5},{t=8,spr=6},{t=16,spr=7},{t=8,spr=8},{t=8,spr=9}}},
         ["corte"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=48,
         frm={{t=8,spr=10},{t=8,spr=11},{t=16,spr=12},{t=8,spr=13},{t=8,spr=14}}},
         ["golpe"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=48,
         frm={{t=8,spr=15},{t=8,spr=16},{t=16,spr=17},{t=8,spr=18},{t=8,spr=19}}},
         ["puñetazos"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=48,
         frm={{t=8,spr=20},{t=8,spr=21},{t=16,spr=22},{t=8,spr=24},{t=8,spr=25}}},
         ["lanzar"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=48,
         frm={{t=8,spr=26},{t=8,spr=27},{t=16,spr=28},{t=8,spr=29},{t=8,spr=30}}},
         ["fuego"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=24,
         frm={{t=4,spr=55},{t=4,spr=56},{t=4,spr=57},{t=4,spr=58},{t=4,spr=59}}},
         ["hielo"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=24,
         frm={{t=4,spr=60},{t=4,spr=61},{t=8,spr=62},{t=4,spr=63},{t=4,spr=64}}},
         ["rayo"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=24,
         frm={{t=4,spr=65},{t=4,spr=66},{t=8,spr=67},{t=4,spr=68},{t=4,spr=69}}},
         ["Demonio_protector"]=
-        {ti=0,ac=1,
+        {ti=0,ac=1,time=824,
         frm={{t=824,spr=26}}},
 }
 

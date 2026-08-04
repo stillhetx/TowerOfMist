@@ -67,9 +67,10 @@ Tabla_acciones_funcion["mix"]= function()
     filtrarHechizos()
 end
 Tabla_acciones_funcion["llamar"]= function()
-    if not(#Actual.beast >0) then
+    if #Actual.beast <=0 then
         State="select"
         Acc=""
+        Vacio=true
     end
 end
 
@@ -78,6 +79,7 @@ Tabla_acciones_funcion["tools"]= function()
     if not (#Actual.tools > 0) then
         Acc=""
         State="select"
+        Vacio=true
     end
 end
 
@@ -86,6 +88,7 @@ Tabla_acciones_funcion["Blu.magic"]= function()
     if not(#Actual.blue > 0) then
         Acc=""
         State="select"
+        Vacio=true
     end
 end
 
@@ -94,6 +97,7 @@ Tabla_acciones_funcion["bullet"]= function()
     if not(#Actual.bullet > 0) then
         Acc=""
         State="select"
+        Vacio=true
     end
 end
 

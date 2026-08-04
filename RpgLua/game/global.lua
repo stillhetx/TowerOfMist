@@ -90,7 +90,7 @@ SelectEnemigo={}
 Buton_bonus=0
 --Sistema de seleccion de munu
 
-
+Vacio=false
 Acc=""
 Replace_Acc=false
 --obj=""
@@ -247,6 +247,19 @@ maps={
 {id="mapa01", ini_x=50,ini_y=50}
 
 }
+
+
+List_color={}
+List_color["Red"]={1,0,0,1}
+List_color["Green"]={0,1,0,1}
+List_color["Blue"]={0,0,1,1}
+List_color["Yellow"]={1,1,0,1}
+List_color["Magenta"]={1,0,1,1}
+List_color["Cyan"]={0,1,1,1}
+List_color["White"]={1,1,1,1}
+List_color["Purpura"]={160,32,240,255}
+
+
 
 Red={1,0,0,1}
 Green={0,1,0,1}

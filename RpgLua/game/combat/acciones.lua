@@ -96,15 +96,25 @@ function acciones()
     elseif State=="select l" then
         if Acc == "magics" then
             Acc=Actual.mag[Op]
-            if Acc=="dual M."  then
-                State="select oo"
+            if Tabla_acciones_funcion and Tabla_acciones_funcion[Acc] and  type(Tabla_acciones_funcion[Acc])=="function" then
+                Tabla_acciones_funcion[Acc]()
+            end
+            if Vacio==false then
+                if Acc=="dual M."  then
+                    State="select oo"
+                else
+                    State="select o"  
+                end
             else
-                State="select o"  
+                Vacio=false
             end
             
         end   
         if Acc == "colecciones" then
             Acc=Actual.col[Op]
+            if Tabla_acciones_funcion and Tabla_acciones_funcion[Acc] and  type(Tabla_acciones_funcion[Acc])=="function" then
+                Tabla_acciones_funcion[Acc]()
+            end
             State="select o"
         end
 
