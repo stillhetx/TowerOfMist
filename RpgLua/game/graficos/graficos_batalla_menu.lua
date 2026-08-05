@@ -118,7 +118,10 @@ function Graficos_Batalla.menu()
                     show_menus_name(AliadosMuertos,menu_select_x,menu_y)
                 end
                 if State=="select i" then
-                    menu_cont_name(items,6,menu_select_x+12+4,menu_y+24)
+                    --menu_cont_name(items,6,menu_select_x+12+4,menu_y+24)
+                    --show_menus(items,menu_select_x,menu_y)
+                    show_menus_name_cont(items,menu_select_x,menu_y)
+
                 end
                 if State=="select w" then
                     menu_cont_name(weapon_inventary,6,menu_select_x+12+4,menu_y+24)

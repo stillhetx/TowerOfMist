@@ -78,10 +78,58 @@ Lista_acciones_enemigo={
 ["dummy"]= {
     {nombre = "flojera", prob = 100},
 },
+["old_caster"] = {
+    {nombre = "atacar", prob = 70},
+},
+["old_healer"] = {
+    {nombre = "atacar", prob = 70},
+},
+["old_Buffer"] = {
+    {nombre = "atacar", prob = 70},
+},
+["elemental_water"] = {
+    {nombre = "atacar", prob = 70},
+},
+["elemental_rock"] = {
+    {nombre = "atacar", prob = 70},
+},
+["elemental_fire"] = {
+    {nombre = "atacar", prob = 70},
+},
+["elemental_electric"] = {
+    {nombre = "atacar", prob = 70},
+},
+["elemental_snow"] = {
+    {nombre = "atacar", prob = 70},
+},
+["hada"] = {
+    {nombre = "atacar", prob = 70},
+},
+["elfo"] = {
+    {nombre = "atacar", prob = 70},
+},
+["duende"] = {
+    {nombre = "atacar", prob = 70},
+},
+["fantasma"] = {
+    {nombre = "atacar", prob = 70},
+},
+["mano"] = {
+    {nombre = "atacar", prob = 70},
+},
+
+["psiquic_being"] = {
+    {nombre = "atacar", prob = 70},
+},
+
+
 ["ninguno"]= {},
 
 
+
 }
+
+
 
 
 

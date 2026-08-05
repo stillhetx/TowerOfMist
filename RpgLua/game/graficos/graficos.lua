@@ -473,10 +473,13 @@ function show_spr(v, x,y,x2, y2,x3,y3,bol,bol2)
                 if v.hide then
                     anim_char_hide(v,x,y,bol2)
                 else
+                    
                     if true and v.sheet~=nil and v.sheet[1]~="" then
-                        anim_char_avanzadoV2(v,x,y,bol2)
+                        --print("ani "..v.name,x,y,7)
+                        anim_char_avanzadoV2(v,x,y,bol2,64)
                         --sprSheetV2(v.sheet[2],x,y,1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4])
                     else    
+                        print("not "..v.name,x,y,7)
                         anim_char_avanzado(v,x,y,bol2)
                     end 
                      
@@ -484,7 +487,11 @@ function show_spr(v, x,y,x2, y2,x3,y3,bol,bol2)
             end
         else
             if v.live then
-                anim_char_avanzado(v,x,y,bol2)
+                if true and v.sheet~=nil and v.sheet[1]~="" then
+                    anim_char_avanzadoV2(v,x,y,bol2,10)
+                else    
+                    anim_char_avanzado(v,x,y,bol2)
+                end
             end  
         end       
     
@@ -610,7 +617,7 @@ end
 
 
 
-function anim_char_avanzadoV2(v,x,y,bol)
+function anim_char_avanzadoV2(v,x,y,bol,ancho)
     v.anim.ti=v.anim.ti+1
     local te=v.anim.frm[1].t
     local tee=v.anim.frm[2].t
@@ -626,9 +633,9 @@ function anim_char_avanzadoV2(v,x,y,bol)
     end  
     if v.live then
             if bol then 
-                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,-1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4])
+                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,-1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4],ancho)
             else
-                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4])
+                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4],ancho)
             end
     else
         spr(v.d_spr,x,y,2,1)
@@ -792,6 +799,17 @@ function show_menus_name(v,x,y)
         local xi = x + column * columnSpacing
         local yi = y + row * rowSpacing
         print("  "..v[i].name, xi+6, yi+40,7)
+    end
+end
+
+
+function show_menus_name_cont(v,x,y)
+    for i=1,#v  do
+        local column = math.floor((i - 1) / itemsPerColumn)
+        local row = (i - 1) % itemsPerColumn
+        local xi = x + column * columnSpacing
+        local yi = y + row * rowSpacing
+        print("  "..v[i].name.." "..v[i].cont, xi+6, yi+40,7)
     end
 end
 
@@ -1057,7 +1075,7 @@ function menu_cont_name(list,mx,x,y)
         local i=list
         local r=1
         for k=ini_view, fin_view do
-                love.graphics.print( i[k].name.." x"..i[k].cont ,x,y+(16*r)) 
+            love.graphics.print( i[k].name.." x"..i[k].cont ,x,y+(16*r)) 
             r=r+1
         end
     else

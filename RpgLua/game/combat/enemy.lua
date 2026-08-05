@@ -1,4 +1,5 @@
 function Enemy_action(criatura,alineamiento)
+    --Debug_temp("Enemy_action: "..criatura.id_mons.." "..alineamiento)
     IA_enemy[criatura.id_mons](criatura,alineamiento)
     --Enemy_random_action(criatura,alineamiento)
 end

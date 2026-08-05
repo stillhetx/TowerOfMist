@@ -13,7 +13,7 @@ function Graficos_Batalla.show_character()
                     Mostrar_extra_acciones(v, (v.x),(v.y),false)
                     
                 end
-                Mostrar_enlaze(v, (v.x)+10,(v.y),false)
+                Mostrar_enlaze(v, (v.x+v.enlaze_summon.x)+10,(v.y+v.enlaze_summon.y),false)
                 show_spr(v, (v.x),(v.y+(36*(3-v.sheet[4]))), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",false)  
                 --show_msg_dmg(v,v.x,v.y+20-timer_dmg_txt,false)
                 Barra_vida(v, (v.x-14),(v.y)) --- -10 0     0   +20

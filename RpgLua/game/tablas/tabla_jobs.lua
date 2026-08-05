@@ -26,7 +26,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-        enlaze_summon={id_class="",
+        enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -268,7 +268,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+        enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -521,7 +521,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -724,7 +724,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -922,7 +922,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -1129,7 +1129,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-        enlaze_summon={id_class="",
+        enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -1328,7 +1328,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -1536,7 +1536,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -1743,7 +1743,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -1956,7 +1956,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -2162,7 +2162,7 @@ Nuevas_clases={
         react_time=0,
         summon=false,
         ani_summon="",
-                enlaze_summon={id_class="",
+                enlaze_summon={id_class="",x=-36,y=0,
                         anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
         },
         summon_x=0,
@@ -2348,20 +2348,9 @@ Nuevas_clases={
         sel4=0,},
 
 
-}
-
-
-
-
-
-TestCharacter={
-
- --super clases
- 
-
-        {name="Arquero",
-        id="Arquero",
-        id_class="Arquero",
+          {name="Esper",
+        id="Esper",
+        id_class="Esper",
         tipo="player",
         lv=1,
         isMagicTalent=false,
@@ -2385,7 +2374,9 @@ TestCharacter={
         react_time=0,
         summon=false,
         ani_summon="",
-        enlaze_summon={},
+        enlaze_summon={id_class="",x=-36,y=0,
+                        anim={ti=0,ac=1,frm={{t=32,spr=66},{t=32,spr=67},d_spr=1}}
+        },
         summon_x=0,
         summon_y=0,
         summon_avance=0,
@@ -2427,7 +2418,14 @@ TestCharacter={
         swm={},
         tools={},
         bullet={},
-        spe={},
+        spe={
+
+                {name="darkness", id="darkness", isCharge=false, isCommand=true, isReplace=false, tCost="",cost=0, dir="e"},
+                {name="geo", id="geo", isCharge=false, isCommand=true, isReplace=false, tCost="",cost=0, dir="x"},
+                {name="mimic", id="mimic", isCharge=false, isCommand=true, isReplace=false, tCost="",cost=0, dir="x"},
+		{name="fuego", id="fuego",dir="e",cost=5,tipo="ofensivo",color="red",lv=1,all=true}, 
+                {name="aire", id="aire",dir="e",cost=5,tipo="ofensivo",color="light_blue",lv=1,all=true},
+        },
         spirit={},
         powerStone={},
         comandos={},
@@ -2484,10 +2482,11 @@ TestCharacter={
                 mnd=3,},
         p=3,
         anim={ti=0,ac=1,frm={{t=32,spr=50},{t=32,spr=51},}},
+        animv={ti=0,ac=1,frm={{t=32,spr=44},{t=32,spr=46},}},
         spr=70,
         d_spr=8,
         ico=12,
-        sheet={"",0,1,1,x=0,y=0,size=2},
+        sheet={"new_sprites_jobs",0,2,4,x=0,y=-10,size=2},
         lastDmg=0,
         lastDmgM="",
         lastDmgC="R",
@@ -2558,6 +2557,20 @@ TestCharacter={
         sel2=0,
         sel3=0,
         sel4=0,},
+
+
+}
+
+
+
+
+
+TestCharacter={
+
+ --super clases
+ 
+
+      
 
         {name="fighter",
         id="fighter",

@@ -73,6 +73,7 @@ function love.load()
     next_time = love.timer.getTime()
     fondo = love.graphics.newImage("fondo.png")
     new_sprites_jobs= loadSpritesheet("new_sprites_jobs.png",16)
+    New_sprites_monsters= loadSpritesheet("New_sprites_monsters.png",16)
     spr_animacion= loadSpritesheet("animacion.png", 16)
     sprites = loadSpritesheet("pico-rpg.png", 16)
     caja_texto= loadSpritesheet("MsgSprite.png", 8)
@@ -160,11 +161,12 @@ function _init()
         if false then
             --4, 6 y 10 
             --7  necesitan nuevos sprites(miku y esper)
-            --9 espada y w.arts
+            --9 espada 
+            -- 6 rezar
             -- add new class 12
-            local a =7
-            local b =7
-            local c =7
+            local a =1
+            local b =6
+            local c =11
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -238,8 +240,12 @@ function _init()
                 r.x_=posiciones_jugadores[i].x   
                 r.y_=posiciones_jugadores[i].y  
                 r.hp_=r.hp+mod(r,"hp")
+                r.hp=r.hp_
                 r.mp_=r.mp+mod(r,"mp")
-                r.acc=General_lista(Nuevas_clases[i])
+                r.mp=r.mp_
+                r.mag=General_magics(Nuevas_clases[t])
+                r.col=General_coleccion(Nuevas_clases[t])
+                r.acc=General_lista(Nuevas_clases[t])
                 add(ActiveParty,r)
                 add(Show_party,r)
                 add(Order, r)

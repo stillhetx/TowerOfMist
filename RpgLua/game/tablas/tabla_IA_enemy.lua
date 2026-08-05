@@ -70,6 +70,65 @@ end
 IA_enemy["dummy"]= function(criatura,alineamiento)
     Personality_random_action(criatura,alineamiento)
 end
+IA_enemy["old_caster"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["old_healer"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["old_Buffer"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["elemental_water"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["elemental_rock"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["elemental_fire"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["elemental_electric"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["elemental_snow"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["hada"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["elfo"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["duende"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["fantasma"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["mano"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+IA_enemy["psiquic_being"] = function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+
+
 
 IA_enemy["ninguno"]= function(criatura,alineamiento)
 end
+
+

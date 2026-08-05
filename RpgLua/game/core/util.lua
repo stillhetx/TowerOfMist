@@ -265,7 +265,7 @@ function spr_sheet_avanzado_size(n, x, y, w, h,size, flip_x, flip_y, sheet)
 end
 
 
-function sprSheetV2(n, x, y, w, h, flip_x, flip_y, sheet,hs,ws)
+function sprSheetV2(n, x, y, w, h, flip_x, flip_y, sheet,hs,ws,ancho)
 
     --TODO Agregar codigo
     n = n or 0
@@ -278,7 +278,7 @@ function sprSheetV2(n, x, y, w, h, flip_x, flip_y, sheet,hs,ws)
     for i=0, hs-1 do
         for ii=0, ws-1 do
                 local index=0
-                index = n + (ii*64 )+i + 1
+                index = n + (ii*ancho )+i + 1
                 local quad = sheet.quads[index] -- PICO-8 indexa desde 0, Lua desde 1
 
                 if quad then

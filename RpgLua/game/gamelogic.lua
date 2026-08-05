@@ -1312,7 +1312,13 @@ function inside()
             end
         end
         if State == "select i" then
-            if #items > 6 then
+                if Op < 1 then
+                    Op = #items 
+                end
+                if Op > #items  then
+                    Op = 1
+                end
+        --[[    if #items > 6 then
                 if Op > fin_view then
                     ini_view = ini_view + 1
                     fin_view = fin_view + 1
@@ -1337,6 +1343,7 @@ function inside()
             if Op > #items then
                 Op = 1
             end
+            ]]
         end
         if State == "select l" then
             if Acc == "magics" then
@@ -1548,8 +1555,12 @@ function reset()
         r.x_=posiciones_jugadores[i].x   
         r.y_=posiciones_jugadores[i].y  
         r.hp_=r.hp+mod(r,"hp")
+        r.hp=r.hp_
         r.mp_=r.mp+mod(r,"mp")
-        r.acc=General_lista(Nuevas_clases[i])
+        r.mp=r.mp_
+        r.mag=General_magics(Nuevas_clases[t])
+        r.col=General_coleccion(Nuevas_clases[t])
+        r.acc=General_lista(Nuevas_clases[t])
         add(ActiveParty,r)
         add(Show_party,r)
         add(Order, r)

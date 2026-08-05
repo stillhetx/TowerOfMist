@@ -56,6 +56,16 @@ Tabla_acciones["memory"]="select m"
 
 
 Tabla_acciones_funcion={}
+
+Tabla_acciones_funcion["rezar"]= function()
+    Acc="especiales"
+    Mg_sel="rezar"
+    Name_action="rezar"
+    Dirr="x"
+    Ccost=0
+    Ttipo="mana"
+end
+
 Tabla_acciones_funcion["W.Arts"]= function()
 	filtrarWeaponArts()
 end
