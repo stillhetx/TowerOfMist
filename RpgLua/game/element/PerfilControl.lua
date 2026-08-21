@@ -29,6 +29,10 @@ function Perfil.main_perfil(key,scancode,isrepeat)
                     Perfil.perfil_Q()
                 end
 
+                if key=="h" then
+                    Perfil.perfil_H()
+                end
+
                 if key=="p" then
                     if ComeBackView=="travel" then
                         Show_view="travel"
@@ -83,7 +87,14 @@ function Perfil.perfil_right()
 end   
 
 
+function Perfil.perfil_H()
+    if Perfil.showPerfil ~= "hiden" then
+        Perfil.showPerfil ="hiden"
+    else
+        Perfil.showPerfil ="perfil"
+    end
 
+end
 
 function Perfil.perfil_z()
 local ejecutar_menu=false

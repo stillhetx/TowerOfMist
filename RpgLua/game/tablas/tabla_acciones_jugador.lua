@@ -51,7 +51,7 @@ Tabla_acciones["lanzar"]="select w"
 Tabla_acciones["suerte"]="Execute"
 Tabla_acciones["geo"]="Execute"
 Tabla_acciones["rezar"]="Execute"
-Tabla_acciones["memory"]="select m"
+Tabla_acciones["memory"]="select y"
 
 
 

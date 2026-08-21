@@ -6,9 +6,22 @@ Icon_element={fuego=13,agua=17,hielo=15,electricidad=12,bio=16,aire=14,
 paralisis=5,congelar=6,congelado=6,veneno=11,confundir=0,dormir=29,marca=18,super=7,stun=48,
 fuerte=7,preciso=18,lento=32,rapido=10,debil=33, fortificado=31,vulnerable=30,regeneracion=29,
 bonus_ataque=68,bonus_soporte=67,bonus_heal=69,
+volar=4,
 lesion=92, sangrado=91, toxico=90, zombi=89, trasmutado=84, mojado=17, quemado=13,miedo=8,
 ceguera=96,silencio=97, atrapado=101, herido=95, antimagia=102,bonus_magia=104,bonus_turno=105,
-}
+rompe_defensa=109,rompe_espiritu=110,rompe_magia=111,rompe_ataque=108,
+piel_de_hierro=112,cuerpo_de_papel=113,Estilo_borracho=114,Estilo_ciego=116,salto_fantasma=117}
+
+--[[
+112 piel de hierro
+113 piel de papel
+114 estilo borracho
+115 camino lunar 
+116 estilo ciego
+117 salto fantasma
+Modo_salvaje
+doble_imagen
+]]
 
 Icon_extra={
     fullCharge=35,emptyCharge=36,shield=34,magic_0=24,magic_1=25,magic_2=26,magic_3=27,magic_4=28,gault_1=64,gault_2=65,gault_3=66,
@@ -198,6 +211,18 @@ function Mostrar_icon_mode(v,x,y,bol)
     end
 end
 
+function Mostrar_styles(v,x,y,bol)
+
+    if true then
+        local d=1
+        for k,i in pairs(v.style)do
+            --love.graphics.print( "  "..i.name.." ",x,y+20+(24*d))
+            spr_sheet(Icon_element[i.id],x+46,y+28+(24*d),1,1,1,1,spritesEstados)
+            d=d+1
+        end
+    end
+end
+
 function Mostrar_shield(v,x,y,bol)
         if v.sh_>0 then
             for i=1, v.sh_ do
@@ -329,9 +354,28 @@ function Mostrar_estados(v, x, y, inverso)
         for k,t in pairs(v.state) do
                 --for kk,tt in pairs(t) do
                 --love.graphics.print("key "..kk,x+(16*signo)-(26*signo),y+4)
-                spr_sheet(Icon_element[t.id],x+(16*signo)-(26*co*signo),y+4,1,1,1,1,spritesEstados)
-                co=co+1
+                if Icon_element[t.id] then
+                    spr_sheet(Icon_element[t.id],x+(16*signo)-(26*co*signo),y+4,1,1,1,1,spritesEstados)
+                    co=co+1
+                else
+                    spr_sheet(Icon_element["bonus_ataque"],x+(16*signo)-(26*co*signo),y+4,1,1,1,1,spritesEstados)
+
+                end
                 --end
+        end
+        if v.style then
+            for k,t in pairs(v.style) do
+                    --for kk,tt in pairs(t) do
+                    --love.graphics.print("key "..kk,x+(16*signo)-(26*signo),y+4)
+                    if Icon_element[t.id] then
+                        spr_sheet(Icon_element[t.id],x+(16*signo)-(26*co*signo),y+4,1,1,1,1,spritesEstados)
+                        co=co+1
+                    else
+                        spr_sheet(Icon_element["bonus_ataque"],x+(16*signo)-(26*co*signo),y+4,1,1,1,1,spritesEstados)
+
+                    end
+                    --end
+            end
         end
     end
 end
@@ -467,19 +511,22 @@ function show_spr(v, x,y,x2, y2,x3,y3,bol,bol2)
     end
     if v~= nil then
         if v.tipo=="player" then
-            if v.forma then
+            
+            if v.forma  then
+                --print("ani n "..v.name,x,y,7)
                 --anim_char_forma(v,x,y,bol2) 
             else
                 if v.hide then
+                    --print("ani "..v.name,x,y,7)
                     anim_char_hide(v,x,y,bol2)
                 else
-                    
+                    --print("ani n "..v.name,x,y,7)
                     if true and v.sheet~=nil and v.sheet[1]~="" then
                         --print("ani "..v.name,x,y,7)
                         anim_char_avanzadoV2(v,x,y,bol2,64)
                         --sprSheetV2(v.sheet[2],x,y,1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4])
                     else    
-                        print("not "..v.name,x,y,7)
+                        --print("not "..v.name,x,y,7)
                         anim_char_avanzado(v,x,y,bol2)
                     end 
                      
@@ -488,6 +535,7 @@ function show_spr(v, x,y,x2, y2,x3,y3,bol,bol2)
         else
             if v.live then
                 if true and v.sheet~=nil and v.sheet[1]~="" then
+                    --print("ani "..v.name,x,y,7)
                     anim_char_avanzadoV2(v,x,y,bol2,10)
                 else    
                     anim_char_avanzado(v,x,y,bol2)
@@ -658,7 +706,7 @@ function anim_general(str,x,y,h,w,t, color,bol)
         end  
   
     
-        if t then love.graphics.setColor(color) end
+        if not color=={} then love.graphics.setColor(color) end
 
         if bol then 
             spr_sheet_avanzado(v.frm[v.ac].spr,x,y,-h,w,1,1,spr_animacion)
@@ -667,7 +715,7 @@ function anim_general(str,x,y,h,w,t, color,bol)
         end
         
 
-        if t then love.graphics.setColor(1, 1, 1) end
+        if not color=={} then love.graphics.setColor(1, 1, 1) end
     end
 end
 

@@ -60,7 +60,7 @@ function ejecutar_comando()
         --Debug_temp=" "..str_comando
         local obj=arreglo[3]
         if obj~=nil and obj~={} then
-            Debug_temp=Debug_temp.."!"
+            --Debug_temp=Debug_temp.."!"
             --mult=1
             wait_start()
             b_dmg_txt=true
@@ -69,14 +69,17 @@ function ejecutar_comando()
             obj.lastDmgC="V"
             --Actual.avanzar=true
             --Actual.rest=false
-            ejecutar_ataque_basico(obj,"left")
+            --ejecutar_ataque_basico(obj,"left")
+            Efectos ["ejecutar_ataque_basico_INIT"](obj,Actual,"left",0,1)
             checks(obj)
             clean()
         else
-            Debug_temp=Debug_temp.."null"
+            --Debug_temp=Debug_temp.."null"
             local enemy_target=GetPrimerEnemigoVivo()
             if enemy_target then
-                ejecutar_ataque_basico(enemy_target,"left")
+                --ejecutar_ataque_basico(enemy_target,"left")
+                Efectos ["ejecutar_ataque_basico_INIT"](enemy_target,Actual,"left",0,1)
+
             end
         end
     end
@@ -97,7 +100,8 @@ function ejecutar_comando()
                 obj.lastDmgC="V"
                 --Actual.avanzar=true
                 --Actual.rest=false
-                ejecutar_ataque_basico(obj,"right")
+                --ejecutar_ataque_basico(obj,"right")
+                Efectos ["ejecutar_ataque_basico_INIT"](obj,Actual,"right",0,1)
                 checks(obj)
                 clean()
             end 
@@ -105,7 +109,8 @@ function ejecutar_comando()
             Debug_temp=Debug_temp.."null"
             local enemy_target=GetPrimerEnemigoVivo()
             if enemy_target then
-                ejecutar_ataque_basico(enemy_target,"left")
+                --ejecutar_ataque_basico(enemy_target,"left")
+                Efectos ["ejecutar_ataque_basico_INIT"](enemy_target,Actual,"right",0,1)
             end
         end     
         next()
@@ -128,17 +133,21 @@ function ejecutar_comando()
     end
     --msg_debug="ejecutar comando "..arreglo[3].name
     if str_comando=="ejecutar_elemental_damage" then
-        --Msg_debug="ejecutar comando "..arreglo[3].name.." "..arreglo[2]
+        --Msg_debug="ejecutar comando "..arreglo[3].name
         if arreglo[2]~=nil 
             and arreglo[2]~={}
             and arreglo[3]~=nil
             and arreglo[3]~={} then
-                if arreglo[3].hp_>0 then
-                    ejecutarMagia(arreglo[2],arreglo[3], Order)
-                    clean()
-                    next()
-                    wait_start()
+                if arreglo[4] then
+                    Efectos[arreglo[2]](arreglo[3], arreglo[4],{},"",0,bono,0,{},{})
+                else
+                    if Actual then
+                        --Efectos[arreglo[2]](arreglo[3], Actual,{},"",0,bono,0,{},{})
+                    end
                 end
+                clean()
+                next()
+                wait_start()
         end
     end 
 

@@ -801,7 +801,34 @@ function AddTurnos(all, order, num)
     return order
 end
 
+function Total(v,str)
+    if str=="con" then
+        return v.con + mod(v,"con");
+    elseif str=="fue"then    
+        return v.fue + mod(v,"fue");   
+    elseif str=="pod"then    
+        return v.pod + mod(v,"pod");    
+    elseif str=="dex"then
+        return v.dex + mod(v,"dex");
+    elseif str=="agi"then    
+        return v.agi + mod(v,"agi");
+    elseif str=="int"then    
+        return v.int + mod(v,"int");
+    elseif str=="car"then    
+        return v.car + mod(v,"car");
+    elseif str=="mnd"then    
+        return v.mnd + mod(v,"mnd");
+    end
+
+end
+
+
+function Total(v,tipo)
+    return v[tipo]+mod(v,tipo)
+end
+
 function mod(v, tipo)
+    tipo = "" or tipo
     local value = 0
     if v.tipo == "player" then
         if tipo == "agi" then
@@ -823,6 +850,9 @@ function mod(v, tipo)
             if v.perks["AGI.J"] ~= nil then
                 local n = enlaze_j(v, "AGI.J");
                 value = value + n * 0.5
+            end
+            if v.style["cuerpo_de_papel"] then
+                value= value +3
             end
         end
         if tipo == "dex" then
@@ -886,6 +916,9 @@ function mod(v, tipo)
             if v.perks["CON.J"] ~= nil then
                 local n = enlaze_j(v, "CON.J");
                 value = value + n * 0.5
+            end
+            if v.style["piel_de_hierro"] then
+                value = value + 3
             end
         end
         if tipo == "pod" then
@@ -1136,6 +1169,7 @@ function insideSix()
     end
 end
 
+maximoInside=0
 function inside()
     local max = 18
     local min = 1
@@ -1184,6 +1218,8 @@ function inside()
         end
         if State == "select o" then
             if Acc == "magic" then
+                logica_arrow_menu(Actual.mg)
+                --[[
                 if Op < 1 then
                     if #Actual.mg - (ini_view - 1) < 18 then
                         Op = 18
@@ -1208,91 +1244,41 @@ function inside()
                     ini_view = ini_view + 6
                     Op = 13
                 end
+                ]]
             end
             if Acc == "especiales" then
-                if Op < 1 then
-                    Op = #Actual.spe
-                end
-                if Op > #Actual.spe then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.spe)
             end
             if Acc == "tools" then
-                if Op < 1 then
-                    Op = #Actual.tools
-                end
-                if Op > #Actual.tools then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.tools)
             end
             if Acc == "W.Arts" then
-                if Op < 1 then
-                    Op = #Actual.art
-                end
-                if Op > #Actual.art then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.art)
             end
             if Acc == "tecnica" then
-
-
-                Comp_arrow_menu(Actual.sk)
+                logica_arrow_menu(Actual.sk)
+            end
+            if Acc == "w.magic" then
+                logica_arrow_menu(Actual.milagros)
             end
             if Acc == "bullet" then
-                if Op < 1 then
-                    Op = #Actual.bullet
-                end
-                if Op > #Actual.bullet then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.bullet)
             end
             if Acc == "mix" then
-                if Op < 1 then
-                    Op = #Actual.mix
-                end
-                if Op > #Actual.mix then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.mix)
             end
-            if Acc == "W.Arts" then
-                if Op < 1 then
-                    Op = #Actual.art
-                end
-                if Op > #Actual.art then
-                    Op = 1
-                end
-            end
+
             if Acc == "transformacion" then
-                if Op < 1 then
-                    Op = #Actual.morph
-                end
-                if Op > #Actual.morph then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.morph)
             end
             if Acc == "Blu.magic" then
-                if Op < 1 then
-                    Op = #Actual.blue
-                end
-                if Op > #Actual.blue then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.blue)
             end
             if Acc == "llamar" then
-                if Op < 1 then
-                    Op = #Actual.beast
-                end
-                if Op > #Actual.beast then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.beast)
             end
             if Acc == "invocar" then
-                if Op < 1 then
-                    Op = #Actual.invo
-                end
-                if Op > #Actual.invo then
-                    Op = 1
-                end
+                logica_arrow_menu(Actual.invo)
             end
         end
         if State == "select e" or State == "select ee" then
@@ -1388,6 +1374,53 @@ function inside()
             end
         end
     end
+end
+
+
+
+function logica_arrow_menu(list)
+    local finalVista= (ini_view - 1)+18
+                
+    --paginar
+
+
+
+    if Op> finalVista  then
+        ini_view=ini_view+6
+        Op=13
+    end
+
+    
+    if Op+(ini_view - 1)<(ini_view - 1) then
+        --if ini_view>1 then
+            ini_view=ini_view-6
+            Op=1
+        --end
+    end
+
+    if ini_view<0 then
+        ini_view=1     
+    end
+
+
+
+    maximoInside=#list-(ini_view - 1)
+    if maximoInside>18 then
+        maximoInside=18
+    end
+
+    if Op>18 then
+        Op=maximoInside
+    end
+
+    if Op>maximoInside then
+        Op=maximoInside
+    end
+
+    if Op==0 or Op<0  then
+        Op=1
+    end
+
 end
 
 --menu estatos alterados
@@ -1561,6 +1594,7 @@ function reset()
         r.mag=General_magics(Nuevas_clases[t])
         r.col=General_coleccion(Nuevas_clases[t])
         r.acc=General_lista(Nuevas_clases[t])
+        Init_social(r)
         add(ActiveParty,r)
         add(Show_party,r)
         add(Order, r)
@@ -2031,7 +2065,7 @@ function clean()
     Acc = ""
 end
 
-function getProtector(v)
+function GetProtector(v)
     if v.tipo == "player" then
         if #Protectores > 0 then
             local id = Protectores[#Protectores]
@@ -2048,92 +2082,113 @@ function getProtector(v)
     end
 end
 
-function DamageProccess(v, w, value, crit)
+function DamageProccess(v, w, value, crit,tipo)
     --local tdmg=0
     local hit = 1
     local calc = 0
     local defensa = 0
+    local inmune = false
+    tipo = tipo or "fisico"
+
+    if v.ventaja["etereo"] then
+        if tipo == "fisico" then
+            if IGNORAR_ETERIO ==false then
+                inmune = true
+            end
+        end
+    end
+    
 
     if v and w then
-        local obb = getProtector(v)
+        if inmune == false then
+            local obb = GetProtector(v)
 
-        if w.agi ~= nil and v ~= nil and v.agi ~= nil then
-            calc = v.agi + mod(v, "agi") - w.agi + mod(v, "agi")
-        end
+            if w.agi ~= nil and v ~= nil and v.agi ~= nil then
+                calc = v.agi + mod(v, "agi") - w.agi + mod(v, "agi")
+            end
 
-        if calc > 0 then
-            hit = hit + flr(calc / 5)
-        end
+            if calc > 0 then
+                hit = hit + flr(calc / 5)
+            end
 
 
-        if v.sh_ and v.sh_ > 0 then
-            v.sh_ = v.sh_ - 1
-            obb.lastDmg = 1
-            obb.lastDmgM = "bloqueado"
-        else
-            if obb.def ~= nil and obb.def == true then
-                defensa = 2 * obb.con
-                if obb.ext < 4 then
-                    obb.see_extra_turno = true
-                    obb.ext = obb.ext + 1
-                end
+            if v.sh_ and v.sh_ > 0 then
+                v.sh_ = v.sh_ - 1
+                obb.lastDmg = 1
+                obb.lastDmgM = "bloqueado"
+                Animacion.add_texto_anima(obb,"bloqueado",30,"White",0,0,0.1)
+
             else
-                if obb.con ~= nil then
-                    defensa = flr(obb.con / 2)
+                if obb.def ~= nil and obb.def == true then
+                    defensa = 2 * obb.con
+                    if obb.ext < 4 then
+                        obb.see_extra_turno = true
+                        obb.ext = obb.ext + 1
+                    end
+                else
+                    if obb.con ~= nil then
+                        defensa = flr(obb.con / 2)
+                    end
                 end
+                if obb.armadura ~= nil and obb.armadura ~= {} and obb.armadura.def ~= nil then
+                    defensa = defensa + obb.armadura.def
+                end
+                if value < 0 then
+                    value = value + defensa
+                    if value > 0 then value = 0 end
+                end
+
+                value = StanceMode(value, w, obb, true)
+                value = StanceMode(value, w, obb, false)
+
+   
+                if obb.modo == "defensa" then
+                    value = flr(value * 0.75)
+                end
+                if obb.modo == "vuelo" then
+                    value = flr(value * 0.75)
+                end
+
+                --Debug_temp= Debug_temp.."$"..value
+                obb.hp_ = obb.hp_ + (value * hit)
+                obb.lastDmg = value
+                local dmgTexte= value .. crit .. " " .. defensa .. "# " .. hit .. " hits"
+                local dmgLabel= value .. crit
+                local hitsLabel=hit .. " hits"
+                obb.lastDmgM = dmgTexte
+                local col="Red"
+                if value>0 then
+                    col="Green"
+                end
+                    Animacion.add_texto_anima(obb,dmgLabel,30,col,0,0,0.1)
+                if value<0 then
+                    Animacion.add_texto_anima(obb,hitsLabel,30,col,0,-20,0.1)
+                end
+                --Animacion.add_texto_anima(obb,defensa,30,"Yellow",0,-40,0.1)
+                --Animacion.add_texto_anima(obb,hit,30,"White",0,-60,0.1)
             end
-            if obb.armadura ~= nil and obb.armadura ~= {} and obb.armadura.def ~= nil then
-                defensa = defensa + obb.armadura.def
+
+            if v.gl_ < 5 then
+                v.gl_ = v.gl_ + 1
             end
+
+
             if value < 0 then
-                value = value + defensa
-                if value > 0 then value = 0 end
+                obb.lastDmgC = "R"
+            elseif value == 0 then
+                obb.lastDmgC = "Y"
+            else
+                obb.lastDmgC = "V"
             end
 
-            value = StanceMode(value, w, obb, true)
-            value = StanceMode(value, w, obb, false)
-
-            -- if w.modo=="defensa" then
-            --  value=flr(value*0.75)
-            --end
-            --if w.modo=="vuelo" then
-            --  value=flr(value*1.25)
-            --end
-            if obb.modo == "defensa" then
-                value = flr(value * 0.75)
-            end
-            if obb.modo == "vuelo" then
-                value = flr(value * 0.75)
-            end
-
-            --Debug_temp= Debug_temp.."$"..value
-            obb.hp_ = obb.hp_ + (value * hit)
-            obb.lastDmg = value
-            local dmgTexte= value .. crit .. " " .. defensa .. "# " .. hit .. " hits"
-            local dmgLabel=value .. crit
-            local hitsLabel=hit .. " hits"
-            obb.lastDmgM = dmgTexte
-            Animacion.add_texto_anima(obb,dmgLabel,30,"Red",0,0,0.1)
-            Animacion.add_texto_anima(obb,hitsLabel,30,"Red",0,-20,0.1)
-            --Animacion.add_texto_anima(obb,defensa,30,"Yellow",0,-40,0.1)
-            --Animacion.add_texto_anima(obb,hit,30,"White",0,-60,0.1)
-        end
-
-        if v.gl_ < 5 then
-            v.gl_ = v.gl_ + 1
-        end
-
-
-        if value < 0 then
-            obb.lastDmgC = "R"
-        elseif value == 0 then
-            obb.lastDmgC = "Y"
+            return value
         else
-            obb.lastDmgC = "V"
+            Animacion.add_texto_anima(v,"eterio",30,"White",0,0,0.1)
         end
-
-        return value
+    else
+        Animacion.add_texto_anima(v,"ERROR!!",30,"Red",0,0,0.1)
     end
+    return 0
 end
 
 function PDamageProccess(v, w, value, crit)
@@ -2191,6 +2246,7 @@ function Msg_enemigo(v, msg)
     v.slDmg = true
     v.lastDmgM = msg
     v.typeMsg = true
+    Animacion.add_texto_anima(v,msg,30,"White",0,-20,0.1)
 end
 
 Dice = 0
@@ -2198,16 +2254,23 @@ Dice = 0
 function acertar(v, b)
     local at = 0
     local ob = 0
+    local modificador=0
+    if v.ventaja["back"] ~= nil then
+        modificador=-3
+    end    
     if v ~= nil then
-        if v.ventaja ~= nil and v.ventaja["back"] ~= nil then
-            Dice = flr(rnd(20))
-            at = b.dex + mod(b, "dex") + Dice - 3
+        Dice = flr(rnd(20))
+        if v.tipo=="enemy" and b.tipo =="player" then
+            at = b.agi + mod(b, "agi") + Dice + modificador   
+            ob = v.dex + mod(v, "dex") + 8
+            GetDiceEffect(at,Dice, ob,"esquivar")
+        elseif v.tipo=="player" and b.tipo =="enemy" then
+            at = v.dex + mod(v, "dex") + Dice + modificador   
+            ob = b.agi + mod(b, "agi") + 8
+            GetDiceEffect(at,Dice, ob,"punteria")
         else
-            Dice = flr(rnd(20))
-            at = b.dex + mod(b, "dex") + Dice
-        end
-        if v.agi ~= nil then
-            ob = v.agi + mod(b, "agi") + 8
+            at = b.dex + mod(b, "dex") + Dice + modificador
+            ob = v.agi + mod(v, "agi") + 8
         end
         if at >= ob then
             activa_Contra_ataque(v)
@@ -2218,19 +2281,109 @@ function acertar(v, b)
 end
 
 function acertarMod(v, b, modificador)
+    SetIndiceExito()
+    local at=0
+    local ob=0
+    Dice = flr(rnd(20))
     if v.ventaja["back"] ~= nil then
-        Dice = flr(rnd(20))
-        at = b.dex + mod(b, "dex") + Dice - 3 + modificador
+        modificador=modificador-3
+    end    
+    if v.tipo=="enemy" and b.tipo =="player" then
+        at = b.agi + mod(b, "agi") + Dice + modificador   
+        ob = v.dex + mod(v, "dex") + 8
+        GetDiceEffect(at,Dice, ob,"esquivar")
+    elseif v.tipo=="player" and b.tipo =="enemy" then
+        at = v.dex + mod(v, "dex") + Dice + modificador   
+        ob = b.agi + mod(b, "agi") + 8
+        GetDiceEffect(at,Dice, ob,"punteria")
     else
-        Dice = flr(rnd(20))
         at = b.dex + mod(b, "dex") + Dice + modificador
+        ob = v.agi + mod(v, "agi") + 8
     end
-    ob = v.agi + 8
+
     if at >= ob then
         activa_Contra_ataque(v)
     end
+
+    --GetDiceEffect(b,Dice,ob,modificador)
     Animacion.add_texto_anima(v,Dice.."+"..modificador.."#",30,"White",0,-40,0.1)
     return at >= ob
+end
+
+
+
+function SetIndiceExito()
+    CAN_BLOCK = false
+    PERFECT_ESQ = false
+    HYPER_REACTION = false
+    SUPERADO_ESQ = false
+    PERFECT_PUNT= false
+    FALLO_LEVE= false
+    LEVE_ACIERTO = false
+    SUPERADO_PUNT= false
+    CRITICO = false
+    PIFIA = false
+    LEVE_CRITICO=false
+    PIFIA_LEVE=false
+end
+
+
+
+
+function GetDiceEffect(at,dice, dc,tipo)
+
+    if tipo=="esquivar" then
+        if at ==dc then
+            PERFECT_ESQ=true
+        end
+        if at >= dc-3 and  at < dc then
+            CAN_BLOCK=true
+        end
+        if at > dc and  at <= dc+3 then
+            HYPER_REACTION = true
+        end
+        if at >= dc then
+            SUPERADO_ESQ = true
+        end
+    else
+        if at ==dc then
+            PERFECT_PUNT=true
+        end
+        if at >= dc-3 and  at < dc then
+            FALLO_LEVE=true
+        end
+        if at > dc and  at <= dc+3 then
+            LEVE_ACIERTO = true
+        end
+        if at >= dc then
+            SUPERADO_PUNT = true
+        end
+    end
+
+    if Dice==20 then
+        CRITICO = true
+    end
+
+    if Dice==1 then
+        PIFIA = true
+    end
+
+    if Dice >=19 and Dice <20 then
+        LEVE_CRITICO=false
+    end
+
+    if dice <=3 and dice >1 then
+        PIFIA_LEVE=false
+    end
+    
+end
+
+function DCMOD(b,DC,str, modi)
+    modi = 0 or mod
+    DC = DC 
+    Dice = flr(rnd(20))
+    local at = b[str] + mod(b, str) + Dice  + modi
+    return DC <= at
 end
 
 v_contra_ataque = {}

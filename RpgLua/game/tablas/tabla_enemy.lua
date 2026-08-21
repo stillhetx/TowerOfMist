@@ -124,7 +124,8 @@ horda["bosque_base_02"]={
 
 horda["00001"]={
 
-                 {id="grupo 0.04",
+        
+        {id="grupo 0.001",
         exp=50,
         credit=50,
         terrain="agua",
@@ -136,12 +137,41 @@ horda["00001"]={
         --enemyList={"old_caster","old_healer","old_Buffer"},
         --enemyList={"elemental_water","elemental_rock","elemental_fire"},
         --enemyList={"elemental_electric","elemental_snow","hada"},
-        enemyList={"fantasma","fantasma","fantasma"},
+        enemyList={"Fae","guerrero","hechizero"},
         --enemyList={"mano","psiquic_being"},
         enemyTeams={},
 
 },
-         {id="grupo 0.04",
+
+
+        {id="grupo 0.002",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        enemyList={"soldado","guardian"},
+        enemyTeams={},
+
+},
+
+        {id="grupo 0.01",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        enemyList={"fantasma","fantasma","fantasma"},
+        enemyTeams={},
+
+},
+         {id="grupo 0.02",
         exp=50,
         credit=50,
         terrain="agua",

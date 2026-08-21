@@ -69,6 +69,9 @@ function ejecutar_ataque_basico(v,str)
             checks(v)
             --Msg_debug="Desarmado"
         else
+            Efectos["ejecutar_ataque_base"](v,Actual,{},str,0,1,0,{},{})
+            checks(v) 
+            --[[
             if str =="left" then
                 if isLeft() then
                     --Msg_debug="Left hand"
@@ -83,7 +86,7 @@ function ejecutar_ataque_basico(v,str)
                     checks(v)  
                 end
                 
-            end
+            end]]
         end 
     end
 end    
@@ -715,7 +718,16 @@ function ejecutarMagia(sel, v, Order)
         
         Name_action=sel
 
-        local foo=Efectos[sel](v, Actual,{},false,bono)
+-- v objetivo {}
+-- w ejecutor{}
+-- f objeto {}
+-- arm  brazo type=string
+-- punteria bono a punteria type=number
+-- bono multiplicador de daño
+-- bcrit bono a critico type=number
+-- tipo  tipos del ataque {}  
+
+        local foo=Efectos[sel](v, Actual,{},"",0,bono,0,{},{})
 
         if pcall(foo) then
             --exitoso
@@ -754,7 +766,7 @@ function ejecutarMagiaExtra(sel, v, Order,str)
     
     Name_action=sel
 
-    Efectos[sel](v, Actual,str)
+    Efectos[sel](v, Actual,str,"",0,bono,0,{},{})
 
     Actual.hide=false
 end
@@ -781,7 +793,7 @@ function ejecutarMagiaExtra(sel, v, Order,extra)
     
     Name_action="hechizo "..sel
 
-    Efectos[sel](v, Actual,extra,false,bono)
+    Efectos[sel](v, Actual,{},"",0,bono,0,{},extra)
 
     Actual.hide=false
 end    
@@ -790,7 +802,9 @@ function EjecutarItem(objetivo, lanzador, objeto)
         --Debug_temp=objetivo.name
         --Debug_temp=lanzador.name
         --Debug_temp=objeto.id
-        Efectos[objeto.id](objetivo, lanzador,objeto,false,1)
+
+        
+        Efectos[objeto.id](objetivo, lanzador,objeto,"",0,1,0,{},{})
 end
 
 function ejecutarObjeto(v,f,bol)
@@ -805,7 +819,7 @@ function ejecutarObjeto(v,f,bol)
     v.lastDmg=0   
     v.slDmg=true
 
-    Efectos[Sel_i](v, Actual,f,bol,1)
+    Efectos[Sel_i](v, Actual,f,"",0,1,0,{},{})
 
 end    
 

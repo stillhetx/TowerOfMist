@@ -28,8 +28,13 @@ function graph_mode()
     if Modo=="combat" then
         
         for i=1,#ActiveParty do
+            
             if State=="select" or State=="secundario" then
+            --if State=="select"  then
+                --love.graphics.print("show"..State,20,40)
                 if ActiveParty[i].live  then
+                --if true  then
+                    --love.graphics.print("show"..State.." "..ActiveParty[i].name,220,338-30)
                     love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp.."",220,338+(40*(i-1)))
                     if #ActiveParty[i].mag~=nil then
                         --love.graphics.print("mag"..#ActiveParty[i].mag,550,338+(40*(i-1)))
@@ -102,9 +107,11 @@ function graph_mode()
         end
         --print(">"..Op,350,222+(16*-1),7)
         
-        love.graphics.setColor(0,0,0)
-        love.graphics.rectangle("fill", 0,320, 800,200)
-        love.graphics.setColor(255,255,255) -- reset colours
+        if State~="select" and State~="secundario"  then
+            love.graphics.setColor(0,0,0)
+            love.graphics.rectangle("fill", 0,320, 800,200)
+            love.graphics.setColor(255,255,255) -- reset colours
+        end
         
         Graficos_Batalla.menu()
     elseif Modo=="NPC" then 

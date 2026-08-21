@@ -126,9 +126,25 @@ IA_enemy["psiquic_being"] = function(criatura,alineamiento)
     Personality_random_action(criatura,alineamiento)
 end
 
+IA_enemy["Fae"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
 
+IA_enemy["guerrero"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+IA_enemy["hechizero"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+IA_enemy["soldado"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
+IA_enemy["guardian"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
+end
 
 IA_enemy["ninguno"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,alineamiento)
 end
 
 

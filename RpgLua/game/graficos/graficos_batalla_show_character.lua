@@ -11,6 +11,7 @@ function Graficos_Batalla.show_character()
                     Mostrar_shield(v,(v.x-26),v.y+26,false)
                     Mostrar_rc(v, (v.x-16),(v.y),false)
                     Mostrar_extra_acciones(v, (v.x),(v.y),false)
+                    --Mostrar_styles(v, (v.x),(v.y),false)
                     
                 end
                 Mostrar_enlaze(v, (v.x+v.enlaze_summon.x)+10,(v.y+v.enlaze_summon.y),false)

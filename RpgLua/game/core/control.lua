@@ -11,6 +11,9 @@ function main_control(key,scancode,isrepeat)
             if Show_view=="graph" then
                 if Modo=="combat" then
                     if Actual.tipo=="player" and Actual.live==true and auto==false then
+                        if State=="select" then
+                            ini_view=1
+                        end    
                         if key=="x" then
                             comeback()
                         end
@@ -221,12 +224,8 @@ function right()
         ini_view=ini_view+6
         --State="secundario"
     end 
-    if State=="select o" and (Acc=="magic" or Acc=="tecnica")  then
+    if State=="select o"   then
          Op=Op+6
-        if Op>fin_view then
-            ini_view=ini_view+6
-            fin_view=fin_view+6
-        end
     end 
     if State=="select e" then
         State="select c"  
@@ -244,15 +243,9 @@ function left()
         ini_view=ini_view-6
         --up()
     end 
-    if State=="select o" and (Acc=="magic" or Acc=="tecnica")  then
+    --if State=="select o" and (Acc=="magic" or Acc=="tecnica" or Acc=="W.Arts")  then
+    if State=="select o"  then
          Op=Op-6
-        if Op+(ini_view-1)<ini_view then
-            --ini_view = ini_view - 6
-        end
-        if Op<ini_view then
-            ini_view=ini_view-6
-            fin_view=fin_view-6
-        end
     end 
     
     if State=="secundario" then

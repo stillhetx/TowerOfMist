@@ -1016,11 +1016,33 @@ invo={{name="murcielago",id="murcielago",dir="x",cost=1,},{name="zombie",id="zom
 
 
 
-monster_weakness={["murcielago"]= true, ["murcielago_fuego"]= true,["murcielago_hielo"]= true,
+monster_weakness={
+                ["murcielago"]= true, ["murcielago_fuego"]= true,["murcielago_hielo"]= true,
                 ["fuego_fuego"]= true,["fuego_hielo"]= true,["fuego_electrico"]= true,["evil_eye"]= true,["slime_azul"]= true,
                 ["slime_amarillo"]= true,["slime_rojo"]= true,["slime_rainbow"]= true,["serpiente_verde"]= true,
                 ["Murcielago_electrico"]= true,["serpiente_purpura"]= true,["objetos"]= true,
-                ["dummy"]=true,}
+                ["dummy"]=true,
+                ["old_caster"]=true,
+                ["old_healer"]=true,
+                ["old_Buffer"]=true,
+                ["elemental_water"]=true,
+                ["elemental_rock"]=true,
+                ["elemental_fire"]=true,
+                ["elemental_electric"]=true,
+                ["elemental_snow"]=true,
+                ["hada"]=true,
+                ["elfo"]=true,
+                ["duende"]=true,
+                ["fantasma"]=true,
+                ["mano"]=true,
+                ["psiquic_being"]=true,
+                ["Fae"]=true,
+                ["guerrero"]=true,
+                ["hechizero"]=true,
+                ["soldado"]=true,
+                ["guardian"]=true,       
+        
+        }
 
 
 
@@ -1120,6 +1142,9 @@ anim_list={["ataque_arma"]=
         ["magia"]=
         {ti=0,ac=1,time=48,
         frm={{t=8,spr=5},{t=8,spr=6},{t=16,spr=7},{t=8,spr=8},{t=8,spr=9}}},
+        ["artefacto"]=
+        {ti=0,ac=1,time=48,
+        frm={{t=8,spr=5},{t=8,spr=6},{t=16,spr=7},{t=8,spr=8},{t=8,spr=9}}},
         ["corte"]=
         {ti=0,ac=1,time=48,
         frm={{t=8,spr=10},{t=8,spr=11},{t=16,spr=12},{t=8,spr=13},{t=8,spr=14}}},
@@ -1129,9 +1154,12 @@ anim_list={["ataque_arma"]=
         ["puñetazos"]=
         {ti=0,ac=1,time=48,
         frm={{t=8,spr=20},{t=8,spr=21},{t=16,spr=22},{t=8,spr=24},{t=8,spr=25}}},
+        ["disparos"]= --TODO
+        {ti=0,ac=1,time=48,
+        frm={{t=8,spr=20},{t=8,spr=21},{t=16,spr=22},{t=8,spr=24},{t=8,spr=25}}},
         ["lanzar"]=
         {ti=0,ac=1,time=48,
-        frm={{t=8,spr=26},{t=8,spr=27},{t=16,spr=28},{t=8,spr=29},{t=8,spr=30}}},
+        frm={{t=8,spr=25},{t=8,spr=26},{t=16,spr=27},{t=8,spr=28},{t=8,spr=29}}},
         ["fuego"]=
         {ti=0,ac=1,time=24,
         frm={{t=4,spr=55},{t=4,spr=56},{t=4,spr=57},{t=4,spr=58},{t=4,spr=59}}},
@@ -1141,6 +1169,21 @@ anim_list={["ataque_arma"]=
         ["rayo"]=
         {ti=0,ac=1,time=24,
         frm={{t=4,spr=65},{t=4,spr=66},{t=8,spr=67},{t=4,spr=68},{t=4,spr=69}}},
+        ["explosion_circula"]=
+        {ti=0,ac=1,time=20,
+        frm={{t=4,spr=70},{t=4,spr=71},{t=4,spr=72},{t=4,spr=73},{t=4,spr=74}}},
+        ["explosion_luna"]=
+        {ti=0,ac=1,time=20,
+        frm={{t=4,spr=75},{t=4,spr=76},{t=4,spr=77},{t=4,spr=78},{t=4,spr=79}}},
+        ["impacto"]=
+        {ti=0,ac=1,time=20,
+        frm={{t=4,spr=85},{t=4,spr=86},{t=4,spr=87},{t=4,spr=88},{t=4,spr=89}}},
+        ["cuatro"]=
+        {ti=0,ac=1,time=24,
+        frm={{t=4,spr=80},{t=4,spr=81},{t=8,spr=82},{t=4,spr=83},{t=4,spr=84}}},
+        ["magic_effect"]=
+        {ti=0,ac=1,time=24,
+        frm={{t=4,spr=30},{t=4,spr=31},{t=8,spr=32},{t=4,spr=33},{t=4,spr=34}}},
         ["Demonio_protector"]=
         {ti=0,ac=1,time=824,
         frm={{t=824,spr=26}}},

@@ -117,8 +117,27 @@ Lista_acciones_enemigo={
 ["mano"] = {
     {nombre = "atacar", prob = 70},
 },
-
 ["psiquic_being"] = {
+    {nombre = "atacar", prob = 70},
+},
+
+["Fae"] = {
+    {nombre = "atacar", prob = 70},
+},
+
+["guerrero"] = {
+    {nombre = "atacar", prob = 70},
+},
+
+["hechizero"] = {
+    {nombre = "atacar", prob = 70},
+},
+
+["soldado"] = {
+    {nombre = "atacar", prob = 70},
+},
+
+["guardian"] = {
     {nombre = "atacar", prob = 70},
 },
 

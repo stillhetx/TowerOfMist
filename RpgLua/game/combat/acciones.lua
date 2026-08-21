@@ -57,6 +57,7 @@ function acciones()
 
     if State=="select" then
         sel1=Op 
+        Op=1
         Acc=Actual.acc[eleg]
         Eleg=eleg
         State=Tabla_acciones[Acc]
@@ -74,7 +75,7 @@ function acciones()
 
         ini_view=1
         fin_view=18
-    elseif State=="select m" then
+    elseif State=="select y" then
         if Acc=="memory" then
             if Actual.memory[(ini_view-1)+Op].isReplace == true then
                 Acc=Actual.memory[(ini_view-1)+Op].sub
@@ -95,7 +96,7 @@ function acciones()
         end
     elseif State=="select l" then
         if Acc == "magics" then
-            Acc=Actual.mag[Op]
+            Acc=Actual.mag[(ini_view-1)+Op]
             if Tabla_acciones_funcion and Tabla_acciones_funcion[Acc] and  type(Tabla_acciones_funcion[Acc])=="function" then
                 Tabla_acciones_funcion[Acc]()
             end
@@ -111,7 +112,7 @@ function acciones()
             
         end   
         if Acc == "colecciones" then
-            Acc=Actual.col[Op]
+            Acc=Actual.col[(ini_view-1)+Op]
             if Tabla_acciones_funcion and Tabla_acciones_funcion[Acc] and  type(Tabla_acciones_funcion[Acc])=="function" then
                 Tabla_acciones_funcion[Acc]()
             end
@@ -122,8 +123,8 @@ function acciones()
 
         --no utilizado
         if Acc == "mix" then
-            Sel_ii=items[Op].id
-            Dirr2=items[Op].dir
+            Sel_ii=items[(ini_view-1)+Op].id
+            Dirr2=items[(ini_view-1)+Op].dir
             if "e"== Dirr2 then
                 State="select e"
                 FiltrarEnemigoVivos()
@@ -142,8 +143,8 @@ function acciones()
         IsInterruccion=false
         INTERRUCCION_MSG="" 
         if Acc == "objeto" or Acc == "usar" then
-            Sel_i=items[Op].id
-            Dirr=items[Op].dir
+            Sel_i=items[(ini_view-1)+Op].id
+            Dirr=items[(ini_view-1)+Op].dir
             if "e"== Dirr then
                 State="select e"
                 FiltrarEnemigoVivos()
@@ -161,13 +162,13 @@ function acciones()
     elseif State=="select oo" then
 
         if  Acc=="dual M." then
-            Mg_2sel=Actual.mg[Op].id
-            Dirr2=Actual.mg[Op].dir
+            Mg_2sel=Actual.mg[(ini_view-1)+Op].id
+            Dirr2=Actual.mg[(ini_view-1)+Op].dir
             Name_action="Dual Cast"
-            Ttipo2=Actual.mg[Op].tipo
-            Ccolor2=Actual.mg[Op].color
-            Llv2=Actual.mg[Op].lv
-            Ccost2=Actual.mg[Op].cost
+            Ttipo2=Actual.mg[(ini_view-1)+Op].tipo
+            Ccolor2=Actual.mg[(ini_view-1)+Op].color
+            Llv2=Actual.mg[(ini_view-1)+Op].lv
+            Ccost2=Actual.mg[(ini_view-1)+Op].cost
 
 
             if "a"== Dirr2  then
@@ -195,7 +196,8 @@ function acciones()
         --IsInterruccion=false
         --INTERRUCCION_MSG="" 
         --Sacar Replace_Acc y reemplazar por else and else if
-            if Acc == "magic" then            
+            
+            if Acc == "magic"   then            
                 if Actual.mp_< Actual.mg[(ini_view-1)+Op].cost then
                     State ="select"
                     Acc=""
@@ -235,20 +237,20 @@ function acciones()
                 end
 
             elseif Acc == "spirit" then            
-                if Actual.mp_< Actual.spirit[Op].cost then
+                if Actual.mp_< Actual.spirit[(ini_view-1)+Op].cost then
                     State ="select"
                     Acc=""
                 else
-                    Mg_sel=Actual.spirit[Op].id
-                    Name_action=Actual.spirit[Op].name
-                    Dirr=Actual.spirit[Op].dir
-                    Ccost=Actual.spirit[Op].cost
-                    Ttipo=Actual.spirit[Op].tipo
+                    Mg_sel=Actual.spirit[(ini_view-1)+Op].id
+                    Name_action=Actual.spirit[(ini_view-1)+Op].name
+                    Dirr=Actual.spirit[(ini_view-1)+Op].dir
+                    Ccost=Actual.spirit[(ini_view-1)+Op].cost
+                    Ttipo=Actual.spirit[(ini_view-1)+Op].tipo
                 end
             elseif Acc=="especiales"  then
-               -- Mg_sel=Actual.sp[Op].id
-                -- Dirr=Actual.sp[Op].dir
-                Msg_debug=Msg_debug.." #especiales"
+               -- Mg_sel=Actual.sp[(ini_view-1)+Op].id
+                -- Dirr=Actual.sp[(ini_view-1)+Op].dir
+                --Msg_debug=Msg_debug.." #especiales"
                 if Actual.mp_< Actual.spe[(ini_view-1)+Op].cost then
                     State ="select"
                     Acc=""
@@ -260,54 +262,54 @@ function acciones()
                     SubState=Actual.spe[(ini_view-1)+Op].mtipo
 
                     if  Actual.spe[(ini_view-1)+Op].isCommand == true then
-                        Sel_command=Actual.spe[Op].isCommand                        
-                        Msg_debug=Msg_debug.." #C"
+                        Sel_command=Actual.spe[(ini_view-1)+Op].isCommand                        
+                        --Msg_debug=Msg_debug.." #C"
                     end
                     if Actual.spe[(ini_view-1)+Op].isReplace == true then
                         Acc=Actual.spe[(ini_view-1)+Op].sub
                         State=Actual.spe[(ini_view-1)+Op].sel
                         Replace_Acc=true
-                        Msg_debug=Msg_debug.." #U"
+                        --Msg_debug=Msg_debug.." #U"
                     end
                     --Msg_debug=" #"..(ini_view-1)+Op
                     --Msg_debug="S "..Mg_sel.." "..Name_action.." "..Dirr.." "..Acc.." "..State
                 end
             elseif Acc =="spell.list"  then
 
-                    Mg_sel=Actual.mg[Op].id
-                    Name_action=Actual.mg[Op].name
-                    Dirr=Actual.mg[Op].dir     
-                    Ttipo=Actual.mg[Op].tipo
+                    Mg_sel=Actual.mg[(ini_view-1)+Op].id
+                    Name_action=Actual.mg[(ini_view-1)+Op].name
+                    Dirr=Actual.mg[(ini_view-1)+Op].dir     
+                    Ttipo=Actual.mg[(ini_view-1)+Op].tipo
             elseif Acc == "Power.Stone"  then
-                Mg_sel=Actual.powerStone[Op].id
-                Name_action=Actual.powerStone[Op].name
-                Dirr=Actual.powerStone[Op].dir     
-                Ttipo=Actual.powerStone[Op].tipo
+                Mg_sel=Actual.powerStone[(ini_view-1)+Op].id
+                Name_action=Actual.powerStone[(ini_view-1)+Op].name
+                Dirr=Actual.powerStone[(ini_view-1)+Op].dir     
+                Ttipo=Actual.powerStone[(ini_view-1)+Op].tipo
             elseif Acc == "dual M."  then            
 
-                    Mg_sel=Actual.mg[Op].id
-                    Name_action=Actual.mg[Op].name
-                    Dirr=Actual.mg[Op].dir
-                    Ccost=Actual.mg[Op].cost
-                    Ttipo=Actual.mg[Op].tipo
-                    Ccolor=Actual.mg[Op].color
-                    Llv=Actual.mg[Op].lv
+                    Mg_sel=Actual.mg[(ini_view-1)+Op].id
+                    Name_action=Actual.mg[(ini_view-1)+Op].name
+                    Dirr=Actual.mg[(ini_view-1)+Op].dir
+                    Ccost=Actual.mg[(ini_view-1)+Op].cost
+                    Ttipo=Actual.mg[(ini_view-1)+Op].tipo
+                    Ccolor=Actual.mg[(ini_view-1)+Op].color
+                    Llv=Actual.mg[(ini_view-1)+Op].lv
                   
                 if not (Actual.slots_[Llv]>1) and not (Actual.mp_>(Ccost*1.5)) then
                     State ="select"
                     Acc=""
                 end
             elseif Acc == "tecnica"  then
-                Mg_sel=Actual.sk[Op].id
-                Name_action=Actual.sk[Op].name
-                Dirr=Actual.sk[Op].dir
-                Sel_t_cost=Actual.sk[Op].tCost
-                IsCharge=Actual.sk[Op].isCharge
-                Sel_command=Actual.sk[Op].isCommand
-                if Actual.sk[Op].tCost=="charge" and not (Actual.carga==1) then
+                Mg_sel=Actual.sk[(ini_view-1)+Op].id
+                Name_action=Actual.sk[(ini_view-1)+Op].name
+                Dirr=Actual.sk[(ini_view-1)+Op].dir
+                Sel_t_cost=Actual.sk[(ini_view-1)+Op].tCost
+                IsCharge=Actual.sk[(ini_view-1)+Op].isCharge
+                Sel_command=Actual.sk[(ini_view-1)+Op].isCommand
+                if Actual.sk[(ini_view-1)+Op].tCost=="charge" and not (Actual.carga==1) then
                         State = "select"
                         Acc=""
-                elseif Actual.sk[Op].tCost=="rc" and not (Actual.rc_>0) then
+                elseif Actual.sk[(ini_view-1)+Op].tCost=="rc" and not (Actual.rc_>0) then
                         State = "select"
                         Acc=""                          
                 end
@@ -317,9 +319,9 @@ function acciones()
                     Replace_Acc=true
                 end
             elseif Acc == "invocar"  then            
-                Mg_sel=Actual.invo[Op].id
-                Name_action=Actual.invo[Op].name
-                Dirr=Actual.invo[Op].dir
+                Mg_sel=Actual.invo[(ini_view-1)+Op].id
+                Name_action=Actual.invo[(ini_view-1)+Op].name
+                Dirr=Actual.invo[(ini_view-1)+Op].dir
             elseif Acc == "canciones"  then            
 
 
@@ -342,61 +344,61 @@ function acciones()
                     -- Msg_debug=" "..Mg_sel.." "..Name_action.." "..Dirr.." "..Ccost.." "..Ttipo
                 end
             elseif Acc == "bailes"  then            
-                Mg_sel=Actual.bailes[Op].id
-                Name_action=Actual.bailes[Op].name
-                Dirr=Actual.bailes[Op].dir
+                Mg_sel=Actual.bailes[(ini_view-1)+Op].id
+                Name_action=Actual.bailes[(ini_view-1)+Op].name
+                Dirr=Actual.bailes[(ini_view-1)+Op].dir
 
-                Sel_t_cost=Actual.bailes[Op].tCost
-                IsCharge=Actual.bailes[Op].isCharge
-                Sel_command=Actual.bailes[Op].isCommand
+                Sel_t_cost=Actual.bailes[(ini_view-1)+Op].tCost
+                IsCharge=Actual.bailes[(ini_view-1)+Op].isCharge
+                Sel_command=Actual.bailes[(ini_view-1)+Op].isCommand
 
-                if Actual.bailes[Op].tCost=="charge" and not Actual.carga==1 then
+                if Actual.bailes[(ini_view-1)+Op].tCost=="charge" and not Actual.carga==1 then
                         State = "select"
                         Acc=""
-                elseif Actual.bailes[Op].tCost=="rc" and not Actual.rc_>0 then
+                elseif Actual.bailes[(ini_view-1)+Op].tCost=="rc" and not Actual.rc_>0 then
                         State = "select"
                         Acc=""                          
                 end
             elseif Acc == "W.Arts"  then
-                Mg_sel=Actual.art[Op].id
-                Name_action=Actual.art[Op].name
-                Dirr=Actual.art[Op].dir
+                Mg_sel=Actual.art[(ini_view-1)+Op].id
+                Name_action=Actual.art[(ini_view-1)+Op].name
+                Dirr=Actual.art[(ini_view-1)+Op].dir
             elseif Acc == "llamar"  then         
                 if #Actual.beast>0 then 
-                    Mg_sel=Actual.beast[Op].id
-                    Name_action=Actual.beast[Op].name
-                    Dirr=Actual.beast[Op].dir
+                    Mg_sel=Actual.beast[(ini_view-1)+Op].id
+                    Name_action=Actual.beast[(ini_view-1)+Op].name
+                    Dirr=Actual.beast[(ini_view-1)+Op].dir
                 else
                     State="select"
                     Acc=""---
                 end   
             elseif Acc == "tools"  then            
-                Mg_sel=Actual.tools[Op].id
-                Name_action=Actual.tools[Op].name
-                Dirr=Actual.tools[Op].dir
+                Mg_sel=Actual.tools[(ini_view-1)+Op].id
+                Name_action=Actual.tools[(ini_view-1)+Op].name
+                Dirr=Actual.tools[(ini_view-1)+Op].dir
             elseif  Acc == "bullet"  then            
-                Mg_sel=Actual.bullet[Op].id
-                Name_action=Actual.bullet[Op].name
-                Dirr=Actual.bullet[Op].dir
+                Mg_sel=Actual.bullet[(ini_view-1)+Op].id
+                Name_action=Actual.bullet[(ini_view-1)+Op].name
+                Dirr=Actual.bullet[(ini_view-1)+Op].dir
             elseif Acc == "Blu.magic"  then            
-                Mg_sel=Actual.blue[Op].id
-                Name_action=Actual.blue[Op].name
-                Dirr=Actual.blue[Op].dir
+                Mg_sel=Actual.blue[(ini_view-1)+Op].id
+                Name_action=Actual.blue[(ini_view-1)+Op].name
+                Dirr=Actual.blue[(ini_view-1)+Op].dir
             elseif Acc == "invocar"  then            
-                Mg_sel=Actual.invo[Op].id
-                Name_action=Actual.invo[Op].name
-                Dirr=Actual.invo[Op].dir
+                Mg_sel=Actual.invo[(ini_view-1)+Op].id
+                Name_action=Actual.invo[(ini_view-1)+Op].name
+                Dirr=Actual.invo[(ini_view-1)+Op].dir
             elseif Acc == "transformacion"  then   
                 Mg_sel=Actual.morph[(ini_view-1)+Op].id       
                 Name_action=Actual.morph[(ini_view-1)+Op].name
                 Dirr=Actual.morph[(ini_view-1)+Op].dir
-                --Mg_sel=Actual.morph[Op].id
-                --Name_action=Actual.morph[Op].name
+                --Mg_sel=Actual.morph[(ini_view-1)+Op].id
+                --Name_action=Actual.morph[(ini_view-1)+Op].name
                 --Dirr=Actual.morph[Op].dir
             elseif Acc == "mix"  then            
-                Mg_sel=Actual.mix[Op].id
-                Name_action=Actual.mix[Op].name
-                Dirr=Actual.mix[Op].dir
+                Mg_sel=Actual.mix[(ini_view-1)+Op].id
+                Name_action=Actual.mix[(ini_view-1)+Op].name
+                Dirr=Actual.mix[(ini_view-1)+Op].dir
             end
 
             if "m"== Dirr  and State == "select o" then
@@ -436,6 +438,7 @@ function acciones()
                     Acc=""
                 end--
             end
+            ini_view=1
     elseif State=="select a" then --all enemy, not tarjet
             Execute=true
     elseif State=="select aa" then
@@ -448,7 +451,7 @@ function acciones()
             Sel_cc=Sel_e
         end    
     elseif State=="select e" then --choose enemy
-        if  Acc=="atacar"  or Acc=="W.Arts" or Acc=="support.w" or Acc=="atrapar"  or Acc=="Power.Stone" or Acc=="asesinar" or Acc=="invocar" or  Acc == "usar" or Acc == "darkness" or Acc == "dual M." or Acc == "tools" or Acc == "rapido" or Acc=="magic" or Acc=="dual M." or Acc=="bullet" or Acc=="mix" or Acc=="Blu.magic" or Acc=="cargar" or Acc=="tecnica" or Acc=="objeto" or Acc=="robar" or Acc=="quitar" or Acc=="carga" or Acc=="combo" or Acc=="saltar" or Acc=="spirit" or Acc=="lanzar" or Acc=="spell.list" or Acc=="extraer" or Acc=="especiales"  or Acc=="canciones"  or Acc=="bailes" then
+        if  Acc=="atacar"  or Acc=="W.Arts" or Acc=="support.w" or Acc=="atrapar"  or Acc=="Power.Stone" or Acc=="asesinar" or Acc=="invocar" or  Acc == "usar" or Acc == "darkness" or Acc == "dual M." or Acc == "tools" or Acc == "rapido" or Acc=="magic" or Acc=="dual M." or Acc=="bullet" or Acc=="mix" or Acc=="Blu.magic" or Acc=="cargar" or Acc=="tecnica" or Acc=="objeto" or Acc=="robar" or Acc=="quitar" or Acc=="carga" or Acc=="combo" or Acc=="saltar" or Acc=="spirit" or Acc=="lanzar" or Acc=="spell.list" or Acc=="extraer" or Acc=="especiales"  or Acc=="canciones"  or Acc=="bailes" or Acc=="w.magic" then
             Execute=true
             State="select"
             Sel_e=EnemigosVivos[Op].id
@@ -729,7 +732,7 @@ function ejecutar()
         Comando_robar()
         clean()
     end    
-    if Acc=="magic" or Acc=="spirit" then
+    if Acc=="magic" or Acc=="spirit" or Acc == "w.magic" then
         Comando_magic()
         clean()
     end  

@@ -19,6 +19,7 @@ require("game/tablas/tabla_enemy")
 require("game/tablas/Tabla_animacion")
 
 require("game/element/questEntity")
+require("game/element/Social")
 require("game.element.TiendaNPC")
 
 
@@ -158,15 +159,15 @@ function _init()
     Config.Config_table()
     local o = enemyGroups
     if true then
-        if false then
+        if true then
             --4, 6 y 10 
             --7  necesitan nuevos sprites(miku y esper)
             --9 espada 
             -- 6 rezar
             -- add new class 12
-            local a =1
-            local b =6
-            local c =11
+            local a =9
+            local b =9
+            local c =9
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -184,6 +185,7 @@ function _init()
             r.mag=General_magics(Nuevas_clases[a])
             r.col=General_coleccion(Nuevas_clases[a])
             r.acc=General_lista(Nuevas_clases[a])
+            Init_social(r)
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
@@ -204,6 +206,7 @@ function _init()
             r.mag=General_magics(Nuevas_clases[b])
             r.col=General_coleccion(Nuevas_clases[b])
             r.acc=General_lista(Nuevas_clases[b])
+            Init_social(r)
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
@@ -224,6 +227,7 @@ function _init()
             r.mag=General_magics(Nuevas_clases[c])
             r.col=General_coleccion(Nuevas_clases[c])
             r.acc=General_lista(Nuevas_clases[c])
+            Init_social(r)
             add(ActiveParty,r)
             add(Show_party,r)
             add(Order, r)
@@ -246,6 +250,7 @@ function _init()
                 r.mag=General_magics(Nuevas_clases[t])
                 r.col=General_coleccion(Nuevas_clases[t])
                 r.acc=General_lista(Nuevas_clases[t])
+                Init_social(r)
                 add(ActiveParty,r)
                 add(Show_party,r)
                 add(Order, r)

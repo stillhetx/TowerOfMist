@@ -19,7 +19,7 @@ function Personality_random_action(str,alineamiento)
     local objetivo={}
     accion=ElegirAccion(list)
 
-    if alineamiento~="enemy" then
+    if alineamiento=="enemy" then
         objetivo=obtener_objetivo()
     else
         objetivo=obtener_enemigo()

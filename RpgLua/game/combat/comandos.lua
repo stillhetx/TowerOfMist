@@ -698,20 +698,20 @@ function Comando_atacar()
 	wait_start()
     Debug_temp=Debug_temp.."x"
     local next_comando="ejecutar_atacar_A"
-    agregarAccion({next_comando,"",objetivo_global})
+    agregarAccion({next_comando,"",objetivo_global,Actual})
 
     if Actual.weapon and Actual.weapon.right.isCast==true then
         for k,i in pairs(Actual.weapon.right.cast) do
-            agregarAccion({"ejecutar_elemental_damage",i,objetivo_global})
+            --agregarAccion({"ejecutar_elemental_damage",i,objetivo_global,Actual})
         end
     end
 
     next_comando="ejecutar_atacar_B"
-    agregarAccion({next_comando,"",objetivo_global})
+    agregarAccion({next_comando,"",objetivo_global,Actual})
 
     if Actual.weapon and Actual.weapon.left.isCast==true then
         for k,i in pairs(Actual.weapon.left.cast) do
-            agregarAccion({"ejecutar_elemental_damage",i,objetivo_global})
+            --agregarAccion({"ejecutar_elemental_damage",i,objetivo_global,Actual})
         end
     end
     Cancel_ejecutar=true 

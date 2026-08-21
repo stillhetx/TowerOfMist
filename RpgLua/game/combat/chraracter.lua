@@ -89,6 +89,14 @@ function isDesarmado()
     return false
 end    
 
+
+function isDesarmadoObj(v)
+    if (v.weapon.left == nil or v.weapon.left=={}) and (v.weapon.right == nil or v.weapon.right=={})  then
+        return true
+    end    
+    return false
+end   
+
 function isDesarmadoEquipo(e)
     if (e.weapon.left == nil or e.weapon.left=={}) and (e.weapon.right == nil or e.weapon.right=={})  then
         return true

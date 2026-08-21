@@ -1,26 +1,36 @@
 function perfil_mode()
     --love.graphics.print("info_label:  state: "..state,10,5)
+
+
+
     love.graphics.draw(fondo,0,0)
     local l=Perfil.seePerfil
+    show_spr(ActiveParty[l], 36,46, 0,0,280,50,Temp_c==ActiveParty[l].id and State=="select c",false)  
+
+
     love.graphics.print(ActiveParty[l].name,20,2+(24*1))
     love.graphics.print("$: "..Dinero,360,2+(24*1))
-    love.graphics.print("EXP: "..ActiveParty[l].exp,180,2+(24*1))
-    love.graphics.print(" HP: "..ActiveParty[l].hp_.."/"..(ActiveParty[l].hp+mod(ActiveParty[l],"hp")).." MP: "..ActiveParty[l].mp_.."/"..(ActiveParty[l].mp+mod(ActiveParty[l],"mp")),20,2+(24*2))
-    love.graphics.print("CON: "..(ActiveParty[l].con+mod(ActiveParty[l],"con")).." POD: "..(ActiveParty[l].pod+mod(ActiveParty[l],"pod")),20,20+(24*3))
-    love.graphics.print("AGI: "..(ActiveParty[l].agi+mod(ActiveParty[l],"agi")).." DES: "..(ActiveParty[l].dex+mod(ActiveParty[l],"dex")),20,20+(24*4))
-    love.graphics.print("FUE: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")),20,20+(24*5))
+    love.graphics.print("Lv: "..ActiveParty[l].lv.." EXP: "..ActiveParty[l].exp,180,2+(24*1))
+    love.graphics.print("",20+(24*1))
+    love.graphics.print("HP: "..ActiveParty[l].hp_.."/"..(ActiveParty[l].hp+mod(ActiveParty[l],"hp")).." MP: "..ActiveParty[l].mp_.."/"..(ActiveParty[l].mp+mod(ActiveParty[l],"mp")),120,20+(24*2))
+    love.graphics.print("CON: "..(ActiveParty[l].con+mod(ActiveParty[l],"con")).." POD: "..(ActiveParty[l].pod+mod(ActiveParty[l],"pod")),120,20+(24*3))
+    love.graphics.print("AGI: "..(ActiveParty[l].agi+mod(ActiveParty[l],"agi")).." DES: "..(ActiveParty[l].dex+mod(ActiveParty[l],"dex")),120,20+(24*4))
+    love.graphics.print("FUE: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")),120,20+(24*5))
 
-    love.graphics.print("Lv: "..ActiveParty[l].lv,180,20+(24*5))
-    love.graphics.print("ATTACK: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")+promWeaponDmg(ActiveParty[l])),220,20+(24*3))
-    love.graphics.print("defensa: "..(flr((ActiveParty[l].con+mod(ActiveParty[l],"con"))/2) + ModArmadura(ActiveParty[l])),220,20+(24*4))
+    --
+    love.graphics.print("ATTACK: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")+promWeaponDmg(ActiveParty[l])),260,20+(24*3))
+    love.graphics.print("defensa: "..(flr((ActiveParty[l].con+mod(ActiveParty[l],"con"))/2) + ModArmadura(ActiveParty[l])),260,20+(24*4))
 
     --
     
-    love.graphics.print( "debug:   "..Perfil.select_mp .." ".. Perfil.showPerfil.." ",240,140+(24*0))
+    love.graphics.print( "debug:   "..Perfil.select_mp .." ".. Perfil.showPerfil.." ",260,140+(24*0))
     --love.graphics.print( "debug:  "..Debug_temp,400,120+(24*0))
 
 
-    anim_char(ActiveParty[l],280,30)
+    --anim_char(ActiveParty[l],280,30)
+
+
+
 
     if Perfil.showPerfil=="perfil" or Perfil.showPerfil=="equip"  then
 
@@ -75,6 +85,7 @@ function perfil_mode()
         for k,i in pairs(ActiveParty[l].acc) do
             love.graphics.print( i ,300,220+(24*k))
         end
+
 
         love.graphics.print( "perks:",450,220+(24*0))
         local line=1
@@ -228,6 +239,47 @@ function perfil_mode()
 
     if Perfil.showPerfil=="runas" then
 
+    end
+
+    if Perfil.showPerfil=="hiden" then
+        if  ActiveParty[l].social then
+            love.graphics.print( countTableElements(ActiveParty[l].social) ,500,120+(24*-1))
+                local a=1
+
+
+                 love.graphics.print("Ojo "..ActiveParty[l].social["Ojo"],26,160+(24*a))
+                 a=a+1
+                 love.graphics.print("pintura "..ActiveParty[l].social["pintura"],26,160+(24*a))
+                 a=a+1
+                 love.graphics.print("je_ne_sais_pa "..ActiveParty[l].social["je_ne_sais_pa"],26,160+(24*a))
+                 a=a+1
+                 love.graphics.print("sennal "..ActiveParty[l].social["sennal"],26,160+(24*a))
+                 a=a+1
+                 love.graphics.print("lupa "..ActiveParty[l].social["lupa"],26,160+(24*a))
+                 a=a+1
+                 love.graphics.print("energy "..ActiveParty[l].social["energy"],26,160+(24*a))
+                 a=a+1
+                 love.graphics.print("Cabello "..ActiveParty[l].social["Cabello"],26,160+(24*a))
+
+                 a=1
+                 love.graphics.print("Numero "..ActiveParty[l].social["Numero"],300,160+(24*a))
+                 a=a+1
+                 love.graphics.print("escultura "..ActiveParty[l].social["escultura"],300,160+(24*a))
+                 a=a+1
+                 love.graphics.print("linea "..ActiveParty[l].social["linea"],300,160+(24*a))
+                 a=a+1
+                 love.graphics.print("algodon "..ActiveParty[l].social["algodon"],300,160+(24*a))
+                 a=a+1
+                 love.graphics.print("retrovizor "..ActiveParty[l].social["retrovizor"],300,160+(24*a))
+                 a=a+1
+                 love.graphics.print("rueda "..ActiveParty[l].social["rueda"],300,160+(24*a))
+                 a=a+1
+                 love.graphics.print("armadura "..ActiveParty[l].social["armadura"],300,160+(24*a))
+                 a=a+1
+                 love.graphics.print("corazon "..ActiveParty[l].social["corazon"],300,160+(24*a))
+                 
+        end
+        
     end
 
 
