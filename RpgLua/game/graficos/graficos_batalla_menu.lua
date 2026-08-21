@@ -105,6 +105,9 @@ function Graficos_Batalla.menu()
                 if State=="select o" and Acc=="especiales" then   
                     show_menus_name(Actual.spe,menu_select_x,menu_y)
                 end
+                if State=="select o" and Acc=="espada" then   
+                    show_menus_name(Actual.swm,menu_select_x,menu_y)
+                end
                 if State=="select a" or  State=="select aa"then
                     show_menus(lista_todos,menu_select_x,menu_y)
                 end

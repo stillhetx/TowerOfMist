@@ -235,6 +235,19 @@ function acciones()
                     Ccolor=Actual.milagros[(ini_view-1)+Op].color
                     Llv=Actual.milagros[(ini_view-1)+Op].lv
                 end
+            elseif Acc == "espada" then  
+                if Actual.mp_< Actual.swm[(ini_view-1)+Op].cost then
+                    State ="select"
+                    Acc=""
+                else
+                    Mg_sel=Actual.swm[(ini_view-1)+Op].id
+                    Name_action=Actual.swm[(ini_view-1)+Op].name
+                    Dirr=Actual.swm[(ini_view-1)+Op].dir
+                    Ccost=Actual.swm[(ini_view-1)+Op].cost
+                    Ttipo=Actual.swm[(ini_view-1)+Op].tipo
+                    Ccolor=Actual.swm[(ini_view-1)+Op].color
+                    Llv=Actual.swm[(ini_view-1)+Op].lv
+                end    
 
             elseif Acc == "spirit" then            
                 if Actual.mp_< Actual.spirit[(ini_view-1)+Op].cost then
@@ -451,7 +464,7 @@ function acciones()
             Sel_cc=Sel_e
         end    
     elseif State=="select e" then --choose enemy
-        if  Acc=="atacar"  or Acc=="W.Arts" or Acc=="support.w" or Acc=="atrapar"  or Acc=="Power.Stone" or Acc=="asesinar" or Acc=="invocar" or  Acc == "usar" or Acc == "darkness" or Acc == "dual M." or Acc == "tools" or Acc == "rapido" or Acc=="magic" or Acc=="dual M." or Acc=="bullet" or Acc=="mix" or Acc=="Blu.magic" or Acc=="cargar" or Acc=="tecnica" or Acc=="objeto" or Acc=="robar" or Acc=="quitar" or Acc=="carga" or Acc=="combo" or Acc=="saltar" or Acc=="spirit" or Acc=="lanzar" or Acc=="spell.list" or Acc=="extraer" or Acc=="especiales"  or Acc=="canciones"  or Acc=="bailes" or Acc=="w.magic" then
+        if  Acc=="atacar"  or Acc=="W.Arts" or Acc=="support.w" or Acc=="atrapar"  or Acc=="Power.Stone" or Acc=="asesinar" or Acc=="invocar" or  Acc == "usar" or Acc == "darkness" or Acc == "dual M." or Acc == "tools" or Acc == "rapido" or Acc=="magic" or Acc=="dual M." or Acc=="bullet" or Acc=="mix" or Acc=="Blu.magic" or Acc=="cargar" or Acc=="tecnica" or Acc=="objeto" or Acc=="robar" or Acc=="quitar" or Acc=="carga" or Acc=="combo" or Acc=="saltar" or Acc=="spirit" or Acc=="lanzar" or Acc=="spell.list" or Acc=="extraer" or Acc=="especiales"  or Acc=="canciones"  or Acc=="bailes" or Acc=="w.magic" or Acc=="espada" then
             Execute=true
             State="select"
             Sel_e=EnemigosVivos[Op].id
@@ -732,7 +745,7 @@ function ejecutar()
         Comando_robar()
         clean()
     end    
-    if Acc=="magic" or Acc=="spirit" or Acc == "w.magic" then
+    if Acc=="magic" or Acc=="spirit" or Acc == "w.magic" or Acc == "espada" then
         Comando_magic()
         clean()
     end  

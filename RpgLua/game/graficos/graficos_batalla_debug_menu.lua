@@ -11,7 +11,7 @@ function Graficos_Batalla.debug_log()
         --love.graphics.print( "Debug: >"..Op.."  "..ini_view.." "..Acc..State,30,114+(24*-4))
         --love.graphics.print( "Debug: >"..Msg_debug.."  ",30,114+(24*-4))
 
-        love.graphics.print( "Debug: > ini "..(ini_view - 1).." op:"..Op.." maximo:"..maximoInside.." ",30,114+(24*-4))
+        --love.graphics.print( "Debug: > ini "..(ini_view - 1).." op:"..Op.." maximo:"..maximoInside.." ",30,114+(24*-4))
         --love.graphics.print( "Debug: >"..State.." ".. Acc.." "..Mg_sel,30,114+(24*-4))
 
         --love.graphics.print( "Debug: >"..Op.." ".. ini_view.."-"..fin_view.."  ",30,114+(24*-4))
