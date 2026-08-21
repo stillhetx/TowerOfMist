@@ -4097,7 +4097,7 @@ Efectos["extra_M."]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra)
     
 end
 
-Efectos["potenciar_M."]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra)
+Efectos["potenciar"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra)
 
     Animacion.add_action_animation(w,"magia",{1,1,1,1}) 
     Actual.avanzar=true

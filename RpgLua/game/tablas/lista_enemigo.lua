@@ -1,22 +1,22 @@
 posiciones_enemigos={
     [1]={
         x=380,
-        y=110,
+        y=110-20,
     },
     [2]={
         x=420,
-		y=170, 
+		y=170-20, 
     },
     [3]={
         x=380,
-        y=240,},    
+        y=240-20,},    
 }
 
 posiciones_enemigos_uno={
 
     [1]={
         x=420,
-		y=216, 
+		y=216-20, 
     },
 
 }
@@ -24,11 +24,11 @@ posiciones_enemigos_uno={
 posiciones_enemigos_dos={
     [1]={
         x=380,
-        y=110,
+        y=110-20,
     },
     [2]={
         x=380,
-        y=240,},    
+        y=240-20,},    
 }
 
 enemy_list={

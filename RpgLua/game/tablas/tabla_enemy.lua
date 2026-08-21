@@ -12,6 +12,21 @@ horda["00000"]={
         recompensa={"pocion", "ether"},
         enemyList={"murcielago","murcielago","murcielago"},
         enemyTeams={},
+
+        --[[
+        
+            [1]={
+        x=380,
+        y=110,
+    },
+    [2]={
+        x=420,
+		y=170, 
+    },
+    [3]={
+        x=380,
+        y=240,},    
+        ]]
 },
 {id="00000_standBy_01",
         exp=100,
@@ -124,6 +139,22 @@ horda["bosque_base_02"]={
 
 horda["00001"]={
 
+
+                {id="grupo 0.002",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240}},
+        enemyList={"soldado","guardian"},
+        enemyTeams={},
+
+},
+
         
         {id="grupo 0.001",
         exp=50,
@@ -137,6 +168,7 @@ horda["00001"]={
         --enemyList={"old_caster","old_healer","old_Buffer"},
         --enemyList={"elemental_water","elemental_rock","elemental_fire"},
         --enemyList={"elemental_electric","elemental_snow","hada"},
+        pos={{x=380,y=90},{x=480,y=170},{x=380,y=200}},
         enemyList={"Fae","guerrero","hechizero"},
         --enemyList={"mano","psiquic_being"},
         enemyTeams={},
@@ -144,19 +176,7 @@ horda["00001"]={
 },
 
 
-        {id="grupo 0.002",
-        exp=50,
-        credit=50,
-        terrain="agua",
-        terrain_="agua",
-        tipo="batalla",
-        fondo="ocean",
-        fondo_="ocean",
-        recompensa={"pocion", "ether"},
-        enemyList={"soldado","guardian"},
-        enemyTeams={},
 
-},
 
         {id="grupo 0.01",
         exp=50,

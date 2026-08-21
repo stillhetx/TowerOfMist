@@ -43,6 +43,9 @@ function Graficos_Batalla.menu()
                 if State=="select o" and Acc=="magic" then   
                     Show_menus_name_cost_magic(Actual.mg,menu_select_x,menu_y)
                 end
+                if State=="select meta" and Acc=="magic" then   
+                    Show_menus_name_cost_magic(Actual.meta,menu_select_x,menu_y)
+                end
                 if State=="select o" and Acc=="w.magic" then   
                     Show_menus_name_cost_magic(Actual.milagros,menu_select_x,menu_y)
                 end

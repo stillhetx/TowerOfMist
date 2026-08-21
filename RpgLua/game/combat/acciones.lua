@@ -452,6 +452,30 @@ function acciones()
                 end--
             end
             ini_view=1
+    elseif State=="select meta" then 
+            if "m"== Dirr  and State == "select o" then
+                State="select m"
+            elseif "x"== Dirr  and State == "select o" then
+                State="select"
+                Execute=true
+            elseif "a"== Dirr  and State == "select o" then
+                State="select a"
+            elseif "o"== Dirr  and State == "select o" then
+                State="select o"
+            elseif "e"== Dirr and State == "select o" then
+                State="select e"
+                FiltrarEnemigoVivos()
+            elseif "c"== Dirr and State == "select o" then
+                State="select c"
+                FiltrarAliadosVivos()
+            elseif "d"== Dirr and State == "select o" then
+                FiltrarAliadosMuertos()
+                --filtrarDerrotados()
+                State="select d"
+                if #AliadosVivos<1 then
+                    State="select o"
+                end
+            end  
     elseif State=="select a" then --all enemy, not tarjet
             Execute=true
     elseif State=="select aa" then

@@ -25,46 +25,7 @@ function graph_mode()
     count_dmg_timer()
     count_wait_win()
 
-    if Modo=="combat" then
-        
-        for i=1,#ActiveParty do
-            
-            if State=="select" or State=="secundario" then
-            --if State=="select"  then
-                --love.graphics.print("show"..State,20,40)
-                if ActiveParty[i].live  then
-                --if true  then
-                    --love.graphics.print("show"..State.." "..ActiveParty[i].name,220,338-30)
-                    love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp.."",220,338+(40*(i-1)))
-                    if #ActiveParty[i].mag~=nil then
-                        --love.graphics.print("mag"..#ActiveParty[i].mag,550,338+(40*(i-1)))
-                    end
-                    if #ActiveParty[i].col~=nil then
-                        --love.graphics.print("col"..#ActiveParty[i].col,550,338+(40*(i-1)))
-                    end
-                    Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)
-                else
-                    love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,338+(40*(i-1)))
-                    Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)            
-                end    
-            else 
-                local str_name=""
-                if false then
-                    if #ActiveParty[i].name>9 then
-                        str_name=string.sub(ActiveParty[i].name, 1, 6).."..."
-                    else
-                        str_name=string.sub(ActiveParty[i].name, 1, 9)
-                    end
 
-                    if ActiveParty[i].live then
-                        love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
-                    else
-                        love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
-                    end 
-                end
-            end
-        end
-    end
 
     if true then
         Graficos_Batalla.debug_log()
@@ -98,6 +59,47 @@ function graph_mode()
         love.graphics.setColor(0,0,0)
         love.graphics.rectangle("fill", 0,320, 800,200)
         love.graphics.setColor(255,255,255) -- reset colours
+
+        if Modo=="combat" then
+            
+            for i=1,#ActiveParty do
+                
+                if State=="select" or State=="secundario" then
+                --if State=="select"  then
+                    --love.graphics.print("show"..State,20,40)
+                    if ActiveParty[i].live  then
+                    --if true  then
+                        --love.graphics.print("show"..State.." "..ActiveParty[i].name,220,338-30)
+                        love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp.."",220,338+(40*(i-1)))
+                        if #ActiveParty[i].mag~=nil then
+                            --love.graphics.print("mag"..#ActiveParty[i].mag,550,338+(40*(i-1)))
+                        end
+                        if #ActiveParty[i].col~=nil then
+                            --love.graphics.print("col"..#ActiveParty[i].col,550,338+(40*(i-1)))
+                        end
+                        Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)
+                    else
+                        love.graphics.print(ActiveParty[i].name.." HP: "..ActiveParty[i].hp_.."/"..(ActiveParty[i].hp+mod(ActiveParty[i],"hp")).." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,220,338+(40*(i-1)))
+                        Mostrar_estados(ActiveParty[i],236,334+16+(40*(i-1)),false)            
+                    end    
+                else 
+                    local str_name=""
+                    if false then
+                        if #ActiveParty[i].name>9 then
+                            str_name=string.sub(ActiveParty[i].name, 1, 6).."..."
+                        else
+                            str_name=string.sub(ActiveParty[i].name, 1, 9)
+                        end
+
+                        if ActiveParty[i].live then
+                            love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
+                        else
+                            love.graphics.print(str_name.." HP: "..ActiveParty[i].hp_.." MP: "..ActiveParty[i].mp_.."/"..ActiveParty[i].mp,300,340+(18*i))
+                        end 
+                    end
+                end
+            end
+        end
         
         local menu_x=12
         local menu_y=314

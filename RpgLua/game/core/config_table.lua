@@ -46,25 +46,33 @@ function Config.Pos_monster_Nvg()
                 for k,ii in pairs(enemyGroups[t].enemyList) do
                     enemyGroups[t].enemyTeams[k]=copiar_tabla(enemy_list[ii]) 
                     enemyGroups[t].enemyTeams[k].id=enemy_list[ii].id.."_"..k
-                    if #enemyGroups[t].enemyList==1 then
-                        enemyGroups[t].enemyTeams[k].x=posiciones_enemigos_uno[k].x
-                        enemyGroups[t].enemyTeams[k].y=posiciones_enemigos_uno[k].y
-                        enemyGroups[t].enemyTeams[k].x_=posiciones_enemigos_uno[k].x
-                        enemyGroups[t].enemyTeams[k].y_=posiciones_enemigos_uno[k].y
-                        enemyGroups[t].enemyTeams[k].p=1
-                    elseif #enemyGroups[t].enemyList==2 then    
-                        enemyGroups[t].enemyTeams[k].x=posiciones_enemigos_dos[k].x
-                        enemyGroups[t].enemyTeams[k].y=posiciones_enemigos_dos[k].y
-                        enemyGroups[t].enemyTeams[k].x_=posiciones_enemigos_dos[k].x
-                        enemyGroups[t].enemyTeams[k].y_=posiciones_enemigos_dos[k].y
-                        enemyGroups[t].enemyTeams[k].p=2
-                    elseif #enemyGroups[t].enemyList==3 then    
-                        enemyGroups[t].enemyTeams[k].x=posiciones_enemigos[k].x
-                        enemyGroups[t].enemyTeams[k].y=posiciones_enemigos[k].y
-                        enemyGroups[t].enemyTeams[k].x_=posiciones_enemigos[k].x
-                        enemyGroups[t].enemyTeams[k].y_=posiciones_enemigos[k].y
-                        enemyGroups[t].enemyTeams[k].p=3
-                    end                    
+                    if enemyGroups[t].pos and enemyGroups[t].pos[k] then
+                        enemyGroups[t].enemyTeams[k].x=enemyGroups[t].pos[k].x
+                        enemyGroups[t].enemyTeams[k].y=enemyGroups[t].pos[k].y
+                        enemyGroups[t].enemyTeams[k].x_=enemyGroups[t].pos[k].x
+                        enemyGroups[t].enemyTeams[k].y_=enemyGroups[t].pos[k].y
+                        enemyGroups[t].enemyTeams[k].p=k
+                    else
+                        if #enemyGroups[t].enemyList==1 then
+                            enemyGroups[t].enemyTeams[k].x=posiciones_enemigos_uno[k].x
+                            enemyGroups[t].enemyTeams[k].y=posiciones_enemigos_uno[k].y
+                            enemyGroups[t].enemyTeams[k].x_=posiciones_enemigos_uno[k].x
+                            enemyGroups[t].enemyTeams[k].y_=posiciones_enemigos_uno[k].y
+                            enemyGroups[t].enemyTeams[k].p=1
+                        elseif #enemyGroups[t].enemyList==2 then    
+                            enemyGroups[t].enemyTeams[k].x=posiciones_enemigos_dos[k].x
+                            enemyGroups[t].enemyTeams[k].y=posiciones_enemigos_dos[k].y
+                            enemyGroups[t].enemyTeams[k].x_=posiciones_enemigos_dos[k].x
+                            enemyGroups[t].enemyTeams[k].y_=posiciones_enemigos_dos[k].y
+                            enemyGroups[t].enemyTeams[k].p=2
+                        elseif #enemyGroups[t].enemyList==3 then    
+                            enemyGroups[t].enemyTeams[k].x=posiciones_enemigos[k].x
+                            enemyGroups[t].enemyTeams[k].y=posiciones_enemigos[k].y
+                            enemyGroups[t].enemyTeams[k].x_=posiciones_enemigos[k].x
+                            enemyGroups[t].enemyTeams[k].y_=posiciones_enemigos[k].y
+                            enemyGroups[t].enemyTeams[k].p=3
+                        end
+                    end
                 end
             end
         end        

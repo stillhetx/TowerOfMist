@@ -174,27 +174,30 @@ end
 
 
 function Mostrar_rc(v,x,y,bol)
-    if v.seeRC then
-        if v.rc_>0 then
-            for i=1, v.rc_ do
-                    spr_sheet(Icon_extra["RC"],(x),y+(i*20)-10,1,1,1,1,spritesEstados)
-            end
-            
-        end
-    end
+
 end    
 
 function Mostrar_barra(v,x,y,bol)
+    local co=0
+
     if v.seeAP then
         if v.gl_>0 then
             for i=1, v.gl_ do
                 if i==1 then
-                    spr_sheet(Icon_extra["gault_1"],(x),y-(i*13)-10,1,1,1,1,spritesEstados)
+                    spr_sheet(Icon_extra["gault_1"],(x),y-(i*12)-10+36,1,1,1,1,spritesEstados)
                 elseif i==5 then 
-                    spr_sheet(Icon_extra["gault_3"],(x),y+11-(i*13),1,1,1,1,spritesEstados)
+                    spr_sheet(Icon_extra["gault_3"],(x),y+11-(i*12)+36,1,1,1,1,spritesEstados)
                 else
-                    spr_sheet(Icon_extra["gault_2"],(x),y-(i*13),1,1,1,1,spritesEstados)
+                    spr_sheet(Icon_extra["gault_2"],(x),y-(i*12)+36,1,1,1,1,spritesEstados)
                 end
+            end
+        co=co+12    
+        end
+    end
+    if v.seeRC then
+        if v.rc_>0 then
+            for i=1, v.rc_ do
+                    spr_sheet(Icon_extra["RC"],(x-co),y+(i*12)-12,1,1,1,1,spritesEstados)
             end
             
         end
@@ -289,7 +292,9 @@ function Mostrar_debilidades(v,x,y)
     if monster_weakness[v.id_mons] and  v.live  then
         local co=0
         for k,t in pairs(v.weak) do 
+            if Icon_element[k] then
                 spr_sheet(Icon_element[k],x+(16*-1)-(26*co*-1),y+4,1,1,1,1,spritesEstados)
+            end
                 co=co+1
         end
     end  
@@ -322,6 +327,11 @@ function Mostrar_extra_acciones(v, x, y, inverso)
         if  v.see_extra_turno  then
             spr_sheet(Icon_element["bonus_turno"],x+(16*signo)-(26*co*signo)-40,y+4+16,1,1,1,1,spritesEstados)
             co=co+1
+        end
+        if co<2 then
+            Mostrar_enlaze(v, (v.x+v.enlaze_summon.x)+10,(v.y+v.enlaze_summon.y),inverso)
+        else
+            Mostrar_enlaze(v, (v.x+v.enlaze_summon.x)+10-(26*co),(v.y+v.enlaze_summon.y),inverso)
         end
     end        
 end

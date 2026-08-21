@@ -26,6 +26,9 @@ function main_control(key,scancode,isrepeat)
                         if key=="s" then
                             boton_s()
                         end
+                        if key=="c" then
+                            boton_c()
+                        end
                         if key=="up" then
                             up()
                         end
@@ -100,6 +103,39 @@ end
 
 Acciones_secundarias={"huir","extra","arma","compl."}
 
+
+
+function boton_c()
+    
+    if Acc == "magic"   then            
+        if Actual.mp_< Actual.mg[(ini_view-1)+Op].cost then
+            State ="select"
+            Acc=""
+        else
+            ConfigAccion(Actual.mg[(ini_view-1)+Op].id,
+            Actual.mg[(ini_view-1)+Op].name,
+            Actual.mg[(ini_view-1)+Op].dir,
+            Actual.mg[(ini_view-1)+Op].cost,
+            Actual.mg[(ini_view-1)+Op].tipo,
+            Actual.mg[(ini_view-1)+Op].color,
+            Actual.mg[(ini_view-1)+Op].lv)
+
+            Mg_sel=Actual.mg[(ini_view-1)+Op].id
+            Name_action=Actual.mg[(ini_view-1)+Op].name
+            Dirr=Actual.mg[(ini_view-1)+Op].dir
+            Ccost=Actual.mg[(ini_view-1)+Op].cost
+            Ttipo=Actual.mg[(ini_view-1)+Op].tipo
+            Ccolor=Actual.mg[(ini_view-1)+Op].color
+            Llv=Actual.mg[(ini_view-1)+Op].lv
+
+            State = "select meta"
+                    --CostoSkill()
+                    --Msg_debug=" #"..(ini_view-1)+Op
+                    -- Msg_debug=" "..Mg_sel.." "..Name_action.." "..Dirr.." "..Ccost.." "..Ttipo
+        end
+    end
+    
+end
 
 function boton_a()
     if State=="select" then
