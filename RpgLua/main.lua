@@ -163,9 +163,9 @@ function _init()
             --4, 6 y 10 
             --7  necesitan nuevos sprites(miku y esper)
             -- add new class 12
-            local a =12
-            local b =12
-            local c =12
+            local a =9
+            local b =9
+            local c =9
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))

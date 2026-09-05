@@ -79,6 +79,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  --su identidad es desconocida
                 isSpiderLike=false, --Es una araña
@@ -138,6 +143,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -148,6 +158,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["fuego_hielo"]=         
@@ -207,6 +219,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["fuego_electrico"]=    
@@ -266,6 +280,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["evil_eye"]=   
@@ -326,6 +342,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["slime_azul"]=   
@@ -375,6 +393,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -385,6 +408,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["slime_amarillo"]=   
@@ -445,6 +470,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["slime_rojo"]=  
@@ -505,6 +532,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["serpiente_verde"]=  
@@ -555,6 +584,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -565,6 +599,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
     ["Murcielago_electrico"]=  
@@ -624,6 +660,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
         ["serpiente_purpura"]=  
@@ -684,6 +722,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
         ["objetos"]=  
@@ -733,6 +773,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -743,6 +788,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
         ["slime_rainbow"]=  
                 {name="slime arcoiris",
@@ -801,6 +848,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
         ["murcielago_fuego"]=  
@@ -860,6 +909,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 
@@ -920,6 +971,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 ["dummy"]={
@@ -968,6 +1021,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -978,6 +1036,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
             ["old_caster"]=  
@@ -1029,6 +1089,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1039,6 +1104,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
             ["old_healer"]=  
@@ -1090,6 +1157,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1100,6 +1172,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 
@@ -1152,6 +1226,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1162,6 +1241,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
   ["elemental_water"]=  
@@ -1213,6 +1294,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1223,6 +1309,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
               ["elemental_rock"]=  
@@ -1274,6 +1362,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1284,6 +1377,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
               ["elemental_fire"]=  
@@ -1335,6 +1430,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1345,6 +1445,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
               ["elemental_electric"]=  
@@ -1396,6 +1498,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1406,6 +1513,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
               ["elemental_snow"]=  
@@ -1457,6 +1566,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1467,6 +1581,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 
@@ -1519,6 +1635,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1529,6 +1650,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 
@@ -1581,6 +1704,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1591,6 +1719,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
               ["duende"]=  
@@ -1642,6 +1772,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1652,6 +1787,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 
@@ -1704,6 +1841,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1714,6 +1856,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 
@@ -1766,6 +1910,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1776,6 +1925,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
 
@@ -1828,6 +1979,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1838,6 +1994,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
             ["Fae"]=  
@@ -1889,6 +2047,11 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1899,6 +2062,8 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             },
 
             ["guerrero"]=  
@@ -1950,6 +2115,7 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=0,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -1960,6 +2126,9 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={tipo_item="arma",name="espada corta",id="espada_corta",wtipo="equipo",w=12,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false,cont=1, color={1,1,1,1},},
+                        right={},bright=false},
+                armadura={tipo_item="torso",name="armadura Base",id="armadura_base",def=1,mdef=0,extra={}},
             },
              ["hechizero"]=  
                 {name="hechizero",
@@ -2010,6 +2179,7 @@ enemy_list={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=10,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2020,6 +2190,9 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={tipo_item="arma",name="baculo",id="baculo",wtipo="equipo",w=6,bw=1,tipo="contundente",modo="1h",smodo="white",dex="",fue="D", int="",pod="",sh=false,cont=1, color={1,1,1,1},},
+                        right={},bright=false},
+                armadura={tipo_item="torso",name="armadura Base",id="armadura_base",def=1,mdef=0,extra={}},
             },
             ["soldado"]=  
                 {name="soldado",
@@ -2066,11 +2239,17 @@ enemy_list={
                 sh_=1,
                 gl=0,
                 gl_=1,
-                agi=3,
+                agi=4,
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
+                
                 isUnknows=false,  
                 isSpiderLike=false, 
                 respawn="", 
@@ -2080,6 +2259,9 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={tipo_item="arma",name="espada corta",id="espada_corta",wtipo="equipo",w=12,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false,cont=1, color={1,1,1,1},},
+                        right={},bright=false},
+                armadura={tipo_item="torso",name="armadura Base",id="armadura_base",def=1,mdef=0,extra={}},
             },
             ["guardian"]=  
                 {name="guardian",
@@ -2126,10 +2308,11 @@ enemy_list={
                 sh_=1,
                 gl=0,
                 gl_=1,
-                agi=3,
+                agi=4,
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2140,6 +2323,9 @@ enemy_list={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={tipo_item="arma",name="espada corta",id="espada_corta",wtipo="equipo",w=12,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false,cont=1, color={1,1,1,1},},
+                        right={},bright=false},
+                armadura={tipo_item="torso",name="armadura Base",id="armadura_base",def=1,mdef=0,extra={}},
             },
 }
 
@@ -2195,6 +2381,11 @@ enemy_list["desconocido"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2205,6 +2396,8 @@ enemy_list["desconocido"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 enemy_list["babosa"]={
@@ -2253,6 +2446,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2263,6 +2461,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				enemy_list["secuas"]={
@@ -2311,6 +2511,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2321,6 +2526,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				enemy_list["shaman"]={
@@ -2369,6 +2576,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2379,6 +2591,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2428,6 +2642,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2438,6 +2657,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2487,6 +2708,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2497,6 +2723,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2546,6 +2774,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2556,6 +2789,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2605,6 +2840,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2615,6 +2855,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2664,6 +2906,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2674,6 +2921,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2723,6 +2972,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2733,6 +2987,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2783,6 +3039,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2793,6 +3054,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2842,6 +3105,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2852,6 +3120,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2901,6 +3171,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2911,6 +3186,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -2960,6 +3237,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -2970,6 +3252,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3019,6 +3303,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3029,6 +3318,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3078,6 +3369,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3088,6 +3384,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3137,6 +3435,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3147,6 +3450,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3196,6 +3501,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3206,6 +3516,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3255,6 +3567,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3265,6 +3582,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3314,6 +3633,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3324,6 +3648,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3373,6 +3699,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3383,6 +3714,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 				
 				
@@ -3432,6 +3765,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3442,6 +3780,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 
             enemy_list["spider"]={
@@ -3490,6 +3830,11 @@ enemy_list["babosa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3500,6 +3845,8 @@ enemy_list["babosa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 enemy_list["lagarto"]={
 				name="lagarto 1",
@@ -3547,6 +3894,11 @@ enemy_list["lagarto"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3557,6 +3909,8 @@ enemy_list["lagarto"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 enemy_list["tiburon"]={
 				name="tiburon 1",
@@ -3604,6 +3958,11 @@ enemy_list["tiburon"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3614,6 +3973,8 @@ enemy_list["tiburon"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 enemy_list["pulpo"]={
 				name="pulpo 1",
@@ -3661,6 +4022,11 @@ enemy_list["pulpo"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3671,6 +4037,8 @@ enemy_list["pulpo"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 enemy_list["medusa"]={
 				name="medusa 1",
@@ -3718,6 +4086,11 @@ enemy_list["medusa"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3728,6 +4101,8 @@ enemy_list["medusa"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 enemy_list["Arbol"]={
 				name="Arbol 1",
@@ -3775,6 +4150,11 @@ enemy_list["Arbol"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3785,6 +4165,8 @@ enemy_list["Arbol"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }
 
             enemy_list["inmortal"]={
@@ -3833,6 +4215,11 @@ enemy_list["Arbol"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3890,6 +4277,11 @@ enemy_list["invulnerable"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3948,6 +4340,11 @@ enemy_list["regenerador"]={
                 fue=3,
                 con=1,
                 dex=1,
+                pod=1,
+                per=1,
+                int=1,
+                car=1,
+                mnd=1,
                 ini=0,
                 isUnknows=false,  
                 isSpiderLike=false, 
@@ -3958,4 +4355,6 @@ enemy_list["regenerador"]={
                 isPesado=false, 
                 isInvulnerable=false, 
                 isInmortal=false, 
+                weapon={left={},right={},bright=false},
+                armadura={},
             }    

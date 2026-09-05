@@ -55,9 +55,11 @@ function isLeft()
 end    
 
 function isLeftEquip(e)
-    if e.weapon.left ~= nil or e.weapon.left~={} then
-        return true
-    end    
+    if e.weapon then
+        if e.weapon.left ~= nil or e.weapon.left~={} then
+            return true
+        end  
+    end  
     return false
 end   
 
@@ -69,9 +71,11 @@ function isRight()
 end   
 
 function isRightEquip(e)
-    if e.weapon.right ~= nil or e.weapon.right~={} then
-        return true
-    end    
+    if e.weapon then
+        if e.weapon.right ~= nil or e.weapon.right~={} then
+            return true
+        end    
+    end
     return false
 end 
 
@@ -83,24 +87,30 @@ function isTwoHandle()
 end
 
 function isDesarmado()
-    if (Actual.weapon.left == nil or Actual.weapon.left=={}) and (Actual.weapon.right == nil or Actual.weapon.right=={})  then
-        return true
-    end    
+    if Actual.weapon then
+        if (Actual.weapon.left == nil or Actual.weapon.left=={}) and (Actual.weapon.right == nil or Actual.weapon.right=={})  then
+            return true
+        end    
+    end
     return false
 end    
 
 
 function isDesarmadoObj(v)
-    if (v.weapon.left == nil or v.weapon.left=={}) and (v.weapon.right == nil or v.weapon.right=={})  then
-        return true
-    end    
+    if v.weapon then
+        if (v.weapon.left == nil or v.weapon.left=={}) and (v.weapon.right == nil or v.weapon.right=={})  then
+            return true
+        end
+    end
     return false
 end   
 
 function isDesarmadoEquipo(e)
-    if (e.weapon.left == nil or e.weapon.left=={}) and (e.weapon.right == nil or e.weapon.right=={})  then
-        return true
-    end    
+    if e.weapon then
+        if (e.weapon.left == nil or e.weapon.left=={}) and (e.weapon.right == nil or e.weapon.right=={})  then
+            return true
+        end    
+    end
     return false
 end  
 
@@ -123,17 +133,17 @@ calidad_table={
 
 function bono_calidad(v,o) 
     local value=0
-    if v.pod~="" then
+    if v.pod and v.pod~="" then
         value=value + flr(v.w*calidad_table[v.pod]*o.pod*(1/40))
     end
-    if v.int~="" then
-        value=value + flr(v.w*calidad_table[v.int]*o.pod*(1/40))
+    if v.int and v.int~="" then
+        value=value + flr(v.w*calidad_table[v.int]*o.int*(1/40))
     end
-    if v.dex~="" then
-        value=value + flr(v.w*calidad_table[v.dex]*o.pod*(1/40))
+    if v.dex and v.dex~="" then
+        value=value + flr(v.w*calidad_table[v.dex]*o.dex*(1/40))
     end
-    if v.fue~="" then
-        value=value + flr(v.w*calidad_table[v.fue]*o.pod*(1/40))
+    if v.fue and v.fue~="" then
+        value=value + flr(v.w*calidad_table[v.fue]*o.fue*(1/40))
     end
     return value
 end

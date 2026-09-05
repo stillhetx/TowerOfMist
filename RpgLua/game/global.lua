@@ -52,6 +52,7 @@ List_trigger={}
 
 ---lista de acciones a ejecutar
 Acciones = {}
+Reacciones = {}
 Pendientes = {}
 
 --- contenedores de listas a desplegar
@@ -60,6 +61,32 @@ GruposEnemigos={}
 AliadosVivos={}
 AliadosMuertos={}
 
+
+
+
+---tabla dices
+---
+---
+---
+    Dice = 0
+
+    CAN_BLOCK = false
+    PERFECT_ESQ = false
+    HYPER_REACTION = false
+    SUPERADO_ESQ = false
+    PERFECT_PUNT= false
+    FALLO_LEVE= false
+    LEVE_ACIERTO = false
+    SUPERADO_PUNT= false
+    CRITICO = false
+    PIFIA = false
+    LEVE_CRITICO=false
+    PIFIA_LEVE=false
+
+
+    TRUE_DAMAGE=false
+    IGNORAR_ETERIO =false
+    ANTI_VUELO =false
 --FiltrarEnemigoVivos()
 --FiltrarGrupoEnemigoVivos()
 --FiltrarAliadosVivos()

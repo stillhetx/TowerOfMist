@@ -35,7 +35,7 @@ function _update()
         Show_view = "debug2"
     end
     if B_wait == false then
-        if bool_contra_ataque then
+        if #Reacciones > 0 then
             ejecutar_reaccion()
         else
             start(Actual)
@@ -2082,6 +2082,25 @@ function GetProtector(v)
     end
 end
 
+function Exiliar(v,w)
+    v.hp_ = 0
+
+end
+
+
+function WeaponPower(w)
+    
+    local left=0
+    local right=0
+    if w.weapon.left~={} and w.weapon.left.w~=nil  then
+        left=flr(rnd(w.weapon.left.w)) + w.weapon.left.bw
+    end
+    if w.weapon.right~={} and w.weapon.right.w~=nil  then
+        right=flr(rnd(w.weapon.right.w)) + w.weapon.right.bw
+    end
+    return left+right
+end
+
 function DamageProccess(v, w, value, crit,tipo)
     --local tdmg=0
     local hit = 1
@@ -2097,91 +2116,151 @@ function DamageProccess(v, w, value, crit,tipo)
             end
         end
     end
-    
 
     if v and w then
         if inmune == false then
-            local obb = GetProtector(v)
+            if PIFIA == false then
+                local obb = GetProtector(v)
+                if w.agi ~= nil and v ~= nil and v.agi ~= nil then
+                    calc = v.agi + mod(v, "agi") - w.agi + mod(v, "agi")
+                end
 
-            if w.agi ~= nil and v ~= nil and v.agi ~= nil then
-                calc = v.agi + mod(v, "agi") - w.agi + mod(v, "agi")
-            end
-
-            if calc > 0 then
-                hit = hit + flr(calc / 5)
-            end
+                if calc > 0 then
+                    hit = hit + flr(calc / 5)
+                end
 
 
-            if v.sh_ and v.sh_ > 0 then
-                v.sh_ = v.sh_ - 1
-                obb.lastDmg = 1
-                obb.lastDmgM = "bloqueado"
-                Animacion.add_texto_anima(obb,"bloqueado",30,"White",0,0,0.1)
+                if v.sh_ and v.sh_ > 0 then
+                    v.sh_ = v.sh_ - 1
+                    obb.lastDmg = 1
+                    obb.lastDmgM = "bloqueado"
+                    Animacion.add_texto_anima(obb,"bloqueado",30,"White",0,-20,0.1)
+                    value=0
 
-            else
-                if obb.def ~= nil and obb.def == true then
-                    defensa = 2 * obb.con
-                    if obb.ext < 4 then
-                        obb.see_extra_turno = true
-                        obb.ext = obb.ext + 1
-                    end
                 else
-                    if obb.con ~= nil then
-                        defensa = flr(obb.con / 2)
+                    if TRUE_DAMAGE == false then
+                        if obb.def ~= nil and obb.def == true then
+                            defensa = 2 * obb.con
+                            if obb.ext < 4 then
+                                obb.see_extra_turno = true
+                                obb.ext = obb.ext + 1
+                            end
+                        else
+                            if obb.con ~= nil then
+                                defensa = flr(obb.con / 5)
+                            end
+                        end
+                        if obb.armadura ~= nil and obb.armadura ~= {} and obb.armadura.def ~= nil then
+                            defensa = defensa + obb.armadura.def
+                        end
+                        if value < 0 then
+                            value = value + defensa
+                            if value > 0 then value = 0 end
+                        end
                     end
+
+                    value = StanceMode(value, w, obb, true)
+                    value = StanceMode(value, w, obb, false)
+
+                    if obb.modo == "defensa" then
+                        value = flr(value * 0.75)
+                    end
+                    if ANTI_VUELO ==false then
+                        if obb.modo == "vuelo" then
+                            value = flr(value * 0.75)
+                        end
+                    end
+
+                    local extraText=""
+                    local multiplo=1
+                    if  CRITICO then
+                        multiplo=multiplo+1
+                        crit=crit.."!"
+                        extraText=extraText.."Critico!"
+                    end
+                    if w.isLeveCrit and w.isLeveCrit == true and LEVE_CRITICO then
+                        multiplo=multiplo+1
+                        crit=crit.."!"
+                        extraText=extraText.."Leve Critico!"
+                    end
+                    if PERFECT_PUNT then
+                        multiplo=multiplo+1
+                        crit=crit.."!"
+                        extraText=extraText.."Perfect Punt!"
+                    end
+    
+
+                    value = flr(value * multiplo)
+                    if CAN_BLOCK == true and value<0 then                        
+                       if obb.weapon.left and obb.weapon.left.smodo=="shield" then
+                            extraText=extraText.."bloqueado!"
+                            if obb.isShieldExpert == true then
+                                value=0
+                            else    
+                                value=flr(value*0.5)
+                            end
+                            
+                       elseif obb.armadura.smode and obb.armadura.smode=="pesada" then
+                            if TRUE_DAMAGE == false then
+                                extraText=extraText.."Absorbido!"
+                                value=flr(value*0.5)
+                            end
+                       end
+                    end
+                    if FALLO_LEVE == true and value<0 then                        
+                        if obb.weapon and obb.weapon.left and obb.weapon.left.smodo=="shield" then
+                            extraText=extraText.."bloqueado!"
+                            if obb.isShieldExpert == true then
+                                value=0
+                            else    
+                                value=flr(value*0.5)
+                            end    
+                       elseif obb.armadura and obb.armadura.smode and obb.armadura.smode=="pesada" then
+                            if TRUE_DAMAGE == false then
+                                extraText=extraText.."Absorbido!"
+                                value=flr(value*0.5)
+                            end
+                       end
+                    end
+
+
+                    --Debug_temp= Debug_temp.."$"..value
+                    obb.hp_ = obb.hp_ + (value * hit)
+                    obb.lastDmg = value
+                    local dmgTexte= value .. crit .. " " .. defensa .. "# " .. hit .. " hits"
+                    local dmgLabel= value .. crit
+                    local hitsLabel=hit .. " hits"
+                    obb.lastDmgM = dmgTexte
+                    local col="Red"
+                    if value>0 then
+                        col="Green"
+                    end
+                        Animacion.add_texto_anima(obb,dmgLabel,30,col,0,0,0.1)
+                    if value<0 then
+                        Animacion.add_texto_anima(obb,hitsLabel,30,col,0,-20,0.1)
+                    end
+                    Animacion.add_texto_anima(obb,""..extraText,30,"Yellow",0,-60,0.1)
+                    --Animacion.add_texto_anima(obb,hit,30,"White",0,-60,0.1)
                 end
-                if obb.armadura ~= nil and obb.armadura ~= {} and obb.armadura.def ~= nil then
-                    defensa = defensa + obb.armadura.def
+
+                if v.gl_ < 5 then
+                    v.gl_ = v.gl_ + 1
                 end
+
+
                 if value < 0 then
-                    value = value + defensa
-                    if value > 0 then value = 0 end
+                    obb.lastDmgC = "R"
+                elseif value == 0 then
+                    obb.lastDmgC = "Y"
+                else
+                    obb.lastDmgC = "V"
                 end
 
-                value = StanceMode(value, w, obb, true)
-                value = StanceMode(value, w, obb, false)
-
-   
-                if obb.modo == "defensa" then
-                    value = flr(value * 0.75)
-                end
-                if obb.modo == "vuelo" then
-                    value = flr(value * 0.75)
-                end
-
-                --Debug_temp= Debug_temp.."$"..value
-                obb.hp_ = obb.hp_ + (value * hit)
-                obb.lastDmg = value
-                local dmgTexte= value .. crit .. " " .. defensa .. "# " .. hit .. " hits"
-                local dmgLabel= value .. crit
-                local hitsLabel=hit .. " hits"
-                obb.lastDmgM = dmgTexte
-                local col="Red"
-                if value>0 then
-                    col="Green"
-                end
-                    Animacion.add_texto_anima(obb,dmgLabel,30,col,0,0,0.1)
-                if value<0 then
-                    Animacion.add_texto_anima(obb,hitsLabel,30,col,0,-20,0.1)
-                end
-                --Animacion.add_texto_anima(obb,defensa,30,"Yellow",0,-40,0.1)
-                --Animacion.add_texto_anima(obb,hit,30,"White",0,-60,0.1)
-            end
-
-            if v.gl_ < 5 then
-                v.gl_ = v.gl_ + 1
-            end
-
-
-            if value < 0 then
-                obb.lastDmgC = "R"
-            elseif value == 0 then
-                obb.lastDmgC = "Y"
+                return value
             else
-                obb.lastDmgC = "V"
-            end
+                Animacion.add_texto_anima(v,"Pifia",30,"White",0,0,0.1)
 
-            return value
+            end
         else
             Animacion.add_texto_anima(v,"eterio",30,"White",0,0,0.1)
         end
@@ -2251,7 +2330,18 @@ end
 
 Dice = 0
 
+function GrupoLinea(side) 
+    local list= {}
+    if side == "enemy" then
+        list=EnemigosVivos
+    else    
+        list=ActiveParty
+    end 
+    return list 
+end
+
 function acertar(v, b)
+    SetIndiceExito()
     local at = 0
     local ob = 0
     local modificador=0
@@ -2261,22 +2351,21 @@ function acertar(v, b)
     if v ~= nil then
         Dice = flr(rnd(20))
         if v.tipo=="enemy" and b.tipo =="player" then
-            at = b.agi + mod(b, "agi") + Dice + modificador   
-            ob = v.dex + mod(v, "dex") + 8
-            GetDiceEffect(at,Dice, ob,"esquivar")
+            at = b.dex + mod(b, "dex") + Dice + modificador   
+            ob = v.agi + mod(v, "agi") + 6
+            GetDiceEffect(at,Dice, ob,"punteria",v,b)
         elseif v.tipo=="player" and b.tipo =="enemy" then
-            at = v.dex + mod(v, "dex") + Dice + modificador   
-            ob = b.agi + mod(b, "agi") + 8
-            GetDiceEffect(at,Dice, ob,"punteria")
+            at = v.agi + mod(v, "agi") + Dice + modificador   
+            ob = b.dex + mod(b, "dex") + 6
+            GetDiceEffect(at,Dice, ob,"esquivar",v,b)
         else
             at = b.dex + mod(b, "dex") + Dice + modificador
-            ob = v.agi + mod(v, "agi") + 8
+            ob = v.agi + mod(v, "agi") + 6
         end
-        if at >= ob then
-            activa_Contra_ataque(v)
-        end
+        
+
     end
-    Animacion.add_texto_anima(v,Dice.."#",30,"White",0,-40,0.1)
+    Animacion.add_texto_anima(v,Dice.."#"..ob.."DC",30,"White",0,-40,0.1)
     return at >= ob
 end
 
@@ -2289,24 +2378,24 @@ function acertarMod(v, b, modificador)
         modificador=modificador-3
     end    
     if v.tipo=="enemy" and b.tipo =="player" then
-        at = b.agi + mod(b, "agi") + Dice + modificador   
-        ob = v.dex + mod(v, "dex") + 8
-        GetDiceEffect(at,Dice, ob,"esquivar")
+        at = b.dex + mod(b, "dex") + Dice + modificador   
+        ob = v.agi + mod(v, "agi") + 6
+        GetDiceEffect(at,Dice, ob,"punteria",v,b)
     elseif v.tipo=="player" and b.tipo =="enemy" then
-        at = v.dex + mod(v, "dex") + Dice + modificador   
-        ob = b.agi + mod(b, "agi") + 8
-        GetDiceEffect(at,Dice, ob,"punteria")
+        at = v.agi + mod(v, "agi") + Dice + modificador   
+        ob = b.dex + mod(b, "dex") + 6
+        GetDiceEffect(at,Dice, ob,"esquivar",v,b)
     else
+        --Punteria entre enemigos
         at = b.dex + mod(b, "dex") + Dice + modificador
-        ob = v.agi + mod(v, "agi") + 8
+        ob = v.agi + mod(v, "agi") + 6
     end
 
-    if at >= ob then
-        activa_Contra_ataque(v)
-    end
+    
+
 
     --GetDiceEffect(b,Dice,ob,modificador)
-    Animacion.add_texto_anima(v,Dice.."+"..modificador.."#",30,"White",0,-40,0.1)
+    Animacion.add_texto_anima(v,Dice.."+"..modificador.."#"..ob.."DC",30,"White",0,-40,0.1)
     return at >= ob
 end
 
@@ -2330,20 +2419,25 @@ end
 
 
 
-function GetDiceEffect(at,dice, dc,tipo)
+function GetDiceEffect(at,dice, dc,tipo,obj,emi)
 
     if tipo=="esquivar" then
         if at ==dc then
             PERFECT_ESQ=true
+            AgregarReaccion({"parry","",emi,obj})
         end
         if at >= dc-3 and  at < dc then
             CAN_BLOCK=true
         end
-        if at > dc and  at <= dc+3 then
-            HYPER_REACTION = true
-        end
+
         if at >= dc then
             SUPERADO_ESQ = true
+            
+        end
+        
+        if at > dc and  at <= dc+3 then
+            HYPER_REACTION = true
+            AgregarReaccion({"contra_ataque","",emi,obj})
         end
     else
         if at ==dc then
@@ -2360,29 +2454,37 @@ function GetDiceEffect(at,dice, dc,tipo)
         end
     end
 
-    if Dice==20 then
+    if dice==20 then
         CRITICO = true
     end
 
-    if Dice==1 then
+
+    if dice==1 then
         PIFIA = true
     end
 
-    if Dice >=19 and Dice <20 then
-        LEVE_CRITICO=false
+    if dice >=18 and dice <20 then
+        LEVE_CRITICO=true
+        --AgregarReaccion({"segundo_ataque","",obj,emi})
     end
 
     if dice <=3 and dice >1 then
-        PIFIA_LEVE=false
+        PIFIA_LEVE=true
     end
     
 end
 
-function DCMOD(b,DC,str, modi)
+function DCMOD(obj,b,DC,str, modi)
     modi = 0 or mod
     DC = DC 
     Dice = flr(rnd(20))
     local at = b[str] + mod(b, str) + Dice  + modi
+
+    if modi>0 then
+        Animacion.add_texto_anima(obj,Dice.."+"..modi.."#"..DC.."DC",30,"White",0,-40,0.1)
+    else
+        Animacion.add_texto_anima(obj,Dice.."#"..DC.."DC",30,"White",0,-40,0.1)
+    end
     return DC <= at
 end
 

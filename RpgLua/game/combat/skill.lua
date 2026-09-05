@@ -1,35 +1,42 @@
 function ejecutar_reaccion()
    -- ejecutar_contra_ataque(v_contra_ataque)
+        local v=ObtenerPrimeraReaccion()
+        local tipo_reaccion=v[1]
+        local objetivo_reaccion=v[3]
+        local ejecutador_reaccion=v[4]
+        EliminarPrimeraReaccion()
+
+        if ejecutador_reaccion and objetivo_reaccion then
+            if tipo_reaccion =="parry" then
+                tipo_reaccion ="contra_ataque"
+            end    
+
+            if tipo_reaccion =="contra_ataque" then
+                wait_start()
+                --b_dmg_txt=true
+                if ejecutador_reaccion.tipo and ejecutador_reaccion.tipo=="player" then
+                    Efectos ["ejecutar_ataque_basico_INIT"](objetivo_reaccion,ejecutador_reaccion,"left",0,1)
+                    tipo_reaccion ="contra_ataque_B"
+                else
+                    Efectos ["atacar"](objetivo_reaccion,ejecutador_reaccion,"right",0,1)
+                end
+                checks(objetivo_reaccion)
+                clean()
+            end
+
+            if tipo_reaccion =="contra_ataque_B" then
+                wait_start()
+                --b_dmg_txt=true
+                Efectos ["ejecutar_ataque_basico_INIT"](objetivo_reaccion,ejecutador_reaccion,"right",0,1)
+                checks(objetivo_reaccion)
+                clean()
+            end
+        end
 
 
 
-    if tipo_reaccion =="contra_ataque" then
-            mult=1
-            wait_start()
-            b_dmg_txt=true
-            objetivo_global.lastDmg=0
-            objetivo_global.slDmg=true
-            objetivo_global.lastDmgC="V"
-            ejecutar_ataque_basico_ejecutor(ejecutador_reaccion,objetivo_reaccion,"left")
-            checks(objetivo_reaccion)
-            tipo_reaccion="contra_ataque_B"
-            clean()
-        
-    end
 
-        if tipo_reaccion =="contra_ataque_B" then
-            mult=1
-            wait_start()
-            b_dmg_txt=true
-            objetivo_global.lastDmg=0
-            objetivo_global.slDmg=true
-            objetivo_global.lastDmgC="V"
-            ejecutar_ataque_basico_ejecutor(ejecutador_reaccion,objetivo_reaccion,"right")
-            checks(objetivo_reaccion)
-            tipo_reaccion=""
-            clean()
-            bool_contra_ataque=false
-    end
+
 
 end
 
@@ -40,6 +47,8 @@ function ejecutar_comando()
     local str_comando
 
     local mult=1
+
+    local ejecutor={}
 
     if #Acciones>0 then
         arreglo = obtenerPrimeraAccion()
@@ -52,6 +61,7 @@ function ejecutar_comando()
         end
         eliminarPrimeraAccion()
         local tet=arreglo[3]
+        ejecutor=arreglo[4]
         
     end
 
@@ -70,7 +80,7 @@ function ejecutar_comando()
             --Actual.avanzar=true
             --Actual.rest=false
             --ejecutar_ataque_basico(obj,"left")
-            Efectos ["ejecutar_ataque_basico_INIT"](obj,Actual,"left",0,1)
+            Efectos ["ejecutar_ataque_basico_INIT"](obj,ejecutor,"left",0,1)
             checks(obj)
             clean()
         else
@@ -78,7 +88,7 @@ function ejecutar_comando()
             local enemy_target=GetPrimerEnemigoVivo()
             if enemy_target then
                 --ejecutar_ataque_basico(enemy_target,"left")
-                Efectos ["ejecutar_ataque_basico_INIT"](enemy_target,Actual,"left",0,1)
+                Efectos ["ejecutar_ataque_basico_INIT"](enemy_target,ejecutor,"left",0,1)
 
             end
         end
@@ -101,7 +111,7 @@ function ejecutar_comando()
                 --Actual.avanzar=true
                 --Actual.rest=false
                 --ejecutar_ataque_basico(obj,"right")
-                Efectos ["ejecutar_ataque_basico_INIT"](obj,Actual,"right",0,1)
+                Efectos ["ejecutar_ataque_basico_INIT"](obj,ejecutor,"right",0,1)
                 checks(obj)
                 clean()
             end 
@@ -110,7 +120,7 @@ function ejecutar_comando()
             local enemy_target=GetPrimerEnemigoVivo()
             if enemy_target then
                 --ejecutar_ataque_basico(enemy_target,"left")
-                Efectos ["ejecutar_ataque_basico_INIT"](enemy_target,Actual,"right",0,1)
+                Efectos ["ejecutar_ataque_basico_INIT"](enemy_target,ejecutor,"right",0,1)
             end
         end     
         next()
@@ -155,7 +165,7 @@ function ejecutar_comando()
     if str_comando=="ejecutar_Magia" then
        --Msg_debug="ejecutar ejecutar_Magia ".." "
        
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         clean()
         if Actual.ext_elem==false then
             next()
@@ -167,20 +177,20 @@ function ejecutar_comando()
     end 
 
     if str_comando=="ejecutar_W.art" then
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         clean()
         next()
         wait_start()
     end
 
     if str_comando=="ejecutar_comando" then
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         clean()
         wait_start()
     end
 
     if str_comando=="ejecutar_comando_final" then
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         clean()
         next()
         wait_start()
@@ -188,7 +198,7 @@ function ejecutar_comando()
 
 
     if str_comando=="ejecutar_robar" then   ---buscar repetidos, como Cargar y quitar
-        ejecutarMagia("robar",arreglo[3], Order)
+        ejecutarMagia("robar",arreglo[3], ejecutor)
         clean()
         next()
         wait_start()
@@ -196,14 +206,14 @@ function ejecutar_comando()
 
     if str_comando=="ejecutar_Cargar" then
         --Msg_debug="dentro carga "..arreglo[3].name
-        ejecutarMagia("cargar",arreglo[3], Order)
+        ejecutarMagia("cargar",arreglo[3], ejecutor)
         clean()
         next()
         wait_start()
     end
 
     if str_comando=="ejecutar_Quitar" then
-        ejecutarMagia("quitar",arreglo[3], Order)
+        ejecutarMagia("quitar",arreglo[3], ejecutor)
         clean()
         next()
         wait_start()
@@ -211,7 +221,7 @@ function ejecutar_comando()
 
     if str_comando=="Ejecutar_Extraer" then
 
-         ejecutarMagiaExtra("Extraer",arreglo[3], Order,Mg_sel)
+         ejecutarMagiaExtra("Extraer",arreglo[3], ejecutor,Mg_sel)
         
     end
     
@@ -228,7 +238,7 @@ function ejecutar_comando()
         else
             local nuevoObjetivo=NextObjetivo(obj, "enemy")
             if nuevoObjetivo~= nil then
-                agregarAccion({"ejecutar_Combo","",nuevoObjetivo})
+                agregarAccion({"ejecutar_Combo","",nuevoObjetivo,ejecutor})
             else
                 next()    
             end            
@@ -247,37 +257,64 @@ function ejecutar_comando()
         else
             local nuevoObjetivo=NextObjetivo(obj, "enemy")
             if nuevoObjetivo~= nil then
-                agregarAccion({"ejecutar_Combo_last","",nuevoObjetivo})
+                agregarAccion({"ejecutar_Combo_last","",nuevoObjetivo,ejecutor})
             else
                 next()    
             end            
         end
     end
 
-    if str_comando=="ejecutar_disparo_rapido" then
-        ejecutarMagia("disparo_rapido_shot",arreglo[3], Order)
-        clean()
-        wait_start()
+
+    if str_comando=="ejecutar_secuencia" then
+        local obj=arreglo[3]
+        if obj.hp_>0 then
+            ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
+            clean()
+            wait_start()
+        end
+    end 
+    
+    if str_comando=="ejecutar_secuencia_final" then
+        local obj=arreglo[3]
+        if obj.hp_>0 then
+            ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
+            clean()
+            wait_start()
+        end
+    end
+
+
+
+    if str_comando=="ejecutar_disparos_multiples_shot" then
+        local obj=arreglo[3]
+        if obj.hp_>0 then
+            ejecutarMagia("disparos_multiples_shot",arreglo[3], ejecutor)
+            clean()
+            wait_start()
+        end
     end    
 
-    if str_comando=="ejecutar_disparo_rapido_final" then
-        ejecutarMagia("disparo_rapido_shot",arreglo[3], Order)
-        clean()
-        next()
-        wait_start()
+    if str_comando=="ejecutar_disparos_multiples_shot_final" then
+        local obj=arreglo[3]
+        if obj.hp_>0 then
+            ejecutarMagia("disparos_multiples_shot",arreglo[3], ejecutor)
+            clean()
+            next()
+            wait_start()
+        end
     end    
 
     if str_comando=="ejecutar_Jump" then
-        agregarPendientes({"ejecutar_Jump_caer","saltar",arreglo[3],Actual})
-        Actual.see=false
-        Actual.next_atack="saltar"
+        agregarPendientes({"ejecutar_Jump_caer","saltar",arreglo[3],ejecutor})
+        ejecutor.see=false
+        ejecutor.next_atack="saltar"
         cleanEjecutarComando()
         next()
     end
 
     if str_comando=="ejecutar_Suerte" then
         local obj=arreglo[3]
-        ejecutarMagia("Suerte",obj, Order)
+        ejecutarMagia("Suerte",obj, ejecutor)
         --ejecutar_suerte()
         cleanEjecutarComando()
         next()
@@ -285,7 +322,7 @@ function ejecutar_comando()
 
     if str_comando=="ejecutar_Geo" then
         local obj=arreglo[3]
-        ejecutarMagia("Geo",obj, Order)
+        ejecutarMagia("Geo",obj, ejecutor)
         --ejecutar_geo()
         clean()
         next()
@@ -293,7 +330,7 @@ function ejecutar_comando()
     end
 
     if str_comando=="ejecutar_Darkness" then
-        ejecutarMagia("darkness",arreglo[3],Order)
+        ejecutarMagia("darkness",arreglo[3],ejecutor)
         --checks(arreglo[3])
         cleanEjecutarComando()
         next()
@@ -301,7 +338,7 @@ function ejecutar_comando()
     
     if str_comando=="ejecutar_Slash" then
         local obj=arreglo[3]
-        ejecutarMagia("Slash",obj, Order)
+        ejecutarMagia("Slash",obj, ejecutor)
         --ejecutar_slash()
         cleanEjecutarComando()
         next()
@@ -310,32 +347,32 @@ function ejecutar_comando()
     if str_comando=="ejecutar_Lanzar" then
         --Sel_e=arreglo[3]
         local obj=arreglo[3]
-        ejecutarMagiaExtra("Lanzar",obj, Order,arreglo[2])
+        ejecutarMagiaExtra("Lanzar",obj, ejecutor,arreglo[2])
         --ejecutar_lanzar()
         cleanEjecutarComando()
         next()
     end
 
     if str_comando=="ejecutar_Bullets" then
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         cleanEjecutarComando()
         next()
     end
 
     if str_comando=="ejecutar_blue_magic" then
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         cleanEjecutarComando()
         next()
     end
 
     if str_comando=="ejecutar_tools" then
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         cleanEjecutarComando()
         next()
     end
 
     if str_comando=="ejecutar_mix" then
-        ejecutarMagia(arreglo[2],arreglo[3], Order)
+        ejecutarMagia(arreglo[2],arreglo[3], ejecutor)
         cleanEjecutarComando()
         next()
     end
@@ -344,7 +381,7 @@ function ejecutar_comando()
 
     if str_comando=="ejecutar_Magic.Dual" then
         --Debug_temp=arreglo[2].." "..arreglo[3].name
-        ejecutarMagia(arreglo[2],arreglo[3],Order)
+        ejecutarMagia(arreglo[2],arreglo[3],ejecutor)
         cleanEjecutarComando()
     end    
 
@@ -352,7 +389,7 @@ function ejecutar_comando()
         --Debug_temp=Debug_temp.." "..arreglo[2].." "..arreglo[3].name
         local obj=arreglo[3]
         if arreglo[3].hp_> 0  then
-            ejecutarMagia(arreglo[2],arreglo[3],Order)
+            ejecutarMagia(arreglo[2],arreglo[3],ejecutor)
              cleanEjecutarComando()
              next()
         else
@@ -370,14 +407,14 @@ function ejecutar_comando()
     if str_comando=="ejecutar_capturar" then
         local objetivo= arreglo[3]
         --ejecutar_capturar(objetivo)
-        ejecutarMagia("Capturar",objetivo,Order)
+        ejecutarMagia("Capturar",objetivo,ejecutor)
         cleanEjecutarComando()
         next()
     end    
 
     if str_comando=="ejecutar_asesinar" then
         local objetivo= arreglo[3]
-        ejecutarMagia("asesinar",objetivo,Order)
+        ejecutarMagia("asesinar",objetivo,ejecutor)
         cleanEjecutarComando()
         next()
     end
@@ -385,7 +422,7 @@ function ejecutar_comando()
 
 
     if str_comando=="Ejecutar_Extraer" then
-        ejecutarMagia("extraer",arreglo[3],Order)
+        ejecutarMagia("extraer",arreglo[3],ejecutor)
         cleanEjecutarComando()
         next()
     end

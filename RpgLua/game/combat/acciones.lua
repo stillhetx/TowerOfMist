@@ -59,13 +59,14 @@ function acciones()
         sel1=Op 
         Op=1
         Acc=Actual.acc[eleg]
-        Eleg=eleg
+        Eleg=Actual.acc[eleg]
         State=Tabla_acciones[Acc]
 
         if State=="select e" then
             FiltrarEnemigoVivos()
         end
         if State=="Execute" then
+            
             Execute=true
         end
 
@@ -544,9 +545,11 @@ function acciones()
     end
     --Verificar()
     if Execute == true then
+        --Msg_debug=Msg_debug.."verificarr"
         Verificar()
     end
     if Execute==true then
+        --Msg_debug=Msg_debug.."true ejecutar"
         guardar_ultima_accion()
         ejecutar()
         --start_caracter=true
@@ -563,54 +566,56 @@ end
 ERROR_MENU=""
 
 function Verificar()
+    --
     if Acc=="" or Acc==nil then
         ERROR_MENU="Error Accion"..Acc
         CleanMenu()
         return 
     end
-    if Dirr=="" or Dirr== nil then
-        ERROR_MENU="Error DIRR"
-        CleanMenu()
-        return 
-    end
-    if Dirr=="e" or Dirr=="c" or  Dirr=="d" then
-        if Sel_e=="" or Sel_e==nil then
-            ERROR_MENU="Error Sel_e"
+    if State~="Execute" then
+        if Dirr=="" or Dirr== nil then
+            ERROR_MENU="Error DIRR"
             CleanMenu()
-            Sel_e=""
             return 
         end
-        if Sel_c=="" or Sel_c==nil then
-            ERROR_MENU="Error Sel_c"
-            CleanMenu()
-            Sel_c=""
-            return 
+        if Dirr=="e" or Dirr=="c" or  Dirr=="d" then
+            if Sel_e=="" or Sel_e==nil then
+                ERROR_MENU="Error Sel_e"
+                CleanMenu()
+                Sel_e=""
+                return 
+            end
+            if Sel_c=="" or Sel_c==nil then
+                ERROR_MENU="Error Sel_c"
+                CleanMenu()
+                Sel_c=""
+                return 
+            end
+        end
+        if Dirr=="d" then
+            if Sel_c=="" or Sel_c==nil then
+                ERROR_MENU="Error Sel_c"
+                CleanMenu()
+                Sel_c=""
+                return 
+            end
+        end
+        if Dirr=="w" then
+            if Sel_w=="" or Sel_w==nil then
+                ERROR_MENU="Error Sel_w"
+                CleanMenu()
+                Sel_w=""
+                return 
+            end
+        end
+        if Dirr=="i" then
+            if Sel_i=="" or Sel_i==nil then
+                CleanMenu()
+                Sel_i=""
+                return 
+            end
         end
     end
-    if Dirr=="d" then
-        if Sel_c=="" or Sel_c==nil then
-            ERROR_MENU="Error Sel_c"
-            CleanMenu()
-            Sel_c=""
-            return 
-        end
-    end
-    if Dirr=="w" then
-        if Sel_w=="" or Sel_w==nil then
-            ERROR_MENU="Error Sel_w"
-            CleanMenu()
-            Sel_w=""
-            return 
-        end
-    end
-    if Dirr=="i" then
-        if Sel_i=="" or Sel_i==nil then
-            CleanMenu()
-            Sel_i=""
-            return 
-        end
-    end
-
 
 
 

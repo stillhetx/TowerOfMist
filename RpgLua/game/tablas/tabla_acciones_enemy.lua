@@ -2,7 +2,7 @@
 Lista_acciones_enemigo={
 
 ["default"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 100},
 },
 
 ["murcielago"] = {
@@ -79,7 +79,10 @@ Lista_acciones_enemigo={
     {nombre = "flojera", prob = 100},
 },
 ["old_caster"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 10},
+    {nombre = "fuego", prob = 30},
+    {nombre = "hielo", prob = 30},
+    {nombre = "electro", prob = 30},
 },
 ["old_healer"] = {
     {nombre = "atacar", prob = 70},
@@ -88,19 +91,24 @@ Lista_acciones_enemigo={
     {nombre = "atacar", prob = 70},
 },
 ["elemental_water"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 50},
+    {nombre = "agua", prob = 50},
 },
 ["elemental_rock"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 50},
+    {nombre = "piedra", prob = 50},
 },
 ["elemental_fire"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 50},
+     {nombre = "fuego", prob = 50},
 },
 ["elemental_electric"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 50},
+    {nombre = "electro", prob = 50},
 },
 ["elemental_snow"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 50},
+    {nombre = "hielo", prob = 50},
 },
 ["hada"] = {
     {nombre = "atacar", prob = 70},
@@ -122,23 +130,30 @@ Lista_acciones_enemigo={
 },
 
 ["Fae"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 10},
+    {nombre = "fuego", prob = 30},
+    {nombre = "hielo", prob = 30},
+    {nombre = "electro", prob = 30},
 },
 
 ["guerrero"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 50},
+    {nombre = "ataque_critico", prob = 50},
 },
 
 ["hechizero"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 10},
+    {nombre = "fuego", prob = 30},
+    {nombre = "hielo", prob = 30},
+    {nombre = "electro", prob = 30},
 },
 
 ["soldado"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 50},
 },
 
 ["guardian"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 70},
 },
 
 

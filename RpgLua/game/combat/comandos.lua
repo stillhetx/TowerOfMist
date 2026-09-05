@@ -21,13 +21,13 @@ function comando_saltar()
     config_comando()
     local next_comando="ejecutar_Jump"
     local objetivo_global=selecionar_objetivo()
-    agregarAccion({next_comando,"saltar",objetivo_global})
+    agregarAccion({next_comando,"saltar",objetivo_global,Actual})
 end    
 
 function comando_suerte()
     config_comando()
     local next_comando="ejecutar_Suerte"
-    agregarAccion({next_comando,"suerte",{}})
+    agregarAccion({next_comando,"suerte",{},Actual})
 end  
 
 function config_comando()
@@ -44,7 +44,7 @@ end
 function comando_geo()
     config_comando()
     local next_comando="ejecutar_Geo"
-    agregarAccion({next_comando,"geo",{}})
+    agregarAccion({next_comando,"geo",{},Actual})
 end  
 
 arma_seleccionada_global={}
@@ -55,14 +55,14 @@ function comando_lanzar()
     local objetivo_global=selecionar_objetivo()
     local arma_seleccionada_global=Sel_w
     local next_comando="ejecutar_Lanzar" 
-    agregarAccion({next_comando,arma_seleccionada_global,objetivo_global})
+    agregarAccion({next_comando,arma_seleccionada_global,objetivo_global,Actual})
 
 end  
 
 function comando_slash()
     config_comando()
     local next_comando="ejecutar_Slash" 
-    agregarAccion({next_comando,"slash",{}})
+    agregarAccion({next_comando,"slash",{},Actual})
 
 end
 
@@ -72,7 +72,7 @@ function comando_quitar()
     local objetivo_global=selecionar_objetivo()
     --ejecutar_quitar()
     local next_comando="ejecutar_Quitar" 
-    agregarAccion({next_comando,"quitar",objetivo_global})
+    agregarAccion({next_comando,"quitar",objetivo_global,Actual})
 end
 
 function comando_cargar()
@@ -81,19 +81,19 @@ function comando_cargar()
     local objetivo_global=selecionar_objetivo()
     local next_comando="ejecutar_Cargar" 
     --Actual
-    agregarAccion({next_comando,"cargar",objetivo_global})
+    agregarAccion({next_comando,"cargar",objetivo_global,Actual})
     --Debug_temp=Debug_temp.." Cargar: "..Actual.weapon.left.name
     if Actual.weapon.left.isCast==true then
         --Debug_temp=Debug_temp.." true: "
         for k,i in pairs(Actual.weapon.left.cast) do
-            agregarAccion({"ejecutar_elemental_damage",i,objetivo_global})
+            agregarAccion({"ejecutar_elemental_damage",i,objetivo_global,Actual})
             --Debug_temp=Debug_temp.." EL: "..i
         end
     end
     if Actual.weapon.right.isCast==true then
         --Debug_temp=Debug_temp.." true: "
         for k,i in pairs(Actual.weapon.right.cast) do
-            agregarAccion({"ejecutar_elemental_damage",i,objetivo_global})
+            agregarAccion({"ejecutar_elemental_damage",i,objetivo_global,Actual})
             --Debug_temp=Debug_temp.." EL: "..i
         end    
     end
@@ -102,7 +102,7 @@ end
 function Comando_extraer()
     config_comando()
     local objetivo_global=selecionar_objetivo()
-    agregarAccion({"Ejecutar_Extraer",Mg_sel,SelectEnemigo})
+    agregarAccion({"Ejecutar_Extraer",Mg_sel,SelectEnemigo,Actual})
 
 end
 
@@ -181,7 +181,7 @@ end
 function Ejecutar_Comando()
     wait_start()
     local objetivo=selecionar_objetivo()
-    agregarAccion({"ejecutar_comando",Mg_sel,objetivo})
+    agregarAccion({"ejecutar_comando",Mg_sel,objetivo,Actual})
     Cancel_ejecutar=true    
 
 end
@@ -197,7 +197,7 @@ function all_logic_magic()
             Buton_bonus=0
             local next_comando="ejecutar_Magia"
             --Msg_debug="//"..Mg_sel
-            agregarAccion({next_comando,Mg_sel,objetivo})
+            agregarAccion({next_comando,Mg_sel,objetivo,Actual})
             Cancel_ejecutar=true            
         --else
             --ejecutarMagia(Mg_sel,objetivo, Order)
@@ -288,14 +288,14 @@ function Comando_mix()
     local objetivo_global=selecionar_objetivo()
     config_comando()
     local next_comando="ejecutar_mix"
-    agregarAccion({next_comando,Mg_sel,objetivo_global})
+    agregarAccion({next_comando,Mg_sel,objetivo_global,Actual})
 end
 
 function Comando_bullet()
     local objetivo_global=selecionar_objetivo()
     config_comando()
     local next_comando="ejecutar_Bullets" 
-    agregarAccion({next_comando,Mg_sel,objetivo_global})
+    agregarAccion({next_comando,Mg_sel,objetivo_global,Actual})
 end
 
 function Comando_Rapido()
@@ -322,7 +322,7 @@ function Comando_Darkness()
         config_comando()
         local objetivo_global=selecionar_objetivo()
         local next_comando="ejecutar_Darkness"
-        agregarAccion({next_comando,"",objetivo_global})
+        agregarAccion({next_comando,"",objetivo_global,Actual})
 
     else
         Cancel_ejecutar=false
@@ -363,7 +363,7 @@ function Comando_asesinar()
     local objetivo_global=selecionar_objetivo()
     local mg_sel_global=Mg_sel
     local next_comando="ejecutar_asesinar"
-    agregarAccion({next_comando,Mg_sel,objetivo_global})
+    agregarAccion({next_comando,Mg_sel,objetivo_global,Actual})
 end    
 
 
@@ -518,7 +518,7 @@ function Comando_tool()
     local objetivo_global=selecionar_objetivo()
     local mg_sel_global=Mg_sel
     local next_comando="ejecutar_tools"
-    agregarAccion({next_comando,Mg_sel,objetivo_global})
+    agregarAccion({next_comando,Mg_sel,objetivo_global,Actual})
 
 end	
 
@@ -534,7 +534,7 @@ function Comando_destransformar()
     --ejecutarMagia("destransformar",objetivo, Order)
     local mg_sel_global="destransformar"
     local next_comando="ejecutar_Magia"
-    agregarAccion({next_comando,mg_sel_global,objetivo})
+    agregarAccion({next_comando,mg_sel_global,objetivo,Actual})
 
 end    
 
@@ -542,7 +542,7 @@ function Comando_morph()
     local objetivo=selecionar_objetivo()
     --local mg_sel_global="morph"
     local next_comando="ejecutar_Magia"
-    agregarAccion({next_comando,Mg_sel,objetivo})
+    agregarAccion({next_comando,Mg_sel,objetivo,Actual})
     Msg_debug="//"..next_comando.." // "..Mg_sel.." // "..objetivo.id
 end
 function Comando_skill_enemigo()
@@ -550,7 +550,7 @@ function Comando_skill_enemigo()
     local objetivo_global=selecionar_objetivo()
     local mg_sel_global=Mg_sel
     local next_comando="ejecutar_blue_magic"
-    agregarAccion({next_comando,mg_sel_global,objetivo_global})
+    agregarAccion({next_comando,mg_sel_global,objetivo_global,Actual})
 end
 
 
@@ -562,7 +562,7 @@ function Comando_capturar()
 	--animated_bonus_boton=true
     Buton_bonus=0
     local next_comando="ejecutar_capturar"
-        agregarAccion({next_comando,"",objetivo_global})
+        agregarAccion({next_comando,"",objetivo_global,Actual})
 
     Cancel_ejecutar=true
 end    
@@ -666,9 +666,9 @@ function Comando_furia()
 	--animated_bonus_boton=true
     Buton_bonus=0
     local next_comando="ejecutar_Combo"
-    agregarAccion({next_comando,"",objetivo})
-    agregarAccion({next_comando,"",objetivo})
-    agregarAccion({"ejecutar_Combo_last","",objetivo})
+    agregarAccion({next_comando,"",objetivo,Actual})
+    agregarAccion({next_comando,"",objetivo,Actual})
+    agregarAccion({"ejecutar_Combo_last","",objetivo,Actual})
 
 
     Cancel_ejecutar=true                     
@@ -678,7 +678,7 @@ function Comando_robar()
     config_comando()
     local objetivo_global=selecionar_objetivo()
     local next_comando="ejecutar_robar"
-    agregarAccion({next_comando,"robar",objetivo_global})
+    agregarAccion({next_comando,"robar",objetivo_global,Actual})
 end
 
 function Comando_weapon_art()
@@ -686,7 +686,7 @@ function Comando_weapon_art()
         config_comando()
     local objetivo_global=selecionar_objetivo()
     local next_comando="ejecutar_W.art"
-    agregarAccion({next_comando,Mg_sel,objetivo_global})
+    agregarAccion({next_comando,Mg_sel,objetivo_global,Actual})
 
 end
 
@@ -728,6 +728,6 @@ function Comando_atacar_secundario()
     Dirr="e"
 	wait_start()
     local next_comando="ejecutar_atacar_secundario"
-    agregarAccion({next_comando,"",objetivo_global})
+    agregarAccion({next_comando,"",objetivo_global,Actual})
     Cancel_ejecutar=true    
 end

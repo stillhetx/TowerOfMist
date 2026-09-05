@@ -686,15 +686,15 @@ function ejecutarComando(sel,v)
 
 end
 
-function ejecutarMagia(sel, v, Order)
+function ejecutarMagia(sel, v, ejecutor)
     local sel = sel or ""
     local v = v or {}
 
     if(v~={} and sel~="")then
 
-        Actual.avanzar=true
-        Actual.attack=true
-        Actual.rest=false
+        ejecutor.avanzar=true
+        ejecutor.attack=true
+        ejecutor.rest=false
         
         local mult=1 --Deprecado
         local c="V" --Deprecado
@@ -709,8 +709,8 @@ function ejecutarMagia(sel, v, Order)
 
         local bono=1
         
-        local bonoMagCharge= Actual.seeMagicCharge
-        if bonoMagCharge then bono = bono+(Actual.magicCharge*0.25)+(Buton_bonus*0.25) end
+        local bonoMagCharge= ejecutor.seeMagicCharge
+        if bonoMagCharge then bono = bono+(ejecutor.magicCharge*0.25)+(Buton_bonus*0.25) end
 
 
         b_dmg_txt=true
@@ -727,7 +727,7 @@ function ejecutarMagia(sel, v, Order)
 -- bcrit bono a critico type=number
 -- tipo  tipos del ataque {}  
 
-        local foo=Efectos[sel](v, Actual,{},"",0,bono,0,{},{})
+        local foo=Efectos[sel](v, ejecutor,{},"",0,bono,0,{},{})
 
         if pcall(foo) then
             --exitoso
@@ -741,7 +741,7 @@ function ejecutarMagia(sel, v, Order)
 end    
 
 
-function ejecutarMagiaExtra(sel, v, Order,str)
+function ejecutarMagiaExtra(sel, v, ejecutor,str)
     Actual.avanzar=true
     Actual.attack=true
     Actual.rest=false
@@ -757,8 +757,8 @@ function ejecutarMagiaExtra(sel, v, Order,str)
 
     local bono=1
     
-    local bonoMagCharge= Actual.seeMagicCharge
-    if bonoMagCharge then bono=bono+(Actual.magicCharge*0.25)+(Buton_bonus*0.25) end
+    local bonoMagCharge= ejecutor.seeMagicCharge
+    if bonoMagCharge then bono=bono+(ejecutor.magicCharge*0.25)+(Buton_bonus*0.25) end
 
 
     b_dmg_txt=true
@@ -766,16 +766,16 @@ function ejecutarMagiaExtra(sel, v, Order,str)
     
     Name_action=sel
 
-    Efectos[sel](v, Actual,str,"",0,bono,0,{},{})
+    Efectos[sel](v, ejecutor,str,"",0,bono,0,{},{})
 
-    Actual.hide=false
+    ejecutor.hide=false
 end
 
 
-function ejecutarMagiaExtra(sel, v, Order,extra)
-    Actual.avanzar=true
-    Actual.attack=true
-    Actual.rest=false
+function ejecutarMagiaExtra(sel, v, ejecutor,extra)
+    ejecutor.avanzar=true
+    ejecutor.attack=true
+    ejecutor.rest=false
     
 
     if  v ~= {}  then
@@ -785,17 +785,17 @@ function ejecutarMagiaExtra(sel, v, Order,extra)
 
     local bono=1
     
-    local bonoMagCharge= Actual.seeMagicCharge
-    if bonoMagCharge then bono=bono+(Actual.magicCharge*0.25)+(Buton_bonus*0.25) end
+    local bonoMagCharge= ejecutor.seeMagicCharge
+    if bonoMagCharge then bono=bono+(ejecutor.magicCharge*0.25)+(Buton_bonus*0.25) end
 
 
     b_dmg_txt=true
     
     Name_action="hechizo "..sel
 
-    Efectos[sel](v, Actual,{},"",0,bono,0,{},extra)
+    Efectos[sel](v, ejecutor,{},"",0,bono,0,{},extra)
 
-    Actual.hide=false
+    ejecutor.hide=false
 end    
 
 function EjecutarItem(objetivo, lanzador, objeto)

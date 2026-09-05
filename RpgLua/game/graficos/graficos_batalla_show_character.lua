@@ -1,5 +1,10 @@
 function Graficos_Batalla.show_character()
     for k,v in pairs(ActiveParty) do
+        if v.see then 
+            show_spr(v, (v.x),(v.y+(36*(3-v.sheet[4]))), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",false)  
+        end    
+    end    
+    for k,v in pairs(ActiveParty) do
             if v.see then  
                 if true then
                     love.graphics.print( "  "..Name_action.." ",200,20+(24*0))
@@ -17,7 +22,6 @@ function Graficos_Batalla.show_character()
 
                     
                 end
-                show_spr(v, (v.x),(v.y+(36*(3-v.sheet[4]))), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",false)  
                 --show_msg_dmg(v,v.x,v.y+20-timer_dmg_txt,false)
                 Barra_vida(v, (v.x-14)+v.liveBar.x,(v.y)+v.liveBar.y) --- -10 0     0   +20
                 --Mostrar_estados(v,(v.x-60),(v.y),false) --50 0

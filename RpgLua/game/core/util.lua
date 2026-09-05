@@ -5,9 +5,18 @@ function agregarAccion(accion)
     table.insert(Acciones, accion)
 end
 
+
+function AgregarReaccion(reaccion)
+    table.insert(Reacciones, reaccion)
+end
+
 -- Obtiene (sin eliminar) la primera acción ingresada
 function obtenerPrimeraAccion()
     return Acciones[1]
+end
+
+function ObtenerPrimeraReaccion()
+    return Reacciones[1]
 end
 
 -- Elimina la primera acción ingresada
@@ -17,9 +26,20 @@ function eliminarPrimeraAccion()
     end
 end
 
+
+function EliminarPrimeraReaccion()
+    if #Reacciones > 0 then
+        table.remove(Reacciones, 1)
+    end
+end
+
 -- Limpia toda la cola
 function limpiarAcciones()
     Acciones = {}
+end
+
+function LimpiarReacciones()
+    Reacciones = {}
 end
 
 function agregarPendientes(accion)
