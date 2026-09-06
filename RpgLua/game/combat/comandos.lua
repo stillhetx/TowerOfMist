@@ -380,132 +380,24 @@ function Comando_Mimic()
         Sel_ee = Last_sel_ee
         Sel_cc = Last_sel_cc
         Mg_sel = Last_mg_sel
+        Mg_2sel=Last_mg_2sel
         Dirr   = Last_dirr
-
-        objetivo_global=selecionar_objetivo()
         
         if Dirr=="e" then
-            if objetivo_global.hp_<=0 then
-                for k,i in pairs(Order) do
-                    if i.hp_>0 and i.tipo=="enemy" then
-                        Sel_e=i.id
-                        break
-                    end
-                end
-            end
+            local obj=NextRNDObjetivo("enemy")
+            Sel_e=obj.id
         end
 
         if Dirr=="a" then
-            if objetivo_global.hp_<=0 then
-                for k,i in pairs(Order) do
-                    if i.hp_>0 and i.tipo=="player" then
-                        Sel_e=i.id
-                        break
-                    end
-                end
-            end
+            local obj=NextRNDObjetivo("player")
+            Sel_c=obj.id
         end
 
-        if Acc=="atacar" then
-            
-            Comando_atacar()             
-        end
-        if Acc=="mix" then
-            Comando_mix()
-        end
-        if Acc=="invocar" then
-            Comando_invocar()
-        end
-        if Acc=="darkness" then
-            Comando_Darkness()
-        end
-        if Acc=="tools" then
-            Comando_tool()    
-        end
-        if Acc=="asesinar" then
-            Comando_asesinar()    
-        end
-        if Acc=="esconderse" then
-            Comando_Esconder()    
-        end
-        if Acc=="destransformar" then
-            Comando_destransformar()
-        end
-        if Acc=="transformacion" then
-            Comando_morph()
-        end
-        if Acc=="Blu.magic" then
-            Comando_skill_enemigo()
-        end
-        if Acc=="bullet" then
-            Comando_bullet()
-        end
-        if Acc=="rapido" then
-            Comando_Rapido()
-        end
-        if Acc=="dual M." then
-            Comando_dual()            
-        end
-        if Acc=="slash" then 
-            comando_slash()
-        end  
-        if Acc=="robar" then 
-            Comando_robar()
-        end    
-        if Acc=="magic" then
-            Comando_magic()
-        end  
-        if Acc=="objeto" then
-            items_list(false)
-        end
-        if Acc=="usar" then
-            items_list(true)
-        end
-        if Acc=="combo" then
-            Comando_furia()  
-            --Cancel_ejecutar=true
-        end   
-        if Acc=="saltar" then
-            comando_saltar()
-        end
-        if Acc=="defensa" then
-            comando_defensa()
-            jump_def=true
-        end  
-        if Acc=="proteger" then
-            comando_proteger()
-            jump_def=true
-        end   
-        if Acc=="guardia" then
-            comando_guardia()
-        end   
-        if Acc=="suerte" then
-            comando_suerte()
-        end   
-        if Acc=="geo" then
-            comando_geo()
-        end   
-        if Acc=="lanzar" then
-            comando_lanzar()
-        end
-        if Acc=="quitar" then
-            comando_quitar()
-        end
-        if Acc=="cargar" then
-            comando_cargar()
-        end
-        if Acc=="tecnica" then
-            Comando_tecnica()
-            clean()    
-        end
-        if Acc=="atrapar" then
-            Comando_capturar()
-            clean()    
-        end
-        if Acc=="llamar" then
-            Comando_invocar()
-            clean()    
-        end
+        --objetivo_global=selecionar_objetivo()
+
+        Lista_comando()
+
+      
     end
 end    
 

@@ -322,7 +322,7 @@ function ejecutar_comando()
 
     if str_comando=="ejecutar_Geo" then
         local obj=arreglo[3]
-        ejecutarMagia("Geo",obj, ejecutor)
+        ejecutarMagia("geo",obj, ejecutor)
         --ejecutar_geo()
         clean()
         next()

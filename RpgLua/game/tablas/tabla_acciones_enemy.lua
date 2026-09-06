@@ -55,9 +55,9 @@ Lista_acciones_enemigo={
 },
 
 ["objetos"]= {
-    {nombre = "atacar", prob = 40},
+    {nombre = "atacar", prob = 30},
     {nombre = "ataque_psi", prob = 40},
-    {nombre = "viento", prob = 40},
+    {nombre = "viento", prob = 30},
 },
 ["slime_rainbow"]= {
     {nombre = "atacar", prob = 25},
@@ -85,36 +85,48 @@ Lista_acciones_enemigo={
     {nombre = "electro", prob = 30},
 },
 ["old_healer"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 50},
+    {nombre = "curar", prob = 40},
+    {nombre = "curar+", prob = 10},
 },
 ["old_Buffer"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 40},
+    {nombre = "fuerte", prob = 30},
+    {nombre = "rapido", prob = 30},
 },
 ["elemental_water"] = {
     {nombre = "atacar", prob = 50},
     {nombre = "agua", prob = 50},
 },
 ["elemental_rock"] = {
-    {nombre = "atacar", prob = 50},
-    {nombre = "piedra", prob = 50},
+    {nombre = "atacar", prob = 30},
+    {nombre = "piedra", prob = 40},
+    {nombre = "piedra+", prob = 30},
 },
 ["elemental_fire"] = {
-    {nombre = "atacar", prob = 50},
-     {nombre = "fuego", prob = 50},
+    {nombre = "atacar", prob = 30},
+     {nombre = "fuego", prob = 40},
+     {nombre = "fuego+", prob = 30},
 },
 ["elemental_electric"] = {
+    {nombre = "atacar", prob = 30},
+    {nombre = "electro", prob = 40},
+    {nombre = "electro+", prob = 30},
+},
+["elemental_snow"] = {
+    {nombre = "atacar", prob = 30},
+    {nombre = "hielo", prob = 40},
+    {nombre = "hielo+", prob = 30},
+},
+["hada"] = {
     {nombre = "atacar", prob = 50},
     {nombre = "electro", prob = 50},
 },
-["elemental_snow"] = {
-    {nombre = "atacar", prob = 50},
-    {nombre = "hielo", prob = 50},
-},
-["hada"] = {
-    {nombre = "atacar", prob = 70},
-},
 ["elfo"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 40},
+    {nombre = "fuego", prob = 20},
+    {nombre = "electro", prob = 20},
+    {nombre = "hielo", prob = 20},
 },
 ["duende"] = {
     {nombre = "atacar", prob = 70},
@@ -126,7 +138,8 @@ Lista_acciones_enemigo={
     {nombre = "atacar", prob = 70},
 },
 ["psiquic_being"] = {
-    {nombre = "atacar", prob = 70},
+    {nombre = "atacar", prob = 20},
+    {nombre = "ataque_psi", prob = 80},
 },
 
 ["Fae"] = {

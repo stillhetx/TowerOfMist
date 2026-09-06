@@ -283,6 +283,9 @@ function acciones()
                         Acc=Actual.spe[(ini_view-1)+Op].sub
                         State=Actual.spe[(ini_view-1)+Op].sel
                         Replace_Acc=true
+                        if State=="Execute" then
+                            Execute=true
+                        end
                         --Msg_debug=Msg_debug.." #U"
                     end
                     --Msg_debug=" #"..(ini_view-1)+Op
@@ -492,9 +495,14 @@ function acciones()
         if  Acc=="atacar"  or Acc=="W.Arts" or Acc=="support.w" or Acc=="atrapar"  or Acc=="Power.Stone" or Acc=="asesinar" or Acc=="invocar" or  Acc == "usar" or Acc == "darkness" or Acc == "dual M." or Acc == "tools" or Acc == "rapido" or Acc=="magic" or Acc=="dual M." or Acc=="bullet" or Acc=="mix" or Acc=="Blu.magic" or Acc=="cargar" or Acc=="tecnica" or Acc=="objeto" or Acc=="robar" or Acc=="quitar" or Acc=="carga" or Acc=="combo" or Acc=="saltar" or Acc=="spirit" or Acc=="lanzar" or Acc=="spell.list" or Acc=="extraer" or Acc=="especiales"  or Acc=="canciones"  or Acc=="bailes" or Acc=="w.magic" or Acc=="espada" then
             Execute=true
             State="select"
-            Sel_e=EnemigosVivos[Op].id
-            SelectEnemigo=EnemigosVivos[Op]
-            Sel_c=Sel_e
+            if EnemigosVivos[Op] then
+                Sel_e=EnemigosVivos[Op].id
+                SelectEnemigo=EnemigosVivos[Op]
+                Sel_c=Sel_e
+            else
+                --State="select"
+                State="select o"
+            end
         end
         if Acc == "extraer" then
             State="select v" --variable
@@ -699,8 +707,8 @@ function CostoSkill()
 
 end
 
-function ejecutar()
-    local jump_def=false
+
+function Lista_comando()
     if Acc=="atacar" then
         Comando_atacar()            
         clean()
@@ -866,6 +874,12 @@ function ejecutar()
         Comando_extraer()
         clean()    
     end
+end
+
+function ejecutar()
+    local jump_def=false
+    Lista_comando()
+    
     --[[
     if Acc=="evocar" then
         Comando_Evocar()

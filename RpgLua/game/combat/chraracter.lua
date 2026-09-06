@@ -1,10 +1,22 @@
 function NextObjetivo(obj,str)
     for _, o in ipairs(Order) do
-        if o.tipo=="enemy" and o.hp_>0  and obj~=o then
+        if o.tipo==str and o.hp_>0  and obj~=o then
             return o
         end
     end
     return nil
+end
+
+function NextRNDObjetivo(obj,str)
+    if str=="enemy" then
+        FiltrarEnemigoVivos()
+        local rnd= rnd(#EnemigosVivos)
+        return EnemigosVivos[rnd]
+    else
+        FiltrarAliadosVivos()
+        local rnd= rnd(#AliadosVivos)
+        return ActiveParty[rnd]
+    end
 end
 
 
@@ -184,7 +196,7 @@ function selecionar_objetivo()
         if Dirr=="e" then
             FiltrarEnemigoVivos()
             objetivo=getChars(Sel_e,EnemigosVivos)
-            Debug_temp=Debug_temp..Sel_e..","
+            --Debug_temp=Debug_temp..Sel_e..","
         end 
         if Dirr=="a" then
             objetivo={}

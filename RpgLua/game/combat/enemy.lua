@@ -4,14 +4,16 @@ function Enemy_action(criatura,alineamiento)
     --Enemy_random_action(criatura,alineamiento)
 end
 --preferir esta version
-function Personality_random_action(str,alineamiento)
+function Personality_random_action(str, ejecutor,alineamiento)
     local label=""
+    local ejecutor=ejecutor or {}
     if type(str)=="string" then
         label=str
     end
     if type(str)== "table" then
-        label=str.id_mons
+        label=str.id_mons   
     end 
+    
 
 
     local list= Lista_acciones_enemigo[label]
@@ -27,7 +29,7 @@ function Personality_random_action(str,alineamiento)
 
     --Name_action=accion.."#"..objetivo.id
 
-    agregarAccion({"ejecutar_Magia",accion,objetivo})
+    agregarAccion({"ejecutar_Magia",accion,objetivo,ejecutor})
 
 end
 --just normal enemy
@@ -35,7 +37,6 @@ function Enemy_random_action(criatura,alineamiento)
     local list={}
     local accion=""
     local objetivo={}
-
     if Lista_acciones_enemigo[criatura.id_mons]==nil then
          list= Lista_acciones_enemigo["default"]
     else
@@ -50,7 +51,7 @@ function Enemy_random_action(criatura,alineamiento)
         objetivo=obtener_enemigo()
     end
 
-    agregarAccion({"ejecutar_Magia",accion,objetivo})
+    agregarAccion({"ejecutar_Magia",accion,objetivo,criatura})
 end
 
 function enemy_action_LEGADO(Enemy,alineamiento)

@@ -12,9 +12,9 @@ function Graficos_Batalla.debug_log()
         --love.graphics.print( "Debug: >"..#Reacciones.."  "..Msg_debug,30,114+(24*-4))
 
         --love.graphics.print( "Debug: > ini "..(ini_view - 1).." op:"..Op.." maximo:"..maximoInside.." ",30,114+(24*-4))
-        --love.graphics.print( "Debug: >/"..State.."/ /".. Acc.."/ "..Msg_debug.."/"..ERROR_MENU,30,114+(24*-4))
+        love.graphics.print( "Debug: >/"..State.."/ /".. Acc.."/ ",30,114+(24*-3))
 
-        love.graphics.print( "Debug: >"..Msg_debug.." ",30,114+(24*-4))
+        --love.graphics.print( "Debug: >"..Msg_debug.." ",30,114+(24*-4))
         --love.graphics.print( "Debug: >"..Op.." ".. ini_view.."-"..fin_view.."  ",30,114+(24*-4))
     end
      if Cancel_ejecutar then

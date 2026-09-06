@@ -689,6 +689,7 @@ end
 function ejecutarMagia(sel, v, ejecutor)
     local sel = sel or ""
     local v = v or {}
+    --ejecutor = ejecutor or {}
 
     if(v~={} and sel~="")then
 
@@ -726,6 +727,8 @@ function ejecutarMagia(sel, v, ejecutor)
 -- bono multiplicador de daño
 -- bcrit bono a critico type=number
 -- tipo  tipos del ataque {}  
+        --Msg_debug=""
+        --Msg_debug=Msg_debug.." "..ejecutor.id.." / ".." / "..sel
 
         local foo=Efectos[sel](v, ejecutor,{},"",0,bono,0,{},{})
 

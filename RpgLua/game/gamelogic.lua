@@ -2328,7 +2328,7 @@ function Msg_enemigo(v, msg)
     Animacion.add_texto_anima(v,msg,30,"White",0,-20,0.1)
 end
 
-Dice = 0
+
 
 function GrupoLinea(side) 
     local list= {}
@@ -2345,7 +2345,7 @@ function acertar(v, b)
     local at = 0
     local ob = 0
     local modificador=0
-    if v.ventaja["back"] ~= nil then
+    if v.ventaja and v.ventaja["back"] ~= nil then
         modificador=-3
     end    
     if v ~= nil then
@@ -2359,8 +2359,13 @@ function acertar(v, b)
             ob = b.dex + mod(b, "dex") + 6
             GetDiceEffect(at,Dice, ob,"esquivar",v,b)
         else
-            at = b.dex + mod(b, "dex") + Dice + modificador
-            ob = v.agi + mod(v, "agi") + 6
+            if b.dex and v.agi then
+                at = b.dex + mod(b, "dex") + Dice + modificador
+                ob = v.agi + mod(v, "agi") + 6
+            else
+                at=Dice + modificador
+                ob=6
+            end
         end
         
 
@@ -2374,7 +2379,7 @@ function acertarMod(v, b, modificador)
     local at=0
     local ob=0
     Dice = flr(rnd(20))
-    if v.ventaja["back"] ~= nil then
+    if v.ventaja and v.ventaja["back"] ~= nil then
         modificador=modificador-3
     end    
     if v.tipo=="enemy" and b.tipo =="player" then

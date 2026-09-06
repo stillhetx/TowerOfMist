@@ -134,7 +134,7 @@ Efectos["ejecutar_ataque_base"]= function (v,w,f,arm,punteria,bono,bcrit,tipos,e
     arm = "left" or arm
     bcrit = 0 or bcrit
     if v~=nil and v~={} then
-            if w.weapon[arm].smodo== "white" then
+            if w.weapon and w.weapon[arm].smodo== "white" then
                 w.avanzar=true
                 w.rest=false
                 Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
@@ -158,7 +158,7 @@ Efectos["ejecutar_ataque_base"]= function (v,w,f,arm,punteria,bono,bcrit,tipos,e
                 else
                     eludido(v)    
                 end               
-            elseif w.weapon[arm].smodo== "fire" then
+            elseif w.weapon and w.weapon[arm].smodo== "fire" then
                 w.avanzar=true
                 w.rest=false
                 w.anim_acc="ataque_arma"
@@ -181,7 +181,7 @@ Efectos["ejecutar_ataque_base"]= function (v,w,f,arm,punteria,bono,bcrit,tipos,e
                 else
                     eludido(v)    
                 end   
-            elseif w.weapon[arm].smodo== "fist" then
+            elseif w.weapon and w.weapon[arm].smodo== "fist" then
                 --Debug_temp=Debug_temp.." Fist"
                 w.avanzar=true
                 w.rest=false
@@ -207,7 +207,7 @@ Efectos["ejecutar_ataque_base"]= function (v,w,f,arm,punteria,bono,bcrit,tipos,e
                 if arm=="right" then 
                     sub_arm="right"
                 end    
-                if w.weapon[sub_arm].smodo== "fist" then
+                if w.weapon and w.weapon[sub_arm].smodo== "fist" then
                     w.avanzar=true
                     w.rest=false
                     w.anim_acc="puñetazos"
@@ -1016,7 +1016,9 @@ Efectos["dia_lluvioso"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side
 
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="agua"
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.hp_>0 then
                 if acertarMod(i,w,0) then
                     Msg_debug=Msg_debug.." //Dia lluvioso"
@@ -1040,7 +1042,9 @@ Efectos["dia_caluroso"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side
         enemyGroups[Nvg].terrain="fuego"
         Debug_temp = " //this"
         FiltrarEnemigoVivos()
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.hp_>0 then
                 if acertarMod(i,w,0) then
                     local mult, crit =  adv_weak_Logic(i,w,{"fuego","natural","magia"},false )
@@ -1062,7 +1066,9 @@ Efectos["dia_nevado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="nevado"
         FiltrarEnemigoVivos()
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.hp_>0 then
                 if acertarMod(i,w,0) then
                     Msg_debug=Msg_debug.." //dia_nevado"
@@ -1085,7 +1091,9 @@ Efectos["dia_con_viento"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,si
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="pladera"
         FiltrarEnemigoVivos()
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.hp_>0 then
                 if acertarMod(i,w,0) then
                     Msg_debug=Msg_debug.." //dia_con_viento"
@@ -1109,7 +1117,9 @@ Efectos["dia_harucanado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,si
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
         enemyGroups[Nvg].terrain="pladera"
         FiltrarEnemigoVivos()
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.hp_>0 then
                 if acertarMod(i,w,0) then
                     local mult, crit =  adv_weak_Logic(i,w,{"corte","viento","natural","magia"},false )
@@ -1132,7 +1142,9 @@ Efectos["aliento_de_hielo"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,
 
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
         FiltrarEnemigoVivos()
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.hp_>0 then
                 if acertarMod(i,w,6) then
                     local mult, crit =  adv_weak_Logic(i,w,{"hielo","magia"},false )
@@ -1152,7 +1164,9 @@ Efectos["aliento_de_fuego"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,
 
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
         FiltrarEnemigoVivos()
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.hp_>0 then
                 if acertarMod(i,w,6) then
                     local mult, crit =  adv_weak_Logic(i,w,{"fuego","magia"},false )
@@ -1173,7 +1187,9 @@ Efectos["auto_destruccion"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,
 
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
         FiltrarEnemigoVivos()
-        for k,i in pairs(EnemigosVivos)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.live then
                 if acertarMod(i,w,6) then
                     local mult, crit =  adv_weak_Logic(i,w,{"fuego","magia"},false )
@@ -2333,7 +2349,9 @@ Efectos["lluvia_de_flechas"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra
 
         Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
         --w.carga=0
-        for k,i in pairs(Total_enemy)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.live then
                 if acertar(i,w) then  
                         local mult, crit =  adv_weak_Logic(i,w,{"fuego","magia"},false )
@@ -2443,7 +2461,9 @@ Efectos["desenbocado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     Efectos["pisoton_de_puas"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
             --pizoton
             Animacion.add_action_animation(w,"puñetazos",{1,1,1,1})
-            for k,i in pairs(Total_enemy)do
+            side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
                 if acertar(i,w) then
                     local mult, crit =  adv_weak_Logic(v,w,{"piedra","perforante","magia"},false )
                     DamageProccess(i,w,-flr((w.pod + mod(w,"pod") + flr(rnd(2)) + 1)*12*bono*mult)  ,crit)
@@ -2462,7 +2482,9 @@ Efectos["desenbocado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     end
     Efectos["pisoton_terremoto"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
             Animacion.add_action_animation(w,"puñetazos",{1,1,1,1})
-            for k,i in pairs(Total_enemy)do
+            side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
                 if i.live then
                     if acertar(i,w) then
                         local mult, crit =  adv_weak_Logic(i,w,{"biologico","aire","magia"},false )
@@ -2498,7 +2520,9 @@ Efectos["desenbocado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
 
     Efectos["sed_de_sangre"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
             Animacion.add_action_animation(w,"magia",Red)
-            for k,i in pairs(Total_enemy)do
+            side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
                 if i.live then
                     local dc=0
                     if i.pod then
@@ -2591,7 +2615,9 @@ Efectos["desenbocado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
 
     Efectos["golpe_atmosferico"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
         Animacion.add_action_animation(w,"puñetazos",{0,1,0,1})
-        for k,i in pairs(Total_enemy)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.live then
                 if acertar(v,w) then
                     local mult, crit =  adv_weak_Logic(v,w,{"golpe","fisico","aire","magia"},false )
@@ -3379,7 +3405,9 @@ Efectos["bio+"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
 
 Efectos["terremoto"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)    
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
-        for k,i in pairs(Total_enemy)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.live then
                 if acertar(i,w) then
                     local mult, crit =  adv_weak_Logic(i,w,{"biologico","aire","magia"},false )
@@ -3416,7 +3444,9 @@ Efectos["gravedad"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
 Efectos["tornado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
-        for k,i in pairs(Total_enemy)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.live then
                 if acertar(i,w) then
                     local mult, crit =  adv_weak_Logic(i,w,{"corte","aire","magia"},false )
@@ -3438,7 +3468,9 @@ Efectos["tornado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
 Efectos["meteoro"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
-        for k,i in pairs(Total_enemy)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.live then
                 if acertar(i,w) then
                     local mult, crit =  adv_weak_Logic(i,w,{"fuego","magia"},false )
@@ -3459,7 +3491,9 @@ Efectos["meteoro"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
 Efectos["ultima"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     
         Animacion.add_action_animation(w,"magia",{1,1,1,1})
-        for k,i in pairs(Total_enemy)do
+        side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
             if i.live then
                 if acertar(i,w) then
                     local mult, crit =  adv_weak_Logic(i,w,{"ultima"},false )
@@ -3977,9 +4011,12 @@ Efectos["Furia"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     end  
 
 end
-Efectos["Geo"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
 
-    Animacion.add_action_animation(w,"magia",{1,1,1,1})  
+
+
+Efectos["geo"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
+
+    --Animacion.add_action_animation(w,"magia",{1,1,1,1})  
     Actual.avanzar=true
     Actual.rest=false
     local mult=1
@@ -3990,11 +4027,12 @@ Efectos["Geo"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     Mg_sel=lista_elemto_terreno[terreno]
     for k,i in pairs(Total_enemy)do
         if i.hp_>0 then
-            i.lastDmg=0
-            i.slDmg=true
-            i.lastDmgC="R"
-            ejecutarMagia(Mg_sel, i, Order)
-            checks(i)
+            --i.lastDmg=0
+            --i.slDmg=true
+            --i.lastDmgC="R"
+            --ejecutarMagia(Mg_sel, i, w)
+            Efectos[Mg_sel](i,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
+            --checks(i)
         end
     end
 
@@ -4628,7 +4666,9 @@ end
 
 Efectos["corte_giratorio_shot"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
-    for k,i in pairs(EnemigosVivos)do
+    side = side or "enemy"
+        local list= GrupoLinea(side) 
+        for k,i in pairs(list)do
         if acertar(i,w) then
             local mult, crit =  adv_weak_Logic(i,w,{"corte","fisico"},false )
             DamageProccess(i,w,-((w.con+ WeaponPower(w) + 6)*mult),crit)
@@ -4806,7 +4846,9 @@ end
 
 Efectos["corte_amplio"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
-    for k,i in pairs(EnemigosVivos)do
+    side = side or "enemy"
+    local list= GrupoLinea(side) 
+    for k,i in pairs(list)do
         if acertar(i,w) then
             local mult, crit =  adv_weak_Logic(i,w,{"corte","fisico"},false )
             DamageProccess(i,w,-((w.con*0.7 + flr(rnd(4)))*mult),crit)
@@ -4848,7 +4890,9 @@ end
 
 Efectos["danza_aerea"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     Animacion.add_action_animation(w,"magia",{0.8,0.9,1,1})
-    for k,i in pairs(EnemigosVivos)do
+    side = side or "enemy"
+    local list= GrupoLinea(side) 
+    for k,i in pairs(list)do
         if acertar(i,w) then
             local mult, crit =  adv_weak_Logic(i,w,{"viento","magia"},false )
             DamageProccess(i,w,-((w.pod*0.8 + flr(rnd(3)))*mult),crit)
@@ -4862,7 +4906,9 @@ end
 
 Efectos["giro_helicoptero"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
-    for k,i in pairs(EnemigosVivos)do
+    side = side or "enemy"
+    local list= GrupoLinea(side) 
+    for k,i in pairs(list)do
         if acertar(i,w) then
             local mult, crit =  adv_weak_Logic(i,w,{"corte","fisico"},false )
             DamageProccess(i,w,-((w.con + flr(rnd(3)))*mult*0.7),crit)
@@ -4891,7 +4937,9 @@ end
 
 Efectos["impacto_terremoto"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
-    for k,i in pairs(EnemigosVivos)do
+    side = side or "enemy"
+    local list= GrupoLinea(side) 
+    for k,i in pairs(list)do
         if acertar(i,w) then
             local mult, crit =  adv_weak_Logic(i,w,{"contundente","tierra","fisico"},false )
             DamageProccess(i,w,-((w.con+ mod(w,"pod") + 12)*mult),crit)

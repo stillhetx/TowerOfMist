@@ -159,13 +159,13 @@ function _init()
     Config.Config_table()
     local o = enemyGroups
     if true then
-        if false then
+        if true then
             --4, 6 y 10 
             --7  necesitan nuevos sprites(miku y esper)
             -- add new class 12
-            local a =9
-            local b =9
-            local c =9
+            local a =8
+            local b =8
+            local c =8
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))

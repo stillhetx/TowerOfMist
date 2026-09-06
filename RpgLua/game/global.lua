@@ -68,8 +68,7 @@ AliadosMuertos={}
 ---
 ---
 ---
-    Dice = 0
-
+Dice = 0
     CAN_BLOCK = false
     PERFECT_ESQ = false
     HYPER_REACTION = false
