@@ -192,10 +192,10 @@ end
 
 function selecionar_objetivo()
     local objetivo={}
-        Debug_temp=Dirr..","
+        --Debug_temp=Dirr..","
         if Dirr=="e" then
-            FiltrarEnemigoVivos()
-            objetivo=getChars(Sel_e,EnemigosVivos)
+            --FiltrarEnemigoVivos()
+            objetivo=Sel_e
             --Debug_temp=Debug_temp..Sel_e..","
         end 
         if Dirr=="a" then
@@ -205,8 +205,8 @@ function selecionar_objetivo()
             objetivo=Actual
         end
         if Dirr=="c" then
-            FiltrarAliadosVivos()
-            objetivo=getChars(Sel_c,AliadosVivos)
+            --FiltrarAliadosVivos()
+            objetivo=Sel_c
         end
         
     return objetivo

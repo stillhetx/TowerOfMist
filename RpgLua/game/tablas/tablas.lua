@@ -1043,8 +1043,15 @@ monster_weakness={
                 ["guardian"]=true,       
         
         }
+Acciones_base={
+{name="entrar", id="entrar"},        
+{name="Accion", id="Accion"}
 
+}
 
+Acciones_grupo={
+        {{name="Robar", id="Robar"}}
+}
 
 lista_elemto_terreno={
         ["agua"]="agua",

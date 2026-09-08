@@ -35,6 +35,7 @@ Efectos["ejecutar_ataque_base_tipo"]= function (v,w,f,arm,punteria,bono,tipos,ex
             if w.weapon[arm].smodo== "white" then
                 w.avanzar=true
                 w.rest=false
+                Animacion.add_Accion_character(w,"avanzar",8)
                 Animacion.add_action_animation(w,"ataque_arma",{1,1,1,1})
                 w.anim_acc="ataque_arma"
                 w.anim_col={1,1,1,1}    

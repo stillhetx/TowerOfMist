@@ -5,18 +5,47 @@ function Tienda_mode()
     love.graphics.print("$: "..Dinero,360,2+(24*1))
     love.graphics.print("##: "..Tienda.tipo.." "..Tienda.etapa,360,2+(24*2))
 
+    local cont_x=0
+    local cont_n=0
+    if false then
+    --if Tienda.etapa=="front" or Tienda.etapa=="begin" then
+        for k,v in pairs(ActiveParty) do
+            if v.see then 
+                show_spr(v, (v.x)+160,(v.y+(36*(3-v.sheet[4])))+120, v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",true)  
+            end    
+        end  
 
+        anim_char_avanzadoV2(Tienda.owner,50,220,false,64)
+    else
+        for k,v in pairs(ActiveParty) do
+            if v.see then 
+                --show_spr(v, 100+cont_x,((36*(3-v.sheet[4])))+120, 0,0,(v.x),(v.y+20),Temp_c==v.id and State=="select c",true)  
+                anim_char_avanzadoV2(v,150+cont_x,((32*(3-v.sheet[4])))+120,true,64)
+            end  
+            love.graphics.setColor(0,200,0)
+            --love.graphics.rectangle("line", 160+(cont_n*100),((36*(3-v.sheet[4])))+120,32*v.sheet[3] ,32*v.sheet[4])
+            love.graphics.setColor(0,200,200)
+            --love.graphics.rectangle("line", 100+(cont_n*100),((36*(3-v.sheet[4])))+120,64*v.sheet[3] ,32*v.sheet[4])
+            love.graphics.setColor(255,255,255) -- reset colours
+            cont_x=cont_x + 26 + (32*(v.sheet[3])) 
+            --cont_n=cont_n+1
+        end  
+        anim_char_avanzadoV2(Tienda.owner,50-16,116,false,64)
+
+        sprSheetV2(579, 50+40, 116+32, 1,1,false,false,_G["new_sprites_jobs"],2,2,64)
+
+    end
     --love.graphics.print("##DEBUG: "..Debug_temp,360,2+(24*4))
 
     if Tienda.etapa=="show" and existList(Tienda.ListaStore[Tienda.Sel_tienda].id,items)  then
         local obj={}
         obj = getChars(Tienda.ListaStore[Tienda.Sel_tienda].id, items)
-        love.graphics.print(" Tienes "..obj.cont.." "..obj.name,10,2+(24*4))
+        love.graphics.print(" Tienes "..obj.cont.." "..obj.name,16,220+24)
 
         
 
     elseif Tienda.etapa=="show" then
-        love.graphics.print("Posee ninguna "..Tienda.ListaStore[Tienda.Sel_tienda].name,30,2+(24*4))
+        love.graphics.print("Posee ninguna "..Tienda.ListaStore[Tienda.Sel_tienda].name,30,220+24)
         if Tienda.ListaStore[Tienda.Sel_tienda].itemType=="arma" then
             love.graphics.print( Tienda.ListaStore[Tienda.Sel_tienda].objeto.name.." DMG (1-"..(Tienda.ListaStore[Tienda.Sel_tienda].objeto.w)..")+"..(Tienda.ListaStore[Tienda.Sel_tienda].objeto.bw) ,30,2+(24*5))
         end     
@@ -290,17 +319,17 @@ function Tienda_mode()
         if Tienda.tipo=="store" then
             for k,i in pairs(Tienda.menu) do
                 if Tienda.Sel_tienda==k then 
-                    love.graphics.print( ">"..Tienda.menu[k].name ,300,220+(24*k))
+                    love.graphics.print( ">"..Tienda.menu[k].name ,400,220+(24*k))
                 else 
-                    love.graphics.print( " "..Tienda.menu[k].name ,300,220+(24*k))
+                    love.graphics.print( " "..Tienda.menu[k].name ,400,220+(24*k))
                 end
             end
         elseif Tienda.tipo=="inn" then
             for k,i in pairs(Tienda.inn) do
                 if Tienda.Sel_tienda==k then 
-                    love.graphics.print( ">"..Tienda.inn[k].name ,300,220+(24*k))
+                    love.graphics.print( ">"..Tienda.inn[k].name ,400,220+(24*k))
                 else 
-                    love.graphics.print( " "..Tienda.inn[k].name ,300,220+(24*k))
+                    love.graphics.print( " "..Tienda.inn[k].name ,400,220+(24*k))
                 end
             end
         end
@@ -319,9 +348,9 @@ function Tienda_mode()
         --love.graphics.print( "mis items" ,300,220+(24*-1))
         for k,i in pairs(items) do
             if Tienda.Sel_tienda==k then
-                love.graphics.print( ">"..i.name.." $"..i.cost.." ["..i.cont.."]" ,300,70+(24*k))
+                love.graphics.print( ">"..i.name.." $"..i.cost.." ["..i.cont.."]" ,300,220+(24*k))
             else
-                love.graphics.print( i.name.." $"..i.cost.." ["..i.cont.."]"  ,300,70+(24*k))
+                love.graphics.print( i.name.." $"..i.cost.." ["..i.cont.."]"  ,300,220+(24*k))
             end
         end
     end  

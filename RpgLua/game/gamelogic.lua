@@ -501,6 +501,7 @@ function bucles()
             bonus_boton_time_cont = 0
         end
     end
+    Animacion.show_Accion_character()
     for k, v in pairs(Order) do
         if v.tipo == "player" then
             if v.react == true then
@@ -511,6 +512,8 @@ function bucles()
                     v.react_time = 0
                 end
             end
+            
+            --[[
             if v.rest == false and v.jump then
                 if v.jump_time < jump_time_max then
                     v.x = v.x - lerp(0, 20, jump_time_max)
@@ -537,6 +540,7 @@ function bucles()
                     v.avanzar_time = 0
                 end
             end
+            ]]
 
             if v.attack == true then
                 if v.attack_time < 80 then
@@ -568,7 +572,8 @@ function bucles()
                     v.react_time = 0
                 end
             end
-            if v.rest == false and v.jump then
+            
+            --[[if v.rest == false and v.jump then
                 if v.jump_time < jump_time_max then
                     v.x = v.x - lerp(0, 20, jump_time_max)
                     v.jump_time = v.jump_time + 1
@@ -594,6 +599,7 @@ function bucles()
                     v.avanzar_time = 0
                 end
             end
+            ]]
             if v.attack == true then
                 if v.attack_time < 80 then
                     v.attack_time = v.attack_time + 1
@@ -612,6 +618,7 @@ function bucles()
                     v.react_time = 0
                 end
             end
+            --[[
             if v.rest == false and v.jump then
                 if v.jump_time < jump_time_max then
                     v.x = v.x + lerp(0, 20, jump_time_max)
@@ -638,6 +645,7 @@ function bucles()
                     v.avanzar_time = 0
                 end
             end
+            ]]
             if v.attack == true then
                 if v.attack_time ~= nil then
                     if v.attack_time < 48 then
@@ -1749,14 +1757,19 @@ function winState()
         --cleanEnemy()
         Nvg = Nvg + 1
         if Nvg > #enemyGroups then
-            Nvg = 1
-            Show_view = "travel"
-            Eventos.travel = Eventos.travel + 1
-            if #Eventos.level_card >= Eventos.travel then
-                Eventos.carta_actual = Eventos.level_card[Eventos.travel]
-            else
-                Eventos.travel = 1
-                Eventos.carta_actual = Eventos.level_card[Eventos.travel]
+            if BeforeBattleMode=="overWorld" then
+                Nvg = 1
+                Show_view="overWorld"
+            elseif BeforeBattleMode~="overWorld" then
+                Nvg = 1
+                Show_view = "travel"
+                Eventos.travel = Eventos.travel + 1
+                if #Eventos.level_card >= Eventos.travel then
+                    Eventos.carta_actual = Eventos.level_card[Eventos.travel]
+                else
+                    Eventos.travel = 1
+                    Eventos.carta_actual = Eventos.level_card[Eventos.travel]
+                end
             end
         end
         --nextLevel()
@@ -2044,6 +2057,8 @@ function jump_start(v)
         v.react_time = 0
         v.rest = false
     end
+
+    Animacion.add_Accion_character(v,"impacto",3)
 end
 
 --Mejorar
@@ -2059,7 +2074,7 @@ function selection_objetive()
 end
 
 function clean()
-    Sel_e = ""
+    Sel_e = {}
     Sel_i = ""
     Mg_sel = ""
     Acc = ""

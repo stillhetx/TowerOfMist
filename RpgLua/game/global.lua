@@ -47,6 +47,7 @@ Dinero=1000
 
 NivelEnemy=1 --No usado
 Nvg=1
+BeforeBattleMode=""
 
 List_trigger={}
 
@@ -121,7 +122,7 @@ Acc=""
 Replace_Acc=false
 --obj=""
 Last_sel_e=""
-Sel_e=""
+Sel_e={}
 Sel_ee=""
 Last_sel_ee=""
 Sel_i=""
@@ -137,7 +138,7 @@ Last_mg_sel=""
 Mg_2sel=""
 Last_mg_2sel=""
 Last_sel_c=""
-Sel_c=""
+Sel_c={}
 Last_sel_cc=""
 Sel_cc=""
 Dirr="e"
@@ -219,7 +220,8 @@ scale=8
 --max_dt=100
 
 
-Show_view="graph"
+--Show_view="graph"
+Show_view="overWorld"
 --Show_view="travel"
 
 Temp_e=""  

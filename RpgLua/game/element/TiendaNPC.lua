@@ -5,6 +5,9 @@ Tienda.tipo=""
 Tienda.etapa="front" --"front","Show","buy", "comprado"
 Tienda.Sel_tienda=1
 Tienda.inn_cost=0
+Tienda.owner={}
+
+Tienda.before=""
 -----
 Tienda.Objeto={}
 Tienda.itemType=""
@@ -77,7 +80,7 @@ function Tienda.Tienda_Z()
        Tienda.etapa="show_sell"    
        Tienda.Sel_tienda=1
     elseif Tienda.etapa=="front" and Tienda.tipo=="store" and Tienda.menu[Tienda.Sel_tienda].id=="salir" then
-        Show_view="travel"
+        Show_view=Tienda.before
         Tienda.Sel_tienda=1
     elseif Tienda.etapa=="front" and Tienda.tipo=="inn" and Tienda.inn[Tienda.Sel_tienda].id=="descanzar" then
        Tienda.etapa="descanzar"    
@@ -147,7 +150,7 @@ function Tienda.Tienda_X()
 
 
     if Tienda.etapa=="front" and Tienda.tipo=="store"  then
-        Show_view="travel"
+        Show_view=Tienda.before
         Tienda.Sel_tienda=1
     elseif Tienda.etapa=="show" then
         Tienda.etapa="front"

@@ -487,7 +487,7 @@ function acciones()
     elseif State=="select ee" then
         if  Acc=="dual M." then
             State="select o"
-            Sel_ee=EnemigosVivos[Op].id
+            Sel_ee=EnemigosVivos[Op]
             SelectEnemigo=EnemigosVivos[Op]
             Sel_cc=Sel_e
         end    
@@ -496,7 +496,7 @@ function acciones()
             Execute=true
             State="select"
             if EnemigosVivos[Op] then
-                Sel_e=EnemigosVivos[Op].id
+                Sel_e=EnemigosVivos[Op]
                 SelectEnemigo=EnemigosVivos[Op]
                 Sel_c=Sel_e
             else
@@ -506,27 +506,27 @@ function acciones()
         end
         if Acc == "extraer" then
             State="select v" --variable
-            Sel_e=EnemigosVivos[Op].id
+            Sel_e=EnemigosVivos[Op]
             Sel_c=Sel_e
         end
     elseif State=="select cc" then
         if  Acc=="dual M." then
             State="select o"
-            Sel_cc=ActiveParty[Op].id
+            Sel_cc=ActiveParty[Op]
             Sel_ee=Sel_cc
         end    
     elseif State=="select c" then --choose character
         if  Acc=="magic" or Acc=="dual M." or Acc == "usar" or Acc=="tecnica" or Acc=="objeto" or Acc == "tools" or Acc=="atacar" or Acc=="combo" or Acc=="saltar" or Acc=="mix" or Acc=="Blu.magic" or Acc=="spell.list" or Acc=="especiales" then
             Execute=true
             State="select"
-            Sel_c=ActiveParty[Op].id
+            Sel_c=ActiveParty[Op]
             Sel_e=Sel_c
         end
     elseif State=="select d" then --death character
         if  Acc=="magic" or Acc == "usar" or Acc=="objeto" or Acc=="especiales" then
             Execute=true
             State="select"
-            Sel_c=Death_party[Op].id
+            Sel_c=Death_party[Op]
             Sel_e=Sel_c
         end
     elseif State=="select a" then --all enemy, not tarjet
@@ -562,7 +562,7 @@ function acciones()
         ejecutar()
         --start_caracter=true
         Acc=""
-        Sel_e=""
+        Sel_e={}
         Sel_i=""
         Execute=false
         wait_start()
@@ -590,13 +590,13 @@ function Verificar()
             if Sel_e=="" or Sel_e==nil then
                 ERROR_MENU="Error Sel_e"
                 CleanMenu()
-                Sel_e=""
+                Sel_e={}
                 return 
             end
             if Sel_c=="" or Sel_c==nil then
                 ERROR_MENU="Error Sel_c"
                 CleanMenu()
-                Sel_c=""
+                Sel_c={}
                 return 
             end
         end
@@ -604,7 +604,7 @@ function Verificar()
             if Sel_c=="" or Sel_c==nil then
                 ERROR_MENU="Error Sel_c"
                 CleanMenu()
-                Sel_c=""
+                Sel_c={}
                 return 
             end
         end

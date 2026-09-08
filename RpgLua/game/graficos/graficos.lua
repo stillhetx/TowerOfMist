@@ -675,7 +675,8 @@ end
 
 
 
-function anim_char_avanzadoV2(v,x,y,bol,ancho)
+function anim_char_avanzadoV2(v,x,y,bol,ancho,size)
+    size = size or 1
     v.anim.ti=v.anim.ti+1
     local te=v.anim.frm[1].t
     local tee=v.anim.frm[2].t
@@ -691,9 +692,9 @@ function anim_char_avanzadoV2(v,x,y,bol,ancho)
     end  
     if v.live then
             if bol then 
-                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,-1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4],ancho)
+                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,size,size,true,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4],ancho)
             else
-                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,1,1,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4],ancho)
+                sprSheetV2(v.animv.frm[v.anim.ac].spr,x,y,size,size,false,false,_G[v.sheet[1]],v.sheet[3],v.sheet[4],ancho)
             end
     else
         spr(v.d_spr,x,y,2,1)

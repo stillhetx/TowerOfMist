@@ -1002,10 +1002,40 @@ bosque_deck={
 cards={}
 cards=bosque_deck
 
+
+
+Places={}
+
+Places["castle"]={
+    name="castillo",
+    tipo="level",
+    nodoName="murcielago_salvaje_01",
+}
+Places["place"]={
+        name="",
+    tipo="place",
+}
+
+Places["home"]={
+        name="",
+    tipo="home",
+}
+
+Owner_char= 
+{
+    anim={ti=0,ac=1,frm={{t=32,spr=968},{t=32,spr=970},}},
+    animv={ti=0,ac=1,frm={{t=32,spr=968},{t=32,spr=970},}},
+    sheet={"new_sprites_jobs",73,2,3,x=0,y=0,size=2},
+    live=true
+    }
+
 Tiendas={}
 Tiendas["vendedor_tienda_pueblo_inicio"]={
     name="vendedor",
     tipo="store",
+    owner="arturo",
+    char=Owner_char,
+    people=2,
     inn_cost=0,
     itemsList={
         {id=lista_items_juego["pocion"].id,name=lista_items_juego["pocion"].name,cost=lista_items_juego["pocion"].cost+10,objeto=lista_items_juego["pocion"],itemType="consumible"},
@@ -1019,6 +1049,9 @@ Tiendas["vendedor_tienda_pueblo_inicio"]={
 Tiendas["vendedor_inn_pueblo_inicio"]={
     name="vendedor",
     tipo="inn",
+    owner="jane",
+    char=Owner_char,
+    people=2,
     inn_cost=10,
     itemsList={
         {id=lista_items_juego["pocion"].id,name=lista_items_juego["pocion"].name,cost=lista_items_juego["pocion"].cost+10,objeto=lista_items_juego["pocion"],itemType="consumible"},
@@ -1028,6 +1061,9 @@ Tiendas["vendedor_inn_pueblo_inicio"]={
 Tiendas["vendedor_herrero_pueblo_inicio"]={
     name="vendedor",
     tipo="store",
+    owner="bolt",
+    char=Owner_char,
+    people=2,
     inn_cost=0,
     itemsList={
         {id=weapon_list["espada_corta"].id,name=weapon_list["espada_corta"].name,cost=weapon_list["espada_corta"].cost,objeto=weapon_list["espada_corta"],itemType="arma"},
@@ -1044,6 +1080,9 @@ Tiendas["vendedor_herrero_pueblo_inicio"]={
 Tiendas["vendedor_spell_pueblo_inicio"]={
     name="vendedor",
     tipo="store",
+    owner="shadow",
+    char=Owner_char,
+    people=2,
     inn_cost=0,
     itemsList={
         {id=libros_lista["libro_fuego"].id,name=libros_lista["libro_fuego"].name,cost=libros_lista["libro_fuego"].cost,objeto=libros_lista["libro_fuego"],itemType="other"},

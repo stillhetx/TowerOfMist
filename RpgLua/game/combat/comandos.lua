@@ -374,33 +374,47 @@ function Comando_Mimic()
     --log("Comando_Mimic INICIO")
     Acc_cost="free"
     if Last_acc~= "" then
-        Acc    = Last_acc
-        Sel_e  = Last_sel_e
-        Sel_c  = Last_sel_c
-        Sel_ee = Last_sel_ee
-        Sel_cc = Last_sel_cc
-        Mg_sel = Last_mg_sel
-        Mg_2sel=Last_mg_2sel
-        Dirr   = Last_dirr
+        Acc     = Last_acc
+        Sel_e   = Last_sel_e
+        Sel_c   = Last_sel_c
+        Sel_ee  = Last_sel_ee
+        Sel_cc  = Last_sel_cc
+        Mg_sel  = Last_mg_sel
+        Mg_2sel = Last_mg_2sel
+        Dirr    = Last_dirr
         
         if Dirr=="e" then
             local obj=NextRNDObjetivo("enemy")
-            Sel_e=obj.id
+            Sel_e=obj
         end
 
         if Dirr=="a" then
             local obj=NextRNDObjetivo("player")
-            Sel_c=obj.id
+            Sel_c=obj
         end
 
         --objetivo_global=selecionar_objetivo()
 
         Lista_comando()
+        CleanLast()
 
       
     end
 end    
 
+
+function CleanLast()
+
+        Last_acc = ""
+        Last_sel_e = ""
+        Last_sel_c = ""
+        Last_sel_ee = ""
+        Last_sel_cc = ""
+        Last_mg_sel = ""
+        Last_mg_2sel = ""
+        Last_dirr = ""
+    
+end
 
 
 
@@ -588,7 +602,7 @@ function Comando_atacar()
     local objetivo_global=selecionar_objetivo()
     Dirr="e"
 	wait_start()
-    Debug_temp=Debug_temp.."x"
+    --Debug_temp=Debug_temp.."x"
     local next_comando="ejecutar_atacar_A"
     agregarAccion({next_comando,"",objetivo_global,Actual})
 

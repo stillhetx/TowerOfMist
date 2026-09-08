@@ -13,6 +13,9 @@ require("game/flag_events")
 
 require("game/element/PerfilControl")
 
+
+
+
 require("game/tablas/tabla_tarjetas")
 require("game/tablas/lista_enemigo")
 require("game/tablas/tabla_enemy")
@@ -31,8 +34,10 @@ require("game/core/util")
 require("game/core/control")
 require("game/combat/acciones")
 require("game/combat/info")
-require("game/mapa/map")
+
 require("game/mapa/eventosCards")
+require("game/mapa/world_0")
+require("game/mapa/map")
 
 require("game/combat/chraracter")
 require("game/combat/comandos")
@@ -49,6 +54,8 @@ require("game/graficos/graficos_batalla")
 require("game/graficos/graficos_tienda")
 
 require("game/graficos/graficos_travel")
+
+require("game/mapa/mapControl")
 
 
 
@@ -82,6 +89,8 @@ function love.load()
     fondo_sprites= loadbackGround("Fondos_sheet.png", 152, 15)
     img_intro=love.graphics.newImage("intro.png")
     Finish_fight=love.graphics.newImage("Finish_fight.png")
+    Mapa_test=love.graphics.newImage("ZONA-0.png")
+    MAP_TILE=loadSpritesheet("MapTile.png",16)
     --newSprites = loadSpritesheet("pico-rpg.png", 16)
     backgroundTile = loadSpritesheet("backgroundTile.png", 16)
     spritesEstados = loadSpritesheet("estados_alterados.png", 10)
@@ -159,13 +168,13 @@ function _init()
     Config.Config_table()
     local o = enemyGroups
     if true then
-        if true then
+        if false then
             --4, 6 y 10 
             --7  necesitan nuevos sprites(miku y esper)
             -- add new class 12
-            local a =8
-            local b =8
-            local c =8
+            local a =11
+            local b =11
+            local c =11
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -309,6 +318,10 @@ function init_player(v)
 end
 
 function love.keypressed(key, scancode, isrepeat)
+    if Show_view == "overWorld"   then
+        --main_control(key,scancode,isrepeat)
+        MapControl.Control(key,scancode,isrepeat)
+    end
     if Show_view == "graph"   then
         main_control(key,scancode,isrepeat)
     end

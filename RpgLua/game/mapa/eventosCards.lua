@@ -150,6 +150,7 @@ function Eventos.evento_Z()
         Tienda.ListaStore=Tiendas[Eventos.carta_actual.opciones[Eventos.op_menu].nodoName].itemsList
         Tienda.tipo=Tiendas[Eventos.carta_actual.opciones[Eventos.op_menu].nodoName].tipo
         Tienda.inn_cost=Tiendas[Eventos.carta_actual.opciones[Eventos.op_menu].nodoName].inn_cost
+        Tienda.before="travel"
         Show_view="tienda"
     end
 

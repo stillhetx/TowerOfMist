@@ -1,10 +1,14 @@
 Animacion={}
 Pila_animacion={}
+Accion_character={}
 
 function Animacion.add(v)
     table.insert(Pila_animacion, v)
 end
 
+function Animacion.add_Accion_character(obj,state,max_time)
+    table.insert(Accion_character, {obj=obj,state=state,time=0,max_time=max_time})
+end
 
 
 function Animacion.add_texto_anima(obj,srt,time,color,dX,dY,speed)
@@ -23,6 +27,10 @@ end
 
 function Animacion.clean()
     Pila_animacion = {}
+end
+
+function Animacion.clean_accion_character()
+    Accion_character = {}
 end
 
 function Animacion.add_action_animation(obj,id,color)
@@ -90,4 +98,53 @@ function Animacion.show_animacion_texto(v)
     love.graphics.setColor(color)
     love.graphics.print(str, obj.x-16 + dX, obj.y + 24 + dY+(time*speed)) -- Ajusta la posición según tus necesidades
     love.graphics.setColor(255, 255, 255)
+end
+
+
+function Animacion.show_Accion_character()
+        if #Accion_character>0 then
+            for i=1,#Accion_character do
+                ChaAnimation[Accion_character[i].state](Accion_character[i],i)
+            end
+        end
+end
+
+ChaAnimation = {}
+
+    local jump_time_max = 3
+    local avanzar_time_max = 8
+    local lateral_gravity = 3
+    local max_timer_summon = 12
+
+ChaAnimation["avanzar"]= function (v,index)
+        local obj = v.obj
+        if v.time < v.max_time then
+            obj.x = obj.x + lerp(0, 60, v.max_time)
+            v.time = v.time + 1
+        end
+        obj.x = obj.x - lateral_gravity
+        if obj.x <= obj.x_ then
+            obj.x = obj.x_
+            --v.rest = true
+            --v.avanzar = false
+            v.time = 0
+            table.remove(Accion_character,index)
+        end
+end
+
+
+ChaAnimation["impacto"]= function (v,index)
+        local obj = v.obj
+        if v.time < v.max_time then
+            obj.x = obj.x - lerp(0, 20, v.max_time)
+            v.time = v.time + 1
+        end
+        obj.x = obj.x + lateral_gravity
+        if obj.x >= obj.x_ then
+            obj.x = obj.x_
+            --v.rest = true
+            --v.jump = false
+            v.time = 0
+            table.remove(Accion_character,index)
+        end
 end

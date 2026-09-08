@@ -293,20 +293,58 @@ function sprSheetV2(n, x, y, w, h, flip_x, flip_y, sheet,hs,ws,ancho)
     h = h or 1
     flip_x = flip_x or false
     flip_y = flip_y or false
+    local cellSize = ancho
+    local scaleX= w * 2 
+    local scaleY= h * 2 
 
+    local originX= 0
+    local originY= 0
+    if flip_x ==true  then
+        scaleX = -scaleX
+        originX = cellSize/4 
+    end
+    if flip_y ==true then
+        scaleY = -scaleY
+        originY = cellSize/4 
+    end
     local mult=1
-    for i=0, hs-1 do
-        for ii=0, ws-1 do
+    local rowStart, rowEnd, rowStep = 0, hs-1, 1
+    local colStart, colEnd, colStep = 0, ws-1, 1
+    
+    if flip_y==true then
+        rowStart, rowEnd, rowStep = hs-1, 0, -1  -- Invertir filas
+    end
+    
+    if flip_x==true then
+        colStart, colEnd, colStep = ws-1, 0, -1  -- Invertir columnas
+    end
+    local contX=0
+    local contY=0
+    for i=rowStart, rowEnd,rowStep do
+        for ii=colStart, colEnd,colStep do
                 local index=0
                 index = n + (ii*ancho )+i + 1
                 local quad = sheet.quads[index] -- PICO-8 indexa desde 0, Lua desde 1
-
+                local posx=0
+                local posy=0
+                if flip_x==true then
+                    posx=(hs-1)-contX
+                else
+                    posx=i
+                end
+                if flip_y==true then
+                    posy=(ws-1)--contY
+                else
+                    posy=ii
+                end
                 if quad then
                     --drawPixelAura(sheet.image,quad, x+(i*32*mult), y+(ii*32*mult),0, w*2*mult,h*2*mult)
-                    love.graphics.draw(sheet.image, quad, x+(i*32*mult), y+(ii*32*mult),0, w*2*mult,h*2*mult)                   
+                    love.graphics.draw(sheet.image, quad, x+(posx*32), y+(posy*32),0, scaleX,scaleY,originX ,originY)                   
                     
                 end
+                contY=contY+1
         end
+        contX=contX+1
     end
 
 
