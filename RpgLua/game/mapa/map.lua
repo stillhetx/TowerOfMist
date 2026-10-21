@@ -10,6 +10,9 @@ Grupo_signal.yo=0
 Grupo_signal.xd=0
 Grupo_signal.yd=0
 Grupo_signal.direction=""
+Grupo_signal.event=false
+Grupo_signal.show_request_event=false
+Grupo_signal.recharge=false
 
 dd=0
 function load_overWorld()
@@ -19,14 +22,67 @@ function load_overWorld()
     dd=dd+1
     Grupo_signal.x=Actual_nodo.x
     Grupo_signal.y=Actual_nodo.y
+    MapControl.LogicAddEvent()
 end    
+
+
+function AddEvent()
+
+
+end
+
+function _update_overWorld()
+    if ini_overworld then
+        load_overWorld()
+    end
+    if Grupo_signal.recharge == true then
+        Grupo_signal.recharge = false
+        MapControl.LogicAddEvent()
+    end
+    if Grupo_signal.event==true and Grupo_signal.move==false and false then --Debug line
+    --if Grupo_signal.event==true and Grupo_signal.move==false then
+        if Grupo_info.Request_to_fight==false then
+            if Randon_event[Actual_nodo.id].tipo=="enemigo" and true then
+                Show_view="graph"
+                Config.Pos_monster(Randon_event[Actual_nodo.id].nodoName)
+                enemyGroups=horda[Randon_event[Actual_nodo.id].nodoName]
+                Nvg=1
+                nextLevel()
+                if true then
+                    Randon_event[Actual_nodo.id] = nil
+                end
+                BeforeBattleMode="overWorld"
+            
+            elseif Randon_event[Actual_nodo.id].tipo=="evento" and false then
+                Show_view="travel"
+                BeforeBattleMode="overWorld"
+                Eventos.level_card=lugares[Randon_event[Actual_nodo.id].nodoName]
+                Eventos.carta_actual=Eventos.level_card[1]
+
+                if Eventos.carta_actual.tipo == "mazo" then
+                    local number = rnd(#Eventos.carta_actual.deck)
+                    Eventos.carta_actual = Eventos.carta_actual.deck[number]
+                end
+                if true then
+                    Randon_event[Actual_nodo.id] = nil
+                end
+            end
+        else            
+            Grupo_signal.show_request_event=false
+        end
+        Grupo_signal.event=false
+        MapControl.EventCount=MapControl.EventCount-1
+    end 
+    if MapControl.EventCount==0 then
+        Grupo_signal.recharge = true
+    end
+
+end
 
 function overWorld()
     MapControl.contadores()
     cls()
-    if ini_overworld then
-        load_overWorld()
-    end
+
     Bucles_world()
     love.graphics.draw(Mapa_test,0,0,0,4,4)
 
@@ -53,10 +109,10 @@ function overWorld()
 
     if Open_menu==true then
         love.graphics.setColor(0, 0, 0)
-        love.graphics.rectangle("fill", 460, 250, 152, 10+#Acciones_base*24+6)
+        love.graphics.rectangle("fill", 460, 250, 152, 10+#MapControl.AccionesMenu*24+6)
         love.graphics.setColor(255, 255, 255)
          love.graphics.print( "> ",460,260+(24*(MapControl.Op-1)))
-        for k,i in pairs(Acciones_base) do
+        for k,i in pairs(MapControl.AccionesMenu) do
             love.graphics.print( "* "..i.name,460+12,260+(24*(k-1)))
         end
     end

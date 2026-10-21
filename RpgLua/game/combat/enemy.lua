@@ -198,8 +198,9 @@ end
 
 function obtener_objetivo()
     local obj={}
-    local objetivos=get_Personaje_disponible()
-    local numero_objetivo=flr(rnd(#objetivos-1))+1
+    FiltrarAliadosVivos()
+    local objetivos=AliadosVivos
+    local numero_objetivo=flr(rnd(#objetivos))
     obj=objetivos[numero_objetivo]
     return obj
 end
@@ -220,7 +221,8 @@ end
 
 function obtener_enemigo()
     local obj={}
-    local objetivos=get_Enemigo_disponible()
+    FiltrarEnemigoVivos()
+    local objetivos=EnemigosVivos
     local numero_objetivo=flr(rnd(#objetivos))
     obj=objetivos[numero_objetivo]
     return obj

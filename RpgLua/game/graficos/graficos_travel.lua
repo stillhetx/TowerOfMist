@@ -28,21 +28,27 @@ function EventosCards()
     --love.graphics.rectangle("fill", 140,30, 364, 120)
     love.graphics.setColor(255,255,255)
     love.graphics.print( Eventos.carta_actual.desq, 30,180)
+
+    love.graphics.print( Eventos.carta_actual.tipo, 30,180+(24*-3))
     --un_boton()
     if not Eventos.resulto then
-        if Eventos.carta_actual.tipo~="hub" then
-            for k,v in pairs(Eventos.carta_actual.opciones) do
-                love.graphics.print( " "..v.label, 25,205+(k*40))
-                love.graphics.print( "      "..v.req, 25,225+(k*40))
-            end
-            love.graphics.print( ">", 20,205+(Eventos.op_menu*40))
-        else
+        if Eventos.carta_actual.tipo=="hub" then
             for k,v in pairs(Eventos.carta_actual.opciones) do
                 love.graphics.print( " "..v.label, 25,225+(k*20))
                 --love.graphics.print( "      "..v.req, 25,245+(k*20))
             end
             love.graphics.print( ">", 20,225+(Eventos.op_menu*20))
+
+        elseif Eventos.carta_actual.tipo=="regreso" then
+            
+        else
+                for k,v in pairs(Eventos.carta_actual.opciones) do
+                    love.graphics.print( " "..v.label, 25,205+(k*40))
+                    love.graphics.print( "      "..v.req, 25,225+(k*40))
+                end
+                love.graphics.print( ">", 20,205+(Eventos.op_menu*40))
         end
+
         
     else
         --msg_resolucion

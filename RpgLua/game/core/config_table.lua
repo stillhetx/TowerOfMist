@@ -37,6 +37,11 @@ function Config.Pos_monster(str)
         end        
 end
 
+function Config.modo_sigilo()
+    for k,v in pairs(enemyGroups[Nvg].enemyTeams) do
+                v.NoActivo=true
+    end
+end
 
 function Config.Pos_monster_Nvg()
         Debug_temp=""

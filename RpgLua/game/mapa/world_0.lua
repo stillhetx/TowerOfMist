@@ -1,7 +1,20 @@
 World_0_nodos={}
 Actual_world={}
 Actual_nodo={}
+Actual_max_event=0
+--lista total de eventos
 Randon_event={}
+Randon_event_indice={}
+Indice_place={}
+Indice_event={}
+Actual_indice_event={}
+
+Randon_event_type={}
+Randon_indice={}
+
+Max_event =2
+Actual_max_event=Max_event
+
 
 Enemy_char= 
 {
@@ -9,6 +22,7 @@ Enemy_char=
     animv={ti=0,ac=1,frm={{t=32,spr=581},{t=32,spr=582},}},
     sheet={"new_sprites_jobs",73,1,1,x=0,y=0,size=2},
     live=true
+
 }
 
 Event_char= 
@@ -19,24 +33,55 @@ Event_char=
     live=true
 }
 
-Randon_event_element={
+
+World_event={}
+Indice_event={}
+
+
+
+Randon_event_type["Enemigo_1"]={
+    pos={x=0,y=0,direction=1},
+    char=Enemy_char,
     tipo="enemigo",
+    nodoName="Maniaco_01",
     info={},
 }
+
+Randon_event_type["Evento_1"]={
+    pos={x=0,y=0,direction=-1},
+    char=Event_char,
+    tipo="evento",
+    nodoName="Sorpresa_en_la_ciudad_01",
+    info={},
+}
+
+World_0_event_indice={}
+World_0_event_indice[1]="Enemigo_1"
+World_0_event_indice[2]="Evento_1"
+
+--[[
 Randon_event["Place_WOZ2"]={
     pos={x=0,y=0,direction=1},
     char=Enemy_char,
     tipo="enemigo",
+    nodoName="murcielago_salvaje_01",
     info={},
 }
-
+Randon_event_indice[2]="Place_WOZ2"
 Randon_event["Place_WOZ3"]={
     pos={x=0,y=0,direction=-1},
     char=Event_char,
     tipo="evento",
+    nodoName="",
     info={},
 }
 
+]]
+
+World_0_indice_place={}
+World_0_indice_place[1]="Place_WOZ1"
+World_0_indice_place[2]="Place_WOZ2"
+World_0_indice_place[3]="Place_WOZ3"
 
 World_0_nodos["Tienda_WOZ1"]={
     id="Tienda_WOZ1",
@@ -49,7 +94,7 @@ World_0_nodos["Tienda_WOZ1"]={
 }
 World_0_nodos["home_WOZ1"]={
     id="home_WOZ1",
-    info=Places["home"],
+    info=Tiendas["vendedor_provisiones_pueblo_inicio"],
     x=5*16,y=2*16,
     up={},
     down={},
@@ -65,6 +110,27 @@ World_0_nodos["Place_WOZ1"]={
     left={},
     right={},   
 }
+World_0_nodos["Place_WOZ15"]={
+    id="Place_WOZ15",
+    info=Places["place"],
+    x=7*16,y=3*16,
+    up={},
+    down={},
+    left={},
+    right={},   
+}
+
+World_0_nodos["Quest_WOZ1"]={
+    id="Quest_WOZ1",
+    info=Tabla_infiltracion["infiltracion_basica"],
+    x=6*16,y=3*16,
+    up={},
+    down={},
+    left={},
+    right={},   
+}
+
+
 World_0_nodos["Place_WOZ2"]={
     id="Place_WOZ2",
     info=Places["place"],
@@ -136,8 +202,13 @@ World_0_nodos["Tienda_WOZ1"].right=World_0_nodos["home_WOZ1"]
 World_0_nodos["home_WOZ1"].left=World_0_nodos["Tienda_WOZ1"]
 World_0_nodos["home_WOZ1"].right=World_0_nodos["Place_WOZ1"]  
 
-World_0_nodos["Place_WOZ1"].down=World_0_nodos["Place_WOZ2"]
+World_0_nodos["Place_WOZ1"].down=World_0_nodos["Place_WOZ15"]
 World_0_nodos["Place_WOZ1"].left=World_0_nodos["home_WOZ1"]
+
+World_0_nodos["Place_WOZ15"].down=World_0_nodos["Place_WOZ2"]
+World_0_nodos["Place_WOZ15"].left=World_0_nodos["Quest_WOZ1"]
+
+World_0_nodos["Quest_WOZ1"].right=World_0_nodos["Place_WOZ15"]
 
 World_0_nodos["Place_WOZ2"].up=World_0_nodos["Place_WOZ1"]
 World_0_nodos["Place_WOZ2"].down=World_0_nodos["Place_WOZ3"]
@@ -163,5 +234,7 @@ World_0_nodos["castillo_W0Z1"].right=World_0_nodos["Tienda_WOZ4"]
 
 
 
-
 Actual_nodo=World_0_nodos["Tienda_WOZ1"]
+
+Indice_place=World_0_indice_place
+Indice_event=World_0_event_indice

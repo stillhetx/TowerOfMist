@@ -43,6 +43,12 @@ function graph_mode()
     end
     love.graphics.print( "nivel:  "..Nvg.." ",500,16+(24*0))
 
+    if CombatType then
+        love.graphics.print( ""..CombatType,GAME_WIDTH/2,16+(24*1))
+    end
+   
+
+
     if Modo=="combat" then
         mostrar_background()
         --spr(0,0,0,4,4,false,false,fondo_sprites)
@@ -146,6 +152,18 @@ function graph_mode()
         love.graphics.draw(Finish_fight, 0, 0,0,1,1)
     else
         love.graphics.draw(img_intro, 0, 0,0,1,1)
+    end
+
+
+    if SeeLOG then
+        love.graphics.setColor(1,1,0)
+            
+            
+        for k,v in pairs(LOG_LIST) do
+            love.graphics.print(v, 300,20+(16*k))
+        end
+        love.graphics.setColor(255,255,255) 
+
     end
 end
 

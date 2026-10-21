@@ -137,6 +137,147 @@ horda["bosque_base_02"]={
 
 
 
+
+horda["Castillo_maniacos_enemigos#1"]={
+  {id="Castillo_maniacos_enemigos#1",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        subtipo="sigilo",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240}},
+        enemyList={"Maniaco"},
+        enemyTeams={},
+
+},
+
+}
+
+
+
+horda["Castillo_maniacos_enemigos#2"]={
+  {id="Castillo_maniacos_enemigos#2",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        subtipo="sigilo",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240}},
+        enemyList={"Maniaco","Maniaco"},
+        enemyTeams={},
+
+},
+
+}
+
+
+horda["Castillo_maniacos_enemigos#3"]={
+  {id="Castillo_maniacos_enemigos#3",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        subtipo="sigilo",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240}},
+        enemyList={"Maniaco","Maniaco","Maniaco"},
+        enemyTeams={},
+
+},
+
+}
+
+
+horda["Castillo_maniacos_enemigos#4"]={
+  {id="Castillo_maniacos_enemigos#4",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        subtipo="sigilo",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240},{x=380+40,y=100},{x=460+40,y=170},{x=380+40,y=240}},
+        enemyList={"Maniaco","Maniaco","Maniaco","Maniaco"},
+        enemyTeams={},
+
+},
+
+}
+
+
+horda["Castillo_maniacos_enemigos#5"]={
+  {id="Castillo_maniacos_enemigos#5",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        subtipo="sigilo",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240},{x=380+40,y=100},{x=460+40,y=170},{x=380+40,y=240}},
+        enemyList={"Maniaco","Maniaco","Maniaco","Maniaco","Maniaco"},
+        enemyTeams={},
+
+},
+
+}
+
+horda["Castillo_maniacos_enemigos#6"]={
+  {id="Castillo_maniacos_enemigos#6",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        subtipo="sigilo",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240},{x=380+40,y=100},{x=460+40,y=170},{x=380+40,y=240}},
+        enemyList={"Maniaco","Maniaco","Maniaco","Maniaco","Maniaco","Maniaco"},
+        enemyTeams={},
+
+},
+
+}
+
+
+horda["Maniaco_01"]={
+  {id="grupo 0.002",
+        exp=50,
+        credit=50,
+        terrain="agua",
+        terrain_="agua",
+        tipo="batalla",
+        subtipo="sigilo",
+        fondo="ocean",
+        fondo_="ocean",
+        recompensa={"pocion", "ether"},
+        pos={{x=380,y=100},{x=460,y=170},{x=380,y=240}},
+        enemyList={"Maniaco","Maniaco","Maniaco"},
+        enemyTeams={},
+
+},
+
+
+}
+
 horda["00001"]={
 
 

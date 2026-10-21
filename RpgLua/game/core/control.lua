@@ -51,6 +51,14 @@ function main_control(key,scancode,isrepeat)
                         if key=="r" then
                             reset()
                         end
+
+
+                        if key=="l" then
+                            SeeLOG=true
+                        end
+                        if key=="k" then
+                            SeeLOG=false
+                        end
                         inside()
                     end
                 elseif Modo=="WIN" then
@@ -99,6 +107,7 @@ function main_control_travel(key,scancode,isrepeat)
         ComeBackView="travel"
         perfil()
     end
+
 end
 
 Acciones_secundarias={"huir","extra","arma","compl."}

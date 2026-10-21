@@ -143,6 +143,22 @@ IA_enemy["guardian"]= function(criatura,alineamiento)
     Personality_random_action(criatura,criatura,alineamiento)
 end
 
+IA_enemy["Maniaco"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,criatura,alineamiento)
+end
+
+IA_enemy["Maniaco_violento"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,criatura,alineamiento)
+end
+
+IA_enemy["Demonio"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,criatura,alineamiento)
+end
+
+IA_enemy["Angel"]= function(criatura,alineamiento)
+    Personality_random_action(criatura,criatura,alineamiento)
+end
+
 IA_enemy["ninguno"]= function(criatura,alineamiento)
     Personality_random_action(criatura,criatura,alineamiento)
 end

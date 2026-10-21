@@ -1,63 +1,42 @@
 
 
 -- Ejecutar Magia
-
+-- DEPRECADO
 function magic_list()
-    for k,v in pairs(Order) do
-        if Dirr=="e" then
-            if v.id == Sel_e then
-                ejecutarMagia(Mg_sel,v, Order)
-                checks(v) 
-            end
-        end 
+
+    if Dirr=="e" then
+
+        ejecutarMagia(Mg_sel,Sel_e, Order)
+        checks(Sel_e) 
+    end 
         if Dirr=="a" then
-            v={}
+            local v={}
             ejecutarMagia(Mg_sel,v, Order)
             --checks(v) 
         end
         if Dirr=="c" then
-            if v.id == Sel_c then
-                ejecutarMagia(Mg_sel,v, Order)
-                checks(v)   
-            end
+            
+                ejecutarMagia(Mg_sel,Sel_c, Order)
+                checks(Sel_c)   
+            
         end     
-    end   
+
 end
 
 function items_list(bol)
-    for k,v in pairs(Order) do
         if Dirr=="e" then
-            if v.id == Sel_e then
-                for d,f in pairs(items) do
-                    if f.id==Sel_i then
-                        ejecutarObjeto(v,f,bol)
-                    end    
-                end
-                checks(v)    
-            end    
+            ejecutarObjeto(Sel_e,Sel_i,bol)
+            checks(Sel_e)   
         end
         if Dirr=="c" then
-            if v.id == Sel_c then
-                for d,f in pairs(items) do
-                    if f.id==Sel_i then
-                        ejecutarObjeto(v,f,bol)
-                    end    
-                end
-                checks(v)    
-            end 
+            ejecutarObjeto(Sel_c,Sel_i,bol)
+            checks(Sel_c) 
         end
         if Dirr=="d" then
-            if v.id == Sel_c then
-                for d,f in pairs(items) do
-                    if f.id==Sel_i then
-                        ejecutarObjeto(v,f,bol)
-                    end    
-                end
-                checks(v)
-                restablecer(v)    
-            end 
+            ejecutarObjeto(Sel_c,Sel_i,bol)
+            checks(Sel_c)
+            restablecer(Sel_c)
         end
-    end
 end
 --Ejecuta ataque basico
 function ejecutar_ataque_basico(v,str)
@@ -822,7 +801,7 @@ function ejecutarObjeto(v,f,bol)
     v.lastDmg=0   
     v.slDmg=true
 
-    Efectos[Sel_i](v, Actual,f,"",0,1,0,{},{})
+    Efectos[f.id](v, Actual,f,"",0,1,0,{},{})
 
 end    
 

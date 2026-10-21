@@ -6,7 +6,7 @@ Tienda.etapa="front" --"front","Show","buy", "comprado"
 Tienda.Sel_tienda=1
 Tienda.inn_cost=0
 Tienda.owner={}
-
+Tienda.npcName=""
 Tienda.before=""
 -----
 Tienda.Objeto={}

@@ -7,6 +7,7 @@ TipoLevel=""
 --tabla con el orden de los turnos
 ListaTurnos={}
 Order={}
+Temp_Order={}
 All={}
 --tabla con los personajes aliados en defensa
 Protectores={}
@@ -31,6 +32,9 @@ Init_b=false
 -- Select: Espera las acciones del jugador. 
 -- Wait: tiempo de espera para animaciones.
 
+
+LOG_LIST={}
+
 Msg_debug=""
 
 ERROR_MSG=""
@@ -48,6 +52,7 @@ Dinero=1000
 NivelEnemy=1 --No usado
 Nvg=1
 BeforeBattleMode=""
+CombatType=""
 
 List_trigger={}
 
@@ -63,7 +68,8 @@ AliadosVivos={}
 AliadosMuertos={}
 
 
-
+Grupo_info={}
+Grupo_info.Request_to_fight=false
 
 ---tabla dices
 ---
@@ -82,6 +88,7 @@ Dice = 0
     PIFIA = false
     LEVE_CRITICO=false
     PIFIA_LEVE=false
+    INSTA_KILL_EFFECT=false
 
 
     TRUE_DAMAGE=false
@@ -209,10 +216,12 @@ still_turn=true
 DesktOpwidth, DesktOpheight = love.window.getDesktopDimensions()
 WIDTH_SIZE, HEIGHT_SIZE = DesktOpwidth * 0.8 , DesktOpheight * 0.8
 --parametros de dimensiones y escala
+GAME_HEIGHT = 480
+GAME_WIDTH = 640
+
 VIRTUAL_WIDTH= 128
 VIRTUAL_HEIGHT=128
-game_width = 640
-game_height = 480
+
 --scale_mode = true
 scale=8
 

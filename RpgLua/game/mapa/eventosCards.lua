@@ -86,7 +86,12 @@ function Eventos.evento_Z()
     local temp={}
     local number=0
     local desk={}
-
+    if Eventos.carta_actual.tipo == "regreso" then
+            --desk=temp.deck
+            --number = rnd(#cards)
+            --Eventos.carta_actual = cards[number]
+            Show_view=BeforeBattleMode
+    else 
     local eleccion = Eventos.carta_actual.opciones[Eventos.op_menu].type
     ccc=ccc+1
 
@@ -96,6 +101,7 @@ function Eventos.evento_Z()
         Eventos.resulto=false
         Eventos.travel = Eventos.travel+1
         temp = Eventos.level_card[Eventos.travel]
+
         if temp.tipo == "mazo" then
             --desk=temp.deck
             number = rnd(#cards)
@@ -165,6 +171,9 @@ function Eventos.evento_Z()
             number = rnd(#cards)
             Eventos.carta_actual = cards[number]
         end
+        if temp.tipo  == "regreso" then
+            Show_view=BeforeBattleMode
+        end
         if temp.tipo == "mensaje" then
             --desk=temp.deck
             Eventos.carta_actual = Eventos.level_card[Eventos.travel]
@@ -204,6 +213,7 @@ function Eventos.evento_Z()
         if eleccion == "SP_items" and Eventos.resulto==false then
 
         end
+    end
     end
 end
 

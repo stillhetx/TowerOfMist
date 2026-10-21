@@ -1,4 +1,8 @@
+--lista de nodos finalizados
+Tabla_nodos_finalizados={}
+Tabla_nodos_saqueados={}
 
+--lista de slots de inventario
 equipo_slot={
 {name="mano izq", id="weapon_izq"},
 {name="mano der", id="weapon_der"},
@@ -12,7 +16,7 @@ equipo_slot={
 
 }
 
-
+--Cantidad de puntos para subir de nivel
 experienceTable = {
         0, 8, 24, 52, 96, 160, 248, 364, 512, 696,
         920, 1188, 1504, 1872, 2296, 2780, 3332, 3956, 4656, 5436,
@@ -26,8 +30,12 @@ experienceTable = {
         514560, 531620, 549052, 566860, 585048, 603620, 622580, 641932, 661680
 }
 
+--objeto de arma desarmado
 desarmado={name="puños",id="puños",wtipo="equipo",familia="puños",def=0, w=1,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1, color={1,1,1,1}, extra={},}
 
+
+-- inventario == lista de objetos del grupo
+-- Inventario de armas modificadas
 weapon_mod={}
 
 weapon_inventary_see={}
@@ -62,6 +70,8 @@ weapon_inventary={
 
 }
 
+
+--Diccionario de todas las armas
 weapon_list={
 --KATANAS
 katana = {tipo_item="arma",name="katana",id="katana",  cost=10,wtipo="equipo",familia="katana",subFamilia="default",nv=1,def=0, w=6,bw=1,tipo="cortante",modo="1h",smodo="white",dex="A",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="", damage="", isCast=false,cast={}, extra={}, efectos={}},
@@ -241,12 +251,18 @@ lanzador_de_bombas= {tipo_item="arma",name="lanzador_de_bombas",id="lanzador_de_
 resolteras= {tipo_item="arma",name="resolteras",id="resolteras",  cost=10,wtipo="equipo",familia="lanzador",subFamilia="default",nv=1,def=2, w=6,bw=1,tipo="golpe",modo="2h",smodo="white",dex="",fue="", int="",pod="",sh=false, cont=1, color={1,1,1,1}, ataque="",damage="", isCast=false,cast={},extra={},},
 }
 
+
+--inventario de armaduras modificadas
 armadura_mod={}
 
+--Inventario de armas 
 armadura_inventary_see={}
 armadura_inventary={
        
 }
+
+
+--Diccionario de todas las armaduras
 
 armadura_list={
         ropa_simple= {tipo_item="torso",name="ropa simple",id="ropa_simple",wtipo="equipo",familia="liviana",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
@@ -267,6 +283,8 @@ armadura_list={
         armadura_congelada = {tipo_item="torso",name="Armadura congelada",id="armadura_congelada",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
         armadura_infernal = {tipo_item="torso",name="Armadura infernal",id="armadura_infernal",wtipo="equipo",familia="pesada",subFamilia="default",nv=1,def=2,mdef=0, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={},},
 }
+
+--inventario de accesorios
 Accesorios_inventary_see={}
 Accesorios_inventary={
         {tipo_item="accesorio",name="lazo rojo",id="lazo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasivo",value={name="ALL Resist",id="ALL_Resist",value=0}}},},
@@ -290,6 +308,9 @@ Accesorios_inventary={
         {tipo_item="accesorio",name="brasalete de mercurio",id="brasalete_de_mercurio",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="estado",value={name="prisa",id="prisa",value=5,operation="+"}}},},
 
 }
+
+
+--Diccionario de todos los accesorios
 
 Accesorios_list={
         lazo_rojo = {tipo_item="artefacto",name="lazo rojo",id="lazo_rojo",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="pasivo",value={name="ALL Resist",id="ALL_Resist",value=0}}},},
@@ -316,8 +337,11 @@ Accesorios_list={
 
 --        brasalete_de_mercurio = {tipo_item="accesorio",name="brasalete de mercurio",id="brasalete_de_mercurio",wtipo="accesorio",familia="accesorio",subFamilia="default",nv=1,def=2, w=8,bw=1,tipo="golpe",modo="1h",smodo="white",sh=false, cont=1,cost=10, color={1,1,1,1},extra={{name="estado",value={name="prisa",id="prisa",value=5,operation="+"}}},},
 
+--inventario de complementos
 Complemento_inventary_see={}
 Complemento_inventary={}
+
+--Diccionario de todos los complementos
 Complemento_list={
 ["extractor"]={id="extractor", name="extractor",tipo_item="complemento",nv=1,typeDmg="perforante",subType="",status={},w=1,bw=0,cont=1,cost=10,isCast=false,cast={}, color={1,1,1,1},extra={},},
 ["Municion_revolver"]={id="Municion_revolver", name="Municion revolver",tipo_item="complemento",nv=1,typeDmg="perforante",subType="",status={},w=1,bw=0,cont=1,cost=10,isCast=false,cast={}, color={1,1,1,1},extra={},},
@@ -369,18 +393,22 @@ Anti-ESPER charger Type-4: 4 afinidades
 Anti-ESPER charger Type-5: 5 afinidades
 ]]
 
+
+-- inventario de artefactos
 Artefacto_inventary_see={}
 Artefacto_inventary={}
+-- Diccionario de Artefactos
 Artefacto_list={}
 
 
-
+--inventario de Talismanes
 Talismanes_inventary={}
+--Diccionario de Talismanes
 Talismanes_list={}
 
 
 
-
+--Diccionario de todos los items del juego
 lista_items_juego={
         pocion={
                 tipo_item="consumible",
@@ -627,11 +655,13 @@ lista_items_juego={
 
 }
 
-
+--canridad de hechizos
 numero_spell={["fuego"]={num=10},["fuego+"]={num=5},["fuego++"]={num=1},
               ["hielo"]={num=10},["hielo+"]={num=5},["hielo++"]={num=1},}
 
-
+--TODO: intercambiar objetos_especiales por objetos_equipados
+--Diccionario de objetos especiales o equipo
+--tiene un metodo que lo apunta pero no usa. dejar como diccionario
 objetos_especiales={
         metralleta={tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools",dir="e",cost=500},
         lanza_llamas={tipo_item="especiales",name="lanza llamas",id="lanza_llamas",wtipo="tools",dir="e",cost=500},
@@ -640,7 +670,7 @@ objetos_especiales={
         misiles={tipo_item="especiales",name="misiles",id="misiles",wtipo="tools",dir="e",cost=500},
         disparador_sonico={tipo_item="especiales",name="disparador sonico",id="disparador_sonico",wtipo="tools",dir="e",cost=500},
 }
-
+--Inventario de objetos especiales o equipo. No usado. deprecado
 objetos_equipados={
         {tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools",dir="e",cost=500},
         {tipo_item="especiales",name="lanza llamas",id="lanza_llamas",wtipo="tools",dir="e",cost=500},
@@ -649,15 +679,7 @@ objetos_equipados={
         {tipo_item="especiales",name="misiles",id="misiles",wtipo="tools",dir="e",cost=500},
         {tipo_item="especiales",name="disparador sonico",id="disparador_sonico",wtipo="tools",dir="e",cost=500},
 }
-
-
-ListaFuerzasMagicas={
-        
-        gema_fuego="fuego",
-}
-
-Evocaciones={}
-
+--lista de tools. utilizado
 lista_tools = {
         {tipo_item="especiales",name="metralleta",id="metralleta",wtipo="tools", ingredientes = {"metralleta"},dir="e",},
         {tipo_item="especiales",name = "lanza llamas",id="lanza_llamas", wtipo="tools",ingredientes = {"lanza_llamas"},dir="e",},
@@ -668,6 +690,17 @@ lista_tools = {
 }
 
 
+--TODO: recordar y analizar
+---requerimiento para agregar hechizo a la lista de evocacion.
+ListaFuerzasMagicas={
+        
+        gema_fuego="fuego",
+}
+--esto deberia estar dentro de la tabla de personaje
+Evocaciones={}
+
+
+--diccionario de libros
 libros_lista={
         libro_fuego = {
                 tipo_item="consumible",
@@ -916,7 +949,7 @@ libros_lista={
         },
 
 }
-
+---inventario de items
 items={
         {
                 tipo_item="consumible",
@@ -1012,10 +1045,12 @@ items={
 
 }
 
+
+--lista de invocaciones DEPRECADO
 invo={{name="murcielago",id="murcielago",dir="x",cost=1,},{name="zombie",id="zombie",dir="x",cost=1,}, {name="esqueleto",id="esqueleto",dir="x",cost=1,}, {name="demonio",id="demonio",dir="x",cost=1,} }
 
 
-
+--tabla de debilidades desbloqueadas por el jugador.
 monster_weakness={
                 ["murcielago"]= true, ["murcielago_fuego"]= true,["murcielago_hielo"]= true,
                 ["fuego_fuego"]= true,["fuego_hielo"]= true,["fuego_electrico"]= true,["evil_eye"]= true,["slime_azul"]= true,
@@ -1040,13 +1075,21 @@ monster_weakness={
                 ["guerrero"]=true,
                 ["hechizero"]=true,
                 ["soldado"]=true,
-                ["guardian"]=true,       
+                ["guardian"]=true,
+                ["Maniaco"]=true,   
+                ["Maniaco_violento"]=true,   
         
         }
+
+Acciones_filtrados={}
 Acciones_base={
 {name="entrar", id="entrar"},        
 {name="Accion", id="Accion"}
 
+}
+
+Acciones_finalizado={
+        {name="Accion", id="Accion"}
 }
 
 Acciones_grupo={
@@ -1083,6 +1126,7 @@ lista_terreno={
 
 lista_todos={"Todos"}
 
+---lista de ingredientes para mixes
 lista_mix = {
         {name = "Ultra pocion",id="Ultra_pocion", ingredientes = {"pocion", "potenciador"},dir="c",},
         {name = "Ultra ether",id="Ultra_ether", ingredientes = {"ether", "potenciador"},dir="c",},
@@ -1121,7 +1165,7 @@ lista_bullet = {
         {name = "Balas potentes",id="Balas_Potentes", ingredientes = {"Balas_Potentes"},dir="e",},
 }
 
-
+--lista de magias azules
 lista_azul = {
         {name = "aliento de fuego",id="aliento_de_fuego", ingredientes = {"murcielago_fuego"},dir="e",},
         {name = "aliento de hielo",id="aliento_de_hielo", ingredientes = {"murcielago_hielo"},dir="e",},
@@ -1135,7 +1179,7 @@ monster_diccionario={["murcielago"]= "aliento_de_fuego", ["murcielago_fuego"]= "
                 ["Murcielago_electrico"]= "true",["serpiente_purpura"]= "true",["objetos"]= "true",}
 
 
-
+--lista de encuentros con monstruos
 lista_encuentro={["murcielago"]= true, ["murcielago_fuego"]= false,["murcielago_hielo"]= false,
                 ["fuego_fuego"]= false,["fuego_hielo"]= false,["fuego_electrico"]= false,["evil_eye"]= false,["slime_azul"]= false,
                 ["slime_amarillo"]= false,["slime_rojo"]= false,["slime_rainbow"]= false,["serpiente_verde"]= false,

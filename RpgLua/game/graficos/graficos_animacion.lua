@@ -104,7 +104,9 @@ end
 function Animacion.show_Accion_character()
         if #Accion_character>0 then
             for i=1,#Accion_character do
-                ChaAnimation[Accion_character[i].state](Accion_character[i],i)
+                if ChaAnimation[Accion_character[i].state] then
+                    ChaAnimation[Accion_character[i].state](Accion_character[i],i)
+                end
             end
         end
 end

@@ -1,7 +1,7 @@
 function Tienda_mode()
     love.graphics.draw(Finish_fight, 0, 0,0,1,1)
     love.graphics.print("Tienda",36,2+(24*1))
-    love.graphics.print("\""..Tienda.Name_store.."\"",36,2+(24*2))
+    love.graphics.print("\""..Tienda.Name_store.."\" "..Tienda.npcName,36,2+(24*2))
     love.graphics.print("$: "..Dinero,360,2+(24*1))
     love.graphics.print("##: "..Tienda.tipo.." "..Tienda.etapa,360,2+(24*2))
 
@@ -15,7 +15,7 @@ function Tienda_mode()
             end    
         end  
 
-        anim_char_avanzadoV2(Tienda.owner,50,220,false,64)
+        anim_char_avanzadoV2(Tienda.owner,50,220+(36*(3-Tienda.owner.sheet[4])),false,64)
     else
         for k,v in pairs(ActiveParty) do
             if v.see then 
@@ -30,7 +30,7 @@ function Tienda_mode()
             cont_x=cont_x + 26 + (32*(v.sheet[3])) 
             --cont_n=cont_n+1
         end  
-        anim_char_avanzadoV2(Tienda.owner,50-16,116,false,64)
+        anim_char_avanzadoV2(Tienda.owner,50-16,116+(36*(3-Tienda.owner.sheet[4])),false,64)
 
         sprSheetV2(579, 50+40, 116+32, 1,1,false,false,_G["new_sprites_jobs"],2,2,64)
 

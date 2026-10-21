@@ -11,15 +11,15 @@ function _update()
         if love.keyboard.isScancodeDown('d', 'right') then world_X = world_X + speed end
     end
 
-    init_player(Actual)
+    Init_player(Actual)
     isAlive()
     winState()
     wait_enemy()
     if EnemigosVivos[Op] ~= nil then
-        Temp_e = EnemigosVivos[Op].id
+        Temp_e = EnemigosVivos[Op]
     end
     if ActiveParty[Op] ~= nil then
-        Temp_c = ActiveParty[Op].id
+        Temp_c = ActiveParty[Op]
     end
     local key = stat(31)
     if key == "q" then
@@ -51,8 +51,11 @@ function _update()
                         next()
                     end
                     if (Actual.tipo == "aliado" or Actual.tipo == "enemy") and Actual.live == true then
-                        logic(Actual.tipo)
-                        --next()
+                        if Actual.NoActivo == true then
+                            next()
+                        else
+                            logic(Actual.tipo)
+                        end                        
                     end
                     if (Actual.tipo == "aliado" or Actual.tipo == "enemy") and Actual.live == false then
                         next()
@@ -70,6 +73,8 @@ end
 function _update_travel()
 
 end
+
+
 
 --next_comando=""
 
@@ -1760,7 +1765,9 @@ function winState()
             if BeforeBattleMode=="overWorld" then
                 Nvg = 1
                 Show_view="overWorld"
-            elseif BeforeBattleMode~="overWorld" then
+            --elseif BeforeBattleMode=="overWorld" then    
+                --
+            elseif BeforeBattleMode =="travel" then
                 Nvg = 1
                 Show_view = "travel"
                 Eventos.travel = Eventos.travel + 1
@@ -1770,9 +1777,28 @@ function winState()
                     Eventos.travel = 1
                     Eventos.carta_actual = Eventos.level_card[Eventos.travel]
                 end
+            elseif BeforeBattleMode=="stealthMode" then
+                if InfiltracionData.where==InfiltracionData.where_table.dentro then
+                    InfiltracionData.NmInside = InfiltracionData.NmInside - InfiltracionData.Numero_adversarios
+                elseif InfiltracionData.where==InfiltracionData.where_table.afuera then
+                    InfiltracionData.NmOutside = InfiltracionData.NmOutside - InfiltracionData.Numero_adversarios
+                end
+                InfiltracionData.where=""
+                Nvg = 1
+                Show_view = "stealthMode"
+                GrupoCharge(Temp_Order)
             end
         end
         --nextLevel()
+    end
+end
+
+
+function GrupoCharge(list)
+    local new={}
+    ActiveParty = new
+    for k,v in pairs(list) do                    --table.insert(Order,v)
+        add(ActiveParty,v)
     end
 end
 
@@ -2029,6 +2055,7 @@ function isAlive()
 end
 
 function checkLive(a)
+    a = a or 0
     if a <= 0 then
         return false
     end
@@ -2124,7 +2151,7 @@ function DamageProccess(v, w, value, crit,tipo)
     local inmune = false
     tipo = tipo or "fisico"
 
-    if v.ventaja["etereo"] then
+    if v and v.ventaja and v.ventaja["etereo"] then
         if tipo == "fisico" then
             if IGNORAR_ETERIO ==false then
                 inmune = true
@@ -2150,6 +2177,7 @@ function DamageProccess(v, w, value, crit,tipo)
                     obb.lastDmg = 1
                     obb.lastDmgM = "bloqueado"
                     Animacion.add_texto_anima(obb,"bloqueado",30,"White",0,-20,0.1)
+                    add(LOG_LIST, "bloqueado")
                     value=0
 
                 else
@@ -2203,6 +2231,11 @@ function DamageProccess(v, w, value, crit,tipo)
                         crit=crit.."!"
                         extraText=extraText.."Perfect Punt!"
                     end
+                    if obb.NoActivo == true then
+                        multiplo=multiplo+3
+                        crit=crit.."!"
+                        obb.NoActivo = false
+                    end
     
 
                     value = flr(value * multiplo)
@@ -2241,6 +2274,12 @@ function DamageProccess(v, w, value, crit,tipo)
 
                     --Debug_temp= Debug_temp.."$"..value
                     obb.hp_ = obb.hp_ + (value * hit)
+
+                    --agregar mas conficiones.//tipo de arma
+                    if CRITICO == true and obb.hp_ < obb.hp * 0.5 then
+                        obb.hp_ = 0
+                    end
+
                     obb.lastDmg = value
                     local dmgTexte= value .. crit .. " " .. defensa .. "# " .. hit .. " hits"
                     local dmgLabel= value .. crit
@@ -2251,10 +2290,13 @@ function DamageProccess(v, w, value, crit,tipo)
                         col="Green"
                     end
                         Animacion.add_texto_anima(obb,dmgLabel,30,col,0,0,0.1)
+                        add(LOG_LIST, "daño: ".. dmgLabel)
                     if value<0 then
                         Animacion.add_texto_anima(obb,hitsLabel,30,col,0,-20,0.1)
+                        add(LOG_LIST, "hits: ".. hitsLabel)
                     end
                     Animacion.add_texto_anima(obb,""..extraText,30,"Yellow",0,-60,0.1)
+                    add(LOG_LIST, "extra: ".. extraText)
                     --Animacion.add_texto_anima(obb,hit,30,"White",0,-60,0.1)
                 end
 
@@ -2274,13 +2316,16 @@ function DamageProccess(v, w, value, crit,tipo)
                 return value
             else
                 Animacion.add_texto_anima(v,"Pifia",30,"White",0,0,0.1)
+                add(LOG_LIST, "Pifia")
 
             end
         else
             Animacion.add_texto_anima(v,"eterio",30,"White",0,0,0.1)
+            add(LOG_LIST, "eterio")
         end
     else
         Animacion.add_texto_anima(v,"ERROR!!",30,"Red",0,0,0.1)
+        add(LOG_LIST, "ERROR!!")
     end
     return 0
 end
@@ -2361,11 +2406,13 @@ function acertar(v, b)
     local ob = 0
     local modificador=0
     if v.ventaja and v.ventaja["back"] ~= nil then
-        modificador=-3
     end    
     if v ~= nil then
         Dice = flr(rnd(20))
         if v.tipo=="enemy" and b.tipo =="player" then
+            if v.NoActivo and v.NoActivo==true then
+                modificador=modificador+3
+            end
             at = b.dex + mod(b, "dex") + Dice + modificador   
             ob = v.agi + mod(v, "agi") + 6
             GetDiceEffect(at,Dice, ob,"punteria",v,b)
@@ -2386,6 +2433,7 @@ function acertar(v, b)
 
     end
     Animacion.add_texto_anima(v,Dice.."#"..ob.."DC",30,"White",0,-40,0.1)
+    add(LOG_LIST, Dice.."#"..ob.."DC")
     return at >= ob
 end
 
@@ -2394,21 +2442,40 @@ function acertarMod(v, b, modificador)
     local at=0
     local ob=0
     Dice = flr(rnd(20))
+    --Dice=2
     if v.ventaja and v.ventaja["back"] ~= nil then
         modificador=modificador-3
     end    
     if v.tipo=="enemy" and b.tipo =="player" then
-        at = b.dex + mod(b, "dex") + Dice + modificador   
-        ob = v.agi + mod(v, "agi") + 6
+        if v.NoActivo and v.NoActivo==true then
+            modificador=modificador+3
+        end
+        at = math.min(b.dex + mod(b, "dex"), GetCateg(b))  + Dice + modificador   
+        ob = math.min( v.agi + mod(v, "agi"),GetCateg(v)) + 8
         GetDiceEffect(at,Dice, ob,"punteria",v,b)
+        if Dice == 1 then
+            return true
+        end
+        if Dice ==20 or Dice == 19 then
+            return false
+        end
     elseif v.tipo=="player" and b.tipo =="enemy" then
-        at = v.agi + mod(v, "agi") + Dice + modificador   
-        ob = b.dex + mod(b, "dex") + 6
+        at = math.min(v.agi + mod(v, "agi"),  GetCateg(v)) + Dice + modificador   
+        ob = math.min(b.dex + mod(b, "dex"),GetCateg(b) )+ 8
         GetDiceEffect(at,Dice, ob,"esquivar",v,b)
+        if Dice == 1 then
+            return false
+        end
+        if Dice ==20 or Dice == 19 then
+            return true
+        end
     else
         --Punteria entre enemigos
-        at = b.dex + mod(b, "dex") + Dice + modificador
-        ob = v.agi + mod(v, "agi") + 6
+        local B_DEX = b.dex or 0
+        local V_AGI = v.agi or 0
+
+        at = B_DEX + mod(b, "dex") + Dice + modificador
+        ob = V_AGI + mod(v, "agi") + 6
     end
 
     
@@ -2416,6 +2483,7 @@ function acertarMod(v, b, modificador)
 
     --GetDiceEffect(b,Dice,ob,modificador)
     Animacion.add_texto_anima(v,Dice.."+"..modificador.."#"..ob.."DC",30,"White",0,-40,0.1)
+    add(LOG_LIST, Dice.."+"..modificador.."#"..ob.."DC")
     return at >= ob
 end
 
@@ -2434,6 +2502,7 @@ function SetIndiceExito()
     PIFIA = false
     LEVE_CRITICO=false
     PIFIA_LEVE=false
+    INSTA_KILL_EFFECT=false
 end
 
 
@@ -2444,30 +2513,52 @@ function GetDiceEffect(at,dice, dc,tipo,obj,emi)
     if tipo=="esquivar" then
         if at ==dc then
             PERFECT_ESQ=true
-            AgregarReaccion({"parry","",emi,obj})
+            if emi.tipo=="player" and emi.contra_ataque==true then
+                AgregarReaccion({"parry","",emi,obj})
+            end
+            Animacion.add_texto_anima(obj,"= igual",40,"White",0,-60,0.1)
+            add(LOG_LIST, "= igual")
         end
         if at >= dc-3 and  at < dc then
             CAN_BLOCK=true
+
+            Animacion.add_texto_anima(obj,"fallo leve <",40,"White",0,-60,0.1)
+            add(LOG_LIST, "fallo leve <")
         end
 
         if at >= dc then
             SUPERADO_ESQ = true
-            
         end
         
         if at > dc and  at <= dc+3 then
             HYPER_REACTION = true
-            AgregarReaccion({"contra_ataque","",emi,obj})
+            if emi.tipo=="player" and emi.contra_ataque==true then
+                AgregarReaccion({"contra_ataque","",emi,obj})
+            end
+            Animacion.add_texto_anima(obj,"exito mayor >",40,"White",0,-60,0.1)
+            add(LOG_LIST, "exito mayor >")
         end
     else
         if at ==dc then
             PERFECT_PUNT=true
+            Animacion.add_texto_anima(obj,"igual =",40,"White",0,-60,0.1)
+            add(LOG_LIST, "igual =")
+
+
         end
-        if at >= dc-3 and  at < dc then
+        if at >= dc-3 and at < dc then
             FALLO_LEVE=true
+            Animacion.add_texto_anima(obj,"fallo leve <",40,"White",0,-60,0.1)
+            add(LOG_LIST, "fallo leve <")
+            --Animacion.add_texto_anima(obj,"entro"..(dc-3).."/"..at,40,"Yellow",0,-80,0.1)
+
         end
+                    --Animacion.add_texto_anima(obj,"Afuera"..(dc-3).."/"..dc.."/"..at,40,"Yellow",0,-80,0.1)
+
         if at > dc and  at <= dc+3 then
             LEVE_ACIERTO = true
+            Animacion.add_texto_anima(obj,"exito mayor >",40,"White",0,-60,0.1)
+            add(LOG_LIST, "exito mayor >")
         end
         if at >= dc then
             SUPERADO_PUNT = true
@@ -2476,16 +2567,22 @@ function GetDiceEffect(at,dice, dc,tipo,obj,emi)
 
     if dice==20 then
         CRITICO = true
+        --Animacion.add_texto_anima(obj,"critico 20",40,"White",0,-60,0.1)
+
     end
 
 
     if dice==1 then
         PIFIA = true
+       -- Animacion.add_texto_anima(obj,"pifia 1",40,"White",0,-60,0.1)
+
     end
 
     if dice >=18 and dice <20 then
         LEVE_CRITICO=true
         --AgregarReaccion({"segundo_ataque","",obj,emi})
+        Animacion.add_texto_anima(obj,"leve critico 19 y 20",40,"White",0,-60,0.1)
+        add(LOG_LIST, "leve critico 19 y 20")
     end
 
     if dice <=3 and dice >1 then
@@ -2502,8 +2599,10 @@ function DCMOD(obj,b,DC,str, modi)
 
     if modi>0 then
         Animacion.add_texto_anima(obj,Dice.."+"..modi.."#"..DC.."DC",30,"White",0,-40,0.1)
+        add(LOG_LIST, Dice.."+"..modi.."#"..DC.."DC")
     else
         Animacion.add_texto_anima(obj,Dice.."#"..DC.."DC",30,"White",0,-40,0.1)
+        add(LOG_LIST, Dice.."#"..DC.."DC")
     end
     return DC <= at
 end
@@ -2653,6 +2752,8 @@ end
 
 --cont_start=0
 function start(v)
+
+    
     if Init_b then
         Init_b = false
         ini_view = 1
@@ -2660,6 +2761,17 @@ function start(v)
     if start_caracter then
         --cont_start=cont_start+1
         start_caracter = false
+
+
+        if v.n_turnos then
+            v.n_turnos= v.n_turnos+1
+        else
+        v.n_turnos=0     
+        end
+
+        if v.n_turnos and v.n_turnos==2 then
+            v.NoActivo=false
+        end
 
         if v.tipo == "player" then
             v.flee_attack = v.flee_attack_

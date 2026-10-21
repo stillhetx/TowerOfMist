@@ -570,3 +570,11 @@ function filtrarBalas()
         end
     end
 end
+
+
+function GetCateg(v)
+    local nivel = v.lv or 0
+    v.categ = 2+flr(nivel/5)
+    return v.categ
+
+end

@@ -1,25 +1,37 @@
+local binser = require("game.lib.binser")
+
+
+--declarar Variables
 require("game/global")
 
+
+--declarar objetos 
+require("game/element/infiltracionObj")
+
+--declarar tablas
 require("game/tablas/tablas")
-require("game/tablas/tabla_acciones_jugador")
+require("RpgLua.game.tablas.Menu.tabla_acciones_jugador")
+require("RpgLua.game.tablas.Menu.tabla_menu_acciones")
 --require("game/tablas/tabla_comandos")
 require("game/tablas/tabla_efecto")
 require("game/tablas/tabla_jobs")
 require("game/tablas/tabla_acciones_enemy")
 require("game/tablas/tabla_IA_enemy")
 require("game/tablas/tabla_gambit")
+require("game/tablas/tabla_tarjetas")
+require("game/tablas/tabla_enemy")
+require("game/tablas/Tabla_animacion")
 
 require("game/flag_events")
 
 require("game/element/PerfilControl")
 
 
+require("game/element/infiltracionUpdate")
 
 
-require("game/tablas/tabla_tarjetas")
 require("game/tablas/lista_enemigo")
-require("game/tablas/tabla_enemy")
-require("game/tablas/Tabla_animacion")
+
 
 require("game/element/questEntity")
 require("game/element/Social")
@@ -39,6 +51,8 @@ require("game/mapa/eventosCards")
 require("game/mapa/world_0")
 require("game/mapa/map")
 
+require("game/mapa/mapControl")
+
 require("game/combat/chraracter")
 require("game/combat/comandos")
 require("game/combat/ejecutar")
@@ -47,7 +61,9 @@ require("game/combat/skill")
 
 require("game/combat/enemy")
 
-
+require("game/element/infiltracionlogic")
+require("game/element/infiltracionControl")
+require("game/graficos/graficos_infiltracion")
 
 require("game/graficos/graficos_perfil")
 require("game/graficos/graficos_batalla")
@@ -55,7 +71,7 @@ require("game/graficos/graficos_tienda")
 
 require("game/graficos/graficos_travel")
 
-require("game/mapa/mapControl")
+
 
 
 
@@ -121,9 +137,9 @@ function love.draw()
     end
 
     local sw, sh = love.graphics.getDimensions()
-    local scale = math.min(sw / game_width, sh / game_height)
-    local xoff = (sw - game_width * scale) / 2
-    local yoff = (sh - game_height * scale) / 2
+    local scale = math.min(sw / GAME_WIDTH, sh / GAME_HEIGHT)
+    local xoff = (sw - GAME_WIDTH * scale) / 2
+    local yoff = (sh - GAME_HEIGHT * scale) / 2
 
     love.graphics.push()
     love.graphics.translate(xoff, yoff)
@@ -146,9 +162,16 @@ function love.update()
     if Show_view == "travel" or Show_view == "tienda" then
         _update_travel()
     end
+    if Show_view=="overWorld" then
+        _update_overWorld()
+    end
+
+    if Show_view=="stealthMode" then
+        InfiltracionData.update()
+    end
 end    
 
-function max_level()
+function Max_level()
     if Nvg > #enemyGroups then
         Nvg=0
     end    
@@ -309,7 +332,7 @@ function wait_start()
     Actual=Order[Turno]
 end
 
-function init_player(v)
+function Init_player(v)
     if Init_b then
         Actual=Order[Turno]
         Init_b=false
@@ -338,6 +361,10 @@ function love.keypressed(key, scancode, isrepeat)
     if Show_view=="tienda" then
         Tienda.control_tienda(key,scancode,isrepeat)
     end
+
+    if Show_view=="stealthMode" then
+        InfiltracionData.control(key,scancode,isrepeat)
+    end
 end
 
 function _draw()
@@ -363,6 +390,10 @@ function _draw()
     if Show_view == "overWorld" then
         overWorld()
     end   
+
+    if Show_view=="stealthMode" then
+        InfiltracionData.draw()
+    end
 end
 
 

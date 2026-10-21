@@ -359,6 +359,11 @@ function isNum(num)
     end
 end    
 
+function Vaciar_tabla()
+    local new={}
+    return new
+end
+
 function copiar_tabla(original)
     local copia = {}
     for k, v in pairs(original) do

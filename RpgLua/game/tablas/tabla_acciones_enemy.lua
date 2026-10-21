@@ -169,6 +169,23 @@ Lista_acciones_enemigo={
     {nombre = "ejecutar_ataque_basico_INIT", prob = 70},
 },
 
+["Maniaco"] = {
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 70},
+},
+
+["Maniaco_violento"] = {
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 70},
+},
+
+
+["Angel"] = {
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 70},
+},
+
+["Demonio"] = {
+    {nombre = "ejecutar_ataque_basico_INIT", prob = 70},
+},
+
 
 ["ninguno"]= {},
 

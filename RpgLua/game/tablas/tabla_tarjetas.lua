@@ -1,3 +1,430 @@
+
+montanna_deck={
+    {
+        id="evento_1",
+        name="roca",
+        desq="Una gigantesca roca tapa el camino",
+        opciones={
+        [1]={["label"]="Constitucion",["req"]="(12 DC)", cost=0, type="stat",name="", stat="con",dc=12},
+        [2]={["label"]="Magia",["req"]="(4 MP)", cost=4, type="MP",name="",stat="con",dc=12},
+        [3]={["label"]="Bomba",["req"]="(1 items)", cost=1, type="items",name="bomba",stat="con",dc=12},
+        [4]={["label"]="Desviarse",["req"]="(8 MP)", cost=8, type="MP",name="",stat="",dc=12},
+        },
+    },
+
+    {
+        id="evento_2",
+        name="Avalancha",
+        desq="Un Avalancha de rocas cae sobre el grupo",
+        opciones={
+        [1]={["label"]="Esquivar",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Correr",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="bloquear",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        },
+    },
+
+        {
+        id="evento_7",
+        name="Atrapado por Roca",
+        desq="Una Roca cae y quedan atrapado bajo ella",
+        opciones={
+        [1]={["label"]="Levantar (CON)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Destrozar (FUE)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Improvisar polea (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=4, type="MP",name="", stat="con",dc=12},
+        },
+    },
+}
+
+
+extra_deck={}
+Castillo_deck={}
+bosque_deck={
+
+    {
+        id="trampa_cazador_1",
+        name="Agujero Trampa",
+        desq="Caen en una trampa, un profundo agujero dificil de escalar",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        opciones={
+        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=4, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+    {
+        id="trampa_cazador_2",
+        name="Agujero estacas",
+        desq="Caen en una trampa, un agujero con estacas",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        opciones={
+        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=1, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+    {
+        id="trampa_cazador_3",
+        name="Cueva secreta",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        desq="Caen un trampa que los lleva a una cueva secreta",
+        opciones={
+        [1]={["label"]="Explorar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
+        [2]={["label"]="Escalar (AGI)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Trepar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        [4]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [5]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=1, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+
+
+    {
+        id="cueva_secreta_00",
+        name="Cueva secreta",
+        tipo="normal",
+        desq="Descubren una cueva secreta",
+        opciones={
+        [1]={["label"]="Entrar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
+        [2]={["label"]="Analizar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Continuar",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+    
+
+    {
+        id="evento_3",
+        name="tormenta",
+        tipo="normal",
+        desq="Un tormenta se acerca",
+        opciones={
+        [1]={["label"]="buscar refugio (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Viajar por la tormenta (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        [4]={["label"]="supervivencia (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    
+    {
+        id="evento_4",
+        name="Hambre",
+        tipo="normal",
+        desq="el hambre ataca al grupo",
+        opciones={
+        [1]={["label"]="buscar comida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="aguantar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        [4]={["label"]="supervivencia",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_5",
+        name="Perdido",
+        tipo="trampa",
+        desq="Se han perdido en el bosque",
+        opciones={
+        [1]={["label"]="Buscar salida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Saber natural (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="orientar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_6",
+        name="Cruzar el rio",
+        tipo="normal",
+        desq="un torrentoso rio en el camino",
+        opciones={
+        [1]={["label"]="buscar otro camino (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="improvisar un puente (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="derribar un arbol y cruzar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_9",
+        name="Ladrones del camino",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        desq="Ladrones amenazan al grupo",
+        opciones={
+        [1]={["label"]="Amenazar (CON)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Mentir (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Engañar (CAR)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [4]={["label"]="Dialogar (CAR)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [5]={["label"]="Escapar (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [6]={["label"]="Entrar en combate !!",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_10",
+        name="Animal Salvaje",
+        desq="Animal Salvaje",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="Espantar (INT)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Escapar (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_11",
+        name="Paranormal",
+        desq="Paranormal",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="investigar (INT)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Consecuencias",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_12",
+        name="Mistery men",
+        desq="Mistery men",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="Store",["req"]="", cost=0, type="npc",name="",stat="des",dc=10},
+        [2]={["label"]="Investigar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_13",
+        name="Mistery men",
+        desq="Mistery men",
+        opciones={
+        [1]={["label"]="estudiar (INT)",["req"]="", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]=" Observar (PER)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Afrontar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [4]={["label"]="Eludir (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_14",
+        name="humo en el bosque",
+        desq="humo en el bosque",
+        opciones={
+        [1]={["label"]="Investigar (INT) ",["req"]="(12 DC)", cost=0, type="stat",name="", stat="con", dc=12},
+        [2]={["label"]="Observar (PER)",["req"]="(4 MP)", cost=4, type="stat",name="",stat="con", dc=12},
+        [3]={["label"]="Ignorar",["req"]="", cost=8, type="pat",name="",stat="con", dc=12},
+        },
+    },
+}
+
+
+Infiltracion_deck={
+
+    {
+        id="trampa_cazador_1",
+        name="Agujero Trampa",
+        desq="Caen en una trampa, un profundo agujero dificil de escalar",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        opciones={
+        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=4, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+    {
+        id="trampa_cazador_2",
+        name="Agujero estacas",
+        desq="Caen en una trampa, un agujero con estacas",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        opciones={
+        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=1, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+    {
+        id="trampa_cazador_3",
+        name="Cueva secreta",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        desq="Caen un trampa que los lleva a una cueva secreta",
+        opciones={
+        [1]={["label"]="Explorar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
+        [2]={["label"]="Escalar (AGI)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Trepar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        [4]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [5]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=1, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+
+
+    {
+        id="cueva_secreta_00",
+        name="Cueva secreta",
+        tipo="normal",
+        desq="Descubren una cueva secreta",
+        opciones={
+        [1]={["label"]="Entrar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
+        [2]={["label"]="Analizar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Continuar",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+    
+
+    {
+        id="evento_3",
+        name="tormenta",
+        tipo="normal",
+        desq="Un tormenta se acerca",
+        opciones={
+        [1]={["label"]="buscar refugio (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Viajar por la tormenta (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        [4]={["label"]="supervivencia (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    
+    {
+        id="evento_4",
+        name="Hambre",
+        tipo="normal",
+        desq="el hambre ataca al grupo",
+        opciones={
+        [1]={["label"]="buscar comida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="aguantar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        [4]={["label"]="supervivencia",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_5",
+        name="Perdido",
+        tipo="trampa",
+        desq="Se han perdido en el bosque",
+        opciones={
+        [1]={["label"]="Buscar salida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Saber natural (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="orientar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_6",
+        name="Cruzar el rio",
+        tipo="normal",
+        desq="un torrentoso rio en el camino",
+        opciones={
+        [1]={["label"]="buscar otro camino (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="improvisar un puente (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="derribar un arbol y cruzar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_9",
+        name="Ladrones del camino",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        desq="Ladrones amenazan al grupo",
+        opciones={
+        [1]={["label"]="Amenazar (CON)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Mentir (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Engañar (CAR)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [4]={["label"]="Dialogar (CAR)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [5]={["label"]="Escapar (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [6]={["label"]="Entrar en combate !!",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_10",
+        name="Animal Salvaje",
+        desq="Animal Salvaje",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="Espantar (INT)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Escapar (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_11",
+        name="Paranormal",
+        desq="Paranormal",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="investigar (INT)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Consecuencias",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_12",
+        name="Mistery men",
+        desq="Mistery men",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="Store",["req"]="", cost=0, type="npc",name="",stat="des",dc=10},
+        [2]={["label"]="Investigar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_13",
+        name="Mistery men",
+        desq="Mistery men",
+        opciones={
+        [1]={["label"]="estudiar (INT)",["req"]="", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]=" Observar (PER)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Afrontar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [4]={["label"]="Eludir (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+
+    {
+        id="evento_14",
+        name="humo en el bosque",
+        desq="humo en el bosque",
+        opciones={
+        [1]={["label"]="Investigar (INT) ",["req"]="(12 DC)", cost=0, type="stat",name="", stat="con", dc=12},
+        [2]={["label"]="Observar (PER)",["req"]="(4 MP)", cost=4, type="stat",name="",stat="con", dc=12},
+        [3]={["label"]="Ignorar",["req"]="", cost=8, type="pat",name="",stat="con", dc=12},
+        },
+    },
+}
+
+cards={}
+cards=bosque_deck
+
+
+
 lugares={
 ---Menu Inicio del juego
 --Ciudades, pueblos y rutas
@@ -506,6 +933,30 @@ lugares={
 
 },
 
+
+
+
+["Sorpresa_en_la_ciudad_01"]={
+
+    {
+        id="Random_1",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=cards,
+    }
+    ,
+    
+
+    {
+        id="Sorpresa_en_la_ciudad_01_regreso",
+        name="regreso",
+        tipo="regreso",
+        desq="",
+        opciones={},
+    },
+},
+
 --Deprecado
 ["PUEBLO_INICIAL"]={
 
@@ -770,237 +1221,6 @@ masmorra_deck={}
 special_card_deck={}
 
 
-montanna_deck={
-    {
-        id="evento_1",
-        name="roca",
-        desq="Una gigantesca roca tapa el camino",
-        opciones={
-        [1]={["label"]="Constitucion",["req"]="(12 DC)", cost=0, type="stat",name="", stat="con",dc=12},
-        [2]={["label"]="Magia",["req"]="(4 MP)", cost=4, type="MP",name="",stat="con",dc=12},
-        [3]={["label"]="Bomba",["req"]="(1 items)", cost=1, type="items",name="bomba",stat="con",dc=12},
-        [4]={["label"]="Desviarse",["req"]="(8 MP)", cost=8, type="MP",name="",stat="",dc=12},
-        },
-    },
-
-    {
-        id="evento_2",
-        name="Avalancha",
-        desq="Un Avalancha de rocas cae sobre el grupo",
-        opciones={
-        [1]={["label"]="Esquivar",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Correr",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="bloquear",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        },
-    },
-
-        {
-        id="evento_7",
-        name="Atrapado por Roca",
-        desq="Una Roca cae y quedan atrapado bajo ella",
-        opciones={
-        [1]={["label"]="Levantar (CON)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Destrozar (FUE)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="Improvisar polea (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=4, type="MP",name="", stat="con",dc=12},
-        },
-    },
-}
-
-
-extra_deck={}
-bosque_deck={
-
-    {
-        id="trampa_cazador_1",
-        name="Agujero Trampa",
-        desq="Caen en una trampa, un profundo agujero dificil de escalar",
-        tipo="trampa",
-        evaluar={stat="per",dc=10, msg="evitas la trampa"},
-        opciones={
-        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=1, type="mp",name="bomba", stat="con",dc=12},
-        },
-    },
-    {
-        id="trampa_cazador_2",
-        name="Agujero estacas",
-        desq="Caen en una trampa, un agujero con estacas",
-        tipo="trampa",
-        evaluar={stat="per",dc=10, msg="evitas la trampa"},
-        opciones={
-        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=1, type="mp",name="bomba", stat="con",dc=12},
-        },
-    },
-    {
-        id="trampa_cazador_3",
-        name="Cueva secreta",
-        tipo="trampa",
-        evaluar={stat="per",dc=10, msg="evitas la trampa"},
-        desq="Caen un trampa que los lleva a una cueva secreta",
-        opciones={
-        [1]={["label"]="Explorar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
-        [2]={["label"]="Escalar (AGI)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="Trepar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        [4]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [5]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=1, type="mp",name="bomba", stat="con",dc=12},
-        },
-    },
-
-
-    {
-        id="cueva_secreta_00",
-        name="Cueva secreta",
-        tipo="normal",
-        desq="Descubren una cueva secreta",
-        opciones={
-        [1]={["label"]="Entrar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
-        [2]={["label"]="Analizar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="Continuar",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        },
-    },
-    
-
-    {
-        id="evento_3",
-        name="tormenta",
-        tipo="normal",
-        desq="Un tormenta se acerca",
-        opciones={
-        [1]={["label"]="buscar refugio (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Viajar por la tormenta (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        [4]={["label"]="supervivencia (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    
-    {
-        id="evento_4",
-        name="Hambre",
-        tipo="normal",
-        desq="el hambre ataca al grupo",
-        opciones={
-        [1]={["label"]="buscar comida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="aguantar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        [4]={["label"]="supervivencia",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_5",
-        name="Perdido",
-        tipo="trampa",
-        desq="Se han perdido en el bosque",
-        opciones={
-        [1]={["label"]="Buscar salida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Saber natural (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="orientar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_6",
-        name="Cruzar el rio",
-        tipo="normal",
-        desq="un torrentoso rio en el camino",
-        opciones={
-        [1]={["label"]="buscar otro camino (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="improvisar un puente (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="derribar un arbol y cruzar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_9",
-        name="Ladrones del camino",
-        tipo="trampa",
-        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
-        desq="Ladrones amenazan al grupo",
-        opciones={
-        [1]={["label"]="Amenazar (CON)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Mentir (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
-        [3]={["label"]="Engañar (CAR)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [4]={["label"]="Dialogar (CAR)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [5]={["label"]="Escapar (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [6]={["label"]="Entrar en combate !!",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_10",
-        name="Animal Salvaje",
-        desq="Animal Salvaje",
-        tipo="trampa",
-        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
-        opciones={
-        [1]={["label"]="Espantar (INT)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Escapar (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [3]={["label"]="Saber natural (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_11",
-        name="Paranormal",
-        desq="Paranormal",
-        tipo="trampa",
-        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
-        opciones={
-        [1]={["label"]="investigar (INT)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [3]={["label"]="Consecuencias",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
-        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_12",
-        name="Mistery men",
-        desq="Mistery men",
-        tipo="trampa",
-        evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
-        opciones={
-        [1]={["label"]="Store",["req"]="", cost=0, type="npc",name="",stat="des",dc=10},
-        [2]={["label"]="Investigar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [3]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
-        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_13",
-        name="Mistery men",
-        desq="Mistery men",
-        opciones={
-        [1]={["label"]="estudiar (INT)",["req"]="", cost=0, type="stat",name="",stat="des",dc=10},
-        [2]={["label"]=" Observar (PER)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [3]={["label"]="Afrontar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
-        [4]={["label"]="Eludir (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
-        },
-    },
-
-    {
-        id="evento_14",
-        name="humo en el bosque",
-        desq="humo en el bosque",
-        opciones={
-        [1]={["label"]="Investigar (INT) ",["req"]="(12 DC)", cost=0, type="stat",name="", stat="con", dc=12},
-        [2]={["label"]="Observar (PER)",["req"]="(4 MP)", cost=4, type="stat",name="",stat="con", dc=12},
-        [3]={["label"]="Ignorar",["req"]="", cost=8, type="pat",name="",stat="con", dc=12},
-        },
-    },
-}
-
-cards={}
-cards=bosque_deck
 
 
 
@@ -1029,12 +1249,51 @@ Owner_char=
     live=true
     }
 
+Sodica= 
+{
+    anim={ti=0,ac=1,frm={{t=32,spr=1002},{t=32,spr=1004},}},
+    animv={ti=0,ac=1,frm={{t=32,spr=1002},{t=32,spr=1004},}},
+    sheet={"new_sprites_jobs",73,2,3,x=0,y=0,size=2},
+    live=true
+}
+Brunilda={
+    anim={ti=0,ac=1,frm={{t=32,spr=994},{t=32,spr=996},}},
+    animv={ti=0,ac=1,frm={{t=32,spr=994},{t=32,spr=996},}},
+    sheet={"new_sprites_jobs",73,2,3,x=0,y=0,size=2},
+    live=true
+
+}
+
+Prinrosesa={
+    anim={ti=0,ac=1,frm={{t=32,spr=998},{t=32,spr=1000},}},
+    animv={ti=0,ac=1,frm={{t=32,spr=998},{t=32,spr=1000},}},
+    sheet={"new_sprites_jobs",73,2,3,x=0,y=0,size=2},
+    live=true
+}
+
+Wiper ={
+    anim={ti=0,ac=1,frm={{t=32,spr=1006},{t=32,spr=1008},}},
+    animv={ti=0,ac=1,frm={{t=32,spr=1006},{t=32,spr=1008},}},
+    sheet={"new_sprites_jobs",73,2,3,x=0,y=0,size=2},
+    live=true
+
+
+}
+
+Saku ={
+    anim={ti=0,ac=1,frm={{t=32,spr=946},{t=32,spr=947},}},
+    animv={ti=0,ac=1,frm={{t=32,spr=946},{t=32,spr=947},}},
+    sheet={"new_sprites_jobs",73,1,4,x=0,y=0,size=2},
+    live=true
+
+
+}
 Tiendas={}
 Tiendas["vendedor_tienda_pueblo_inicio"]={
     name="vendedor",
     tipo="store",
-    owner="arturo",
-    char=Owner_char,
+    owner="Sodica",
+    char=Sodica,
     people=2,
     inn_cost=0,
     itemsList={
@@ -1049,8 +1308,8 @@ Tiendas["vendedor_tienda_pueblo_inicio"]={
 Tiendas["vendedor_inn_pueblo_inicio"]={
     name="vendedor",
     tipo="inn",
-    owner="jane",
-    char=Owner_char,
+    owner="Prinrosesa",
+    char=Prinrosesa,
     people=2,
     inn_cost=10,
     itemsList={
@@ -1061,8 +1320,8 @@ Tiendas["vendedor_inn_pueblo_inicio"]={
 Tiendas["vendedor_herrero_pueblo_inicio"]={
     name="vendedor",
     tipo="store",
-    owner="bolt",
-    char=Owner_char,
+    owner="Wiper",
+    char=Wiper,
     people=2,
     inn_cost=0,
     itemsList={
@@ -1080,8 +1339,8 @@ Tiendas["vendedor_herrero_pueblo_inicio"]={
 Tiendas["vendedor_spell_pueblo_inicio"]={
     name="vendedor",
     tipo="store",
-    owner="shadow",
-    char=Owner_char,
+    owner="Saku",
+    char=Saku,
     people=2,
     inn_cost=0,
     itemsList={
@@ -1091,4 +1350,40 @@ Tiendas["vendedor_spell_pueblo_inicio"]={
      }
 }
 
+Tiendas["vendedor_provisiones_pueblo_inicio"]={
+    name="vendedor",
+    tipo="store",
+    owner="Brunilda",
+    char=Brunilda,
+    people=2,
+    inn_cost=0,
+    itemsList={
+        {id=lista_items_juego["pocion"].id,name=lista_items_juego["pocion"].name,cost=lista_items_juego["pocion"].cost+10,objeto=lista_items_juego["pocion"],itemType="consumible"},
+        {id=lista_items_juego["ether"].id,name=lista_items_juego["ether"].name,cost=lista_items_juego["ether"].cost+10,objeto=lista_items_juego["ether"],itemType="consumible"},
+        {id=lista_items_juego["bomba"].id,name=lista_items_juego["bomba"].name,cost=lista_items_juego["bomba"].cost+10,objeto=lista_items_juego["bomba"],itemType="consumible"},
+        {id=lista_items_juego["revivir"].id,name=lista_items_juego["revivir"].name,cost=lista_items_juego["revivir"].cost+10,objeto=lista_items_juego["revivir"],itemType="consumible"},
+        {id=lista_items_juego["antidoto"].id,name=lista_items_juego["antidoto"].name,cost=lista_items_juego["antidoto"].cost+10,objeto=lista_items_juego["antidoto"],itemType="consumible"},
+     }
+}
 
+
+
+
+Tabla_infiltracion={}
+
+
+Tabla_infiltracion["infiltracion_basica"] ={
+    id="infiltracion_basica",
+    name="escondite",
+    tipo="stealh_quest",
+    group_name={},
+    stealth_deck=Infiltracion_deck,
+    quick_steal={},
+    stealth_level=InfiltracionData.Niveles_Table.BASICO,
+    stealth_type=InfiltracionData.Limit_Table.TENSION,
+    full_battle_node="",
+    quick_battle_node="",
+    people=6, --Perk to see every one
+    lvTension=1,
+
+}
