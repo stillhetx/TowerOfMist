@@ -2,40 +2,42 @@
 Operacion={}
 
 Operacion["magic"] = function (v,o)   
-    if Actual.mp_< Actual.mg[(ini_view-1)+Op].cost then
+    o = o or 1
+    if v.mp_< v.mg[o].cost then
         State ="select"
         Acc=""
     else
-        ConfigAccion(Actual.mg[(ini_view-1)+Op].id,
-                    Actual.mg[(ini_view-1)+Op].name,
-                    Actual.mg[(ini_view-1)+Op].dir,
-                    Actual.mg[(ini_view-1)+Op].cost,
-                    Actual.mg[(ini_view-1)+Op].tipo,
-                    Actual.mg[(ini_view-1)+Op].color,
-                    Actual.mg[(ini_view-1)+Op].lv)
+        ConfigAccion(v.mg[o].id,
+                    v.mg[o].name,
+                    v.mg[o].dir,
+                    v.mg[o].cost,
+                    v.mg[o].tipo,
+                    v.mg[o].color,
+                    v.mg[o].lv)
 
-        Mg_sel=Actual.mg[(ini_view-1)+Op].id
-        Name_action=Actual.mg[(ini_view-1)+Op].name
-        Dirr=Actual.mg[(ini_view-1)+Op].dir
-        Ccost=Actual.mg[(ini_view-1)+Op].cost
-        Ttipo=Actual.mg[(ini_view-1)+Op].tipo
-        Ccolor=Actual.mg[(ini_view-1)+Op].color
-        Llv=Actual.mg[(ini_view-1)+Op].lv
+        Mg_sel=v.mg[o].id
+        Name_action=v.mg[o].name
+        Dirr=v.mg[o].dir
+        Ccost=v.mg[o].cost
+        Ttipo=v.mg[o].tipo
+        Ccolor=v.mg[o].color
+        Llv=v.mg[o].lv
     end
 end
           
  Operacion["w.magic"] = function (v,o)   
-    if Actual.mp_< Actual.milagros[(ini_view-1)+Op].cost then
+    o = o or 1
+    if v.mp_< v.milagros[o].cost then
         State ="select"
         Acc=""
     else
-        Mg_sel=Actual.milagros[(ini_view-1)+Op].id
-        Name_action=Actual.milagros[(ini_view-1)+Op].name
-        Dirr=Actual.milagros[(ini_view-1)+Op].dir
-        Ccost=Actual.milagros[(ini_view-1)+Op].cost
-        Ttipo=Actual.milagros[(ini_view-1)+Op].tipo
-        Ccolor=Actual.milagros[(ini_view-1)+Op].color
-        Llv=Actual.milagros[(ini_view-1)+Op].lv
+        Mg_sel=v.milagros[o].id
+        Name_action=v.milagros[o].name
+        Dirr=v.milagros[o].dir
+        Ccost=v.milagros[o].cost
+        Ttipo=v.milagros[o].tipo
+        Ccolor=v.milagros[o].color
+        Llv=v.milagros[o].lv
     end
     
  end
@@ -44,54 +46,57 @@ end
 
 
   Operacion["espada"] = function (v,o)   
-        if Actual.mp_< Actual.swm[(ini_view-1)+Op].cost then
+    o = o or 1
+        if v.mp_< v.swm[o].cost then
             State ="select"
             Acc=""
         else
-            Mg_sel=Actual.swm[(ini_view-1)+Op].id
-            Name_action=Actual.swm[(ini_view-1)+Op].name
-            Dirr=Actual.swm[(ini_view-1)+Op].dir
-            Ccost=Actual.swm[(ini_view-1)+Op].cost
-            Ttipo=Actual.swm[(ini_view-1)+Op].tipo
-            Ccolor=Actual.swm[(ini_view-1)+Op].color
-            Llv=Actual.swm[(ini_view-1)+Op].lv
+            Mg_sel=v.swm[o].id
+            Name_action=v.swm[o].name
+            Dirr=v.swm[o].dir
+            Ccost=v.swm[o].cost
+            Ttipo=v.swm[o].tipo
+            Ccolor=v.swm[o].color
+            Llv=v.swm[o].lv
         end    
   end
                 
 Operacion["spirit"] = function (v,o)   
+    o = o or 1
 
-    if Actual.mp_< Actual.spirit[(ini_view-1)+Op].cost then
+    if v.mp_< v.spirit[o].cost then
         State ="select"
         Acc=""
     else
-        Mg_sel=Actual.spirit[(ini_view-1)+Op].id
-        Name_action=Actual.spirit[(ini_view-1)+Op].name
-        Dirr=Actual.spirit[(ini_view-1)+Op].dir
-        Ccost=Actual.spirit[(ini_view-1)+Op].cost
-        Ttipo=Actual.spirit[(ini_view-1)+Op].tipo
+        Mg_sel=v.spirit[o].id
+        Name_action=v.spirit[o].name
+        Dirr=v.spirit[o].dir
+        Ccost=v.spirit[o].cost
+        Ttipo=v.spirit[o].tipo
     end
 
 end
 
 
 Operacion["especiales"] = function (v,o)   
+    o = o or 1
 
-     if Actual.mp_< Actual.spe[(ini_view-1)+Op].cost then
+     if v.mp_< v.spe[o].cost then
         State ="select"
         Acc=""
     else
-        Mg_sel=Actual.spe[(ini_view-1)+Op].id
-        Name_action=Actual.spe[(ini_view-1)+Op].name
-        Dirr=Actual.spe[(ini_view-1)+Op].dir
-        Ccost=Actual.spe[(ini_view-1)+Op].cost
-        SubState=Actual.spe[(ini_view-1)+Op].mtipo
-        if  Actual.spe[(ini_view-1)+Op].isCommand == true then
-                            Sel_command=Actual.spe[(ini_view-1)+Op].isCommand                        
+        Mg_sel=v.spe[o].id
+        Name_action=v.spe[o].name
+        Dirr=v.spe[o].dir
+        Ccost=v.spe[o].cost
+        SubState=v.spe[o].mtipo
+        if  v.spe[o].isCommand == true then
+                            Sel_command=v.spe[o].isCommand                        
                             --Msg_debug=Msg_debug.." #C"
         end
-        if Actual.spe[(ini_view-1)+Op].isReplace == true then
-            Acc=Actual.spe[(ini_view-1)+Op].sub
-            State=Actual.spe[(ini_view-1)+Op].sel
+        if v.spe[o].isReplace == true then
+            Acc=v.spe[o].sub
+            State=v.spe[o].sel
             Replace_Acc=true
             if State=="Execute" then
                 Execute=true
@@ -103,97 +108,104 @@ end
 
 
 Operacion["spell.list"] = function (v,o)   
-    Mg_sel=Actual.mg[(ini_view-1)+Op].id
-    Name_action=Actual.mg[(ini_view-1)+Op].name
-    Dirr=Actual.mg[(ini_view-1)+Op].dir     
-    Ttipo=Actual.mg[(ini_view-1)+Op].tipo
+    o = o or 1
+    Mg_sel=v.mg[o].id
+    Name_action=v.mg[o].name
+    Dirr=v.mg[o].dir     
+    Ttipo=v.mg[o].tipo
 end
 
 
 Operacion["Power.Stone"] = function (v,o)   
-    Mg_sel=Actual.powerStone[(ini_view-1)+Op].id
-    Name_action=Actual.powerStone[(ini_view-1)+Op].name
-    Dirr=Actual.powerStone[(ini_view-1)+Op].dir     
-    Ttipo=Actual.powerStone[(ini_view-1)+Op].tipo
+    o = o or 1
+    Mg_sel=v.powerStone[o].id
+    Name_action=v.powerStone[o].name
+    Dirr=v.powerStone[o].dir     
+    Ttipo=v.powerStone[o].tipo
 end
 
 
 Operacion["dual M."] = function (v,o)   
-    Mg_sel=Actual.mg[(ini_view-1)+Op].id
-    Name_action=Actual.mg[(ini_view-1)+Op].name
-    Dirr=Actual.mg[(ini_view-1)+Op].dir
-    Ccost=Actual.mg[(ini_view-1)+Op].cost
-    Ttipo=Actual.mg[(ini_view-1)+Op].tipo
-    Ccolor=Actual.mg[(ini_view-1)+Op].color
-    Llv=Actual.mg[(ini_view-1)+Op].lv
+    o = o or 1
+    Mg_sel=v.mg[o].id
+    Name_action=v.mg[o].name
+    Dirr=v.mg[o].dir
+    Ccost=v.mg[o].cost
+    Ttipo=v.mg[o].tipo
+    Ccolor=v.mg[o].color
+    Llv=v.mg[o].lv
                   
-    if not (Actual.slots_[Llv]>1) and not (Actual.mp_>(Ccost*1.5)) then
+    if not (v.slots_[Llv]>1) and not (v.mp_>(Ccost*1.5)) then
         State ="select"
         Acc=""
     end
 end
                 
        
-Operacion["tecnica"] = function (v,o)   
-    Mg_sel=Actual.sk[(ini_view-1)+Op].id
-    Name_action=Actual.sk[(ini_view-1)+Op].name
-    Dirr=Actual.sk[(ini_view-1)+Op].dir
-    Sel_t_cost=Actual.sk[(ini_view-1)+Op].tCost
-    IsCharge=Actual.sk[(ini_view-1)+Op].isCharge
-    Sel_command=Actual.sk[(ini_view-1)+Op].isCommand
-    if Actual.sk[(ini_view-1)+Op].tCost=="charge" and not (Actual.carga==1) then
+Operacion["tecnica"] = function (v,o)  
+    o = o or 1 
+    Mg_sel=v.sk[o].id
+    Name_action=v.sk[o].name
+    Dirr=v.sk[o].dir
+    Sel_t_cost=v.sk[o].tCost
+    IsCharge=v.sk[o].isCharge
+    Sel_command=v.sk[o].isCommand
+    if v.sk[o].tCost=="charge" and not (v.carga==1) then
         State = "select"
         Acc=""
-    elseif Actual.sk[(ini_view-1)+Op].tCost=="rc" and not (Actual.rc_>0) then
+    elseif v.sk[o].tCost=="rc" and not (v.rc_>0) then
         State = "select"
         Acc=""                          
     end
-    if Actual.sk[(ini_view-1)+Op].isReplace then
-        Acc=Actual.sk[(ini_view-1)+Op].sub
-        State=Actual.sk[(ini_view-1)+Op].sel
+    if v.sk[o].isReplace then
+        Acc=v.sk[o].sub
+        State=v.sk[o].sel
         Replace_Acc=true
     end
 
 end
                
 
-Operacion["invocar"] = function (v,o)     
-    Mg_sel=Actual.invo[(ini_view-1)+Op].id
-    Name_action=Actual.invo[(ini_view-1)+Op].name
-    Dirr=Actual.invo[(ini_view-1)+Op].dir 
+Operacion["invocar"] = function (v,o)    
+    o = o or 1 
+    Mg_sel=v.invo[o].id
+    Name_action=v.invo[o].name
+    Dirr=v.invo[o].dir 
 end
 
-Operacion["canciones"] = function (v,o)      
-    if Actual.mp_< Actual.cancion[(ini_view-1)+Op].cost then
+Operacion["canciones"] = function (v,o)    
+    o = o or 1  
+    if v.mp_< v.cancion[o].cost then
                     State ="select"
                     Acc=""
     else
-                    Mg_sel=Actual.cancion[(ini_view-1)+Op].id
-                    Name_action=Actual.cancion[(ini_view-1)+Op].name
-                    Dirr=Actual.cancion[(ini_view-1)+Op].dir
-                    Ccost=Actual.cancion[(ini_view-1)+Op].cost
-                    Ttipo=Actual.cancion[(ini_view-1)+Op].tipo
-                    Ccolor=Actual.cancion[(ini_view-1)+Op].color
-                    Llv=Actual.cancion[(ini_view-1)+Op].lv
+                    Mg_sel=v.cancion[o].id
+                    Name_action=v.cancion[o].name
+                    Dirr=v.cancion[o].dir
+                    Ccost=v.cancion[o].cost
+                    Ttipo=v.cancion[o].tipo
+                    Ccolor=v.cancion[o].color
+                    Llv=v.cancion[o].lv
 
                     --CostoSkill()
-                    --Msg_debug=" #"..(ini_view-1)+Op
+                    --Msg_debug=" #"..o
                     -- Msg_debug=" "..Mg_sel.." "..Name_action.." "..Dirr.." "..Ccost.." "..Ttipo
     end
 end
 
-Operacion["bailes"] = function (v,o)     
-    Mg_sel=Actual.bailes[(ini_view-1)+Op].id
-    Name_action=Actual.bailes[(ini_view-1)+Op].name
-    Dirr=Actual.bailes[(ini_view-1)+Op].dir
+Operacion["bailes"] = function (v,o)    
+    o = o or 1 
+    Mg_sel=v.bailes[o].id
+    Name_action=v.bailes[o].name
+    Dirr=v.bailes[o].dir
 
-    Sel_t_cost=Actual.bailes[(ini_view-1)+Op].tCost
-    IsCharge=Actual.bailes[(ini_view-1)+Op].isCharge
-    Sel_command=Actual.bailes[(ini_view-1)+Op].isCommand
-    if Actual.bailes[(ini_view-1)+Op].tCost=="charge" and not Actual.carga==1 then
+    Sel_t_cost=v.bailes[o].tCost
+    IsCharge=v.bailes[o].isCharge
+    Sel_command=v.bailes[o].isCommand
+    if v.bailes[o].tCost=="charge" and not v.carga==1 then
         State = "select"
         Acc=""
-    elseif Actual.bailes[(ini_view-1)+Op].tCost=="rc" and not Actual.rc_>0 then
+    elseif v.bailes[o].tCost=="rc" and not v.rc_>0 then
         State = "select"
         Acc=""                          
     end
@@ -202,17 +214,19 @@ end
 
 
 Operacion["W.Arts"] = function (v,o)      
-    Mg_sel=Actual.art[(ini_view-1)+Op].id
-    Name_action=Actual.art[(ini_view-1)+Op].name
-    Dirr=Actual.art[(ini_view-1)+Op].dir
+    o = o or 1
+    Mg_sel=v.art[o].id
+    Name_action=v.art[o].name
+    Dirr=v.art[o].dir
 end
 
 
-Operacion["llamar"] = function (v,o)     
-    if #Actual.beast>0 then 
-        Mg_sel=Actual.beast[(ini_view-1)+Op].id
-        Name_action=Actual.beast[(ini_view-1)+Op].name
-        Dirr=Actual.beast[(ini_view-1)+Op].dir
+Operacion["llamar"] = function (v,o)  
+    o = o or 1   
+    if #v.beast>0 then 
+        Mg_sel=v.beast[o].id
+        Name_action=v.beast[o].name
+        Dirr=v.beast[o].dir
     else
         State="select"
         Acc=""---
@@ -220,60 +234,65 @@ Operacion["llamar"] = function (v,o)
 end
 
 
-Operacion["tools"] = function (v,o)      
-    Mg_sel=Actual.tools[(ini_view-1)+Op].id
-    Name_action=Actual.tools[(ini_view-1)+Op].name
-    Dirr=Actual.tools[(ini_view-1)+Op].dir
+Operacion["tools"] = function (v,o)  
+    o = o or 1    
+    Mg_sel=v.tools[o].id
+    Name_action=v.tools[o].name
+    Dirr=v.tools[o].dir
 end
 
 
 Operacion["bullet"] = function (v,o)   
-    Mg_sel=Actual.bullet[(ini_view-1)+Op].id
-    Name_action=Actual.bullet[(ini_view-1)+Op].name
-    Dirr=Actual.bullet[(ini_view-1)+Op].dir
+    o = o or 1
+    Mg_sel=v.bullet[o].id
+    Name_action=v.bullet[o].name
+    Dirr=v.bullet[o].dir
 end
 
-Operacion["Blu.magic"] = function (v,o)     
-    Mg_sel=Actual.blue[(ini_view-1)+Op].id
-    Name_action=Actual.blue[(ini_view-1)+Op].name
-    Dirr=Actual.blue[(ini_view-1)+Op].dir
+Operacion["Blu.magic"] = function (v,o)   
+    o = o or 1  
+    Mg_sel=v.blue[o].id
+    Name_action=v.blue[o].name
+    Dirr=v.blue[o].dir
 end
 
-Operacion["transformacion"] = function (v,o)    
-    Mg_sel=Actual.morph[(ini_view-1)+Op].id       
-    Name_action=Actual.morph[(ini_view-1)+Op].name
-    Dirr=Actual.morph[(ini_view-1)+Op].dir
+Operacion["transformacion"] = function (v,o)   
+    o = o or 1 
+    Mg_sel=v.morph[o].id       
+    Name_action=v.morph[o].name
+    Dirr=v.morph[o].dir
 end
 
 Operacion["mix"] = function (v,o)   
-    Mg_sel=Actual.mix[(ini_view-1)+Op].id
-    Name_action=Actual.mix[(ini_view-1)+Op].name
-    Dirr=Actual.mix[(ini_view-1)+Op].dir
+    o = o or 1
+    Mg_sel=v.mix[o].id
+    Name_action=v.mix[o].name
+    Dirr=v.mix[o].dir
 end
     
 
 Operacion["POS-CONFIG"]= function (v,o)   
-    if "m"== Dirr  and State == "select o" then
-        State="select m"
-    elseif "x"== Dirr  and State == "select o" then
+    if "m"== Dirr  and State == "select_o" then
+        State="select_m"
+    elseif "x"== Dirr  and State == "select_o" then
         State="select"
         Execute=true
-    elseif "a"== Dirr  and State == "select o" then
-        State="select a"
-    elseif "o"== Dirr  and State == "select o" then
-        State="select o"
-    elseif "e"== Dirr and State == "select o" then
-        State="select e"
+    elseif "a"== Dirr  and State == "select_o" then
+        State="select_a"
+    elseif "o"== Dirr  and State == "select_o" then
+        State="select_o"
+    elseif "e"== Dirr and State == "select_o" then
+        State="select_e"
         FiltrarEnemigoVivos()
-    elseif "c"== Dirr and State == "select o" then
-        State="select c"
+    elseif "c"== Dirr and State == "select_o" then
+        State="select_c"
         FiltrarAliadosVivos()
-    elseif "d"== Dirr and State == "select o" then
+    elseif "d"== Dirr and State == "select_o" then
         FiltrarAliadosMuertos()
                 --filtrarDerrotados()
-        State="select d"
+        State="select_d"
         if #AliadosVivos<1 then
-            State="select o"
+            State="select_o"
         end
     end  
 
@@ -285,7 +304,7 @@ Operacion["POS-CONFIG"]= function (v,o)
         filtrarBalas()
     end
     if Acc=="llamar" and Replace_Acc then
-        if not (#Actual.beast>0) then
+        if not (#v.beast>0) then
             State="select"
             Acc=""
         end--

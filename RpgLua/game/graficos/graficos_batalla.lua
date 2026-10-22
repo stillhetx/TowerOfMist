@@ -39,7 +39,7 @@ function graph_mode()
         --love.graphics.print( "debug: "..Modo.." "..Show_view,30,120+(24*-2))
 
     --timer_wait
-    if State=="select o" and Acc=="magic" then
+    if State=="select_o" and Acc=="magic" then
     end
     love.graphics.print( "nivel:  "..Nvg.." ",500,16+(24*0))
 
@@ -129,7 +129,7 @@ function graph_mode()
     elseif Modo=="NPC" then 
         for k,v in pairs(ActiveParty) do
             if v.see then  
-                show_spr(v, (v.x),(v.y), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c")  
+                show_spr(v, (v.x),(v.y), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select_c")  
                 Barra_vida(v, (v.x-10),(v.y)) --- -10 0     0   +20
             end 
         end      

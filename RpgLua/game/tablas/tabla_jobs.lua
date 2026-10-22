@@ -390,8 +390,8 @@ Nuevas_clases={
         tools={},
         bullet={},
         spe={
-                {name="dual M.",id="dual_M.",isCharge=false,isCommand=true,isReplace=true,isList=true,tCost="variable",sub="dual M.",sel="select oo",cost=0, dir="o"},
-                {name="potenciar M.",id="potenciar_M.",isCharge=false,isCommand=true,isReplace=false,isList=false,tCost="mana",sub="potenciar M",sel="select o",cost=5, dir="o"},
+                {name="dual M.",id="dual_M.",isCharge=false,isCommand=true,isReplace=true,isList=true,tCost="variable",sub="dual M.",sel="select_oo",cost=0, dir="o"},
+                {name="potenciar M.",id="potenciar_M.",isCharge=false,isCommand=true,isReplace=false,isList=false,tCost="mana",sub="potenciar M",sel="select_o",cost=5, dir="o"},
                 {name="potenciar",id="potenciar",isCharge=false,isCommand=false,isReplace=false,isList=false,tCost="estres",sub="",sel="",cost=1, dir="x"},
                 {name="extra M.",id="extra_M.",isMeta=true,isCharge=false,isCommand=false,isReplace=false,isList=false,tCost="mana",sub="",sel="",cost=5, dir="x"},
                -- {name="expandir M.",id="expandir_M.",isMeta=true,isCharge=false,isCommand=false,isReplace=false,isList=false,tCost="variable",sub="",sel="",cost=0, dir="m",mtipo="number"},
@@ -635,7 +635,7 @@ Nuevas_clases={
                 {name="rezar",id="rezar",isCharge=false,isCommand=false,tCost="mana",cost=0, dir="x"},
                 {name="centrarse",id="centrarse",isCharge=false,isCommand=false,tCost="mana",cost=0, dir="x"},
                 {name="premonicion",id="premonicion",isCharge=false,isCommand=false,tCost="mana",cost=0, dir="x"},
-                {name="invocacion",id="invocacion",isCharge=false,isCommand=true,isReplace=true,tCost="mana",sub="invocar",sel="select o",cost=0, dir="o"},
+                {name="invocacion",id="invocacion",isCharge=false,isCommand=true,isReplace=true,tCost="mana",sub="invocar",sel="select_o",cost=0, dir="o"},
         },        
         spirit={},
         powerStone={},
@@ -1094,7 +1094,7 @@ Nuevas_clases={
         sk={
                 {name="asesinar",id="asesinar",isCharge=false,isCommand=true,isReplace=false,tCost="",dir="e"},
 		{name="esconderse",id="esconderse",isCharge=false,isCommand=true,isReplace=false,tCost="",dir="x"},
-		--{name="usar",id="usar",isCharge=false,isCommand=true,isReplace=true,tCost="",sub="usar",sel="select i",cost=0,dir="i"},
+		--{name="usar",id="usar",isCharge=false,isCommand=true,isReplace=true,tCost="",sub="usar",sel="select_i",cost=0,dir="i"},
         },
         blue={},
         morph={},

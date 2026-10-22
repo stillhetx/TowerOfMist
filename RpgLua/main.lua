@@ -10,6 +10,7 @@ require("game/element/infiltracionObj")
 
 --declarar tablas
 require("game/tablas/tablas")
+require("RpgLua.game.tablas.Menu.tabla_acciones_state_acciones")
 require("RpgLua.game.tablas.Menu.tabla_acciones_jugador")
 require("RpgLua.game.tablas.Menu.tabla_menu_acciones")
 --require("game/tablas/tabla_comandos")

@@ -137,7 +137,7 @@ function boton_c()
             Ccolor=Actual.mg[(ini_view-1)+Op].color
             Llv=Actual.mg[(ini_view-1)+Op].lv
 
-            State = "select meta"
+            State = "select_meta"
                     --CostoSkill()
                     --Msg_debug=" #"..(ini_view-1)+Op
                     -- Msg_debug=" "..Mg_sel.." "..Name_action.." "..Dirr.." "..Ccost.." "..Ttipo
@@ -178,7 +178,7 @@ function comprobar_arrow()
             Op=#Actual.acc
         end
     end
-    if State=="select o" and Acc=="magic" then
+    if State=="select_o" and Acc=="magic" then
         if Op<1 then
             Op=#Actual.mg
         end
@@ -187,32 +187,32 @@ function comprobar_arrow()
         end
 
     end
-    if State=="select o" and Acc=="spirit" then
+    if State=="select_o" and Acc=="spirit" then
         if Op<1 then
             Op=#Actual.spirit
         end
     end
-    if State=="select o" and Acc=="tecnica" then
+    if State=="select_o" and Acc=="tecnica" then
         if Op<1 then
             Op=#Actual.sk
         end
     end
-    if State=="select e" then
+    if State=="select_e" then
         if Op<1 then
             Op=#Show_enemy
         end
     end
-    if State=="select c" then
+    if State=="select_c" then
         if Op<1 then
             Op=#ActiveParty
         end
     end
-    if State=="select i" then
+    if State=="select_i" then
         if Op<1 then
             Op=#items
         end
     end  
-    if State=="select a" then
+    if State=="select_a" then
         if Op<1 then
             Op=#lista_todos
         end
@@ -223,37 +223,37 @@ function comprobar_arrow()
             Op=1
         end
     end
-    if State=="select o" and Acc=="magic" then
+    if State=="select_o" and Acc=="magic" then
         if Op>#Actual.mg then
             Op=1
         end
     end
-    if State=="select o" and Acc=="spirit" then
+    if State=="select_o" and Acc=="spirit" then
         if Op>#Actual.mg then
             Op=1
         end
     end
-    if State=="select o" and Acc=="tecnica"   then
+    if State=="select_o" and Acc=="tecnica"   then
         if Op>#Actual.sk then
             Op=1            
         end
     end
-    if State=="select e" then
+    if State=="select_e" then
         if Op>#Show_enemy then
             Op=1
         end
     end  
-    if State=="select c" then
+    if State=="select_c" then
         if Op>#ActiveParty then
             Op=1
         end
     end
-    if State=="select i" then
+    if State=="select_i" then
         if Op>#items then
             Op=1
         end
     end     
-    if State=="select a" then
+    if State=="select_a" then
         if Op>#lista_todos then
             Op=1
         end
@@ -269,13 +269,13 @@ function right()
         ini_view=ini_view+6
         --State="secundario"
     end 
-    if State=="select o"   then
+    if State=="select_o"   then
          Op=Op+6
     end 
-    if State=="select e" then
-        State="select c"  
-    elseif State=="select c" then
-        State="select e"
+    if State=="select_e" then
+        State="select_c"  
+    elseif State=="select_c" then
+        State="select_e"
         FiltrarEnemigoVivos()
     end     
 end   
@@ -288,18 +288,18 @@ function left()
         ini_view=ini_view-6
         --up()
     end 
-    --if State=="select o" and (Acc=="magic" or Acc=="tecnica" or Acc=="W.Arts")  then
-    if State=="select o"  then
+    --if State=="select_o" and (Acc=="magic" or Acc=="tecnica" or Acc=="W.Arts")  then
+    if State=="select_o"  then
          Op=Op-6
     end 
     
     if State=="secundario" then
         State="select"
     end 
-    if State=="select e" then
-        State="select c"
-    elseif State=="select c" then
-        State="select e"
+    if State=="select_e" then
+        State="select_c"
+    elseif State=="select_c" then
+        State="select_e"
         FiltrarEnemigoVivos()
     end     
 end   
@@ -320,17 +320,17 @@ function comeback()
     if State=="select" then
         --next()
 
-    elseif State=="select oo" then
+    elseif State=="select_oo" then
         if Acc=="dual M." then
             State ="select"
             Acc=""
         end
-    elseif State=="select ee" then
+    elseif State=="select_ee" then
         if Acc=="dual M." then
             State ="select"
             Acc=""
         end    
-    elseif State=="select o" then
+    elseif State=="select_o" then
         if Acc == "tecnica" or Acc == "magic" or Acc == "W.Arts"  or Acc == "especiales"
         or Acc == "tecnica" or Acc == "objeto" or Acc =="mix" or Acc=="bailes" 
         or Acc=="invocar" or Acc=="llamar" or Acc=="tools"  
@@ -343,12 +343,12 @@ function comeback()
         end 
 
         --acc={"atacar","W.Arts","tecnica","objeto","defensa"},
-    elseif State=="select l" then
+    elseif State=="select_l" then
         if Acc=="colecciones" or Acc=="magics" then
             State ="select"
             Acc=""            
         end
-    elseif State=="select e" then
+    elseif State=="select_e" then
         if  Acc=="atacar" or Acc=="robar" or Acc=="furia" or Acc=="saltar"  or Acc=="darkness" or Acc=="extraer" 
         or Acc=="atrapar" or Acc=="asesinar" or Acc=="rapido"
         or Acc=="extraer" or Acc=="cargar" or Acc=="quitar" 
@@ -364,13 +364,13 @@ function comeback()
         or Acc=="Power.Stone"  or Acc=="spell.list" or Acc=="runes" 
         or Acc=="dual M." or Acc=="spirit" or Acc=="ninja" or Acc=="espada" or Acc=="canciones" 
         or  Acc=="evocar" then
-            State="select o"
+            State="select_o"
             Mg_sel=""
             Dirr=""
         end
         ini_view=1
         fin_view=1
-    elseif State=="select c" then
+    elseif State=="select_c" then
         if   Acc == "tecnica" or Acc == "magic" or Acc == "W.Arts"  or Acc == "especiales"
         or Acc == "tecnica" or Acc == "objeto" or Acc =="mix" or Acc=="bailes" 
         or Acc=="invocar" or Acc=="llamar" or Acc=="tools"  
@@ -378,16 +378,16 @@ function comeback()
         or Acc=="Power.Stone"  or Acc=="spell.list" or Acc=="runes" 
         or Acc=="dual M." or Acc=="spirit" or Acc=="ninja" or Acc=="espada" or Acc=="canciones" 
         or  Acc=="evocar" then
-            State="select o"
+            State="select_o"
             Mg_sel=""
             Dirr=""
         end
         if  Acc=="objeto" or Acc=="usar"  then
-            State="select i"
+            State="select_i"
             Mg_sel=""
             Dirr=""
         end
-    elseif State=="select i" then
+    elseif State=="select_i" then
         if  Acc=="objeto" or Acc=="usar" then
             State="select"
             Acc=""

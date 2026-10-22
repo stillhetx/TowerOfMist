@@ -15,7 +15,7 @@ function Graficos_Batalla.show_enemy()
                         side = false
                 end
 
-                show_spr(v, (v.x),(v.y), v.x,v.y-timer_dmg_txt, (v.x),(v.y),Temp_e==v.id and State=="select e",side)
+                show_spr(v, (v.x),(v.y), v.x,v.y-timer_dmg_txt, (v.x),(v.y),Temp_e==v.id and State=="select_e",side)
                 --show_msg_dmg(v,v.x,v.y-timer_dmg_txt,false)
                 Barra_vida(v, (v.x+40), (v.y))
                 Mostrar_estados(v,(v.x+76),(v.y),true)

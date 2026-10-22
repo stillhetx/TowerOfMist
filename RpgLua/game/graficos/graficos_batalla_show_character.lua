@@ -1,7 +1,7 @@
 function Graficos_Batalla.show_character()
     for k,v in pairs(ActiveParty) do
         if v.see then 
-            show_spr(v, (v.x),(v.y+(36*(3-v.sheet[4]))), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",false)  
+            show_spr(v, (v.x),(v.y+(36*(3-v.sheet[4]))), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select_c",false)  
         end    
     end    
     for k,v in pairs(ActiveParty) do

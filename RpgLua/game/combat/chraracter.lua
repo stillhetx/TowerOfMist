@@ -30,13 +30,13 @@ function recuperar_ultima_accion()
             Mg_sel=Last_mg_sel
             Dirr=Last_dirr
         if Dirr=="e" then 
-            State="select e"
+            State="select_e"
         end
         if Dirr=="c" then 
-            State="select c"
+            State="select_c"
         end
         if Dirr=="a" then 
-            State="select a"
+            State="select_a"
         end
     else
         --cancelar

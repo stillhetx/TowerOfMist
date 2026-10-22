@@ -417,7 +417,7 @@ function standBy_mode()
         for k,v in pairs(ActiveParty) do
             if v.see then  
                 
-                show_spr(v, (v.x),(v.y), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",false)  
+                show_spr(v, (v.x),(v.y), v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select_c",false)  
                 show_msg_dmg(v,v.x,v.y+20-timer_dmg_txt,false)
                 Barra_vida(v, (v.x-14),(v.y)) --- -10 0     0   +20
                 Mostrar_estados(v,(v.x-60),(v.y),false) --50 0
@@ -989,11 +989,11 @@ function Show_menus_name_cost_magic(v,x,y)
 
         
 
-            if Acc=="dual M." and State=="select oo" then
+            if Acc=="dual M." and State=="select_oo" then
                 mult=1
             end
 
-            if Acc=="dual M." and State=="select o" then
+            if Acc=="dual M." and State=="select_o" then
                 mult=1.5
                 add=Ccost2
                 tax[Llv2]=1

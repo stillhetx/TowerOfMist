@@ -246,6 +246,33 @@ Infiltracion_deck={
         },
     },
     {
+        id="Agujero_sin_fondo",
+        name="Agujero sin fondo",
+        desq="Caen en una trampa, un profundo agujero dificil de escalar",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        opciones={
+        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=4, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+
+        {
+        id="Agujero_con_monstruos",
+        name="Agujero con monstruos",
+        desq="Caen en una trampa, un profundo agujero dificil de escalar",
+        tipo="trampa",
+        evaluar={stat="per",dc=10, msg="evitas la trampa"},
+        opciones={
+        [1]={["label"]="Escalar (AGI)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]="Trepar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="improvisar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [4]={["label"]="Magia (MP)",["req"]="(4 MP)", cost=4, type="mp",name="bomba", stat="con",dc=12},
+        },
+    },
+    {
         id="trampa_cazador_2",
         name="Agujero estacas",
         desq="Caen en una trampa, un agujero con estacas",
@@ -260,7 +287,7 @@ Infiltracion_deck={
     },
     {
         id="trampa_cazador_3",
-        name="Cueva secreta",
+        name="Trampa_para_osos",
         tipo="trampa",
         evaluar={stat="per",dc=10, msg="evitas la trampa"},
         desq="Caen un trampa que los lleva a una cueva secreta",
@@ -275,9 +302,20 @@ Infiltracion_deck={
 
 
     {
-        id="cueva_secreta_00",
-        name="Cueva secreta",
-        tipo="normal",
+        id="murallas_cerrandose",
+        name="murallas cerrandose",
+        tipo="trampa",
+        desq="Descubren una cueva secreta",
+        opciones={
+        [1]={["label"]="Entrar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
+        [2]={["label"]="Analizar (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
+        [3]={["label"]="Continuar",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+    },
+        {
+        id="murallas_con_puas_cerrandose",
+        name="murallas con puas cerrandose",
+        tipo="trampa",
         desq="Descubren una cueva secreta",
         opciones={
         [1]={["label"]="Entrar",["req"]="(10 DC)", cost=0, type="stat",name="",nodoName="cueva_secreta_bosque",stat="des",dc=10},
@@ -288,8 +326,8 @@ Infiltracion_deck={
     
 
     {
-        id="evento_3",
-        name="tormenta",
+        id="Dardos_envenenados",
+        name="Dardos envenenados",
         tipo="normal",
         desq="Un tormenta se acerca",
         opciones={
@@ -302,10 +340,10 @@ Infiltracion_deck={
 
     
     {
-        id="evento_4",
-        name="Hambre",
+        id="Trampa_de_arena",
+        name="Trampa de arena",
         tipo="normal",
-        desq="el hambre ataca al grupo",
+        desq="el cuarto se llena de Arena",
         opciones={
         [1]={["label"]="buscar comida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
         [2]={["label"]="aguantar (CON)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
@@ -315,10 +353,10 @@ Infiltracion_deck={
     },
 
     {
-        id="evento_5",
-        name="Perdido",
+        id="Trampa_de_agua",
+        name="Trampa de agua",
         tipo="trampa",
-        desq="Se han perdido en el bosque",
+        desq="el cuarto se llena de agua",
         opciones={
         [1]={["label"]="Buscar salida (PER)",["req"]="(10 DC)", cost=0, type="stat",name="",stat="des",dc=10},
         [2]={["label"]="Saber natural (INT)",["req"]="(8 DC)", cost=4, type="stat",name="",stat="agi", dc=8},
@@ -327,8 +365,8 @@ Infiltracion_deck={
     },
 
     {
-        id="evento_6",
-        name="Cruzar el rio",
+        id="Perseguidos_por_enemigos",
+        name="Perseguidos por enemigos",
         tipo="normal",
         desq="un torrentoso rio en el camino",
         opciones={
@@ -337,10 +375,10 @@ Infiltracion_deck={
         [3]={["label"]="derribar un arbol y cruzar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
         },
     },
-
+--
     {
-        id="evento_9",
-        name="Ladrones del camino",
+        id="roca_rodante",
+        name="Roca Donante",
         tipo="trampa",
         evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
         desq="Ladrones amenazan al grupo",
@@ -355,8 +393,8 @@ Infiltracion_deck={
     },
 
     {
-        id="evento_10",
-        name="Animal Salvaje",
+        id="Techo_cayendose",
+        name="Techo_cayendose",
         desq="Animal Salvaje",
         tipo="trampa",
         evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
@@ -369,8 +407,8 @@ Infiltracion_deck={
     },
 
     {
-        id="evento_11",
-        name="Paranormal",
+        id="Paredes_escupe_fuego",
+        name="Paredes_escupe_fuego",
         desq="Paranormal",
         tipo="trampa",
         evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
@@ -383,8 +421,8 @@ Infiltracion_deck={
     },
 
     {
-        id="evento_12",
-        name="Mistery men",
+        id="Cofre_trampa_veneno",
+        name="Cofre_trampa_veneno",
         desq="Mistery men",
         tipo="trampa",
         evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
@@ -395,10 +433,50 @@ Infiltracion_deck={
         [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
         },
     },
+        {
+        id="Cofre_trampa_veneno",
+        name="Cofre_trampa_veneno",
+        desq="Mistery men",
+        tipo="post",
+        --evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="Store",["req"]="", cost=0, type="npc",name="",stat="des",dc=10},
+        [2]={["label"]="Investigar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+        post="Cofre_trampa_veneno_POST"
+    },
+    {
+        id="Cofre_trampa_veneno_POST",
+        name="Cofre_trampa_veneno",
+        desq="Mistery men",
+        tipo="post",
+        --evaluar={stat="per",dc=10, msg="evitas ser visto",cons="node",nodoName="murcielago_salvaje_01"},
+        opciones={
+        [1]={["label"]="Store",["req"]="", cost=0, type="npc",name="",stat="des",dc=10},
+        [2]={["label"]="Investigar (INT)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Observar (PER)",["req"]="(12 DC)", cost=1, type="pay",name="", stat="con",dc=12},
+        [4]={["label"]="Entrar en combate",["req"]="(12 DC)", cost=1,type="battle", nodoName="murcielago_salvaje_01",name="bomba", stat="con",dc=12},
+        },
+    },
 
     {
-        id="evento_13",
-        name="Mistery men",
+        id="Cofre_trampa_explosion",
+        name="Cofre_trampa_explosion",
+        desq="Mistery men",
+        opciones={
+        [1]={["label"]="estudiar (INT)",["req"]="", cost=0, type="stat",name="",stat="des",dc=10},
+        [2]={["label"]=" Observar (PER)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [3]={["label"]="Afrontar (CON)",["req"]="(12 DC)", cost=1, type="stat",name="", stat="con",dc=12},
+        [4]={["label"]="Eludir (AGI)",["req"]="(12 DC)", cost=1, type="stat",name="bomba", stat="con",dc=12},
+        },
+        post="Cofre_trampa_explosion_POST"
+    },
+
+        {
+        id="Cofre_trampa_explosion_POST",
+        name="Cofre_trampa_explosion",
         desq="Mistery men",
         opciones={
         [1]={["label"]="estudiar (INT)",["req"]="", cost=0, type="stat",name="",stat="des",dc=10},
@@ -408,10 +486,12 @@ Infiltracion_deck={
         },
     },
 
+
+
     {
-        id="evento_14",
-        name="humo en el bosque",
-        desq="humo en el bosque",
+        id="Cuarto principal",
+        name="Cuarto_principal",
+        desq="una hominoza presencia en el cuarto",
         opciones={
         [1]={["label"]="Investigar (INT) ",["req"]="(12 DC)", cost=0, type="stat",name="", stat="con", dc=12},
         [2]={["label"]="Observar (PER)",["req"]="(4 MP)", cost=4, type="stat",name="",stat="con", dc=12},
@@ -935,6 +1015,138 @@ lugares={
 
 
 
+["explorar_fortaleza_aberraciones"]={
+    {
+        id="Inicio_1",
+        name="inicio",
+        tipo="mensaje",
+        desq="el peligro se huele en el ambiente",
+        opciones={
+        [1]={["label"]="Avanzar",["req"]="", cost=0, type="next",name=""},
+        },
+    },
+    {
+        id="Random_1",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    }
+    ,
+    {
+        id="Random_2",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_3",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_4",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_5",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_6",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+
+    ---Crear batalla
+    {
+        id="zona_peligroza_bosque_01",
+        name="Zona peligrosa",
+        tipo="mensaje",
+        desq="sientes el peligro a tu alrededor.",
+        opciones={
+                [1]={["label"]="luchar",["req"]="", cost=0, type="battle", nodoName="bosque_base_01",name=""},
+        },
+    },
+        {
+        id="Random_7",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    }
+    ,
+    {
+        id="Random_8",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_9",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_10",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_11",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+        {
+        id="Random_12",
+        name="Evento_1",
+        tipo="mazo",
+        desq="Carta",
+        deck=Infiltracion_deck,
+    },
+    {
+        id="batalla_FINAL_ABERRACCIONES_000",
+        name="Zona peligrosa",
+        tipo="mensaje",
+        desq="sientes el peligro a tu alrededor.",
+        opciones={
+                [1]={["label"]="luchar",["req"]="", cost=0, type="battle", nodoName="bosque_base_01",name=""},
+        },
+    },
+
+    {
+        id="Masmorra_ABERRACIONES_la_salida",
+        name="la salida",
+        tipo="mensaje",
+        desq="Encuentran la salida, su aventura ha terminado",
+        opciones={
+                [1]={["label"]="Entrar",["req"]="", cost=0, type="node", nodoName="pueblo_inicio_01" ,name=""},
+                [2]={["label"]="reinciar",["req"]="", cost=0, type="reinciar", nodoName="explorar_bosque" ,name=""},
+        },
+    },   
+
+},
+
+
+
 
 ["Sorpresa_en_la_ciudad_01"]={
 
@@ -1206,6 +1418,9 @@ lugares={
 }
 
 }
+
+
+Extra_deck={}
 
 Paranatural_CARD={}
 Mistery_mens={}

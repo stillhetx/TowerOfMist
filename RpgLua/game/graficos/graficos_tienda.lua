@@ -11,7 +11,7 @@ function Tienda_mode()
     --if Tienda.etapa=="front" or Tienda.etapa=="begin" then
         for k,v in pairs(ActiveParty) do
             if v.see then 
-                show_spr(v, (v.x)+160,(v.y+(36*(3-v.sheet[4])))+120, v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select c",true)  
+                show_spr(v, (v.x)+160,(v.y+(36*(3-v.sheet[4])))+120, v.x,v.y+20-timer_dmg_txt,(v.x),(v.y+20),Temp_c==v.id and State=="select_c",true)  
             end    
         end  
 
@@ -19,7 +19,7 @@ function Tienda_mode()
     else
         for k,v in pairs(ActiveParty) do
             if v.see then 
-                --show_spr(v, 100+cont_x,((36*(3-v.sheet[4])))+120, 0,0,(v.x),(v.y+20),Temp_c==v.id and State=="select c",true)  
+                --show_spr(v, 100+cont_x,((36*(3-v.sheet[4])))+120, 0,0,(v.x),(v.y+20),Temp_c==v.id and State=="select_c",true)  
                 anim_char_avanzadoV2(v,150+cont_x,((32*(3-v.sheet[4])))+120,true,64)
             end  
             love.graphics.setColor(0,200,0)

@@ -5,7 +5,7 @@ function perfil_mode()
 
     love.graphics.draw(fondo,0,0)
     local l=Perfil.seePerfil
-    show_spr(ActiveParty[l], 36,46, 0,0,280,50,Temp_c==ActiveParty[l].id and State=="select c",false)  
+    show_spr(ActiveParty[l], 36,46, 0,0,280,50,Temp_c==ActiveParty[l].id and State=="select_c",false)  
 
 
     love.graphics.print(ActiveParty[l].name,20,2+(24*1))

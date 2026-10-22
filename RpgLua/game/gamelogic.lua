@@ -1175,7 +1175,7 @@ function tree_line_menu_op(list, hide)
 end
 
 function insideSix()
-    if State == "select o" then
+    if State == "select_o" then
         if Acc == "magic" or Acc == "tecnica" then
 
         end
@@ -1219,7 +1219,7 @@ function inside()
                 Op = 1
             end
         end
-        if State == "select oo" then
+        if State == "select_oo" then
             if Acc == "magic" then
                 if Op < 1 then
                     Op = #Actual.mg
@@ -1229,7 +1229,7 @@ function inside()
                 end
             end
         end
-        if State == "select o" then
+        if State == "select_o" then
             if Acc == "magic" then
                 logica_arrow_menu(Actual.mg)
                 --[[
@@ -1294,7 +1294,7 @@ function inside()
                 logica_arrow_menu(Actual.invo)
             end
         end
-        if State == "select e" or State == "select ee" then
+        if State == "select_e" or State == "select_ee" then
             if Op < 1 then
                 Op = #Show_enemy
             end
@@ -1302,7 +1302,7 @@ function inside()
                 Op = 1
             end
         end
-        if State == "select c" or State == "select cc" then
+        if State == "select_c" or State == "select_cc" then
             if Op < 1 then
                 Op = #ActiveParty
             end
@@ -1310,7 +1310,7 @@ function inside()
                 Op = 1
             end
         end
-        if State == "select i" then
+        if State == "select_i" then
                 if Op < 1 then
                     Op = #items 
                 end
@@ -1344,7 +1344,7 @@ function inside()
             end
             ]]
         end
-        if State == "select l" then
+        if State == "select_l" then
             if Acc == "magics" then
                 if Op < 1 then
                     Op = #Actual.mag
@@ -1362,7 +1362,7 @@ function inside()
                 end
             end
         end
-        if State == "select d" then
+        if State == "select_d" then
             if Op < 1 then
                 Op = #Death_party
             end
@@ -1370,7 +1370,7 @@ function inside()
                 Op = 1
             end
         end
-        if State == "select a" or State == "select aa" then
+        if State == "select_a" or State == "select_aa" then
             if Op < 1 then
                 Op = #lista_todos
             end
@@ -1378,7 +1378,7 @@ function inside()
                 Op = 1
             end
         end
-        if State == "select w" then
+        if State == "select_w" then
             if Op < 1 then
                 Op = #weapon_inventary
             end
