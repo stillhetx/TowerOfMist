@@ -65,11 +65,18 @@ function ejecutar_comando()
         
     end
 
+    if EsObjetivoEnemigoDerrotado(arreglo[3])
+        and not EsAccionRevivir(arreglo[2]) then
+        if #Acciones == 0 then
+            next()
+        end
+        return
+    end
 
     if str_comando=="ejecutar_atacar_A" then
         --Debug_temp=" "..str_comando
         local obj=arreglo[3]
-        if obj~=nil and obj~={} then
+        if EsEnemigoVivo(obj) then
             --Debug_temp=Debug_temp.."!"
             --mult=1
             wait_start()
@@ -99,22 +106,20 @@ function ejecutar_comando()
         Debug_temp=Debug_temp.."!"
 
         local obj=arreglo[3]
-        if obj~=nil and obj~={} then
-            if obj.hp_>0 then
-                --Debug_temp=Debug_temp.." !"
-                --mult=1
-                wait_start()
-                b_dmg_txt=true
-                obj.lastDmg=0
-                obj.slDmg=true
-                obj.lastDmgC="V"
-                --Actual.avanzar=true
-                --Actual.rest=false
-                --ejecutar_ataque_basico(obj,"right")
-                Efectos ["ejecutar_ataque_basico_INIT"](obj,ejecutor,"right",0,1)
-                checks(obj)
-                clean()
-            end 
+        if EsEnemigoVivo(obj) then
+            --Debug_temp=Debug_temp.." !"
+            --mult=1
+            wait_start()
+            b_dmg_txt=true
+            obj.lastDmg=0
+            obj.slDmg=true
+            obj.lastDmgC="V"
+            --Actual.avanzar=true
+            --Actual.rest=false
+            --ejecutar_ataque_basico(obj,"right")
+            Efectos ["ejecutar_ataque_basico_INIT"](obj,ejecutor,"right",0,1)
+            checks(obj)
+            clean()
         else
             Debug_temp=Debug_temp.."null"
             local enemy_target=GetPrimerEnemigoVivo()
@@ -520,8 +525,6 @@ function automatico(v)
     end
     
 end   
-
-
 
 
 

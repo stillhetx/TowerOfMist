@@ -1,6 +1,16 @@
+function EsEnemigoVivo(obj)
+    return type(obj) == "table"
+        and obj.tipo == "enemy"
+        and type(obj.hp_) == "number"
+        and obj.hp_ > 0
+        and obj.live ~= false
+end
+
 function NextObjetivo(obj,str)
     for _, o in ipairs(Order) do
-        if o.tipo==str and o.hp_>0  and obj~=o then
+        if type(o) == "table" and o.tipo==str
+            and type(o.hp_)=="number" and o.hp_>0
+            and o.live~=false and obj~=o then
             return o
         end
     end
@@ -166,6 +176,26 @@ end
 
 function multiplicador_estado(v)
     local c=1
+    if type(v) ~= "table" then
+        local message = "multiplicador_estado recibio un objetivo invalido."
+        if personajes_en_automatico and type(IA_jugador_prueba_registrar_error) == "function" then
+            IA_jugador_prueba_registrar_error(message)
+        else
+            print(message)
+        end
+        return c
+    end
+    if type(v.state) ~= "table" then
+        local creature_id = v.id_mons or v.id or v.name or "desconocido"
+        local message = "Criatura '"..tostring(creature_id)
+            .."' llego a multiplicador_estado sin tabla state; se inicializo vacia."
+        if personajes_en_automatico and type(IA_jugador_prueba_registrar_error_objetivo) == "function" then
+            IA_jugador_prueba_registrar_error_objetivo(message, v)
+        else
+            print(message)
+        end
+        v.state = {}
+    end
     if v.state["dormir"] ~=nil then
         c=c+1
     end
@@ -267,7 +297,7 @@ end
 function GetEnemigoVivos()
     EnemigosVivos={}
     for _, o in ipairs(Order) do
-        if o.tipo=="enemy" and o.hp_>0 then
+        if EsEnemigoVivo(o) then
                 table.insert(EnemigosVivos, o) 
         end
     end
@@ -293,7 +323,7 @@ end
 function FiltrarEnemigoVivos()
     EnemigosVivos={}
     for _, o in ipairs(All) do
-        if o.tipo=="enemy" and o.hp_>0 then
+        if EsEnemigoVivo(o) then
             table.insert(EnemigosVivos, o) 
         end
     end

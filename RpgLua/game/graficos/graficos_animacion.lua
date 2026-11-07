@@ -33,6 +33,21 @@ function Animacion.clean_accion_character()
     Accion_character = {}
 end
 
+local function report_invalid_text_animation(animation)
+    local obj = type(animation) == "table" and animation.obj or nil
+    local object_id = type(obj) == "table"
+        and (obj.id_mons or obj.id or obj.name)
+        or "desconocido"
+    local message = "Se descarto un texto animado con coordenadas invalidas para '"
+        ..tostring(object_id).."': x="..tostring(type(obj) == "table" and obj.x)
+        ..", y="..tostring(type(obj) == "table" and obj.y).."."
+    if personajes_en_automatico and type(IA_jugador_prueba_registrar_error) == "function" then
+        IA_jugador_prueba_registrar_error(message)
+    else
+        print(message)
+    end
+end
+
 function Animacion.add_action_animation(obj,id,color)
     local v={}
     if obj.tipo=="player" then
@@ -49,24 +64,30 @@ function Animacion.add_action_animation(obj,id,color)
 end
 
 function Animacion.show_anima_pile()
-    if #Pila_animacion>0 then
-        for i=1,#Pila_animacion do
-            if Pila_animacion[i] then
-                local v=Pila_animacion[i]
-                if v.type=="texto" then
+    for i=#Pila_animacion,1,-1 do
+        local v=Pila_animacion[i]
+        if type(v)=="table" then
+            if v.type=="texto" then
+                local obj=v.obj
+                if type(obj)~="table" or type(obj.x)~="number" or type(obj.y)~="number" then
+                    report_invalid_text_animation(v)
+                    table.remove(Pila_animacion,i)
+                else
                     Animacion.show_animacion_texto(v)
                     v.time=v.time-1
                     if v.time<=0 then
                         table.remove(Pila_animacion,i)
                     end
-                elseif v.type=="Animacion" then
-                    Animacion.show_animacion_action(v)
-                    v.time=v.time-1
-                    if v.time<=0 then
-                        table.remove(Pila_animacion,i)
-                    end
                 end
-            end            
+            elseif v.type=="Animacion" then
+                Animacion.show_animacion_action(v)
+                v.time=v.time-1
+                if v.time<=0 then
+                    table.remove(Pila_animacion,i)
+                end
+            end
+        else
+            table.remove(Pila_animacion,i)
         end
     end
 end
@@ -102,13 +123,23 @@ end
 
 
 function Animacion.show_Accion_character()
-        if #Accion_character>0 then
-            for i=1,#Accion_character do
-                if ChaAnimation[Accion_character[i].state] then
-                    ChaAnimation[Accion_character[i].state](Accion_character[i],i)
-                end
+    for i=#Accion_character,1,-1 do
+        local action=Accion_character[i]
+        if type(action)~="table" or type(action.state)~="string" then
+            local mensaje="Se descarto una animacion de personaje invalida en Accion_character["..i.."]."
+            if personajes_en_automatico and IA_jugador_prueba_registrar_error then
+                IA_jugador_prueba_registrar_error(mensaje)
+            else
+                print(mensaje)
+            end
+            table.remove(Accion_character,i)
+        else
+            local animation=ChaAnimation[action.state]
+            if animation then
+                animation(action,i)
             end
         end
+    end
 end
 
 ChaAnimation = {}

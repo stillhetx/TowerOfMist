@@ -1,7 +1,27 @@
+local enemy_ai_fallback_reported = {}
+
 function Enemy_action(criatura,alineamiento)
-    --Debug_temp("Enemy_action: "..criatura.id_mons.." "..alineamiento)
-    IA_enemy[criatura.id_mons](criatura,alineamiento)
-    --Enemy_random_action(criatura,alineamiento)
+    local id = criatura.id_mons
+    local report_key = tostring(id)
+    local action = IA_enemy[id]
+    if type(action) == "function" then
+        return action(criatura,alineamiento)
+    end
+
+    if not enemy_ai_fallback_reported[report_key] then
+        enemy_ai_fallback_reported[report_key] = true
+        local message = "No hay IA registrada para el enemigo '"..tostring(id)
+            .."'; se usara la accion predeterminada."
+        if personajes_en_automatico and type(IA_jugador_prueba_registrar_error) == "function" then
+            IA_jugador_prueba_registrar_error(message)
+        elseif type(log) == "function" then
+            log(message)
+        else
+            print(message)
+        end
+    end
+
+    return Enemy_random_action(criatura,alineamiento)
 end
 --preferir esta version
 function Personality_random_action(str, ejecutor,alineamiento)

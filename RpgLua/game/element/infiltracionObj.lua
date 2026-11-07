@@ -14,6 +14,7 @@ InfiltracionData.CombatType_Table={
 }
 InfiltracionData.Op=1
 InfiltracionData.Info={}
+InfiltracionData.MaxVisibleActions=8
 InfiltracionData.seeEnemys=false
 InfiltracionData.Action_label=""
 InfiltracionData.ini_view=1
@@ -87,6 +88,7 @@ InfiltracionData.Acciones_base_inside={
     {name="ocultarse", id="ocultarse"},
     {name="Escapar", id="Escapar"},
 }
+
 InfiltracionData.Acciones_base_extra={{name="invisible", id="invisible"},}
 
 ---{3-4-6}

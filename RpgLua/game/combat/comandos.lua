@@ -182,7 +182,9 @@ function Ejecutar_Comando()
     wait_start()
     local objetivo=selecionar_objetivo()
     agregarAccion({"ejecutar_comando",Mg_sel,objetivo,Actual})
-    Cancel_ejecutar=true    
+    if Sel_isList == true then
+        Cancel_ejecutar=true    
+    end
 
 end
 
@@ -275,8 +277,8 @@ function Comando_dual()
         config_comando()
 
         --next_comando="ejecutar_Magic.Dual"
-        agregarAccion({"ejecutar_Magic.Dual",Mg_2sel,objetivo_global,Dirr2,Actual})
-        agregarAccion({"ejecutar_Magic_Dual_segundo",Mg_sel,objetivo_global_B,Dirr,Actual})
+        agregarAccion({"ejecutar_Magic.Dual",Mg_2sel,objetivo_global,Actual})
+        agregarAccion({"ejecutar_Magic_Dual_segundo",Mg_sel,objetivo_global_B,Actual})
     else
         IsInterruccion=true
         INTERRUCCION_MSG="Recursos insuficientes"

@@ -246,10 +246,37 @@ function Mostrar_extra(v,x,y,bol)
         local str="magic_"..v.magicCharge
         --spr_sheet(Icon_extra[str],x,y,1,1,1,1,spritesEstados)
         spr_sheet(Icon_extra["Base_charge"],x,y+28,1,1,1,1,spritesEstados)
-        for i=1, #v.ArraySpell do
-                    local strTemp= "Color_"..v.ArraySpell[i]
-                    --love.graphics.print( " ["..strTemp.."]",x+16,y+(i*16))
-                    spr_sheet(Icon_extra[strTemp],x+poss_magic_charge[i].x,y+poss_magic_charge[i].y+16+28,1,1,1,1,spritesEstados)
+        for i=1, 4 do
+            local color=v.ArraySpell[i]
+            if color~=nil then
+                local strTemp
+                if type(color)=="string" then
+                    strTemp="Color_"..color
+                end
+                local icon=strTemp and Icon_extra[strTemp]
+                if icon then
+                    local position=poss_magic_charge[i]
+                    if position then
+                        spr_sheet(icon,x+position.x,y+position.y+16+28,1,1,1,1,spritesEstados)
+                    end
+                else
+                    local color_description=tostring(color)
+                    local report_key=tostring(v.id)..":"..tostring(i)..":"..color_description
+                    missing_extra_icon_reports=missing_extra_icon_reports or {}
+                    if not missing_extra_icon_reports[report_key] then
+                        missing_extra_icon_reports[report_key]=true
+                        local mensaje="Icono de carga de magia invalido o faltante: "
+                            ..tostring(strTemp or "Color_<valor no textual>")
+                            .." (color="..color_description..", posicion="..i
+                            ..", personaje="..tostring(v.id)..")."
+                        if personajes_en_automatico and IA_jugador_prueba_registrar_error then
+                            IA_jugador_prueba_registrar_error(mensaje)
+                        else
+                            print(mensaje)
+                        end
+                    end
+                end
+            end
         end
     
 

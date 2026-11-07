@@ -665,10 +665,43 @@ function ejecutarComando(sel,v)
 
 end
 
+local reported_missing_creature_state = {}
+local reported_defeated_enemy_target = {}
+
+function EsAccionRevivir(action_id)
+    return action_id == "revivir" or action_id == "revivir_item"
+end
+
+function EsObjetivoEnemigoDerrotado(target)
+    if type(target) ~= "table" or target.tipo ~= "enemy" then
+        return false
+    end
+    if type(target.hp_) == "number" and target.hp_ > 0 and target.live ~= false then
+        return false
+    end
+
+    local target_id = tostring(target.id_mons or target.id or target.name or "desconocido")
+    if not reported_defeated_enemy_target[target_id] then
+        reported_defeated_enemy_target[target_id] = true
+        local message = "Se omitio una accion contra el enemigo derrotado o invalido '"
+            ..target_id.."'."
+        if personajes_en_automatico and type(IA_jugador_prueba_registrar_error) == "function" then
+            IA_jugador_prueba_registrar_error(message)
+        else
+            print(message)
+        end
+    end
+    return true
+end
+
 function ejecutarMagia(sel, v, ejecutor)
     local sel = sel or ""
     local v = v or {}
     --ejecutor = ejecutor or {}
+
+    if EsObjetivoEnemigoDerrotado(v) and not EsAccionRevivir(sel) then
+        return
+    end
 
     if(v~={} and sel~="")then
 
@@ -709,13 +742,40 @@ function ejecutarMagia(sel, v, ejecutor)
         --Msg_debug=""
         --Msg_debug=Msg_debug.." "..ejecutor.id.." / ".." / "..sel
 
-        local foo=Efectos[sel](v, ejecutor,{},"",0,bono,0,{},{})
-
-        if pcall(foo) then
-            --exitoso
-        else
-            ERROR_MSG="ERROR AL EJECUTAR EFECTO"
+        local efecto=Efectos[sel]
+        if type(efecto)~="function" then
+            local mensaje="No existe un efecto de combate para la habilidad '"..tostring(sel).."'."
+            ERROR_MSG=mensaje
+            if personajes_en_automatico and IA_jugador_prueba_registrar_error then
+                IA_jugador_prueba_registrar_error(mensaje)
+            else
+                print(mensaje)
+            end
+            return
         end
+
+        local is_creature = type(v) == "table" and (
+            v.id_mons ~= nil or v.tipo == "enemy"
+            or v.tipo == "player" or v.tipo == "aliado"
+        )
+        if is_creature and type(v.state) ~= "table" then
+            local creature_id = v.id_mons or v.id or v.name or "desconocido"
+            local report_key = tostring(creature_id)
+            if not reported_missing_creature_state[report_key] then
+                reported_missing_creature_state[report_key] = true
+                local mensaje = "Criatura '"..report_key
+                    .."' recibio la habilidad '"..tostring(sel)
+                    .."' sin una tabla state; se inicializo vacia."
+                if personajes_en_automatico and type(IA_jugador_prueba_registrar_error_objetivo) == "function" then
+                    IA_jugador_prueba_registrar_error_objetivo(mensaje, v)
+                else
+                    print(mensaje)
+                end
+            end
+            v.state = {}
+        end
+
+        efecto(v, ejecutor,{},"",0,bono,0,{},{})
     else
         Name_action="No ejecutado"    
     end
@@ -1011,8 +1071,4 @@ function ejecutarFuria(v) --deprecar
         eludido(v)
     end  
 end
-
-
-
-
 

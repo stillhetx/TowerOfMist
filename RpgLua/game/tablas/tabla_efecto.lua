@@ -1,6 +1,22 @@
 Efectos={}
 
 Bonificador={}
+
+local function validarObjetivoConHp(objetivo, habilidad)
+    if type(objetivo) == "table" and type(objetivo.hp_) == "number" then
+        return true
+    end
+
+    local mensaje = "No se ejecuto "..tostring(habilidad)
+        ..": se requiere un objetivo con hp_ numerico."
+    if personajes_en_automatico and IA_jugador_prueba_registrar_error_objetivo then
+        IA_jugador_prueba_registrar_error_objetivo(mensaje, objetivo)
+    else
+        print(mensaje)
+    end
+    return false
+end
+
 --(v objetivo ,w lanzador ,f Objeto , bol --boolean de potenciado, bono multiplicador)
 --commando
 
@@ -14,15 +30,16 @@ Bonificador={}
 -- tipo  tipos del ataque {}  
 Efectos ["ejecutar_ataque_basico_INIT"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
     --Debug_temp=Debug_temp.." "..str.." "
+    if not validarObjetivoConHp(v, "ataque basico") then
+        return
+    end
     w.carga=1
-    if v~= nil and v~={} then
-        if isDesarmadoObj(w)  then
-            Efectos["ejecutar_ataque_desarmado_beta"](v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
-            checks(v)
-        else
-            Efectos["ejecutar_ataque_base"](v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
-            checks(v) 
-        end 
+    if isDesarmadoObj(w)  then
+        Efectos["ejecutar_ataque_desarmado_beta"](v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
+        checks(v)
+    else
+        Efectos["ejecutar_ataque_base"](v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
+        checks(v)
     end
 end    
 
@@ -134,7 +151,7 @@ Efectos["ejecutar_ataque_base"]= function (v,w,f,arm,punteria,bono,bcrit,tipos,e
     bono = 1 or bono
     arm = "left" or arm
     bcrit = 0 or bcrit
-    if v~=nil and v~={} then
+    if validarObjetivoConHp(v, "ataque basico") then
             if w.weapon and w.weapon[arm].smodo== "white" then
                 w.avanzar=true
                 w.rest=false
@@ -149,7 +166,7 @@ Efectos["ejecutar_ataque_base"]= function (v,w,f,arm,punteria,bono,bcrit,tipos,e
                     mult, crit =  adv_weak_Logic(v,w,{"volar"},true )
                     attt=attt+flr((w.con + flr(rnd(w.weapon[arm].w)) + w.weapon[arm].bw+calidad)*(mult+bcrit))
                     DamageProccess(v,w,-attt*bono,crit)
-                    if v.hp_>0 then
+                    if type(v.hp_)=="number" and v.hp_>0 then
                         Efectos["danno_elemental"](v,w,f,arm,punteria,bono,bcrit,tipos,extra)
                     end
                     jump_start(v)
@@ -2453,6 +2470,9 @@ Efectos["desenbocado"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
             agregarAccion({"ejecutar_comando_final","desenbocado",v,w})
     end
     Efectos["ataque_critico"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
+            if not validarObjetivoConHp(v, "ataque_critico") then
+                return
+            end
             Efectos ["ejecutar_ataque_basico_INIT"] (v,w,{},"left",5,2,1,{})
             Efectos ["ejecutar_ataque_basico_INIT"] (v,w,{},"right",5,2,1,{})
     end
@@ -2704,19 +2724,21 @@ Efectos["alegria"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side)
             w.anim_acc="puñetazos"
             w.anim_col={1,1,1,1}
             FiltrarEnemigoVivos()
-            local enemy=flr(rnd(#EnemigosVivos))
-            local enemy_target=EnemigosVivos[enemy]
-            --Msg_debug= " "..enemy_target.id
-            if acertar(enemy_target,w) then
-            --if false then
-                local mult, crit =  adv_weak_Logic(enemy_target,w,{"fuego","magia"},false )
-                DamageProccess(enemy_target,w,-((w.con + mod(w,"con") +WeaponPower(w))*mult),crit)
-                enemy_target.anim_acc="corte"
-                enemy_target.anim_col={1,1,1,1}
-                jump_start(enemy_target)
-                checks(enemy_target)
-            else
-                eludido(enemy_target)    
+            if #EnemigosVivos > 0 then
+                local enemy=flr(rnd(#EnemigosVivos))
+                local enemy_target=EnemigosVivos[enemy]
+                --Msg_debug= " "..enemy_target.id
+                if acertar(enemy_target,w) then
+                --if false then
+                    local mult, crit =  adv_weak_Logic(enemy_target,w,{"fuego","magia"},false )
+                    DamageProccess(enemy_target,w,-((w.con + mod(w,"con") +WeaponPower(w))*mult),crit)
+                    enemy_target.anim_acc="corte"
+                    enemy_target.anim_col={1,1,1,1}
+                    jump_start(enemy_target)
+                    checks(enemy_target)
+                else
+                    eludido(enemy_target)    
+                end
             end
     end 
 
@@ -4381,7 +4403,7 @@ Efectos["revivir_item"]= function (v,w,f,arm,punteria,bono,bcrit,tipo,extra,side
     ALQUIMISTA=true
     Animacion.add_action_animation(w,"magia",{1,1,1,1}) 
         if f.cont> 0 then 
-            if v.hp_<0 then
+            if v.hp_<=0 then
                 f.cont=f.cont-1
                 local mult, crit =  adv_weak_Logic(v,w,{"curar"},false )
                 v.hp_=0

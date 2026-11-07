@@ -3,6 +3,9 @@ local binser = require("game.lib.binser")
 
 --declarar Variables
 require("game/global")
+require("game/core/menu_pagination")
+require("game/combat/menu")
+
 
 
 --declarar objetos 
@@ -10,6 +13,8 @@ require("game/element/infiltracionObj")
 
 --declarar tablas
 require("game/tablas/tablas")
+require("game/world/overWorldStageTable")
+
 require("RpgLua.game.tablas.Menu.tabla_acciones_state_acciones")
 require("RpgLua.game.tablas.Menu.tabla_acciones_jugador")
 require("RpgLua.game.tablas.Menu.tabla_menu_acciones")
@@ -22,6 +27,9 @@ require("game/tablas/tabla_gambit")
 require("game/tablas/tabla_tarjetas")
 require("game/tablas/tabla_enemy")
 require("game/tablas/Tabla_animacion")
+
+
+SaveGame = require("game/core/saveGame")
 
 require("game/flag_events")
 
@@ -49,6 +57,12 @@ require("game/combat/acciones")
 require("game/combat/info")
 
 require("game/mapa/eventosCards")
+
+require("game/mapa/overworldObj")
+require("game/mapa/overworldControl")
+
+
+
 require("game/mapa/world_0")
 require("game/mapa/map")
 
@@ -58,6 +72,7 @@ require("game/combat/chraracter")
 require("game/combat/comandos")
 require("game/combat/ejecutar")
 require("game/combat/skill")
+require("game/core/IA_jugador_prueba_control")
 
 
 require("game/combat/enemy")
@@ -71,12 +86,14 @@ require("game/graficos/graficos_batalla")
 require("game/graficos/graficos_tienda")
 
 require("game/graficos/graficos_travel")
+require("game/graficos/graficos_overworld")
 
 
 
 
 
 require("game/graficos/graficos_animacion")
+require("game/core/debug_menu")
 
 --function nextLevel() 
 
@@ -94,7 +111,7 @@ Min_dt=0
 function love.load()
     love.filesystem.write("logfile.txt", "Inicio del log\n")
     
-    Min_dt = 1/30 --fps
+    Min_dt = 1/60 --fps
     next_time = love.timer.getTime()
     fondo = love.graphics.newImage("fondo.png")
     new_sprites_jobs= loadSpritesheet("new_sprites_jobs.png",16)
@@ -106,6 +123,7 @@ function love.load()
     fondo_sprites= loadbackGround("Fondos_sheet.png", 152, 15)
     img_intro=love.graphics.newImage("intro.png")
     Finish_fight=love.graphics.newImage("Finish_fight.png")
+    ALLWORLD=love.graphics.newImage("overWorldMap.png")
     Mapa_test=love.graphics.newImage("ZONA-0.png")
     MAP_TILE=loadSpritesheet("MapTile.png",16)
     --newSprites = loadSpritesheet("pico-rpg.png", 16)
@@ -126,6 +144,9 @@ function love.load()
     love.graphics.setDefaultFilter("nearest", "nearest")
     love.graphics.scale(scale)
     _init()
+    if modo_debug_game then
+        Show_view = "debug_menu"
+    end
 end
 
 
@@ -196,9 +217,9 @@ function _init()
             --4, 6 y 10 
             --7  necesitan nuevos sprites(miku y esper)
             -- add new class 12
-            local a =11
-            local b =11
-            local c =11
+            local a =2
+            local b =2
+            local c =2
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -342,12 +363,27 @@ function Init_player(v)
 end
 
 function love.keypressed(key, scancode, isrepeat)
+    if modo_debug_game and key == "f1" and Show_view ~= "debug_menu" then
+        Show_view = "debug_menu"
+        return
+    end
+
+    if modo_debug_game and Show_view == "debug_menu" then
+        DebugGame.control(key)
+        return
+    end
+
+    if Show_view == "allWorld" then
+        OverWorld.Control(key,scancode,isrepeat)
+    end   
+
     if Show_view == "overWorld"   then
         --main_control(key,scancode,isrepeat)
         MapControl.Control(key,scancode,isrepeat)
     end
     if Show_view == "graph"   then
         main_control(key,scancode,isrepeat)
+        return
     end
     if Show_view == "perfil" then 
         Perfil.main_perfil(key,scancode,isrepeat)
@@ -368,7 +404,16 @@ function love.keypressed(key, scancode, isrepeat)
     end
 end
 
+function love.mousepressed(x, y, button)
+    if modo_debug_game and Show_view == "debug_menu" then
+        DebugGame.mousepressed(x, y, button)
+    end
+end
+
 function _draw()
+    if modo_debug_game and Show_view == "debug_menu" then
+        DebugGame.draw()
+    end
     if Show_view == "graph" then
         graph_mode()
     end 
@@ -392,13 +437,11 @@ function _draw()
         overWorld()
     end   
 
+    if Show_view == "allWorld" then
+        OverWorld.draw()
+    end   
+
     if Show_view=="stealthMode" then
         InfiltracionData.draw()
     end
 end
-
-
-
-
-
-

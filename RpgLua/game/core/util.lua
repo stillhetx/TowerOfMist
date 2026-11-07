@@ -192,6 +192,9 @@ function spr_sheet(n, x, y, w, h, flip_x, flip_y, sheet)
     --x=x*4
     --y=y*4
 
+    if type(n) ~= "number" or type(sheet) ~= "table" or not sheet.quads then
+        return
+    end
     local quad = sheet.quads[n + 1] -- PICO-8 indexa desde 0, Lua desde 1
 
     if quad then
@@ -373,6 +376,7 @@ function copiar_tabla(original)
             copia[k] = v
         end
     end
+
     return copia
 end
 
@@ -563,5 +567,4 @@ end
 function removeKey(tabla, clave)
     tabla[clave] = nil
 end
-
 

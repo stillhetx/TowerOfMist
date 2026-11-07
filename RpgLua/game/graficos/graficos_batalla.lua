@@ -27,7 +27,7 @@ function graph_mode()
 
 
 
-    if true then
+    if SeeDebugText then
         Graficos_Batalla.debug_log()
     end
 
@@ -176,4 +176,3 @@ function placeHolder()
     end
 
 end
-

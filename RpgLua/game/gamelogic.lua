@@ -14,6 +14,13 @@ function _update()
     Init_player(Actual)
     isAlive()
     winState()
+    if personajes_en_automatico and Show_view=="graph"
+        and Modo=="WIN" and B_wait==false then
+        main_control("z")
+    end
+    if personajes_en_automatico and Show_view=="standBy" then
+        main_standBy("z")
+    end
     wait_enemy()
     if EnemigosVivos[Op] ~= nil then
         Temp_e = EnemigosVivos[Op]
@@ -39,6 +46,10 @@ function _update()
             ejecutar_reaccion()
         else
             start(Actual)
+            if personajes_en_automatico and Modo=="combat"
+                and Actual.tipo=="player" and Actual.live==true then
+                IA_jugador_prueba_control()
+            end
             ejecutar_comando()
             if auto then
                 automatico(Actual)
@@ -1186,6 +1197,9 @@ maximoInside=0
 function inside()
     local max = 18
     local min = 1
+    if CombatMenu.sync() then
+        return
+    end
     if Actual.acc ~= nil then
         if State == "select" then
             if Op < 1 then
@@ -1311,38 +1325,14 @@ function inside()
             end
         end
         if State == "select_i" then
-                if Op < 1 then
-                    Op = #items 
-                end
-                if Op > #items  then
-                    Op = 1
-                end
-        --[[    if #items > 6 then
-                if Op > fin_view then
-                    ini_view = ini_view + 1
-                    fin_view = fin_view + 1
-                end
-                if Op < ini_view then
-                    ini_view = ini_view - 1
-                    fin_view = fin_view - 1
-                end
-
-                if Op < 1 then
-                    ini_view = #items - 6
-                    fin_view = #items
-                end
-                if Op > #items then
-                    ini_view = 1
-                    fin_view = 6
-                end
-            end
-            if Op < 1 then
-                Op = #items
-            end
-            if Op > #items then
-                Op = 1
-            end
-            ]]
+            local menu_state={
+                selected=(ini_view-1)+Op,
+                first=ini_view,
+                max_visible=18,
+            }
+            MenuPagination.move(menu_state,#items,0)
+            ini_view=menu_state.first
+            Op=menu_state.selected-(ini_view-1)
         end
         if State == "select_l" then
             if Acc == "magics" then
@@ -1555,7 +1545,7 @@ function Robot(v)
 
     if #Pendientes > 0 then
         arreglo = obtenerPrimerPendientes()
-        eliminarPrimeraAccion()
+        eliminarPrimerPendientes()
     else
         next()
     end
@@ -1565,11 +1555,9 @@ function Robot(v)
     if comando_str == "ejecutar_Jump_caer" then
         v.next_atack = ""
         v.see = true
-        if arreglo.hp_ > 0 then
-            ejecutarMagia("saltar", arreglo[3], Order)
-        else
-            local nuevoObjetivo = NextObjetivo(arreglo[3], "enemy")
-            ejecutarMagia("saltar", nuevoObjetivo, Order)
+        local objetivo = arreglo[3]
+        if type(objetivo) == "table" and not EsObjetivoEnemigoDerrotado(objetivo) then
+            ejecutarMagia("saltar", objetivo, Order)
         end
         clean()
         next()
@@ -1646,6 +1634,9 @@ function nextLevel()
     aliados = {}
     EnemigosVivos = {}
     Order = {}
+    if Nvg > #enemyGroups then
+        Nvg = 1
+    end
     TipoLevel = o[Nvg].tipo
     if o[Nvg].tipo == "batalla" then
         Modo = "combat"
@@ -1758,6 +1749,10 @@ function winState()
             obtenerReconpensa()
         end
         Animacion.clean()
+        Animacion.clean_accion_character()
+        limpiarAcciones()
+        limpiarPendientes()
+        LimpiarReacciones()
         cleanCharacter()
         --cleanEnemy()
         Nvg = Nvg + 1
@@ -2077,7 +2072,19 @@ function msg_efecto(v, str)
 end
 
 function jump_start(v)
-    if v ~= nil and v.hp > 0 then
+    if type(v) ~= "table" or type(v.hp_) ~= "number" then
+        local creature_id = type(v) == "table" and (v.id_mons or v.id or v.name) or "desconocido"
+        local message = "jump_start: criatura '"..tostring(creature_id)
+            .."' invalida o sin hp_ numerico."
+        if personajes_en_automatico and type(IA_jugador_prueba_registrar_error_objetivo) == "function" then
+            IA_jugador_prueba_registrar_error_objetivo(message, v)
+        else
+            print(message)
+        end
+        return
+    end
+
+    if v.hp_ > 0 then
         v.jump = true
         v.jump_time = 0
         v.react = true
@@ -2163,6 +2170,17 @@ function DamageProccess(v, w, value, crit,tipo)
         if inmune == false then
             if PIFIA == false then
                 local obb = GetProtector(v)
+                if type(obb) ~= "table" or type(obb.hp_) ~= "number" then
+                    local mensaje = "No se aplico el dano: falta hp_ numerico en el objetivo o protector."
+                    if personajes_en_automatico and IA_jugador_prueba_registrar_error_objetivo then
+                        IA_jugador_prueba_registrar_error_objetivo(mensaje, v, obb)
+                    else
+                        ERROR_MSG = mensaje
+                        print(mensaje)
+                    end
+                    ERROR_MSG = mensaje
+                    return
+                end
                 if w.agi ~= nil and v ~= nil and v.agi ~= nil then
                     calc = v.agi + mod(v, "agi") - w.agi + mod(v, "agi")
                 end
@@ -2373,6 +2391,17 @@ function adv_weak_Logic(v, w, list, b)
 end
 
 function eludido(v)
+    if type(v) ~= "table" then
+        if personajes_en_automatico and IA_jugador_prueba_registrar_error_objetivo then
+            IA_jugador_prueba_registrar_error_objetivo(
+                "No se pudo marcar el ataque como eludido: objetivo nil o invalido.",
+                v
+            )
+        else
+            print("No se pudo marcar el ataque como eludido: objetivo nil o invalido.")
+        end
+        return
+    end
     v.lastDmgC = "W"
     v.slDmg = true
     v.lastDmgM = "Eludido"
@@ -2405,6 +2434,17 @@ function acertar(v, b)
     local at = 0
     local ob = 0
     local modificador=0
+    if type(v) ~= "table" then
+        if personajes_en_automatico and IA_jugador_prueba_registrar_error_objetivo then
+            IA_jugador_prueba_registrar_error_objetivo(
+                "No se pudo calcular acertar: falta el objetivo.",
+                v
+            )
+        else
+            print("No se pudo calcular acertar: falta el objetivo.")
+        end
+        return false
+    end
     if v.ventaja and v.ventaja["back"] ~= nil then
     end    
     if v ~= nil then

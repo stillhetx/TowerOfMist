@@ -91,9 +91,11 @@ Operacion["especiales"] = function (v,o)
         Ccost=v.spe[o].cost
         SubState=v.spe[o].mtipo
         if  v.spe[o].isCommand == true then
-                            Sel_command=v.spe[o].isCommand                        
+            Sel_command=v.spe[o].isCommand        
+            Sel_isList=v.spe[o].isList
                             --Msg_debug=Msg_debug.." #C"
         end
+        
         if v.spe[o].isReplace == true then
             Acc=v.spe[o].sub
             State=v.spe[o].sel
@@ -150,6 +152,8 @@ Operacion["tecnica"] = function (v,o)
     Sel_t_cost=v.sk[o].tCost
     IsCharge=v.sk[o].isCharge
     Sel_command=v.sk[o].isCommand
+    Sel_isList=v.sk[o].isList
+
     if v.sk[o].tCost=="charge" and not (v.carga==1) then
         State = "select"
         Acc=""
@@ -202,6 +206,8 @@ Operacion["bailes"] = function (v,o)
     Sel_t_cost=v.bailes[o].tCost
     IsCharge=v.bailes[o].isCharge
     Sel_command=v.bailes[o].isCommand
+    Sel_isList=v.bailes[o].isList
+
     if v.bailes[o].tCost=="charge" and not v.carga==1 then
         State = "select"
         Acc=""

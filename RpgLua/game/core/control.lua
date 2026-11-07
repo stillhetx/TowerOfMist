@@ -5,15 +5,26 @@ function main_control(key,scancode,isrepeat)
     if key == "f11" then
 		fullscreen = not fullscreen
 		love.window.setFullscreen(fullscreen, "exclusive")
+        return
 	end
+
+    if key=="f1" then
+        reset()
+        return
+    end
+
+    if key=="p" and Show_view=="graph" and Modo=="combat"
+        and Actual and Actual.tipo=="player" and Actual.live==true then
+        ComeBackView="graph"
+        perfil()
+        return
+    end
 
     if B_wait==false then        
             if Show_view=="graph" then
                 if Modo=="combat" then
-                    if Actual.tipo=="player" and Actual.live==true and auto==false then
-                        if State=="select" then
-                            ini_view=1
-                        end    
+                    if Actual.tipo=="player" and Actual.live==true and auto==false
+                        and not personajes_en_automatico then
                         if key=="x" then
                             comeback()
                         end
@@ -30,34 +41,35 @@ function main_control(key,scancode,isrepeat)
                             boton_c()
                         end
                         if key=="up" then
-                            up()
+                            if not CombatMenu.move("up") then
+                                up()
+                            end
                         end
                         if key=="down" then
-                            down()
+                            if not CombatMenu.move("down") then
+                                down()
+                            end
                         end
                         if key=="left" then
-                            left()
+                            if State=="select_e" or State=="select_c" then
+                                left()
+                            elseif not CombatMenu.move("left") then
+                                left()
+                            end
                         end
                         if key=="right" then
-                            right()
-                            
+                            if State=="select_e" or State=="select_c" then
+                                right()
+                            elseif not CombatMenu.move("right") then
+                                right()
+                            end
                         end
-                        if key=="p" then
-                            perfil()
-                        end
-                        if key=="o" then
-                            perfil()
-                        end
-                        if key=="r" then
-                            reset()
-                        end
-
 
                         if key=="l" then
-                            SeeLOG=true
+                            SeeLOG=not SeeLOG
                         end
-                        if key=="k" then
-                            SeeLOG=false
+                        if key=="d" then
+                            SeeDebugText=not SeeDebugText
                         end
                         inside()
                     end
@@ -386,6 +398,8 @@ function comeback()
             State="select_i"
             Mg_sel=""
             Dirr=""
+            Op=1
+            ini_view=1
         end
     elseif State=="select_i" then
         if  Acc=="objeto" or Acc=="usar" then
@@ -412,6 +426,3 @@ function perfil()
         Opm=1
     end  
 end 
-
-
-

@@ -168,6 +168,7 @@ continuar_turno=false
 IsCharge=false
 Sel_t_cost=""
 Sel_command=false
+Sel_isList=false
 
 --bolean sobre la ejecucion de habilidades
 Execute=false
@@ -178,6 +179,7 @@ Execute=false
 
 auto=false
 count_auto=0
+personajes_en_automatico=false
 
 --cont=0
 
@@ -228,10 +230,13 @@ scale=8
 --cont_dt=0
 --max_dt=100
 
-
+--Show_view="seleccion"
 --Show_view="graph"
-Show_view="overWorld"
+--Show_view="overWorld"
+Show_view="allWorld"
 --Show_view="travel"
+modo_debug_game=true
+SeeDebugText=true
 
 Temp_e=""  
 Temp_c=""  

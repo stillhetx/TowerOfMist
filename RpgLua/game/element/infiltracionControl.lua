@@ -53,11 +53,11 @@ function InfiltracionData.finish()
 end
 
 function InfiltracionData.up()
-    InfiltracionData.Op=InfiltracionData.Op-1  
+    InfiltracionData.move_menu(-1)
 end
 
 function InfiltracionData.down()
-    InfiltracionData.Op=InfiltracionData.Op+1  
+    InfiltracionData.move_menu(1)
 end
 
 
@@ -67,49 +67,30 @@ end
 
 
 function InfiltracionData.logica_arrow_menu(list)
-    local finalVista= 9
-    
-    if finalVista> #InfiltracionData.Acciones_base_outside then
-        finalVista=#InfiltracionData.Acciones_base_outside
-    end
-    --paginar
+    local actions=InfiltracionData.Actual_char.stealh_inside
+        and InfiltracionData.Acciones_base_inside
+        or InfiltracionData.Acciones_base_outside
+    local state={
+        selected=InfiltracionData.Op,
+        first=InfiltracionData.ini_view,
+        max_visible=InfiltracionData.MaxVisibleActions,
+    }
+    MenuPagination.move(state,#actions,0)
+    InfiltracionData.Op=state.selected
+    InfiltracionData.ini_view=state.first
+end
 
-
-
-    if InfiltracionData.Op> finalVista  then
-        --InfiltracionData.ini_view=InfiltracionData.ini_view+6
-        InfiltracionData.Op=finalVista
-    end
-
-    
-    if InfiltracionData.Op+(InfiltracionData.ini_view - 1)<(InfiltracionData.ini_view - 1) then
-        --if ini_view>1 then
-            --InfiltracionData.ini_view=InfiltracionData.ini_view-6
-            Op=1
-        --end
-    end
-
-    if InfiltracionData.ini_view<0 then
-        InfiltracionData.ini_view=1     
-    end
-
-    --[[
-
-    local maximoInside=#list-(InfiltracionData.ini_view - 1)
-    if maximoInside>18 then
-        maximoInside=18
-    end
-
-    if InfiltracionData.Op>18 then
-        InfiltracionData.Op=maximoInside
-    end
-
-    if InfiltracionData.Op>maximoInside then
-        InfiltracionData.Op=maximoInside
-    end
-]]
-    if InfiltracionData.Op==0 or InfiltracionData.Op<0  then
-        InfiltracionData.Op=1
-    end
+function InfiltracionData.move_menu(direction)
+    local actions=InfiltracionData.Actual_char.stealh_inside
+        and InfiltracionData.Acciones_base_inside
+        or InfiltracionData.Acciones_base_outside
+    local state={
+        selected=InfiltracionData.Op,
+        first=InfiltracionData.ini_view,
+        max_visible=InfiltracionData.MaxVisibleActions,
+    }
+    MenuPagination.move(state,#actions,direction)
+    InfiltracionData.Op=state.selected
+    InfiltracionData.ini_view=state.first
 
 end
