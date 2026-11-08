@@ -3,6 +3,7 @@ local binser = require("game.lib.binser")
 
 --declarar Variables
 require("game/global")
+require("game/element/levelUPObjt")
 require("game/core/menu_pagination")
 require("game/combat/menu")
 
@@ -26,6 +27,7 @@ require("game/tablas/tabla_IA_enemy")
 require("game/tablas/tabla_gambit")
 require("game/tablas/tabla_tarjetas")
 require("game/tablas/tabla_enemy")
+require("game/tablas/worldTravel_Random_event_table")
 require("game/tablas/Tabla_animacion")
 
 
@@ -49,10 +51,12 @@ require("game.element.TiendaNPC")
 
 
 require("game/gamelogic")
+require("game/element/levelUPLogic")
 require("game/core/config_table")
 require("game/graficos/graficos")
 require("game/core/util")
 require("game/core/control")
+require("game/element/levelUPControl")
 require("game/combat/acciones")
 require("game/combat/info")
 
@@ -60,6 +64,7 @@ require("game/mapa/eventosCards")
 
 require("game/mapa/overworldObj")
 require("game/mapa/overworldControl")
+require("game/mapa/overWorldUpdate")
 
 
 
@@ -83,6 +88,7 @@ require("game/graficos/graficos_infiltracion")
 
 require("game/graficos/graficos_perfil")
 require("game/graficos/graficos_batalla")
+require("game/graficos/graficos_levelUP")
 require("game/graficos/graficos_tienda")
 
 require("game/graficos/graficos_travel")
@@ -94,6 +100,8 @@ require("game/graficos/graficos_overworld")
 
 require("game/graficos/graficos_animacion")
 require("game/core/debug_menu")
+require("game/element/IntroControl")
+require("game/graficos/graficos_intro_seleccion")
 
 --function nextLevel() 
 
@@ -143,7 +151,9 @@ function love.load()
     love.graphics.setFont(font)
     love.graphics.setDefaultFilter("nearest", "nearest")
     love.graphics.scale(scale)
-    _init()
+    if Show_view ~= "intro" or modo_debug_game then
+        _init()
+    end
     if modo_debug_game then
         Show_view = "debug_menu"
     end
@@ -187,6 +197,9 @@ function love.update()
     if Show_view=="overWorld" then
         _update_overWorld()
     end
+    if Show_view=="allWorld" then
+        OverWorld.update()
+    end
 
     if Show_view=="stealthMode" then
         InfiltracionData.update()
@@ -209,17 +222,17 @@ posible_char={}
 ---
 ---
 ---
-function _init()
+function _init(selectedClasses)
     Config.Config_table()
     local o = enemyGroups
     if true then
-        if false then
+        if true then
             --4, 6 y 10 
             --7  necesitan nuevos sprites(miku y esper)
             -- add new class 12
-            local a =2
-            local b =2
-            local c =2
+            local a = selectedClasses and selectedClasses[1] or 11
+            local b = selectedClasses and selectedClasses[2] or 11
+            local c = selectedClasses and selectedClasses[3] or 11
             --primero 
             local r=copiar_tabla(Nuevas_clases[a])
             r.ini=Nuevas_clases[a].agi+flr(rnd(20))
@@ -373,6 +386,18 @@ function love.keypressed(key, scancode, isrepeat)
         return
     end
 
+    if Show_view == "intro" then
+        IntroControl.keypressed(key)
+        return
+    end
+
+    if Show_view == "levelUP" then
+        LevelUP.control(key)
+        return
+    end
+
+
+
     if Show_view == "allWorld" then
         OverWorld.Control(key,scancode,isrepeat)
     end   
@@ -414,9 +439,17 @@ function _draw()
     if modo_debug_game and Show_view == "debug_menu" then
         DebugGame.draw()
     end
+
+    if Show_view =="intro"then
+        IntroControl.draw()
+    end
+
     if Show_view == "graph" then
         graph_mode()
     end 
+    if Show_view == "levelUP" then
+        LevelUP.draw()
+    end
     if Show_view == "perfil" then
         perfil_mode()
     end  

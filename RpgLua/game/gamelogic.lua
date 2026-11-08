@@ -1760,6 +1760,9 @@ function winState()
             if BeforeBattleMode=="overWorld" then
                 Nvg = 1
                 Show_view="overWorld"
+            elseif BeforeBattleMode=="allWorld" then
+                Nvg = 1
+                OverWorld.continuarViaje()
             --elseif BeforeBattleMode=="overWorld" then    
                 --
             elseif BeforeBattleMode =="travel" then
@@ -1783,6 +1786,9 @@ function winState()
                 Show_view = "stealthMode"
                 GrupoCharge(Temp_Order)
             end
+        end
+        if LevelUP.hasPending() then
+            LevelUP.startNext()
         end
         --nextLevel()
     end
@@ -1826,21 +1832,22 @@ function add_rnd_character()
 end
 
 function Actualizar_nivel()
-    --lv
-    --experienceTable
-
     for k, i in pairs(Order) do
         if i.tipo == "player" then
-            local avanzar = true
+            local nivelAnterior = i.lv
             if i.lv < 100 then
-                while (avanzar) do
+                while true do
                     if i.exp >= experienceTable[i.lv + 1] then
                         i.lv = i.lv + 1
+                        if i.lv % 5 == 0 then
+                            LevelUP.enqueue(i, i.lv)
+                        end
                     else
-                        avanzar = false
+                        break
                     end
                 end
             end
+            i.levelGrowthApplied = i.levelGrowthApplied or nivelAnterior
         end
     end
 end
@@ -1854,20 +1861,16 @@ end
 function Atributos_por_nivel()
     for k, i in pairs(Order) do
         if i.tipo == "player" then
-            i.agi = i.agi_ + math.floor(i.lv / i.levelUP.agi)
-            i.fue = i.fue_ + math.floor(i.lv / i.levelUP.fue)
-            i.pod = i.pod_ + math.floor(i.lv / i.levelUP.pod)
-            i.con = i.con_ + math.floor(i.lv / i.levelUP.con)
-            i.dex = i.dex_ + math.floor(i.lv / i.levelUP.dex)
-            i.per = i.per_ + math.floor(i.lv / i.levelUP.per)
-            i.int = i.int_ + math.floor(i.lv / i.levelUP.int)
-            i.car = i.car_ + math.floor(i.lv / i.levelUP.car)
-            i.mnd = i.mnd_ + math.floor(i.lv / i.levelUP.mnd)
-
-            i.hp = i.hp + i.con * 5 + i.lv * 3
-            i.hp_ = i.hp + mod(i, "hp")
-            i.mp = i.mp + i.pod * 3 * i.lv
-            i.mp_ = i.mp + mod(i, "mp")
+            local nivelAplicado = i.levelGrowthApplied or i.lv
+            for nivel = nivelAplicado + 1, i.lv do
+                local aumentoHp = i.con * 5 + nivel * 3
+                local aumentoMp = i.pod * 3 * nivel
+                i.hp = i.hp + aumentoHp
+                i.hp_ = math.min(i.hp + mod(i, "hp"), i.hp_ + aumentoHp)
+                i.mp = i.mp + aumentoMp
+                i.mp_ = math.min(i.mp + mod(i, "mp"), i.mp_ + aumentoMp)
+            end
+            i.levelGrowthApplied = i.lv
         end
     end
 end

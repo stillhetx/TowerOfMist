@@ -114,10 +114,11 @@ State_Operacion["select_i"] = function(v, o)
             State = "select_c"
             FiltrarAliadosVivos()
         end
-        if "d" == Dirr and #Death_party > 0 then
-            State = "select_d"
-            --filtrarDerrotados()
+        if "d" == Dirr then
             FiltrarAliadosMuertos()
+            if #Death_party > 0 then
+                State = "select_d"
+            end
         end
         if State~="select_i" then
             Op=1
@@ -189,9 +190,9 @@ State_Operacion["select_meta"] = function(v, o)
         FiltrarAliadosVivos()
     elseif "d" == Dirr and State == "select_o" then
         FiltrarAliadosMuertos()
-        --filtrarDerrotados()
-        State = "select_d"
-        if #AliadosVivos < 1 then
+        if #Death_party > 0 then
+            State="select_d"
+        else
             State = "select_o"
         end
     end

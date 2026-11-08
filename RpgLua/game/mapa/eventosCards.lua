@@ -86,11 +86,18 @@ function Eventos.evento_Z()
     local temp={}
     local number=0
     local desk={}
+    local function regresarAlOrigen()
+        if not OverWorld.regresarDeEvento() then
+            Show_view=BeforeBattleMode
+        end
+    end
+
     if Eventos.carta_actual.tipo == "regreso" then
             --desk=temp.deck
             --number = rnd(#cards)
             --Eventos.carta_actual = cards[number]
-            Show_view=BeforeBattleMode
+            regresarAlOrigen()
+            return
     else 
     local eleccion = Eventos.carta_actual.opciones[Eventos.op_menu].type
     ccc=ccc+1
@@ -115,6 +122,10 @@ function Eventos.evento_Z()
             --desk=temp.deck
             Eventos.carta_actual = Eventos.level_card[Eventos.travel]
             posible_new_character()
+        end
+        if temp.tipo == "regreso" then
+            regresarAlOrigen()
+            return
         end
 
     end
@@ -172,7 +183,8 @@ function Eventos.evento_Z()
             Eventos.carta_actual = cards[number]
         end
         if temp.tipo  == "regreso" then
-            Show_view=BeforeBattleMode
+            regresarAlOrigen()
+            return
         end
         if temp.tipo == "mensaje" then
             --desk=temp.deck

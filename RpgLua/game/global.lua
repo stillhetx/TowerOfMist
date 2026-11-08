@@ -233,8 +233,10 @@ scale=8
 --Show_view="seleccion"
 --Show_view="graph"
 --Show_view="overWorld"
-Show_view="allWorld"
+--Show_view="allWorld"
 --Show_view="travel"
+  Show_view="intro"
+
 modo_debug_game=true
 SeeDebugText=true
 

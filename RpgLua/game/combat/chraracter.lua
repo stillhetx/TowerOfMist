@@ -395,7 +395,7 @@ function GetAliadosMuerto()
     AliadosMuertos={}
     for _, o in ipairs(All) do
         if (o.tipo=="player" or o.tipo=="aliado")  and o.hp_<=0 then
-                table.insert(AliadosVivos, o) 
+                table.insert(AliadosMuertos, o)
         end
     end
     return AliadosMuertos
@@ -403,11 +403,14 @@ end
 
 function FiltrarAliadosMuertos()
     AliadosMuertos={}
+    Death_party={}
     for _, o in ipairs(All) do
         if (o.tipo=="player" or o.tipo=="aliado")  and o.hp_<=0 then
-                table.insert(AliadosVivos, o) 
+                table.insert(AliadosMuertos, o)
+                table.insert(Death_party, o)
         end
     end
+    return Death_party
 end
 
 function RemoveEquip(str,persona)

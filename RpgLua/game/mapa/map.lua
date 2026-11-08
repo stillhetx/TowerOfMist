@@ -39,8 +39,8 @@ function _update_overWorld()
         Grupo_signal.recharge = false
         MapControl.LogicAddEvent()
     end
-    if Grupo_signal.event==true and Grupo_signal.move==false and false then --Debug line
-    --if Grupo_signal.event==true and Grupo_signal.move==false then
+    --if Grupo_signal.event==true and Grupo_signal.move==false and false then --Debug line
+    if Grupo_signal.event==true and Grupo_signal.move==false then
         if Grupo_info.Request_to_fight==false then
             if Randon_event[Actual_nodo.id].tipo=="enemigo" and true then
                 Show_view="graph"
