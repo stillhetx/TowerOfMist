@@ -48,7 +48,7 @@ local function report_invalid_text_animation(animation)
     end
 end
 
-function Animacion.add_action_animation(obj,id,color)
+function Animacion.add_action_animation(obj,id,poss,color)
     local v={}
     if obj.tipo=="player" then
         v.inv=false
@@ -58,6 +58,7 @@ function Animacion.add_action_animation(obj,id,color)
     v.type="Animacion"
     v.obj=obj
     v.id=id
+    v.poss=poss
     v.color=color
     v.time=anim_list[id].time
     table.insert(Pila_animacion, v)
@@ -80,6 +81,7 @@ function Animacion.show_anima_pile()
                     end
                 end
             elseif v.type=="Animacion" then
+
                 Animacion.show_animacion_action(v)
                 v.time=v.time-1
                 if v.time<=0 then
@@ -98,7 +100,11 @@ function Animacion.show_animacion_action(v)
     local color=v.color
     local inv=v.inv
     if obj.tipo=="player" then
-        anim_general(id,obj.x+40,obj.y,2,2,false,color,inv)  
+        if v.poss=="ataque" then
+            anim_general(id,obj.x+(obj.sheet[3]*32),obj.y,2,2,false,color,inv)  
+        else
+            anim_general(id,obj.x+40,obj.y,2,2,false,color,inv)  
+        end
     else
         anim_general(id,obj.x,obj.y,2,2,true,color,inv)  
     end
@@ -117,7 +123,7 @@ function Animacion.show_animacion_texto(v)
     -- Aquí puedes implementar la lógica para mostrar el texto animado en la pantalla
     -- Por ejemplo, podrías usar love.graphics.print para dibujar el texto en la posición del objeto
     love.graphics.setColor(color)
-    love.graphics.print(str, obj.x-16 + dX, obj.y + 24 + dY+(time*speed)) -- Ajusta la posición según tus necesidades
+    love.graphics.print(str, obj.x-32 + dX, obj.y + 24 + dY+(time*speed)) -- Ajusta la posición según tus necesidades
     love.graphics.setColor(255, 255, 255)
 end
 

@@ -13,17 +13,19 @@ function perfil_mode()
     love.graphics.print("Lv: "..ActiveParty[l].lv.." EXP: "..ActiveParty[l].exp,180,2+(24*1))
     love.graphics.print("",20+(24*1))
     love.graphics.print("HP: "..ActiveParty[l].hp_.."/"..(ActiveParty[l].hp+mod(ActiveParty[l],"hp")).." MP: "..ActiveParty[l].mp_.."/"..(ActiveParty[l].mp+mod(ActiveParty[l],"mp")),120,20+(24*2))
-    love.graphics.print("CON: "..(ActiveParty[l].con+mod(ActiveParty[l],"con")).." POD: "..(ActiveParty[l].pod+mod(ActiveParty[l],"pod")),120,20+(24*3))
-    love.graphics.print("AGI: "..(ActiveParty[l].agi+mod(ActiveParty[l],"agi")).." DES: "..(ActiveParty[l].dex+mod(ActiveParty[l],"dex")),120,20+(24*4))
+    local linea_A="CON: "..(ActiveParty[l].con+mod(ActiveParty[l],"con")).." POD: "..(ActiveParty[l].pod+mod(ActiveParty[l],"pod"))
+    love.graphics.print(linea_A,120,20+(24*3))
+    local linea_B="AGI: "..(ActiveParty[l].agi+mod(ActiveParty[l],"agi")).." DES: "..(ActiveParty[l].dex+mod(ActiveParty[l],"dex"))
+    love.graphics.print(linea_B,120,20+(24*4))
     love.graphics.print("FUE: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")),120,20+(24*5))
 
     --
-    love.graphics.print("ATTACK: "..(ActiveParty[l].fue+mod(ActiveParty[l],"fue")+promWeaponDmg(ActiveParty[l])),260,20+(24*3))
-    love.graphics.print("defensa: "..(flr((ActiveParty[l].con+mod(ActiveParty[l],"con"))/2) + ModArmadura(ActiveParty[l])),260,20+(24*4))
+    love.graphics.print("Ataque: "..(ActiveParty[l].con+mod(ActiveParty[l],"con")+promWeaponDmg(ActiveParty[l])),math.max(#linea_A*19,#linea_B*19,270),20+(24*3))
+    love.graphics.print("Defensa: "..(flr((ActiveParty[l].con+mod(ActiveParty[l],"con"))/2) + ModArmadura(ActiveParty[l])),math.max(#linea_A*19,#linea_B*19,270),20+(24*4))
 
     --
     
-    love.graphics.print( "debug:   "..Perfil.select_mp .." ".. Perfil.showPerfil.." ",260,140+(24*0))
+    --love.graphics.print( "debug:   "..Perfil.select_mp .." ".. Perfil.showPerfil.." ",260,140+(24*0))
     --love.graphics.print( "debug:  "..Debug_temp,400,120+(24*0))
 
 
@@ -32,7 +34,7 @@ function perfil_mode()
 
 
 
-    if Perfil.showPerfil=="perfil" or Perfil.showPerfil=="equip"  then
+    if  Perfil.showPerfil=="equip"  then
 
         if ActiveParty[l].weapon.left ~= nil and ActiveParty[l].weapon.left ~= {} and ActiveParty[l].weapon.left.name ~= nil then 
             love.graphics.print( "weapon L: "..ActiveParty[l].weapon.left.name,100,160+(24*0)) 
@@ -187,13 +189,19 @@ function perfil_mode()
         if Perfil.select_mp=="inventario" then
             love.graphics.print( ">" ,80,220+(24*Opm))
             for k,i in pairs(items) do
-                love.graphics.print( i.name.."["..i.cont.."]" ,100,220+(24*k))
+                local color=(Perfil.item_usable(i) and CumpleLasCondiciones(i, ActiveParty[Perfil.seePerfil]) ) and 7 or 5
+                --local color=(Perfil.item_usable(i)  ) and 7 or 5
+                print(i.name.."["..i.cont.."]",100,220+(24*k),color)
             end
         end     
         if Perfil.select_mp=="aceptar" then
             love.graphics.print( ">" ,80,220+(24*Opm))         
             love.graphics.print( "Si" ,100,220+(24*1))
             love.graphics.print( "No" ,100,220+(24*2))              
+        end
+        if Perfil.select_mp=="no_usable" then
+            love.graphics.print("Este objeto no se puede usar",100,220+(24*1))
+            love.graphics.print("Presiona Z o X para volver",100,220+(24*2))
         end
         if Perfil.select_mp=="usado" then
             love.graphics.print( "Objeto utilizado" ,100,220+(24*1))   
@@ -218,7 +226,7 @@ function perfil_mode()
 
     if Perfil.showPerfil=="perks" then
         love.graphics.print( "Perks" ,80,200)
-        if #ActiveParty[Perfil.seePerfil].perks>0 then
+        if ActiveParty[Perfil.seePerfil].perks~={} then
             local nline=1
             for k,i in pairs(ActiveParty[Perfil.seePerfil].perks) do
                 love.graphics.print( i.name ,100,220+(24*nline))
@@ -238,7 +246,12 @@ function perfil_mode()
     end
 
     if Perfil.showPerfil=="runas" then
-
+        love.graphics.print("Runas disponibles",80,200)
+        local line=1
+        for _,runa in pairs(runas) do
+            love.graphics.print(runa.name,100,220+(24*line))
+            line=line+1
+        end
     end
 
     if Perfil.showPerfil=="hiden" then

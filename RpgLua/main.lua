@@ -13,7 +13,10 @@ require("game/combat/menu")
 require("game/element/infiltracionObj")
 
 --declarar tablas
+
+require("game/tablas/tabla_class_skills")
 require("game/tablas/tablas")
+require("game/tablas/tabla_diccionario_poderes")
 require("game/world/overWorldStageTable")
 
 require("RpgLua.game.tablas.Menu.tabla_acciones_state_acciones")
@@ -243,13 +246,14 @@ function _init(selectedClasses)
             r.y=posiciones_jugadores[1].y   
             r.x_=posiciones_jugadores[1].x   
             r.y_=posiciones_jugadores[1].y   
-            r.hp_=r.hp+mod(r,"hp")
+            r.hp_=r.base_hp
             r.hp=r.hp_
-            r.mp_=r.mp+mod(r,"mp")
+            r.mp_=r.base_mp
             r.mp=r.mp_
             r.mag=General_magics(Nuevas_clases[a])
             r.col=General_coleccion(Nuevas_clases[a])
             r.acc=General_lista(Nuevas_clases[a])
+            ConfigPerk(r)
             Init_social(r)
             add(ActiveParty,r)
             add(Show_party,r)
@@ -264,13 +268,14 @@ function _init(selectedClasses)
             r.y=posiciones_jugadores[2].y   
             r.x_=posiciones_jugadores[2].x   
             r.y_=posiciones_jugadores[2].y  
-            r.hp_=r.hp+mod(r,"hp")
+            r.hp_=r.base_hp
             r.hp=r.hp_
-            r.mp_=r.mp+mod(r,"mp")
+            r.mp_=r.base_mp
             r.mp=r.mp_
             r.mag=General_magics(Nuevas_clases[b])
             r.col=General_coleccion(Nuevas_clases[b])
             r.acc=General_lista(Nuevas_clases[b])
+            ConfigPerk(r)
             Init_social(r)
             add(ActiveParty,r)
             add(Show_party,r)
@@ -285,13 +290,14 @@ function _init(selectedClasses)
             r.y=posiciones_jugadores[3].y 
             r.x_=posiciones_jugadores[3].x   
             r.y_=posiciones_jugadores[3].y   
-            r.hp_=r.hp+mod(r,"hp")
+            r.hp_=r.base_hp
             r.hp=r.hp_
-            r.mp_=r.mp+mod(r,"mp")
+            r.mp_=r.base_mp
             r.mp=r.mp_
             r.mag=General_magics(Nuevas_clases[c])
             r.col=General_coleccion(Nuevas_clases[c])
             r.acc=General_lista(Nuevas_clases[c])
+            ConfigPerk(r)
             Init_social(r)
             add(ActiveParty,r)
             add(Show_party,r)
@@ -308,13 +314,14 @@ function _init(selectedClasses)
                 r.y=posiciones_jugadores[i].y    
                 r.x_=posiciones_jugadores[i].x   
                 r.y_=posiciones_jugadores[i].y  
-                r.hp_=r.hp+mod(r,"hp")
+                r.hp_=r.base_hp
                 r.hp=r.hp_
-                r.mp_=r.mp+mod(r,"mp")
+                r.mp_=r.base_mp
                 r.mp=r.mp_
                 r.mag=General_magics(Nuevas_clases[t])
                 r.col=General_coleccion(Nuevas_clases[t])
                 r.acc=General_lista(Nuevas_clases[t])
+                ConfigPerk(r)
                 Init_social(r)
                 add(ActiveParty,r)
                 add(Show_party,r)
@@ -333,8 +340,15 @@ function _init(selectedClasses)
                 r.y=posiciones_jugadores[i].y    
                 r.x_=posiciones_jugadores[i].x   
                 r.y_=posiciones_jugadores[i].y  
-                r.hp_=r.hp+mod(r,"hp")
-                r.mp_=r.mp+mod(r,"mp")
+                r.hp_=r.base_hp
+                r.hp=r.hp_
+                r.mp_=r.base_mp
+                r.mp=r.mp_
+                r.mag=General_magics(Nuevas_clases[t])
+                r.col=General_coleccion(Nuevas_clases[t])
+                r.acc=General_lista(Nuevas_clases[t])
+                ConfigPerk(r)
+                Init_social(r)
                 add(ActiveParty,r)
                 add(Show_party,r)
                 add(Order, r)

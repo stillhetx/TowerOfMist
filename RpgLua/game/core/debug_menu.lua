@@ -51,6 +51,8 @@ function DebugGame.open(mode)
         InfiltracionData.Limit_type = info.stealth_type
         InfiltracionData.Nivel_tension = info.lvTension
         BeforeBattleMode = "debug_menu"
+    elseif mode == "perfil" then
+        Perfil.showPerfil="perfil"       
     end
 
     Show_view = mode

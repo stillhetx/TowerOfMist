@@ -59,8 +59,10 @@ function graph_mode()
         Graficos_Batalla.show_enemy()
    
         Graficos_Batalla.show_otros()
-        
+
         Animacion.show_anima_pile()
+        
+        
 
         love.graphics.setColor(0,0,0)
         love.graphics.rectangle("fill", 0,320, 800,200)
@@ -106,6 +108,8 @@ function graph_mode()
                 end
             end
         end
+
+        
         
         local menu_x=12
         local menu_y=314

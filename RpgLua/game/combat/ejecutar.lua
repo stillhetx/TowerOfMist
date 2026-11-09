@@ -841,12 +841,12 @@ function ejecutarMagiaExtra(sel, v, ejecutor,extra)
 end    
 
 function EjecutarItem(objetivo, lanzador, objeto)
-        --Debug_temp=objetivo.name
-        --Debug_temp=lanzador.name
-        --Debug_temp=objeto.id
+        if type(objeto)~="table" or objeto.menuAct~=true then
+            return false
+        end
 
-        
         Efectos[objeto.id](objetivo, lanzador,objeto,"",0,1,0,{},{})
+        return true
 end
 
 function ejecutarObjeto(v,f,bol)
@@ -1071,4 +1071,3 @@ function ejecutarFuria(v) --deprecar
         eludido(v)
     end  
 end
-

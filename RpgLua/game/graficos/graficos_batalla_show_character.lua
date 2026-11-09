@@ -12,7 +12,8 @@ function Graficos_Batalla.show_character()
                 if Actual.id==v.id then
                     
                     Mostrar_icon_mode(v, (v.x),(v.y),false)
-                    Mostrar_extra(v, (v.x+v.hub.x+56),(v.y+v.hub.y+(32*(3-v.sheet[4]))),false)
+                    --Mostrar_extra(v, (v.x+v.hub.x+56),(v.y+v.hub.y+(32*(3-v.sheet[4]))),false)
+                    Mostrar_extra(v, (v.x+(v.sheet[3]*32)),(v.y+((32*v.sheet[4]))),false)
                     Mostrar_shield(v,(v.x-26),v.y+26,false)
                     --Mostrar_rc(v, (v.x-16),(v.y),false)
                     Mostrar_extra_acciones(v, (v.x),(v.y),false)

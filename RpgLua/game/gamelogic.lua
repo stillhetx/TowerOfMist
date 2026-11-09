@@ -720,6 +720,29 @@ function General_coleccion(v)
     return lista
 end
 
+function ConfigPerk(r)
+            for k,i in pairs(r.perks) do
+                if k=="profecional"then
+                    r.isProFighter=true
+                elseif k=="swordmaster" then
+                    r.isSwordMaster=true
+                elseif k=="magia" then
+                    r.isMagicTalent=true
+                elseif k=="milagros" then     
+                    r.isMilacreGift=true    
+                elseif k=="shaman" then
+                    r.isShamanGift=true 
+                elseif k=="bailarin" then
+                    r.isDancer=true
+                elseif k=="cantante" then  
+                    r.isSinger=true  
+                end
+                
+            end
+
+end
+
+
 function General_lista(v)
     local lista = {}
     --v.acc
@@ -1861,16 +1884,13 @@ end
 function Atributos_por_nivel()
     for k, i in pairs(Order) do
         if i.tipo == "player" then
-            local nivelAplicado = i.levelGrowthApplied or i.lv
-            for nivel = nivelAplicado + 1, i.lv do
-                local aumentoHp = i.con * 5 + nivel * 3
-                local aumentoMp = i.pod * 3 * nivel
-                i.hp = i.hp + aumentoHp
-                i.hp_ = math.min(i.hp + mod(i, "hp"), i.hp_ + aumentoHp)
-                i.mp = i.mp + aumentoMp
-                i.mp_ = math.min(i.mp + mod(i, "mp"), i.mp_ + aumentoMp)
-            end
-            i.levelGrowthApplied = i.lv
+                local aumentoHp = i.base_hp + i.con * 5 * i.lv + i.lv * 3 * i.lv
+                local aumentoMp = i.base_mp + i.pod * 3 * i.lv
+                i.hp = aumentoHp
+                i.hp_ = aumentoHp
+                i.mp = aumentoMp
+                i.mp_ = aumentoMp
+          
         end
     end
 end
